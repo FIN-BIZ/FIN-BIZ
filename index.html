@@ -38,7 +38,7 @@
     .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
     .section-title { max-width: 690px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(36px, 4.4vw, 58px); font-weight: 700; letter-spacing: 0; line-height: 1.12; }
     .section-lead { max-width: 570px; margin: 18px 0 0; color: var(--muted); }
-    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--silver); color: #243329; font-size: 13px; font-weight: 700; transition: background .2s ease, transform .2s ease; }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--silver); color: var(--ink); }
     .button:hover { background: #c7cfca; transform: translateY(-2px); }
     .button-arrow { font-size: 19px; line-height: 1; }
 
@@ -51,14 +51,14 @@
     .hero-photo { position: absolute; inset: 0 0 0 auto; width: 52%; height: 100%; object-fit: cover; object-position: 58% center; }
     .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, var(--pine-deep) 0%, var(--pine-deep) 43%, rgb(227 238 219 / 92%) 55%, rgb(227 238 219 / 25%) 76%, transparent 100%); content: ""; }
     .hero-inner { position: relative; z-index: 1; width: 100%; padding-top: 75px; }
-    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 20px; background: rgb(255 255 255 / 97%); color: var(--pine); box-shadow: 0 8px 24px rgb(49 92 61 / 12%); }
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); }
     .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
     .brand-logo { display: block; width: 60px; height: 60px; flex: 0 0 auto; object-fit: contain; }
     .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
     .brand-caption { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
     .nav-links { display: flex; align-items: center; gap: 28px; color: var(--ink); font-size: 12px; font-weight: 600; }
     .nav-links a:not(.nav-cta):hover { color: var(--pine-soft); }
-    .nav-cta { min-height: 42px; padding: 0 17px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); transition: background .2s, border-color .2s; }
+    .nav-cta { min-height: 42px; padding: 0 17px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); transition: background .2s ease, transform .2s ease; }
     .nav-cta:hover { border-color: #254b30; background: #254b30; color: var(--white); }
     .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; }
     .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
@@ -86,6 +86,7 @@
     .proof-item { gap: 14px; border-left: 1px solid var(--line); }
     .proof-no { color: var(--pine-soft); font-family: var(--serif); font-size: 28px; }
     .proof-label { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
     .value-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 30px; }
     .value-point { padding: 22px 20px; background: rgba(255, 255, 255, 0.48); border: 1px solid rgba(49, 92, 61, 0.08); }
     .value-point strong { display: block; margin-bottom: 7px; color: var(--pine); font-size: 15px; }
@@ -132,7 +133,7 @@
     .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 90px; }
     .about-visual { position: relative; min-height: 445px; background: #e0e5e2; }
     .about-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .about-stamp { position: absolute; right: -24px; bottom: 25px; display: grid; width: 150px; min-height: 96px; place-content: center; padding: 14px; background: var(--white); color: var(--pine); text-align: left; box-shadow: 0 12px 32px rgb(49 92 61 / 14%); }
+    .about-stamp { position: absolute; right: -24px; bottom: 25px; display: grid; width: 150px; min-height: 96px; place-content: center; padding: 14px; background: var(--white); color: var(--pine); box-shadow: 0 18px 32px rgb(36 51 41 / 12%); }
     .about-stamp strong { font-family: var(--sans); font-size: 14px; font-weight: 700; line-height: 1.3; }
     .about-stamp span { margin-top: 5px; color: var(--muted); font-size: 9px; font-weight: 600; }
     .about-copy .section-title { max-width: 540px; }
@@ -152,7 +153,7 @@
     .faq-item p { max-width: 620px; margin: -4px 0 20px; color: var(--muted); font-size: 13px; }
 
     .contact { position: relative; overflow: hidden; background: var(--pine-deep); color: var(--ink); }
-    .contact::after { position: absolute; top: -160px; right: -90px; width: 430px; height: 430px; border: 1px solid rgb(49 92 61 / 16%); border-radius: 50%; box-shadow: 0 0 0 45px rgb(49 92 61 / 4%), 0 0 0 90px rgb(49 92 61 / 3%); content: ""; }
+    .contact::after { position: absolute; top: -160px; right: -90px; width: 430px; height: 430px; border: 1px solid rgb(49 92 61 / 16%); border-radius: 50%; box-shadow: 0 0 0 45px rgb(49 92 61 / 4%); content: ""; }
     .contact-inner { position: relative; z-index: 1; display: flex; min-height: 300px; align-items: center; justify-content: space-between; gap: 40px; padding-top: 70px; padding-bottom: 70px; }
     .contact .eyebrow { color: var(--pine-soft); }
     .contact .section-title { max-width: 650px; color: var(--pine); }
@@ -206,7 +207,7 @@
       .brand-name { font-size: 12px; }
       .brand-caption { font-size: 8px; }
       .menu-toggle { display: block; }
-      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px; background: var(--white); color: var(--ink); box-shadow: 0 12px 24px rgb(49 92 61 / 16%); }
+      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px; background: var(--white); color: var(--ink); box-shadow: 0 18px 30px rgba(36,51,41,.08); }
       .nav-links.is-open { display: flex; flex-direction: column; }
       .nav-links a:not(.nav-cta) { padding: 13px 0; border-bottom: 1px solid var(--line); }
       .nav-cta { justify-content: center; margin: 12px 0 7px; }
@@ -266,6 +267,7 @@
         <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu"><span class="menu-glyph"></span></button>
         <div class="nav-links" id="main-menu">
           <a href="#services">Dịch vụ</a>
+          <a href="san-pham.html">Sản phẩm</a>
           <a href="#approach">Quy trình</a>
           <a href="#about">Về chúng tôi</a>
           <a href="#faq">Hỏi đáp</a>
@@ -278,7 +280,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">FINANCE BIZ · Tư vấn tài chính doanh nghiệp</p>
         <h1><span class="rotating-phrase" id="hero-phrase">Giảm lãi vay</span><br><em>cho doanh nghiệp.</em></h1>
-        <p class="hero-description">Đơn vị tiên phong hỗ trợ doanh nghiệp tối ưu nguồn vốn và tiếp cận giải pháp tài chính phù hợp với thực trạng hoạt động, dòng tiền và mục tiêu phát triển dài hạn. Giảm tối đa lãi vay để phù hợp với mọi giai đoạn phát triển của doanh nghiệp.</p>
+        <p class="hero-description">Đơn vị tiên phong hỗ trợ doanh nghiệp tối ưu nguồn vốn và tiếp cận giải pháp tài chính phù hợp với thực trạng hoạt động và kế hoạch phát triển.</p>
         <div class="hero-actions">
           <a class="button" href="dang-ky-vay.html">Đăng ký vay vốn <span class="button-arrow" aria-hidden="true">↗</span></a>
           <a class="text-link" href="tel:+84358608830">Gọi tư vấn: 0358 608 830 <span aria-hidden="true">↓</span></a>
@@ -302,42 +304,42 @@
       <div class="wrap">
         <div class="section-heading">
           <div><p class="eyebrow">Dịch vụ</p><h2 class="section-title">Giải pháp tài chính doanh nghiệp<br>theo từng giai đoạn phát triển.</h2></div>
-          <p class="section-lead">FINANCE BIZ hỗ trợ doanh nghiệp giảm áp lực lãi vay, tối ưu cấu trúc nợ và nâng cao khả năng tiếp cận nguồn vốn từ các tổ chức tài chính phù hợp.</p>
+          <p class="section-lead">FINANCE BIZ hỗ trợ doanh nghiệp giảm áp lực lãi vay, tối ưu cấu trúc nợ và nâng cao khả năng tiếp cận nguồn vốn từ các tổ chức tài chính.</p>
         </div>
         <div class="services-grid">
           <article class="service">
             <span class="service-index">01 / CƠ CẤU NỢ</span>
             <h3>Cơ cấu nợ tối ưu</h3>
             <p>Phân tích toàn bộ khoản vay, kỳ hạn, tài sản đảm bảo và phương án trả nợ để giảm áp lực thanh toán hiện tại.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="service-arrow" aria-hidden="true">↗</span>
           </article>
           <article class="service">
             <span class="service-index">02 / TỐI ƯU VỐN</span>
             <h3>Chuyển đổi khoản vay</h3>
             <p>Kiểm tra phương án chuyển đổi, tái cơ cấu hoặc điều chỉnh thời hạn phù hợp với thực trạng doanh nghiệp.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="service-arrow" aria-hidden="true">↗</span>
           </article>
           <article class="service">
             <span class="service-index">03 / HỒ SƠ</span>
             <h3>Rà soát hồ sơ tài chính</h3>
             <p>Đánh giá và chuẩn hóa hồ sơ tín dụng, tài chính, kế toán để tăng khả năng được tiếp nhận và thuyết phục.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="service-arrow" aria-hidden="true">↗</span>
           </article>
           <article class="service">
             <span class="service-index">04 / KẾT NỐI</span>
             <h3>Kết nối ngân hàng &amp; tổ chức tài chính</h3>
             <p>Chuẩn bị thông tin, mô tả doanh nghiệp và phương án tài chính để trao đổi hiệu quả với đối tác phù hợp.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55d?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="service-arrow" aria-hidden="true">↗</span>
           </article>
         </div>
         <div class="value-points">
           <div class="value-point"><strong>Đánh giá đúng</strong><span>Hiểu rõ tình hình nợ và dòng tiền, không làm theo kiểu “đại khái”.</span></div>
           <div class="value-point"><strong>Phương án thực tế</strong><span>Rà soát điều kiện, giới hạn và rủi ro trước khi doanh nghiệp quyết định.</span></div>
-          <div class="value-point"><strong>Đồng hành rõ ràng</strong><span>Từ hồ sơ ban đầu đến lựa chọn giải pháp, mọi bước đều được giải thích minh bạch.</span></div>
+          <div class="value-point"><strong>Đồng hành rõ ràng</strong><span>Từ hồ sơ ban đầu đến lựa chọn giải pháp, mọi bước đều được giải thích minh bạch và dễ hiểu.</span></div>
         </div>
       </div>
     </section>
@@ -356,12 +358,12 @@
           </div>
         </div>
         <div class="approach-aside">
-          <p class="approach-note">Từ cuộc trao đổi đầu tiên đến lúc thống nhất hướng triển khai, mỗi bước đều được giải thích rõ để doanh nghiệp chủ động ra quyết định.</p>
+          <p class="approach-note">Từ cuộc trao đổi đầu tiên đến lúc thống nhất hướng triển khai, mỗi bước đều được giải thích rõ để doanh nghiệp chủ động hơn trong quyết định tài chính.</p>
           <div class="steps">
-            <div class="step"><span class="step-number">01</span><div><h3>Đánh giá hiện trạng khoản vay</h3><p>Tổng hợp dư nợ, kỳ hạn, tài sản bảo đảm và áp lực dòng tiền.</p></div></div>
-            <div class="step"><span class="step-number">02</span><div><h3>Thẩm định năng lực tài chính</h3><p>Đối chiếu dòng tiền, kế hoạch kinh doanh và khả năng trả nợ.</p></div></div>
+            <div class="step"><span class="step-number">01</span><div><h3>Đánh giá hiện trạng khoản vay</h3><p>Tổng hợp dư nợ, kỳ hạn, tài sản bảo đảm và áp lực thanh toán hiện tại.</p></div></div>
+            <div class="step"><span class="step-number">02</span><div><h3>Thẩm định năng lực tài chính</h3><p>Đối chiếu dòng tiền, kế hoạch kinh doanh và khả năng trả nợ theo thời gian.</p></div></div>
             <div class="step"><span class="step-number">03</span><div><h3>Đưa phương án cơ cấu</h3><p>Trình bày lựa chọn, điều kiện và điểm cần cân nhắc.</p></div></div>
-            <div class="step"><span class="step-number">04</span><div><h3>Kết nối &amp; triển khai</h3><p>Chuẩn bị hồ sơ làm việc với đơn vị tín dụng theo phương án thống nhất.</p></div></div>
+            <div class="step"><span class="step-number">04</span><div><h3>Kết nối &amp; triển khai</h3><p>Chuẩn bị hồ sơ làm việc với đơn vị tín dụng theo phương án thể hiện rõ ràng.</p></div></div>
           </div>
         </div>
       </div>
@@ -376,8 +378,8 @@
         <div class="about-copy">
           <p class="eyebrow">Về FINANCE BIZ</p>
           <h2 class="section-title">Một đầu mối đồng hành cùng hồ sơ tài chính.</h2>
-          <p>FINANCE BIZ hỗ trợ doanh nghiệp hệ thống lại tình hình khoản vay, làm rõ lựa chọn và chuẩn bị các bước trao đổi với tổ chức tín dụng. Mọi phương án cần dựa trên hồ sơ cụ thể và được doanh nghiệp cân nhắc trước khi triển khai.</p>
-          <div class="about-list"><span>Rà soát khoản vay và nghĩa vụ hiện tại</span><span>Giải thích điều kiện, giới hạn và rủi ro</span><span>Thống nhất phạm vi hỗ trợ trước khi làm việc</span></div>
+          <p>FINANCE BIZ hỗ trợ doanh nghiệp hệ thống lại tình hình khoản vay, làm rõ lựa chọn và chuẩn bị các bước trao đổi với tổ chức tín dụng. Mọi thông tin được thống nhất rõ ràng và giải thích minh bạch.</p>
+          <div class="about-list"><span>Rà soát khoản vay và nghĩa vụ hiện tại</span><span>Giải thích điều kiện, giới hạn và rủi ro</span><span>Thống nhất phạm vi trao đổi và lựa chọn tư vấn</span><span>Đồng hành trước và trong quá trình thực hiện</span></div>
           <a class="button" href="#contact">Trao đổi về hồ sơ doanh nghiệp <span class="button-arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -385,19 +387,20 @@
 
     <section class="faq" id="faq">
       <div class="wrap faq-grid">
-        <div><p class="eyebrow">Hỏi đáp</p><h2 class="section-title">Bắt đầu từ những điều cần rõ.</h2><p class="section-lead">Một vài thông tin để doanh nghiệp chuẩn bị cho buổi trao đổi đầu tiên.</p></div>
+        <div><p class="eyebrow">Hỏi đáp</p><h2 class="section-title">Bắt đầu từ những điều cần rõ.</h2><p class="section-lead">Một vài thông tin để doanh nghiệp chuẩn bị tốt hơn trước khi quyết định tiếp cận nguồn vốn.</p></div>
         <div class="faq-list">
-          <details class="faq-item"><summary>Buổi trao đổi đầu tiên cần chuẩn bị gì?</summary><p>Doanh nghiệp có thể chia sẻ mục tiêu, nhu cầu vốn và những vướng mắc hiện tại. Chỉ gửi hồ sơ chi tiết khi hai bên đã thống nhất cách thức tiếp nhận và bảo mật thông tin.</p></details>
-          <details class="faq-item"><summary>FINANCE BIZ có cam kết được khoản vay không?</summary><p>Không. Quyết định cấp tín dụng thuộc về tổ chức cho vay. Vai trò tư vấn là giúp doanh nghiệp đánh giá phương án, chuẩn bị thông tin và hiểu rõ các điều kiện liên quan.</p></details>
-          <details class="faq-item"><summary>Doanh nghiệp có thể trao đổi khi chưa có hồ sơ hoàn chỉnh?</summary><p>Có. Buổi trao đổi ban đầu giúp làm rõ nhu cầu và xác định những thông tin cần thiết cho bước tiếp theo.</p></details>
-          <details class="faq-item"><summary>Thông tin tài chính được bảo mật như thế nào?</summary><p>Phạm vi tiếp nhận, sử dụng và lưu trữ thông tin cần được thống nhất trước khi doanh nghiệp cung cấp hồ sơ nhạy cảm.</p></details>
+          <details class="faq-item"><summary>Buổi trao đổi đầu tiên cần chuẩn bị gì?</summary><p>Doanh nghiệp có thể chia sẻ mục tiêu, nhu cầu vốn và những vướng mắc trong cơ cấu nợ hiện tại. Nếu có hồ sơ tài chính, điều này giúp đánh giá cụ thể hơn.</p></details>
+          <details class="faq-item"><summary>FINANCE BIZ có cam kết được khoản vay không?</summary><p>Không. Quyết định cấp tín dụng thuộc về tổ chức cho vay. Vai trò của FINANCE BIZ là hỗ trợ doanh nghiệp chuẩn bị hồ sơ, phân tích và lên phương án phù hợp.</p></details>
+          <details class="faq-item"><summary>Doanh nghiệp có thể trao đổi khi chưa có hồ sơ hoàn chỉnh?</summary><p>Có. Buổi trao đổi ban đầu giúp làm rõ nhu cầu và định hướng, sau đó doanh nghiệp có thể bổ sung thông tin theo từng giai đoạn phù hợp.</p></details>
+          <details class="faq-item"><summary>Thông tin tài chính được bảo mật như thế nào?</summary><p>Phạm vi tiếp nhận, sử dụng và lưu trữ thông tin cần được thống nhất rõ ràng trước khi trao đổi. Mọi thông tin được xử lý để phục vụ tư vấn và tối ưu giải pháp.</p></details>
         </div>
       </div>
     </section>
 
     <section class="contact" id="contact">
       <div class="wrap contact-inner">
-        <div><p class="eyebrow">Kết nối</p><h2 class="section-title">Cùng làm rõ bài toán tài chính của bạn.</h2><p class="contact-copy">Liên hệ trực tiếp với FINANCE BIZ để trao đổi về nhu cầu của doanh nghiệp.</p><div class="contact-details"><a href="tel:+84358608830">Điện thoại: 0358 608 830</a><a href="mailto:nguyentung1809@outlook.com">Email: nguyentung1809@outlook.com</a></div></div>
+        <div><p class="eyebrow">Kết nối</p><h2 class="section-title">Cùng làm rõ bài toán tài chính của bạn.</h2><p class="contact-copy">Liên hệ trực tiếp với FINANCE BIZ để trao đổi nhu cầu, hồ sơ và phương án tài chính phù hợp với doanh nghiệp của bạn.</p>
+        <div class="contact-details"><a href="tel:+84358608830">0358 608 830</a><a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a></div></div>
         <a class="button" href="mailto:nguyentung1809@outlook.com?subject=Yeu%20cau%20tu%20van%20tai%20chinh">Gửi email tư vấn <span class="button-arrow" aria-hidden="true">↗</span></a>
       </div>
     </section>
@@ -409,6 +412,7 @@
       <span>© 2026 FINANCE BIZ. Nội dung mang tính chất tham khảo.</span>
       <div class="footer-links">
         <a href="#services">Dịch vụ</a>
+        <a href="san-pham.html">Sản phẩm</a>
         <a href="kien-thuc-vay-von.html">Kiến thức</a>
         <a href="tin-tuc.html">Tin tức</a>
         <a href="#about">Về chúng tôi</a>

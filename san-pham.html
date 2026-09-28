@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315c3d">
+  <meta name="description" content="Sản phẩm tài chính doanh nghiệp - Giải pháp vay vốn, cơ cấu nợ và hỗ trợ doanh nghiệp phát triển bền vững.">
+  <title>Sản phẩm | FINANCE BIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pine: #315c3d;
+      --pine-deep: #e3eedb;
+      --pine-soft: #527b59;
+      --paper: #f4f6f4;
+      --white: #fff;
+      --ink: #243329;
+      --muted: #68756b;
+      --line: #d9e0db;
+      --silver: #aeb8b2;
+      --silver-dark: #66736b;
+      --lime: #e7f0df;
+      --serif: "DM Sans", sans-serif;
+      --sans: "DM Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 132px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
+    .section-title { max-width: 690px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(36px, 4.4vw, 58px); font-weight: 700; line-height: 1.12; }
+    .section-lead { max-width: 570px; margin: 18px 0 0; color: var(--muted); }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--pine); color: var(--white); transition: background .2s ease, transform .2s ease; }
+    .button:hover { background: #254b30; transform: translateY(-2px); }
+    .button-arrow { font-size: 19px; line-height: 1; }
+    .text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-size: 12px; font-weight: 600; }
+    .text-link span { color: var(--pine-soft); font-size: 18px; }
+
+    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
+    .topbar-note { display: flex; align-items: center; gap: 9px; }
+    .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
+    .topbar-meta { display: flex; gap: 24px; }
+
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
+    .brand-logo { display: block; width: 60px; height: 60px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--ink); font-size: 12px; font-weight: 600; }
+    .nav-links a:not(.nav-cta):hover { color: var(--pine-soft); }
+    .nav-cta { min-height: 42px; padding: 0 17px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); }
+    .nav-cta:hover { border-color: #254b30; background: #254b30; color: var(--white); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; }
+    .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
+    .menu-glyph { position: relative; }
+    .menu-glyph::before, .menu-glyph::after { position: absolute; left: 0; }
+    .menu-glyph::before { top: -6px; }
+    .menu-glyph::after { top: 6px; }
+
+    .product-hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--pine-deep) 0%, #edf4ea 100%); padding-top: 185px; padding-bottom: 70px; }
+    .product-hero::before { position: absolute; inset: 0 auto auto 48%; width: 620px; height: 620px; border: 1px solid rgba(49,92,61,.1); border-radius: 50%; content: ""; transform: translateX(10%); }
+    .product-hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
+    .hero-copy h1 { max-width: 650px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(48px, 6vw, 76px); line-height: 1.04; }
+    .hero-copy p { margin: 22px 0 0; max-width: 560px; color: var(--muted); font-size: 18px; }
+    .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 32px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 16px 28px; padding: 0; margin: 32px 0 0; list-style: none; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .hero-meta li { display: flex; align-items: center; gap: 10px; }
+    .hero-meta li::before { width: 8px; height: 8px; border-radius: 50%; background: var(--pine-soft); content: ""; }
+
+    .hero-panel { position: relative; max-width: 430px; margin-left: auto; padding: 34px 28px; background: rgba(255,255,255,.72); border: 1px solid rgba(49,92,61,.1); box-shadow: 0 20px 60px rgba(36,51,41,.08); }
+    .hero-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .chip { display: inline-flex; min-height: 30px; align-items: center; padding: 0 12px; border-radius: 999px; background: var(--pine-deep); color: var(--pine); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .panel-kpi { margin: 26px 0 0; padding: 0; list-style: none; }
+    .panel-kpi li { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .panel-kpi li:first-child { padding-top: 0; }
+    .panel-kpi strong { color: var(--pine); font-family: var(--serif); font-size: 28px; }
+    .panel-kpi span { color: var(--muted); font-size: 12px; }
+    .panel-foot { margin-top: 22px; background: #edf4ea; padding: 16px 18px; color: var(--ink); font-size: 13px; }
+
+    .stats { background: #edf0ee; }
+    .stats-inner { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; align-items: stretch; }
+    .stats-intro, .stat-item { display: flex; min-height: 112px; align-items: center; padding: 20px 25px; }
+    .stats-intro { padding-left: 0; color: var(--pine); font-family: var(--serif); font-size: 20px; line-height: 1.35; }
+    .stat-item { gap: 14px; border-left: 1px solid var(--line); }
+    .stat-no { color: var(--pine-soft); font-family: var(--serif); font-size: 28px; }
+    .stat-label { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    .products { padding: 110px 0 90px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 54px; }
+    .products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+    .product-card { position: relative; min-height: 320px; padding: 26px 22px 26px; background: var(--white); border: 1px solid rgba(49,92,61,.08); box-shadow: 0 10px 24px rgba(36,51,41,.02); transition: transform .2s ease, box-shadow .2s ease; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(36,51,41,.06); }
+    .product-index { color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .product-card h3 { margin: 28px 0 12px; color: var(--pine); font-family: var(--serif); font-size: 28px; line-height: 1.15; }
+    .product-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .product-meta { position: absolute; right: 22px; bottom: 22px; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--pine-deep); color: var(--pine); font-size: 20px; }
+
+    .comparison { background: #eaf2e4; }
+    .comparison-inner { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; padding-top: 110px; padding-bottom: 110px; }
+    .comparison-copy p { margin: 20px 0 0; max-width: 530px; color: var(--muted); }
+    .compare-table { display: grid; gap: 14px; }
+    .compare-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 12px; align-items: center; padding: 18px 18px; background: rgba(255,255,255,.45); border: 1px solid rgba(49,92,61,.08); }
+    .compare-row.header { background: var(--white); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--pine-soft); }
+    .compare-row span { color: var(--ink); font-size: 14px; }
+    .compare-row .pill { display: inline-flex; min-height: 28px; align-items: center; justify-content: center; padding: 0 10px; border-radius: 999px; background: var(--pine-deep); color: var(--pine); font-size: 11px; font-weight: 700; }
+
+    .benefits { padding: 110px 0; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; margin-top: 42px; }
+    .benefit { padding: 30px 24px; background: var(--white); border: 1px solid rgba(49,92,61,.08); }
+    .benefit-mark { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--pine-deep); color: var(--pine); font-size: 20px; }
+    .benefit h3 { margin: 18px 0 12px; color: var(--pine); font-family: var(--serif); font-size: 26px; line-height: 1.2; }
+    .benefit p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .process { background: #edf0ee; padding: 110px 0; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; margin-top: 34px; }
+    .step-card { background: var(--white); padding: 24px 20px; border: 1px solid rgba(49,92,61,.08); }
+    .step-num { color: var(--pine-soft); font-family: var(--serif); font-size: 18px; }
+    .step-card h3 { margin: 18px 0 10px; color: var(--pine); font-family: var(--serif); font-size: 24px; }
+    .step-card p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .faq { padding: 110px 0 120px; }
+    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; }
+    .faq-list { border-top: 1px solid #d1ddcc; }
+    .faq-item { border-bottom: 1px solid #d1ddcc; }
+    .faq-item summary { position: relative; padding: 20px 42px 20px 0; color: var(--pine); font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { position: absolute; top: 17px; right: 2px; content: "+"; color: var(--pine-soft); font-size: 22px; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { max-width: 620px; margin: -4px 0 20px; color: var(--muted); font-size: 13px; }
+
+    .contact { position: relative; overflow: hidden; background: var(--pine-deep); }
+    .contact::after { position: absolute; top: -160px; right: -90px; width: 430px; height: 430px; border: 1px solid rgba(49,92,61,.16); border-radius: 50%; box-shadow: 0 0 0 45px rgba(49,92,61,.02); content: ""; }
+    .contact-inner { position: relative; z-index: 1; display: flex; min-height: 300px; align-items: center; justify-content: space-between; gap: 40px; padding-top: 70px; padding-bottom: 70px; }
+    .contact-copy { max-width: 580px; margin: 15px 0 0; color: var(--muted); }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 23px; }
+    .contact-details a { color: var(--pine); font-size: 14px; font-weight: 600; }
+
+    footer { padding: 26px 0; background: #e3e8e5; color: #566659; font-size: 11px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
+    .footer-logo { width: 38px; height: 38px; object-fit: contain; }
+    .footer-links { display: flex; gap: 22px; }
+
+    @media (max-width: 900px) {
+      .wrap { width: min(100% - 48px, 720px); }
+      .nav-links { gap: 20px; }
+      .product-hero-inner { grid-template-columns: 1fr; }
+      .hero-panel { margin-left: 0; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stats-intro, .stat-item { min-height: 90px; padding: 18px; }
+      .stats-intro { padding-left: 0; }
+      .stats-intro, .stat-item { border-left: 0; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .compare-row { grid-template-columns: 1fr 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr; gap: 38px; }
+      .contact-inner { min-height: 360px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 28px; }
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 15px; }
+      .wrap { width: calc(100% - 40px); }
+      .topbar-inner { min-height: 35px; }
+      .topbar-meta { display: none; }
+      .nav { position: fixed; top: 35px; right: 20px; left: 20px; min-height: 76px; padding: 0 12px; }
+      .brand-logo { width: 48px; height: 48px; }
+      .brand-name { font-size: 12px; }
+      .brand-caption { font-size: 8px; }
+      .menu-toggle { display: block; }
+      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px; background: var(--white); color: var(--ink); box-shadow: 0 18px 30px rgba(36,51,41,.08); }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a:not(.nav-cta) { padding: 13px 0; border-bottom: 1px solid var(--line); }
+      .nav-cta { justify-content: center; margin: 12px 0 7px; }
+      .product-hero { padding-top: 160px; }
+      .hero-copy h1 { font-size: clamp(41px, 12vw, 58px); }
+      .hero-copy p { font-size: 15px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .section-title { font-size: 39px; }
+      .compare-row { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .footer-links { flex-wrap: wrap; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp tài chính cho doanh nghiệp</span>
+      <div class="topbar-meta"><a href="tel:+84358608830">0358 608 830</a><a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a></div>
+    </div>
+  </div>
+
+  <header class="product-hero">
+    <div class="wrap">
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a class="brand" href="index.html" aria-label="FINANCE BIZ, về trang chủ">
+          <img class="brand-logo" src="LOGO.png" alt="Logo FINANCE BIZ" width="60" height="60">
+          <span><span class="brand-name">FINANCE BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu"><span class="menu-glyph"></span></button>
+        <div class="nav-links" id="main-menu">
+          <a href="index.html#services">Dịch vụ</a>
+          <a href="san-pham.html">Sản phẩm</a>
+          <a href="index.html#approach">Quy trình</a>
+          <a href="index.html#about">Về chúng tôi</a>
+          <a href="index.html#faq">Hỏi đáp</a>
+          <a href="kien-thuc-vay-von.html">Kiến thức</a>
+          <a href="tin-tuc.html">Tin tức</a>
+          <a href="dang-ky-vay.html">Đăng ký vay</a>
+          <a class="nav-cta" href="#contact">Trao đổi cùng chuyên gia <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+
+      <div class="product-hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Sản phẩm</p>
+          <h1>Giải pháp tài chính gắn với thực tế doanh nghiệp.</h1>
+          <p>FINANCE BIZ mang đến các sản phẩm hỗ trợ doanh nghiệp tối ưu cấu trúc nợ, nâng cao khả năng tiếp cận vốn và đi đúng hướng trong từng giai đoạn phát triển.</p>
+          <div class="hero-actions">
+            <a class="button" href="dang-ky-vay.html">Đăng ký tư vấn <span class="button-arrow" aria-hidden="true">↗</span></a>
+            <a class="text-link" href="tel:+84358608830">Gọi tư vấn: 0358 608 830 <span aria-hidden="true">↓</span></a>
+          </div>
+          <ul class="hero-meta">
+            <li>Hạn mức tư vấn linh hoạt</li>
+            <li>Phù hợp SME và doanh nghiệp phát triển</li>
+            <li>Phân tích theo hồ sơ thực tế</li>
+          </ul>
+        </div>
+
+        <div class="hero-panel" aria-label="Thông tin sản phẩm nổi bật">
+          <div class="hero-panel-top">
+            <span class="chip">Nổi bật</span>
+            <span style="color: var(--muted); font-size: 12px;">Tư vấn cá nhân hóa</span>
+          </div>
+          <ul class="panel-kpi">
+            <li><span>Hỗ trợ vốn</span><strong>500M</strong></li>
+            <li><span>Đến</span><strong>4T</strong></li>
+            <li><span>Thời gian đánh giá</span><strong>48h</strong></li>
+          </ul>
+          <div class="panel-foot">Phương án được xây dựng dựa trên cấu trúc nợ hiện tại, dòng tiền và mục tiêu phát triển của từng doanh nghiệp.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats" aria-label="Thống kê nhanh">
+      <div class="wrap stats-inner">
+        <div class="stats-intro">Thấu hiểu nợ vay,<br>để doanh nghiệp đi đúng hướng.</div>
+        <div class="stat-item"><span class="stat-no">01</span><span class="stat-label">Rà soát hồ sơ và điểm yếu thực tế</span></div>
+        <div class="stat-item"><span class="stat-no">02</span><span class="stat-label">Xây dựng phương án theo dòng tiền</span></div>
+        <div class="stat-item"><span class="stat-no">03</span><span class="stat-label">Đồng hành từ hồ sơ đến kết nối đối tác</span></div>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Sản phẩm</p>
+            <h2 class="section-title">Lựa chọn giải pháp phù hợp với từng bước phát triển.</h2>
+          </div>
+          <p class="section-lead">Mỗi gói sản phẩm đều được xây dựng dựa trên thực trạng doanh nghiệp, nhằm giảm áp lực lãi vay và tăng khả năng tiếp cận vốn hiệu quả hơn.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="product-card">
+            <span class="product-index">01 / Cơ cấu nợ</span>
+            <h3>Cơ cấu nợ tối ưu</h3>
+            <p>Phân tích toàn bộ khoản vay, kỳ hạn, tài sản đảm bảo và điều kiện trả nợ để giảm áp lực thanh toán hiện tại.</p>
+            <span class="product-meta" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="product-card">
+            <span class="product-index">02 / Vốn lưu động</span>
+            <h3>Tài trợ dòng tiền</h3>
+            <p>Hỗ trợ doanh nghiệp cân bằng dòng tiền, duy trì hoạt động và tạo quỹ cho kế hoạch kinh doanh theo mùa.</p>
+            <span class="product-meta" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="product-card">
+            <span class="product-index">03 / Hàng tồn kho</span>
+            <h3>Hỗ trợ tăng trưởng</h3>
+            <p>Đề xuất phương án tài trợ phù hợp cho giai đoạn mở rộng sản xuất, nhập hàng hoặc tăng khối lượng đơn hàng.</p>
+            <span class="product-meta" aria-hidden="true">↗</span>
+          </article>
+
+          <article class="product-card">
+            <span class="product-index">04 / Kết nối</span>
+            <h3>Đối tác tài chính</h3>
+            <p>Chuẩn bị hồ sơ, mô tả doanh nghiệp và phương án tài chính để trao đổi hiệu quả với tổ chức phù hợp.</p>
+            <span class="product-meta" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison">
+      <div class="wrap comparison-inner">
+        <div class="comparison-copy">
+          <p class="eyebrow">Phù hợp từng giai đoạn</p>
+          <h2 class="section-title">Nội dung sản phẩm được thiết kế cho doanh nghiệp đang ở các bước khác nhau.</h2>
+          <p>Không phải doanh nghiệp nào cũng cần cùng một giải pháp. Một số cần cân bằng dòng tiền, số khác cần tái cơ cấu nợ, và còn có nhóm cần chuẩn bị hồ sơ ra mắt với đối tác tài chính.</p>
+        </div>
+
+        <div class="compare-table" aria-label="Bảng so sánh sản phẩm">
+          <div class="compare-row header">
+            <span>Giai đoạn</span>
+            <span>Vấn đề chính</span>
+            <span>Giải pháp</span>
+            <span>Hướng đi</span>
+          </div>
+          <div class="compare-row">
+            <span>Doanh nghiệp mới</span>
+            <span>Thiếu dữ liệu tài chính</span>
+            <span><span class="pill">Đánh giá sơ bộ</span></span>
+            <span>Chuẩn bị hồ sơ</span>
+          </div>
+          <div class="compare-row">
+            <span>Đang vận hành</span>
+            <span>Áp lực trả nợ</span>
+            <span><span class="pill">Cơ cấu nợ</span></span>
+            <span>Giảm chi phí</span>
+          </div>
+          <div class="compare-row">
+            <span>Đang mở rộng</span>
+            <span>Dòng tiền chậm</span>
+            <span><span class="pill">Tài trợ vốn</span></span>
+            <span>Tăng trưởng</span>
+          </div>
+          <div class="compare-row">
+            <span>Đã ổn định</span>
+            <span>Muốn tối ưu cơ cấu</span>
+            <span><span class="pill">Kết nối đối tác</span></span>
+            <span>Chiến lược dài hạn</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="wrap">
+        <p class="eyebrow">Lợi ích</p>
+        <h2 class="section-title">Mỗi sản phẩm đều tập trung vào 3 yếu tố then chốt.</h2>
+        <div class="benefits-grid">
+          <article class="benefit">
+            <span class="benefit-mark" aria-hidden="true">✓</span>
+            <h3>Đánh giá đúng</h3>
+            <p>Hiểu rõ tình hình nợ, dòng tiền và khả năng thanh toán trước khi đưa ra phương án.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit-mark" aria-hidden="true">✓</span>
+            <h3>Phương án thực tế</h3>
+            <p>Không đưa ra lời khuyên chung chung, mà dựa trên hồ sơ và mục tiêu kinh doanh thực tế.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit-mark" aria-hidden="true">✓</span>
+            <h3>Đồng hành rõ ràng</h3>
+            <p>Doanh nghiệp luôn rõ từng bước, từ đánh giá đến khi cần trao đổi với đối tác tài chính.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="wrap">
+        <p class="eyebrow">Quy trình</p>
+        <h2 class="section-title">Bốn bước rõ ràng để tìm giải pháp phù hợp.</h2>
+        <div class="process-grid">
+          <article class="step-card">
+            <span class="step-num">01</span>
+            <h3>Đánh giá hiện trạng</h3>
+            <p>Rà soát khoản vay, kỳ hạn, tài sản đảm bảo và áp lực thanh toán hiện tại.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">02</span>
+            <h3>Phân tích dòng tiền</h3>
+            <p>Đối chiếu lịch trả nợ, doanh thu và nhu cầu vốn để xác định hướng đi phù hợp.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">03</span>
+            <h3>Đề xuất phương án</h3>
+            <p>Trình bày lựa chọn tài chính, điều kiện và điểm cần lưu ý dựa trên thực tế tài chính.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-num">04</span>
+            <h3>Tiếp cận đối tác</h3>
+            <p>Chuẩn bị hồ sơ và hỗ trợ trao đổi với doanh nghiệp để tăng hiệu quả gặp gỡ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="eyebrow">Hỏi đáp</p>
+          <h2 class="section-title">Bắt đầu từ những điều cần rõ.</h2>
+          <p class="section-lead">Một số câu hỏi phổ biến trước khi doanh nghiệp xác định hướng đi phù hợp.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>FINANCE BIZ có cam kết được khoản vay không?</summary>
+            <p>Không. Quyết định cấp vốn thuộc về tổ chức cho vay và tùy thuộc vào hồ sơ, điều kiện, dòng tiền và rủi ro thực tế của doanh nghiệp. Mục tiêu của FINANCE BIZ là giúp doanh nghiệp hiểu rõ, chuẩn bị tốt hơn và đưa ra lựa chọn sáng suốt.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Doanh nghiệp có cần hồ sơ hoàn chỉnh trước khi trao đổi?</summary>
+            <p>Không bắt buộc. Buổi trao đổi đầu tiên có thể bắt đầu từ mục tiêu vốn, tình hình hiện tại và những bất cập trong cấu trúc nợ. Từ đó, doanh nghiệp có thể nắm rõ cần chuẩn bị thêm những thông tin nào.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Sản phẩm này phù hợp cho doanh nghiệp nhỏ và vừa không?</summary>
+            <p>Có. FINANCE BIZ tập trung vào doanh nghiệp nhỏ và vừa đang cần cân bằng dòng tiền, tối ưu cấu trúc nợ hoặc chuẩn bị cho giai đoạn tăng trưởng. Các phương án luôn được điều chỉnh theo thực trạng thực tế.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Thông tin tài chính có được bảo mật?</summary>
+            <p>Có. Toàn bộ thông tin trao đổi chỉ được sử dụng cho mục đích tư vấn và phân tích. FINANCE BIZ luôn ưu tiên sự minh bạch, bảo mật và tôn trọng dữ liệu doanh nghiệp.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-inner">
+        <div>
+          <p class="eyebrow">Kết nối</p>
+          <h2 class="section-title">Cùng làm rõ bài toán tài chính của bạn.</h2>
+          <p class="contact-copy">Hãy chia sẻ tình hình hiện tại, mục tiêu vốn và những điểm doanh nghiệp đang gặp khó khăn. FINANCE BIZ sẽ hỗ trợ bạn định hình hướng đi phù hợp nhất.</p>
+          <div class="contact-details">
+            <a href="tel:+84358608830">0358 608 830</a>
+            <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+          </div>
+        </div>
+        <a class="button" href="mailto:nguyentung1809@outlook.com?subject=Yeu%20cau%20tu%20van%20tai%20chinh">Gửi email tư vấn <span class="button-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span class="footer-brand"><img class="footer-logo" src="LOGO.png" alt="" width="38" height="38">FINANCE BIZ · TÀI CHÍNH &amp; TƯ VẤN</span>
+      <span>© 2026 FINANCE BIZ. Nội dung mang tính chất tham khảo.</span>
+      <div class="footer-links">
+        <a href="index.html#services">Dịch vụ</a>
+        <a href="san-pham.html">Sản phẩm</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a href="index.html#contact">Liên hệ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('#main-menu');
+
+    if (menuToggle && menu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Mở menu' : 'Đóng menu');
+        menu.classList.toggle('is-open', !isOpen);
+      });
+
+      menu.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.setAttribute('aria-label', 'Mở menu');
+          menu.classList.remove('is-open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
