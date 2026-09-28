@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài viết | FINANCE BIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pine: #315c3d;
+      --pine-soft: #53785b;
+      --pine-deep: #edf3ee;
+      --paper: #f5f7f5;
+      --white: #fff;
+      --ink: #1d2b22;
+      --muted: #627066;
+      --line: #dde5df;
+      --silver: #bbc5bd;
+      --silver-strong: #8ea09d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      background: linear-gradient(180deg, #edf4ee 0%, #f6f8f6 100%);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar {
+      background: var(--pine-deep);
+      border-bottom: 1px solid rgba(49,92,61,0.08);
+      font-size: 11px;
+      color: var(--ink);
+    }
+    .topbar-inner {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .topbar-note::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pine-soft);
+      display: block;
+    }
+    .topbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-weight: 700;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 22px rgba(49,92,61,0.08);
+    }
+    .nav-inner {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--pine);
+    }
+    .brand-logo { width: 56px; height: 56px; object-fit: contain; }
+    .brand-name {
+      display: block;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+    .brand-caption {
+      display: block;
+      margin-top: 4px;
+      line-height: 1;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .nav-links .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      background: var(--pine);
+      color: var(--white);
+      border: 1px solid var(--pine);
+    }
+    .hero {
+      padding: 56px 0 30px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 16px;
+      color: var(--pine-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--silver);
+      display: block;
+    }
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.72fr);
+      gap: 32px;
+      align-items: start;
+    }
+    .article-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(49,92,61,0.08);
+      box-shadow: 0 14px 38px rgba(49,92,61,0.05);
+      padding: 28px 30px 36px;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      color: var(--pine);
+      letter-spacing: -0.04em;
+    }
+    .meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .article-body {
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .article-body p {
+      margin: 0 0 20px;
+    }
+    .article-body h2 {
+      margin: 32px 0 12px;
+      font-size: 24px;
+      color: var(--pine);
+    }
+    .article-body ul {
+      margin: 18px 0 22px 20px;
+      padding: 0;
+    }
+    .article-body li { margin: 8px 0; }
+    .sidebar {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(49,92,61,0.08);
+      padding: 22px 20px;
+      position: sticky;
+      top: 110px;
+    }
+    .sidebar h3 {
+      margin: 0 0 16px;
+      font-size: 18px;
+      color: var(--pine);
+    }
+    .side-list {
+      display: grid;
+      gap: 12px;
+    }
+    .side-item {
+      padding: 12px 14px;
+      background: var(--pine-deep);
+      border: 1px solid rgba(49,92,61,0.06);
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .cta-box {
+      margin-top: 34px;
+      background: var(--pine-deep);
+      border: 1px solid rgba(49,92,61,0.08);
+      padding: 26px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .cta-box h4 {
+      margin: 0;
+      font-size: 24px;
+      color: var(--pine);
+    }
+    .cta-box p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      background: var(--silver);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    footer {
+      margin-top: 42px;
+      padding: 22px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-inner {
+      border-top: 1px solid rgba(49,92,61,0.1);
+      padding-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    @media (max-width: 980px) {
+      .article-shell { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 30px, 700px); }
+      .topbar-meta { display: none; }
+      .cta-box { flex-direction: column; align-items: flex-start; }
+      .button { width: 100%; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp cơ cấu nợ và tài chính doanh nghiệp</span>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="FINANCE BIZ về trang chủ">
+        <img class="brand-logo" src="LOGO.png" alt="Logo FINANCE BIZ">
+        <span>
+          <span class="brand-name">FINANCE BIZ</span>
+          <span class="brand-caption">Tài chính &amp; tư vấn</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Điều hướng">
+        <a href="index.html#services">Dịch vụ</a>
+        <a href="index.html#approach">Quy trình</a>
+        <a href="index.html#about">Về chúng tôi</a>
+        <a href="index.html#faq">Hỏi đáp</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
+        <a class="nav-cta" href="dang-ky-vay.html">Đăng ký tư vấn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="wrap article-shell">
+      <article class="article-card">
+        <p class="eyebrow">Kiến thức tài chính</p>
+        <h1 id="article-title">Cơ cấu nợ doanh nghiệp</h1>
+        <div class="meta">
+          <span id="article-category">Cơ cấu nợ</span>
+          <span id="article-date">12/09/2026</span>
+          <span>5 phút đọc</span>
+        </div>
+        <div class="article-body" id="article-content"></div>
+      </article>
+
+      <aside class="sidebar">
+        <h3>Chủ đề liên quan</h3>
+        <div class="side-list">
+          <a class="side-item" href="bai-viet.html?slug=co-cau-no">Cơ cấu nợ doanh nghiệp</a>
+          <a class="side-item" href="bai-viet.html?slug=danh-gia-dong-tien">Đánh giá dòng tiền trước khi vay</a>
+          <a class="side-item" href="bai-viet.html?slug=ho-so-vay">Hồ sơ vay vốn doanh nghiệp</a>
+          <a class="side-item" href="bai-viet.html?slug=von-luu-dong">Vốn lưu động và nhu cầu bổ sung</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="wrap">
+      <div class="cta-box">
+        <div>
+          <h4>Bạn cần tư vấn theo tình hình doanh nghiệp?</h4>
+          <p>Nhận đánh giá thực tế và phương án tối ưu từ đội ngũ FINANCE BIZ.</p>
+        </div>
+        <a class="button" href="dang-ky-vay.html">Đăng ký tư vấn</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 FINANCE BIZ. Nội dung mang tính chất tham khảo.</span>
+      <div class="footer-links" style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="index.html">Trang chủ</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
+      </div>
+      <span>Hotline: 0358 608 830</span>
+    </div>
+  </footer>
+
+  <script>
+    const articleMap = {
+      'co-cau-no': {
+        title: 'Những sai lầm khi doanh nghiệp cơ cấu nợ',
+        category: 'Cơ cấu nợ',
+        date: '12/09/2026',
+        content: `
+          <p>Việc vay vốn giúp doanh nghiệp mở rộng kinh doanh, nhưng nếu không cấu trúc nợ hợp lý, doanh nghiệp dễ rơi vào vòng xoáy thanh toán, lãi suất tăng và mất khả năng tiếp cận vốn trong tương lai.</p>
+          <h2>1. Vay nhiều nhưng không kiểm soát dòng tiền</h2>
+          <p>Nhiều doanh nghiệp nhấn mạnh vào việc “có tiền để hoạt động”, nhưng lại không kỳ vọng lên dòng tiền thực tế. Khi hàng hóa bán chậm, chi phí vận hành tăng, khoản vay sẽ trở thành gánh nặng.</p>
+          <h2>2. Trộn nợ ngắn hạn và nợ dài hạn</h2>
+          <p>Một số doanh nghiệp dùng nợ ngắn hạn để tài trợ cho hoạt động dài hạn như mua máy móc, mở rộng kho bãi hoặc đầu tư thiết bị. Điều này làm tăng rủi ro thanh toán và khiến doanh nghiệp phụ thuộc vào thanh toán định kỳ mỗi tháng.</p>
+          <ul>
+            <li>Chia rõ mục đích vay: vốn lưu động, đầu tư, tái đầu tư.</li>
+            <li>Đảm bảo kỳ hạn phù hợp với vòng quay kinh doanh.</li>
+            <li>Không vay quá mức so với khả năng sinh lời.</li>
+          </ul>
+          <h2>3. Không có kế hoạch hoàn nợ dự phòng</h2>
+          <p>Doanh nghiệp cần đặt ra phương án dự phòng khi doanh thu giảm. Đây là yếu tố quan trọng để bắt kịp đúng thời điểm thanh toán và tránh sự cố thanh toán.</p>
+          <p>Để cơ cấu nợ bền vững, doanh nghiệp nên phân tích kỹ mục tiêu vay, nguồn trả nợ, thời hạn và mức độ rủi ro của từng khoản nợ. Một phương án vay hợp lý không chỉ giúp giải quyết nhu cầu vốn mà còn bảo vệ khả năng sinh lời của hoạt động kinh doanh.</p>
+        `
+      },
+      'danh-gia-dong-tien': {
+        title: 'Đánh giá dòng tiền trước khi vay vốn',
+        category: 'Dòng tiền',
+        date: '08/09/2026',
+        content: `
+          <p>Trước khi ký hợp đồng vay, doanh nghiệp cần đánh giá thực tế về dòng tiền để biết mình có đủ khả năng trả nợ hay không. Nhiều doanh nghiệp thất bại không phải vì không có nhu cầu vốn, mà vì không biết cách đọc dòng tiền từ hoạt động thật.</p>
+          <h2>Chỉ số cần quan sát</h2>
+          <ul>
+            <li>Dòng tiền từ hoạt động kinh doanh.</li>
+            <li>Tỷ lệ chi phí tài chính so với doanh thu.</li>
+            <li>Thời gian thu hồi công nợ và thanh toán nhà cung cấp.</li>
+            <li>Khả năng đáp ứng các khoản nợ đến hạn.</li>
+          </ul>
+          <h2>Vì sao điều này quan trọng?</h2>
+          <p>Nếu doanh nghiệp vay mà không có dòng tiền ổn định, ngay cả khoản vay có lãi suất thấp cũng khiến chi phí hoạt động tăng mạnh. Thay vì bền vững, doanh nghiệp sẽ rơi vào tình trạng thiếu hụt vốn và chậm thanh toán.</p>
+          <p>Do đó, trước khi vay, hãy xem xét kỹ tỷ lệ thanh toán, dự báo doanh thu và mức độ biến động mùa vụ. Cách làm này giúp doanh nghiệp chọn đúng hình thức vay và mức vay phù hợp.</p>
+        `
+      },
+      'ho-so-vay': {
+        title: 'Hồ sơ vay vốn doanh nghiệp cần chuẩn bị gì?',
+        category: 'Hồ sơ vay',
+        date: '04/09/2026',
+        content: `
+          <p>Để vay vốn được chấp thuận nhanh chóng, doanh nghiệp cần chuẩn bị hồ sơ rõ ràng, đúng định dạng và minh bạch về tài chính. Hồ sơ không chỉ giúp bên cho vay hiểu doanh nghiệp mà còn là yếu tố nâng cao độ tin cậy.</p>
+          <h2>Những giấy tờ quan trọng</h2>
+          <ul>
+            <li>Giấy phép kinh doanh và hồ sơ pháp lý doanh nghiệp.</li>
+            <li>Báo cáo tài chính 2-3 năm gần nhất.</li>
+            <li>Báo cáo dòng tiền và bảng cân đối kế toán.</li>
+            <li>Kế hoạch sử dụng vốn và phương án trả nợ.</li>
+          </ul>
+          <h2>Điều khiến hồ sơ được duyệt nhanh hơn</h2>
+          <p>Hồ sơ sạch, đầy đủ và nhất quán sẽ làm tăng độ tin cậy và giảm thời gian xác minh. Doanh nghiệp nên trình bày rõ mục đích vay, dự án sử dụng vốn, thời gian hoàn vốn và cách trả nợ theo từng giai đoạn.</p>
+          <p>Đây là cách giúp doanh nghiệp tạo hình ảnh chuyên nghiệp và dễ dàng tiếp cận các nguồn vốn có lãi suất hợp lý.</p>
+        `
+      },
+      'vay-ngan-han-dai-han': {
+        title: 'Vay vốn ngắn hạn hay dài hạn: cần chọn theo gì?',
+        category: 'Tài chính',
+        date: '02/09/2026',
+        content: `
+          <p>Việc chọn khoản vay ngắn hạn hay dài hạn phụ thuộc vào mục đích sử dụng vốn, thời gian hoàn vốn và mức độ ổn định của dòng tiền. Nếu chọn sai, doanh nghiệp có thể phải trả nợ quá mức hoặc lãng phí chi phí tài chính.</p>
+          <h2>Khi nào nên vay ngắn hạn?</h2>
+          <p>Vay ngắn hạn phù hợp với nhu cầu vốn lưu động, mua nguyên vật liệu, bốc xếp hàng hóa hoặc bổ sung khoản thanh toán trong chu kỳ kinh doanh ngắn. Loại này thường có lãi suất phù hợp hơn nhưng cần thanh toán nhanh hơn.</p>
+          <h2>Khi nào nên vay dài hạn?</h2>
+          <p>Vay dài hạn phù hợp với đầu tư mới, mua tài sản cố định, mở rộng năng lực sản xuất hoặc đầu tư hệ thống. Loại khoản vay này giúp doanh nghiệp giảm áp lực thanh toán trong ngắn hạn và phù hợp với dự án dài hạn.</p>
+          <p>Chọn hình thức vay không chỉ dựa trên lãi suất, mà còn dựa trên khả năng trả nợ thực tế của doanh nghiệp.</p>
+        `
+      },
+      'von-luu-dong': {
+        title: 'Vốn lưu động là gì và khi nào doanh nghiệp nên bổ sung?',
+        category: 'Vốn lưu động',
+        date: '27/08/2026',
+        content: `
+          <p>Vốn lưu động là nguồn tiền cần thiết để duy trì hoạt động kinh doanh hàng ngày như mua nguyên vật liệu, trả lương, thanh toán nhà cung cấp, vận chuyển và lưu kho.</p>
+          <h2>Vốn lưu động yếu có thể gây hậu quả gì?</h2>
+          <ul>
+            <li>Không đủ tiền mua hàng, dẫn tới mất đơn hàng.</li>
+            <li>Khó thanh toán đúng hạn cho nhà cung cấp.</li>
+            <li>Không giữ được nhịp sản xuất và phân phối.</li>
+          </ul>
+          <h2>Khi nào nên bổ sung vốn?</h2>
+          <p>Nếu doanh nghiệp thấy thời gian thu tiền từ khách hàng diễn ra chậm, chi phí đầu vào tăng nhanh, hoặc nhu cầu vốn tăng theo mùa, đó là dấu hiệu cần bổ sung nguồn tài chính để tránh gián đoạn hoạt động.</p>
+          <p>Bổ sung vốn lưu động đúng thời điểm giúp doanh nghiệp phát triển bền vững hơn thay vì phải chạy đua để thanh toán khẩn cấp.</p>
+        `
+      },
+      'toi-uu-von': {
+        title: 'Tối ưu nguồn vốn để doanh nghiệp phát triển bền vững',
+        category: 'Định hướng',
+        date: '18/08/2026',
+        content: `
+          <p>Để phát triển bền vững, doanh nghiệp không chỉ cần nhiều vốn mà còn cần nguồn vốn phù hợp với từng giai đoạn. Tối ưu vốn là cách kết hợp giữa lãi suất, kỳ hạn, mục tiêu và khả năng sinh lời.</p>
+          <h2>Ba nguyên tắc quan trọng</h2>
+          <ul>
+            <li>Không vay theo cảm tính, hãy căn cứ vào kế hoạch kinh doanh.</li>
+            <li>Phân chia rõ nguồn vốn cho hoạt động và đầu tư dài hạn.</li>
+            <li>Giữ tỷ lệ nợ ở mức vừa đủ để tạo khả năng thanh toán an toàn.</li>
+          </ul>
+          <h2>Đầu tư cho lợi ích dài hạn</h2>
+          <p>When nguồn vốn được sử dụng đúng mục đích, doanh nghiệp tăng khả năng sinh lời, giảm áp lực tài chính và nâng tỷ lệ hoàn vốn. Đó là nền tảng để doanh nghiệp mở rộng và có thể tiếp cận các nguồn vốn lớn hơn trong tương lai.</p>
+        `
+      },
+      'xu-huong-tin-dung': {
+        title: 'Xu hướng tín dụng doanh nghiệp đang dịch chuyển theo hướng nào?',
+        category: 'Tin tài chính',
+        date: '12/09/2026',
+        content: `
+          <p>Xu hướng tín dụng hiện nay nghiêng về các khoản vay có tính bền vững, dựa trên dòng tiền thực tế và khả năng trả nợ rõ ràng. Thay vì chỉ xem xét số lượng vốn, các tổ chức tài chính đang đánh giá cách doanh nghiệp sử dụng vốn và mức độ an toàn của hoạt động.</p>
+          <h2>Điểm nhấn của tín dụng doanh nghiệp hiện nay</h2>
+          <ul>
+            <li>Ưu tiên doanh nghiệp có báo cáo tài chính minh bạch.</li>
+            <li>Đánh giá khả năng trả nợ dựa trên dòng tiền thay vì doanh thu.</li>
+            <li>Khuyến khích các giải pháp tài chính theo từng mục đích cụ thể.</li>
+          </ul>
+          <p>Việc này khiến doanh nghiệp cần có kế hoạch rõ ràng hơn trước khi tiếp cận khoản vay, đồng thời thúc đẩy sự lựa chọn giữa vay ngân hàng và giải pháp tài chính linh hoạt.</p>
+        `
+      },
+      'co-cau-no-giam-ap-luc': {
+        title: 'Cấu trúc nợ hợp lý giúp doanh nghiệp giảm áp lực tài chính',
+        category: 'Kiến thức',
+        date: '08/09/2026',
+        content: `
+          <p>Một cấu trúc nợ hợp lý giúp doanh nghiệp không bị áp lực thanh toán trong thời điểm nhu cầu tài chính tăng. Đây không chỉ là việc vay tiền mà là cách sắp xếp kỳ hạn, mục tiêu và mức độ rủi ro phù hợp với hoạt động kinh doanh.</p>
+          <h2>Điều cần lưu ý</h2>
+          <ul>
+            <li>Không tất cả khoản vay đều phù hợp cho doanh nghiệp.</li>
+            <li>Kỳ hạn nợ nên tương ứng với thời gian tạo ra lợi nhuận.</li>
+            <li>Không nên dùng nợ ngắn hạn cho đầu tư dài hạn.</li>
+          </ul>
+          <p>Với một cấu trúc tài chính rõ ràng, doanh nghiệp dễ duy trì hoạt động ổn định, tận dụng cơ hội phát triển mà không bị khống chế bởi áp lực trả nợ định kỳ.</p>
+        `
+      },
+      'von-luu-dong-dung-luc': {
+        title: 'Vì sao doanh nghiệp cần bổ sung vốn lưu động đúng lúc?',
+        category: 'Vốn lưu động',
+        date: '04/09/2026',
+        content: `
+          <p>Vốn lưu động là nền tảng cho các hoạt động kinh doanh hàng ngày, từ mua hàng đến trả lương và chi phí vận hành. Nếu thiếu nguồn vốn này, doanh nghiệp dễ bị đình trệ ở một số khâu vận hành.</p>
+          <h2>Dấu hiệu cần bổ sung vốn</h2>
+          <ul>
+            <li>Tiền mặt giảm nhanh trong chu kỳ bán hàng.</li>
+            <li>Khách hàng trả chậm nhưng chi phí phải thanh toán nhanh.</li>
+            <li>Mua hàng theo mùa mà nguồn vốn không theo kịp.</li>
+          </ul>
+          <p>Việc bổ sung vốn lưu động đúng lúc cho phép doanh nghiệp duy trì tốc độ hoạt động, không bị mất cơ hội kinh doanh và giảm nguy cơ phát sinh nợ xấu trong tương lai.</p>
+        `
+      },
+      'yeu-to-duyet-vay': {
+        title: 'Những yếu tố làm tăng tỷ lệ được xét duyệt khoản vay',
+        category: 'Hồ sơ',
+        date: '02/09/2026',
+        content: `
+          <p>Để được xét duyệt khoản vay, doanh nghiệp cần chứng minh khả năng sinh lời, quản trị tài chính tốt và mục đích vay rõ ràng. Các tổ chức tài chính thường đánh giá dựa trên nhiều yếu tố khác nhau ngoài chỉ lợi nhuận.</p>
+          <h2>Những yếu tố quan trọng</h2>
+          <ul>
+            <li>Hồ sơ tài chính rõ ràng và minh bạch.</li>
+            <li>Kế hoạch sử dụng vốn cụ thể và thực tế.</li>
+            <li>Dòng tiền ổn định và khả năng trả nợ cao.</li>
+          </ul>
+          <p>Doanh nghiệp nên chuẩn bị nội dung mạch lạc và hợp lý để tăng độ tin cậy khi đối diện với ngân hàng hoặc đối tác tài chính.</p>
+        `
+      },
+      'danh-gia-lai-no': {
+        title: 'Doanh nghiệp nên đánh giá lại phương án nợ khi kinh doanh tăng trưởng',
+        category: 'Tài chính',
+        date: '27/08/2026',
+        content: `
+          <p>Khi doanh nghiệp tăng trưởng, cấu trúc nợ cũ có thể không còn phù hợp với quy mô hoạt động mới. Đó là lúc doanh nghiệp nên đánh giá lại khoản vay, thời gian thanh toán và mức độ rủi ro.</p>
+          <h2>Thời điểm cần đánh giá lại</h2>
+          <ul>
+            <li>Doanh thu tăng nhưng tiền mặt không tăng tương ứng.</li>
+            <li>Chi phí lãi suất chiếm tỷ trọng cao hơn dự kiến.</li>
+            <li>Chu kỳ hoạt động thay đổi theo mùa hoặc theo dự án lớn.</li>
+          </ul>
+          <p>Đánh giá lại phương án nợ giúp doanh nghiệp chủ động hơn trong việc điều chỉnh mức vay, thời hạn và chiến lược tài chính dài hạn.</p>
+        `
+      },
+      'so-sanh-vay-ngan-hang': {
+        title: 'So sánh vay ngân hàng và giải pháp tài chính theo hồ sơ doanh nghiệp',
+        category: 'Phân tích',
+        date: '18/08/2026',
+        content: `
+          <p>Không phải doanh nghiệp nào cũng phù hợp với cùng một mô hình vay. Một số doanh nghiệp phát triển tốt với ngân hàng truyền thống, trong khi các doanh nghiệp khác cần giải pháp tài chính linh hoạt và nhanh hơn.</p>
+          <h2>Điểm khác biệt</h2>
+          <ul>
+            <li>Ngân hàng thường phù hợp với doanh nghiệp có hồ sơ rõ ràng, dòng tiền ổn định.</li>
+            <li>Giải pháp tài chính linh hoạt phù hợp hơn với doanh nghiệp cần tốc độ xử lý nhanh.</li>
+            <li>Mục đích sử dụng vốn có thể quyết định phương án phù hợp nhất.</li>
+          </ul>
+          <p>Vì vậy, doanh nghiệp nên đánh giá không chỉ lãi suất mà cả tốc độ xét duyệt, ràng buộc điều kiện và khả năng trả nợ của từng phương án.</p>
+        `
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get('slug') || 'co-cau-no';
+    const article = articleMap[slug] || articleMap['co-cau-no'];
+
+    document.getElementById('article-title').textContent = article.title;
+    document.getElementById('article-category').textContent = article.category;
+    document.getElementById('article-date').textContent = article.date;
+    document.getElementById('article-content').innerHTML = article.content;
+  </script>
+</body>
+</html>

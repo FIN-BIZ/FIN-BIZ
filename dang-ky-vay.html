@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Đăng ký vay vốn kinh doanh - FINANCE BIZ. Tư vấn cơ cấu nợ, tối ưu vốn và kết nối doanh nghiệp với nguồn tài chính phù hợp.">
+  <title>Đăng ký vay vốn kinh doanh | FINANCE BIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pine: #315c3d;
+      --pine-deep: #e3eedb;
+      --pine-soft: #527b59;
+      --paper: #f4f6f4;
+      --white: #fff;
+      --ink: #243329;
+      --muted: #68756b;
+      --line: #d9e0db;
+      --silver: #aeb8b2;
+      --silver-dark: #66736b;
+      --serif: "DM Sans", sans-serif;
+      --sans: "DM Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: linear-gradient(180deg, #edf3ed 0%, #f7f9f7 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .topbar {
+      background: var(--pine-deep);
+      border-bottom: 1px solid rgba(49, 92, 61, 0.08);
+      font-size: 11px;
+      color: var(--ink);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 42px;
+      gap: 16px;
+    }
+    .topbar-note { display: inline-flex; align-items: center; gap: 10px; }
+    .topbar-note::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pine-soft);
+      display: block;
+    }
+    .topbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 600;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 8px 24px rgba(49, 92, 61, 0.08);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--pine);
+    }
+    .brand-logo { width: 56px; height: 56px; object-fit: contain; }
+    .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.4px; }
+    .brand-caption { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .nav-links .nav-cta {
+      padding: 0 18px;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pine);
+      color: var(--white);
+      border: 1px solid var(--pine);
+    }
+
+    .hero {
+      padding: 72px 0 42px;
+      background:
+        linear-gradient(135deg, rgba(227,238,219,0.94), rgba(244,246,244,0.82)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--pine-soft);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--silver);
+      display: block;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 5vw, 66px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      color: var(--pine);
+    }
+    .hero-copy {
+      max-width: 540px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .hero-pills span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 14px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(49,92,61,0.1);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--pine);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+    .trust-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(49,92,61,0.08);
+      padding: 18px 18px 16px;
+    }
+    .trust-card strong {
+      display: block;
+      font-size: 26px;
+      color: var(--pine);
+      font-family: var(--serif);
+      margin-bottom: 8px;
+    }
+    .trust-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .form-shell {
+      position: relative;
+      padding: 28px 28px 24px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(49,92,61,0.09);
+      box-shadow: 0 26px 60px rgba(49, 92, 61, 0.12);
+    }
+    .form-shell::before {
+      position: absolute;
+      inset: 20px auto auto 20px;
+      content: "";
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(49, 92, 61, 0.04);
+      z-index: 0;
+    }
+    .form-header {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+    }
+    .form-header h2 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--pine);
+    }
+    .form-header p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    form {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      font-size: 12px;
+      color: var(--pine);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      min-height: 50px;
+      padding: 0 14px;
+      font: inherit;
+      outline: none;
+      border-radius: 0;
+    }
+    textarea {
+      min-height: 120px;
+      padding-top: 12px;
+      resize: vertical;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--pine-soft);
+      box-shadow: 0 0 0 4px rgba(82, 123, 89, 0.09);
+    }
+    .submit-row {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 6px;
+    }
+    .submit-row small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 24px;
+      background: var(--silver);
+      color: var(--ink);
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .button:hover { background: #c7cfca; }
+
+    .benefits {
+      padding: 26px 0 16px;
+    }
+    .benefits-inner {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .benefit {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(49,92,61,0.08);
+      padding: 24px 22px;
+    }
+    .benefit h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: var(--pine);
+    }
+    .benefit p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding: 26px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid rgba(49,92,61,0.1);
+      padding-top: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-wrap { grid-template-columns: 1fr; }
+      .topbar-meta { display: none; }
+      .nav-links { gap: 14px; font-size: 11px; }
+      .benefits-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 36px, 680px); }
+      .nav-inner { min-height: 72px; }
+      .nav-links { display: none; }
+      form { grid-template-columns: 1fr; }
+      .submit-row { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .hero-pills, .trust-grid { grid-template-columns: 1fr; display: grid; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp cơ cấu nợ và tài chính doanh nghiệp</span>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="FINANCE BIZ về trang chủ">
+        <img class="brand-logo" src="LOGO.png" alt="Logo FINANCE BIZ">
+        <span>
+          <span class="brand-name">FINANCE BIZ</span>
+          <span class="brand-caption">Tài chính &amp; tư vấn</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Điều hướng">
+        <a href="index.html#services">Dịch vụ</a>
+        <a href="index.html#approach">Quy trình</a>
+        <a href="index.html#about">Về chúng tôi</a>
+        <a href="index.html#faq">Hỏi đáp</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-wrap">
+        <div>
+          <p class="eyebrow">Đăng ký vay vốn kinh doanh</p>
+          <h1>Vay vốn doanh nghiệp<br>theo nhu cầu thực tế.</h1>
+          <p class="hero-copy">Bạn đang cần vốn bổ sung cho kinh doanh, thanh toán khoản vay, nâng cấp hoạt động hay mở rộng quy mô? Hãy để FINANCE BIZ hỗ trợ doanh nghiệp đánh giá phương án tối ưu dựa trên thực trạng hồ sơ và dòng tiền hiện tại.</p>
+
+          <div class="hero-pills">
+            <span>Phụ hợp doanh nghiệp</span>
+            <span>Vốn lưu động</span>
+            <span>Đầu tư mở rộng</span>
+          </div>
+
+          <div class="trust-grid">
+            <div class="trust-card">
+              <strong>01</strong>
+              <span>Đánh giá nhu cầu vay theo thực tế</span>
+            </div>
+            <div class="trust-card">
+              <strong>02</strong>
+              <span>Phân tích phương án trả nợ hợp lý</span>
+            </div>
+            <div class="trust-card">
+              <strong>03</strong>
+              <span>Định hướng rõ ràng trước khi làm việc</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-shell">
+          <div class="form-header">
+            <h2>Yêu cầu tư vấn vay</h2>
+            <p>Vui lòng điền thông tin để được hỗ trợ sớm nhất.</p>
+          </div>
+
+          <form id="register-form">
+            <div class="field">
+              <label for="name">Họ và tên</label>
+              <input id="name" name="name" type="text" placeholder="Nhập họ tên của bạn" required>
+            </div>
+            <div class="field">
+              <label for="phone">Số điện thoại</label>
+              <input id="phone" name="phone" type="tel" placeholder="0358 608 830" required>
+            </div>
+            <div class="field">
+              <label for="company">Tên doanh nghiệp</label>
+              <input id="company" name="company" type="text" placeholder="Tên công ty / doanh nghiệp">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="example@domain.com">
+            </div>
+            <div class="field">
+              <label for="amount">Số tiền cần vay</label>
+              <select id="amount" name="amount">
+                <option value="Dưới 500 triệu">Dưới 500 triệu</option>
+                <option value="500 triệu - 1 tỷ">500 triệu - 1 tỷ</option>
+                <option value="1 - 3 tỷ">1 - 3 tỷ</option>
+                <option value="3 - 10 tỷ">3 - 10 tỷ</option>
+                <option value="Trên 10 tỷ">Trên 10 tỷ</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="term">Thời gian vay</label>
+              <select id="term" name="term">
+                <option value="6 tháng">6 tháng</option>
+                <option value="12 tháng">12 tháng</option>
+                <option value="18 tháng">18 tháng</option>
+                <option value="24 tháng">24 tháng</option>
+                <option value="36 tháng">36 tháng</option>
+                <option value="Trên 36 tháng">Trên 36 tháng</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="purpose">Mục đích vay</label>
+              <input id="purpose" name="purpose" type="text" placeholder="Ví dụ: bổ sung vốn lưu động, thanh toán khoản vay, mở rộng kinh doanh...">
+            </div>
+            <div class="field full">
+              <label for="note">Ghi chú / tình trạng hiện tại</label>
+              <textarea id="note" name="note" placeholder="Mô tả ngắn về doanh nghiệp, tình hình cần vốn hoặc khoản vay hiện tại..."></textarea>
+            </div>
+            <div class="submit-row">
+              <small>Thông tin của bạn sẽ được xử lý theo nguyên tắc bảo mật.</small>
+              <button class="button" type="submit">Gửi thông tin vay <span aria-hidden="true">↗</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="wrap benefits-inner">
+        <div class="benefit">
+          <h3>Rõ mục tiêu</h3>
+          <p>Phân loại nhu cầu vay theo từng mục đích để doanh nghiệp lựa chọn phương án phù hợp nhất.</p>
+        </div>
+        <div class="benefit">
+          <h3>Đồng hành thực tế</h3>
+          <p>Đánh giá theo dòng tiền, hồ sơ hiện tại và khả năng trả nợ thay vì chỉ theo cảm tính.</p>
+        </div>
+        <div class="benefit">
+          <h3>Phù hợp với doanh nghiệp</h3>
+          <p>Hướng dẫn rõ tiến độ và ràng buộc để doanh nghiệp chủ động trước khi bắt đầu quy trình.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 FINANCE BIZ. Nội dung mang tính chất tham khảo.</span>
+      <div class="footer-links" style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="index.html">Trang chủ</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
+      </div>
+      <span>Hotline: 0358 608 830</span>
+    </div>
+  </footer>
+
+  <script>
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+      registerForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const data = new FormData(registerForm);
+        const entries = Array.from(data.entries())
+          .filter(([, value]) => value)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join('\n');
+        const subject = encodeURIComponent('Yêu cầu đăng ký vay vốn kinh doanh');
+        const body = encodeURIComponent(entries);
+        window.location.href = `mailto:nguyentung1809@outlook.com?subject=${subject}&body=${body}`;
+      });
+    }
+  </script>
+</body>
+</html>

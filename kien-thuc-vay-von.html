@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kiến thức vay vốn doanh nghiệp - FINANCE BIZ. Hướng dẫn cơ cấu nợ, dòng tiền, tài chính doanh nghiệp và giải pháp vay vốn phù hợp.">
+  <title>Kiến thức vay vốn | FINANCE BIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pine: #315c3d;
+      --pine-deep: #e3eedb;
+      --pine-soft: #527b59;
+      --paper: #f4f6f4;
+      --white: #fff;
+      --ink: #243329;
+      --muted: #68756b;
+      --line: #d9e0db;
+      --silver: #aeb8b2;
+      --silver-dark: #66736b;
+      --serif: "DM Sans", sans-serif;
+      --sans: "DM Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: linear-gradient(180deg, #edf3ed 0%, #f7f9f7 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .topbar {
+      background: var(--pine-deep);
+      border-bottom: 1px solid rgba(49,92,61,0.08);
+      font-size: 11px;
+      color: var(--ink);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 42px;
+      gap: 16px;
+    }
+    .topbar-note { display: inline-flex; align-items: center; gap: 10px; }
+    .topbar-note::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pine-soft);
+      display: block;
+    }
+    .topbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 600;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 8px 24px rgba(49, 92, 61, 0.08);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--pine);
+    }
+    .brand-logo { width: 56px; height: 56px; object-fit: contain; }
+    .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.4px; }
+    .brand-caption { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .nav-links .nav-cta {
+      padding: 0 18px;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pine);
+      color: var(--white);
+      border: 1px solid var(--pine);
+    }
+    .page-header {
+      padding: 72px 0 40px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--pine-soft);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--silver);
+      display: block;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: var(--pine);
+    }
+    .page-header p {
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .category {
+      padding: 9px 14px;
+      border: 1px solid rgba(49,92,61,0.12);
+      background: rgba(255,255,255,0.5);
+      color: var(--pine);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .articles {
+      padding: 20px 0 70px;
+    }
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .article-card {
+      display: grid;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(49,92,61,0.09);
+      box-shadow: 0 18px 38px rgba(49,92,61,0.04);
+      overflow: hidden;
+    }
+    .article-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, #dfeadc 0%, #b7cbb9 100%);
+      position: relative;
+    }
+    .article-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(49,92,61,0.18);
+      background: rgba(255,255,255,0.18);
+    }
+    .article-body {
+      padding: 22px 20px 18px;
+    }
+    .article-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--pine-soft);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .article-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      line-height: 1.2;
+      color: var(--pine);
+    }
+    .article-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      color: var(--pine);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .cta {
+      margin-top: 30px;
+      padding: 20px 0 40px;
+    }
+    .cta-box {
+      background: var(--pine-deep);
+      border: 1px solid rgba(49,92,61,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 28px;
+    }
+    .cta-box h3 {
+      margin: 0;
+      font-size: 24px;
+      color: var(--pine);
+    }
+    .cta-box p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 0 22px;
+      background: var(--silver);
+      color: var(--ink);
+      border: 1px solid transparent;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button:hover { background: #c7cfca; }
+    footer {
+      padding: 26px 0 40px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-top: 1px solid rgba(49,92,61,0.1);
+      padding-top: 18px;
+    }
+    @media (max-width: 900px) {
+      .topbar-meta { display: none; }
+      .nav-links { gap: 14px; font-size: 11px; }
+      .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cta-box { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 36px, 680px); }
+      .nav-inner { min-height: 72px; }
+      .nav-links { display: none; }
+      .article-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp cơ cấu nợ và tài chính doanh nghiệp</span>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="FINANCE BIZ về trang chủ">
+        <img class="brand-logo" src="LOGO.png" alt="Logo FINANCE BIZ">
+        <span>
+          <span class="brand-name">FINANCE BIZ</span>
+          <span class="brand-caption">Tài chính &amp; tư vấn</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Điều hướng">
+        <a href="index.html#services">Dịch vụ</a>
+        <a href="index.html#approach">Quy trình</a>
+        <a href="index.html#about">Về chúng tôi</a>
+        <a href="index.html#faq">Hỏi đáp</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
+        <a class="nav-cta" href="dang-ky-vay.html">Đăng ký tư vấn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="wrap">
+        <p class="eyebrow">Kiến thức vay vốn</p>
+        <h1>Kiến thức tài chính doanh nghiệp<br>để ra quyết định đúng.</h1>
+        <p>Khám phá các chủ đề thiết yếu về ngân hàng, cơ cấu nợ, dòng tiền, hồ sơ vay và cách doanh nghiệp tối ưu nguồn vốn theo từng giai đoạn phát triển.</p>
+        <div class="categories">
+          <span class="category">Cơ cấu nợ</span>
+          <span class="category">Dòng tiền</span>
+          <span class="category">Hồ sơ vay</span>
+          <span class="category">Tài chính doanh nghiệp</span>
+          <span class="category">Vốn lưu động</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="articles">
+      <div class="wrap">
+        <div class="article-grid">
+          <article class="article-card">
+            <div class="article-thumb" aria-hidden="true" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.12), rgba(49,92,61,0.2)), url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=900&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="article-body">
+              <span class="article-tag">Cơ cấu nợ</span>
+              <h3>Những sai lầm khi doanh nghiệp cơ cấu nợ</h3>
+              <p>Hiểu vì sao nhiều doanh nghiệp thuê nợ đúng nhưng lại rơi vào vòng xoáy thanh toán, thiếu tính kế hoạch và mất quyền tiếp cận vốn.</p>
+              <a class="read-more" href="bai-viet.html?slug=co-cau-no">Đọc tiếp <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb" aria-hidden="true" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.12), rgba(49,92,61,0.2)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="article-body">
+              <span class="article-tag">Dòng tiền</span>
+              <h3>Đánh giá dòng tiền trước khi vay vốn</h3>
+              <p>Phân biệt rõ giữa doanh thu, dòng tiền ròng và khả năng trả nợ để lựa chọn phương án vay phù hợp với năng lực thực tế.</p>
+              <a class="read-more" href="bai-viet.html?slug=danh-gia-dong-tien">Đọc tiếp <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb" aria-hidden="true" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.12), rgba(49,92,61,0.2)), url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="article-body">
+              <span class="article-tag">Hồ sơ vay</span>
+              <h3>Hồ sơ vay vốn doanh nghiệp cần chuẩn bị gì?</h3>
+              <p>Danh sách các thông tin, báo cáo tài chính và chứng từ quan trọng giúp doanh nghiệp tăng khả năng được ngân hàng hoặc tổ chức tài chính xem xét.</p>
+              <a class="read-more" href="bai-viet.html?slug=ho-so-vay">Đọc tiếp <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb" aria-hidden="true" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.12), rgba(49,92,61,0.2)), url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="article-body">
+              <span class="article-tag">Tài chính</span>
+              <h3>Vay vốn ngắn hạn hay dài hạn: cần chọn theo gì?</h3>
+              <p>Đây là câu hỏi quan trọng khi doanh nghiệp tính toán mức độ phụ thuộc vào khoản nợ và mục tiêu sử dụng vốn như thế nào.</p>
+              <a class="read-more" href="bai-viet.html?slug=vay-ngan-han-dai-han">Đọc tiếp <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb" aria-hidden="true" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.12), rgba(49,92,61,0.2)), url('https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=900&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="article-body">
+              <span class="article-tag">Vốn lưu động</span>
+              <h3>Vốn lưu động là gì và khi nào doanh nghiệp nên bổ sung?</h3>
+              <p>Vốn lưu động ảnh hưởng trực tiếp đến hoạt động bán hàng, mua hàng và khả năng duy trì chu kỳ kinh doanh ổn định.</p>
+              <a class="read-more" href="bai-viet.html?slug=von-luu-dong">Đọc tiếp <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb" aria-hidden="true" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.12), rgba(49,92,61,0.2)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="article-body">
+              <span class="article-tag">Định hướng</span>
+              <h3>Tối ưu nguồn vốn để doanh nghiệp phát triển bền vững</h3>
+              <p>Không chỉ cần tiền, doanh nghiệp cần phương án phù hợp với độ bền vững tài chính và mục tiêu chiến lược dài hạn.</p>
+              <a class="read-more" href="bai-viet.html?slug=toi-uu-von">Đọc tiếp <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-box">
+          <div>
+            <h3>Bạn cần tư vấn vay vốn doanh nghiệp?</h3>
+            <p>Để được hỗ trợ đánh giá phương án tài chính phù hợp, vui lòng gửi yêu cầu tư vấn.</p>
+          </div>
+          <a class="button" href="dang-ky-vay.html">Đăng ký tư vấn ngay <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 FINANCE BIZ. Nội dung mang tính chất tham khảo.</span>
+      <div class="footer-links" style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="index.html">Trang chủ</a>
+        <a href="kien-thuc-vay-von.html">Kiến thức</a>
+        <a href="tin-tuc.html">Tin tức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
+      </div>
+      <span>Hotline: 0358 608 830</span>
+    </div>
+  </footer>
+</body>
+</html>
