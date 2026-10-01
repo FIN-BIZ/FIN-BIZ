@@ -155,6 +155,13 @@
     .articles {
       padding: 20px 0 70px;
     }
+    .topic-hubs { padding: 48px 0 24px; background: #eaf2e4; }
+    .topic-hubs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .topic-hub { display: flex; min-height: 190px; flex-direction: column; align-items: flex-start; padding: 22px; background: var(--white); border: 1px solid rgba(49,92,61,.1); }
+    .topic-hub-index { color: var(--pine-soft); font-size: 11px; font-weight: 700; }
+    .topic-hub h2 { margin: 20px 0 8px; color: var(--pine); font-size: 21px; }
+    .topic-hub p { margin: 0; color: var(--muted); font-size: 13px; }
+    .topic-hub-cta { margin-top: auto; padding-top: 18px; color: var(--pine); font-size: 12px; font-weight: 700; }
     .article-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -265,6 +272,7 @@
       .topbar-meta { display: none; }
       .nav-links { gap: 14px; font-size: 11px; }
       .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .topic-hubs-grid { grid-template-columns: 1fr; }
       .cta-box { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 640px) {
@@ -324,6 +332,14 @@
           <span class="category">Tài chính doanh nghiệp</span>
           <span class="category">Vốn lưu động</span>
         </div>
+      </div>
+    </section>
+
+    <section class="topic-hubs" aria-label="Hướng dẫn vay vốn theo nhu cầu">
+      <div class="wrap topic-hubs-grid">
+        <a class="topic-hub" href="vay-von-theo-khu-vuc.html"><span class="topic-hub-index">01 / ĐỊA BÀN</span><h2>Vay vốn theo khu vực</h2><p>Thông tin địa chỉ, hoạt động và giao dịch nên chuẩn bị khi trao đổi với đơn vị cho vay.</p><span class="topic-hub-cta">Xem hướng dẫn ↗</span></a>
+        <a class="topic-hub" href="vay-von-theo-nganh-nghe.html"><span class="topic-hub-index">02 / NGÀNH NGHỀ</span><h2>Vay vốn theo ngành nghề</h2><p>Chuẩn bị phương án theo chu kỳ dòng tiền, hợp đồng và chứng từ của hoạt động kinh doanh.</p><span class="topic-hub-cta">Xem hướng dẫn ↗</span></a>
+        <a class="topic-hub" href="ho-so-dieu-kien-vay.html"><span class="topic-hub-index">03 / HỒ SƠ</span><h2>Hồ sơ và điều kiện vay</h2><p>Checklist giấy tờ pháp lý, tài chính và giao dịch; điều kiện tùy chính sách từng bên cho vay.</p><span class="topic-hub-cta">Xem checklist ↗</span></a>
       </div>
     </section>
 
@@ -412,6 +428,9 @@
       <div class="footer-links" style="display:flex;gap:18px;flex-wrap:wrap;">
         <a href="index.html">Trang chủ</a>
         <a href="san-pham.html">Sản phẩm</a>
+        <a href="vay-von-theo-khu-vuc.html">Vay vốn theo khu vực</a>
+        <a href="vay-von-theo-nganh-nghe.html">Vay vốn theo ngành nghề</a>
+        <a href="ho-so-dieu-kien-vay.html">Hồ sơ và điều kiện vay</a>
         <a href="kien-thuc-vay-von.html">Kiến thức</a>
         <a href="tin-tuc.html">Tin tức</a>
         <a href="dang-ky-vay.html">Đăng ký vay</a>

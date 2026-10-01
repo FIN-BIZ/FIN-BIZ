@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315c3d">
+  <meta name="description" content="Hướng dẫn chuẩn bị thông tin vay vốn doanh nghiệp theo địa bàn hoạt động, chi nhánh, nhà xưởng và giao dịch thực tế.">
+  <title>Vay vốn doanh nghiệp theo khu vực | FIN BIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --pine:#315c3d; --pine-deep:#e3eedb; --pine-soft:#527b59; --paper:#f4f6f4; --white:#fff; --ink:#243329; --muted:#68756b; --line:#d9e0db; }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:120px; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.65 "DM Sans",sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1120px,calc(100% - 48px)); margin-inline:auto; }
+    .topbar { background:var(--pine-deep); font-size:11px; }
+    .topbar-inner { display:flex; min-height:38px; align-items:center; justify-content:space-between; gap:18px; }
+    .nav { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.96); box-shadow:0 8px 24px rgb(49 92 61 / 8%); }
+    .nav-inner { display:flex; min-height:76px; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:10px; color:var(--pine); font-size:14px; font-weight:700; letter-spacing:.08em; }
+    .brand img { width:48px; height:48px; object-fit:contain; }
+    .nav-links { display:flex; flex-wrap:wrap; align-items:center; gap:18px; font-size:12px; font-weight:600; }
+    .nav-cta,.button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:0 18px; background:var(--pine); color:var(--white); font-size:12px; font-weight:700; }
+    .hero { padding:78px 0 48px; background:linear-gradient(135deg,var(--pine-deep),#f8faf7 75%); }
+    .eyebrow { margin:0 0 15px; color:var(--pine-soft); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    h1 { max-width:780px; margin:0; color:var(--pine); font-size:clamp(38px,5vw,60px); line-height:1.08; }
+    h2,h3,p { overflow-wrap:anywhere; }
+    .hero p:not(.eyebrow) { max-width:760px; margin:18px 0 0; color:var(--muted); font-size:16px; }
+    .jump-nav { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+    .jump-nav a { padding:9px 12px; border:1px solid var(--line); background:var(--white); color:var(--pine); font-size:12px; font-weight:700; }
+    .content { padding:56px 0 82px; }
+    .intro-row { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; margin-bottom:36px; }
+    .intro-row h2,.section-heading h2 { margin:0; color:var(--pine); font-size:clamp(27px,3.5vw,38px); line-height:1.18; }
+    .intro-row p,.section-heading p { margin:0; color:var(--muted); font-size:14px; }
+    .area-index { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:0 0 44px; }
+    .area-index a { min-height:54px; padding:14px; background:var(--white); border:1px solid var(--line); color:var(--pine); font-size:12px; font-weight:700; }
+    .area-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .area-card { scroll-margin-top:120px; padding:24px; background:var(--white); border:1px solid rgb(49 92 61 / 9%); }
+    .area-card>span { color:var(--pine-soft); font-size:11px; font-weight:700; letter-spacing:.08em; }
+    .area-card h3 { margin:12px 0 9px; color:var(--pine); font-size:22px; }
+    .area-card p { margin:0 0 16px; color:var(--muted); font-size:13px; }
+    .area-card strong { display:block; margin:14px 0 5px; color:var(--ink); font-size:12px; }
+    .area-card ul { padding-left:19px; margin:5px 0 0; color:var(--muted); font-size:13px; }
+    .notice { margin-top:26px; padding:18px 20px; background:#edf0ee; color:var(--ink); font-size:13px; }
+    .section-heading { max-width:720px; margin:56px 0 22px; }
+    .check-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .check-card { padding:20px; border-top:3px solid var(--pine-soft); background:var(--white); }
+    .check-card h3 { margin:0 0 8px; color:var(--pine); font-size:17px; }
+    .check-card p { margin:0; color:var(--muted); font-size:13px; }
+    .cta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; margin-top:54px; padding:28px; background:var(--pine-deep); }
+    .cta h2 { margin:0; color:var(--pine); font-size:25px; }
+    .cta p { margin:8px 0 0; color:var(--muted); font-size:13px; }
+    footer { padding:25px 0; background:#e3e8e5; color:var(--muted); font-size:12px; }
+    .footer-links { display:flex; flex-wrap:wrap; gap:10px 18px; }
+    @media(max-width:800px) { .area-index { grid-template-columns:repeat(2,minmax(0,1fr)); } .check-grid { grid-template-columns:1fr 1fr; } .intro-row { grid-template-columns:1fr; gap:12px; } }
+    @media(max-width:600px) { .wrap { width:calc(100% - 36px); } .topbar-inner { min-height:35px; } .topbar-meta { display:none; } .nav-inner { min-height:68px; } .brand img { width:40px; height:40px; } .nav-links { gap:10px; font-size:11px; } .nav-links a:nth-child(n+3) { display:none; } .nav-cta { min-height:40px; padding:0 11px; } .hero { padding:54px 0 36px; } .content { padding:40px 0 60px; } .area-list,.check-grid { grid-template-columns:1fr; } .area-card { padding:20px; } .cta { padding:21px; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap topbar-inner"><span>Hướng dẫn vay vốn theo khu vực</span><span class="topbar-meta">FIN BIZ · 0358 608 830</span></div></div>
+  <header class="nav"><div class="wrap nav-inner"><a class="brand" href="index.html"><img src="LOGO.png" alt="" width="48" height="48">FIN BIZ</a><nav class="nav-links" aria-label="Điều hướng"><a href="index.html">Trang chủ</a><a href="san-pham.html">Sản phẩm</a><a href="kien-thuc-vay-von.html">Kiến thức</a><a class="nav-cta" href="dang-ky-vay.html">Đăng ký tư vấn</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="wrap"><p class="eyebrow">Địa bàn hoạt động</p><h1>Vay vốn doanh nghiệp theo khu vực</h1><p>Địa chỉ đăng ký chỉ là một phần của hồ sơ. Khi trao đổi phương án vốn, doanh nghiệp nên làm rõ nơi vận hành thực tế, khách hàng, nhà cung cấp và dòng tiền phát sinh tại địa bàn.</p><nav class="jump-nav" aria-label="Chọn khu vực"><a href="#ha-noi">Hà Nội</a><a href="#tp-ho-chi-minh">TP. Hồ Chí Minh</a><a href="#hai-phong">Hải Phòng</a><a href="#bac-ninh">Bắc Ninh</a><a href="#dong-nai">Đồng Nai</a><a href="#tay-ninh">Tây Ninh</a><a href="#da-nang">Đà Nẵng</a><a href="#dia-ban-khac">Địa bàn khác</a></nav></div></section>
+    <section class="content"><div class="wrap">
+      <div class="intro-row"><h2>Chuẩn bị hồ sơ gắn với hoạt động thật</h2><p>Đơn vị cho vay có thể áp dụng khu vực tiếp nhận và tiêu chí khác nhau theo từng sản phẩm. FIN BIZ không cam kết khoản vay được duyệt chỉ dựa trên tỉnh/thành hoặc địa chỉ đăng ký.</p></div>
+      <div class="area-index"><a href="#ha-noi">01 · Hà Nội</a><a href="#tp-ho-chi-minh">02 · TP. Hồ Chí Minh</a><a href="#hai-phong">03 · Hải Phòng</a><a href="#bac-ninh">04 · Bắc Ninh</a><a href="#dong-nai">05 · Đồng Nai</a><a href="#tay-ninh">06 · Tây Ninh</a><a href="#da-nang">07 · Đà Nẵng</a><a href="#dia-ban-khac">08 · Tỉnh/thành khác</a></div>
+      <div class="area-list">
+        <article class="area-card" id="ha-noi"><span>01 / MIỀN BẮC</span><h3>Vay vốn doanh nghiệp tại Hà Nội</h3><p>Trình bày rõ địa chỉ giao dịch, nơi phát sinh doanh thu và mối liên hệ giữa văn phòng, kho hàng, khách hàng với pháp nhân vay.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Hợp đồng/đơn hàng và hóa đơn bán hàng gần đây</li><li>Sao kê thể hiện dòng tiền thu từ khách hàng</li><li>Danh sách chi nhánh, địa điểm kinh doanh hoặc kho nếu có</li></ul></article>
+        <article class="area-card" id="tp-ho-chi-minh"><span>02 / MIỀN NAM</span><h3>Vay vốn doanh nghiệp tại TP. Hồ Chí Minh</h3><p>Với doanh nghiệp có nhiều điểm bán hoặc đơn vị phụ thuộc, cần đối chiếu doanh thu, chi phí và dòng tiền giữa các địa điểm với báo cáo pháp nhân.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Bảng tổng hợp điểm bán, chi nhánh và kho</li><li>Hợp đồng với nhà cung cấp và khách hàng chính</li><li>Giải trình giao dịch nội bộ giữa các đơn vị nếu có</li></ul></article>
+        <article class="area-card" id="hai-phong"><span>03 / DUYÊN HẢI</span><h3>Vay vốn doanh nghiệp tại Hải Phòng</h3><p>Nếu dòng tiền gắn với hàng hóa, vận chuyển hoặc giao dịch xuất nhập khẩu, hồ sơ nên nối được hợp đồng, chứng từ giao nhận và lịch thanh toán.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Đơn hàng, hợp đồng vận chuyển hoặc chứng từ giao nhận</li><li>Hóa đơn, lịch thu tiền và công nợ theo lô hàng</li><li>Phương thức thanh toán và nghĩa vụ với đối tác</li></ul></article>
+        <article class="area-card" id="bac-ninh"><span>04 / MIỀN BẮC</span><h3>Vay vốn doanh nghiệp tại Bắc Ninh</h3><p>Doanh nghiệp sản xuất hoặc cung ứng nên mô tả chu kỳ đặt hàng, thanh toán nguyên liệu và thời điểm thu tiền từ khách hàng.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Hợp đồng cung ứng, đơn đặt hàng hoặc xác nhận đơn hàng</li><li>Bảng chi phí nguyên liệu và công nợ phải thu/phải trả</li><li>Lịch sản xuất, giao hàng và dự kiến thu tiền</li></ul></article>
+        <article class="area-card" id="dong-nai"><span>05 / MIỀN NAM</span><h3>Vay vốn doanh nghiệp tại Đồng Nai</h3><p>Với hồ sơ có nhà xưởng hoặc nhiều điểm vận hành, cần phân biệt địa chỉ pháp lý, địa điểm hoạt động và nơi lưu trữ tài sản/hàng hóa.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Hợp đồng thuê/mượn địa điểm và hồ sơ cơ sở sản xuất</li><li>Đơn hàng, hóa đơn đầu vào và lịch thanh toán</li><li>Thông tin máy móc, hàng tồn kho hoặc tài sản liên quan nếu được hỏi</li></ul></article>
+        <article class="area-card" id="tay-ninh"><span>06 / MIỀN NAM</span><h3>Vay vốn doanh nghiệp tại Tây Ninh</h3><p>Doanh nghiệp hoạt động theo mùa vụ nên thể hiện doanh thu và chi phí theo kỳ, giải thích biến động giữa các tháng/quý.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Bảng doanh thu theo mùa vụ hoặc vụ sản xuất</li><li>Hợp đồng mua bán và chứng từ giao nhận</li><li>Kế hoạch nhập hàng, chi phí vận hành và nguồn trả nợ</li></ul></article>
+        <article class="area-card" id="da-nang"><span>07 / MIỀN TRUNG</span><h3>Vay vốn doanh nghiệp tại Đà Nẵng</h3><p>Doanh nghiệp dịch vụ, thương mại hoặc có doanh thu mùa vụ nên làm rõ chu kỳ hợp đồng, công suất hoạt động và các khoản thu định kỳ.</p><strong>Thông tin nên chuẩn bị</strong><ul><li>Hợp đồng dịch vụ, lịch đặt hàng hoặc hợp đồng thuê</li><li>Doanh thu theo tháng và các kỳ cao/thấp điểm</li><li>Chi phí cố định, nhân sự và nghĩa vụ hiện tại</li></ul></article>
+        <article class="area-card" id="dia-ban-khac"><span>08 / TOÀN QUỐC</span><h3>Vay vốn tại tỉnh/thành khác</h3><p>Không thấy địa phương trong danh sách không có nghĩa là không thể trao đổi. Phạm vi tiếp nhận phải được tổ chức cho vay xác nhận theo sản phẩm.</p><strong>Trước khi gửi hồ sơ</strong><ul><li>Hỏi rõ sản phẩm có tiếp nhận địa bàn của doanh nghiệp không</li><li>Xác nhận kênh nộp và cách xác thực địa điểm hoạt động</li><li>Không chuyển phí hoặc hồ sơ nhạy cảm cho bên không rõ thẩm quyền</li></ul></article>
+      </div>
+      <div class="notice"><strong>Lưu ý:</strong> địa bàn hỗ trợ, hạn mức, lãi suất và điều kiện xét duyệt thay đổi theo từng sản phẩm và thời điểm. Hãy yêu cầu đơn vị cho vay xác nhận bằng văn bản trước khi quyết định.</div>
+      <div class="section-heading"><h2>Thông tin lender thường cần đối chiếu</h2><p>Chuẩn bị theo giao dịch và pháp nhân thực tế giúp đối tác đánh giá nhanh hơn, nhưng không bảo đảm kết quả phê duyệt.</p></div>
+      <div class="check-grid"><article class="check-card"><h3>Pháp nhân &amp; địa chỉ</h3><p>Đăng ký doanh nghiệp, địa điểm kinh doanh, chi nhánh và nơi hoạt động thực tế.</p></article><article class="check-card"><h3>Dòng tiền địa bàn</h3><p>Doanh thu, sao kê, hóa đơn và hợp đồng liên quan khách hàng/nhà cung cấp.</p></article><article class="check-card"><h3>Nhu cầu &amp; trả nợ</h3><p>Số vốn cần, thời điểm sử dụng, mục đích và nguồn tiền dự kiến hoàn trả.</p></article></div>
+      <div class="cta"><div><h2>Cần rà soát hồ sơ theo địa bàn?</h2><p>FIN BIZ trao đổi nhu cầu và giúp doanh nghiệp chuẩn bị thông tin trước khi làm việc với đối tác.</p></div><a class="button" href="dang-ky-vay.html">Đăng ký tư vấn ↗</a></div>
+    </div></section>
++  </main>
++  <footer><div class="wrap"><div class="footer-links"><a href="vay-von-theo-khu-vuc.html">Vay vốn theo khu vực</a><a href="vay-von-theo-nganh-nghe.html">Vay vốn theo ngành nghề</a><a href="ho-so-dieu-kien-vay.html">Hồ sơ và điều kiện vay</a><a href="kien-thuc-vay-von.html">Kiến thức</a><a href="san-pham.html">Sản phẩm</a></div><p>© 2026 FIN BIZ · Nội dung tham khảo, không phải cam kết cấp vốn.</p></div></footer>
++</body>
++</html>
