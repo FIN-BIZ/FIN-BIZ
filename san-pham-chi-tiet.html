@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315c3d">
+  <meta name="description" content="Thông tin tham khảo về sản phẩm tài chính doanh nghiệp và những nội dung cần xác nhận với đơn vị cho vay.">
+  <title>Chi tiết sản phẩm | FIN BIZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --pine: #315c3d; --pine-deep: #e3eedb; --pine-soft: #527b59; --paper: #f4f6f4; --white: #fff; --ink: #243329; --muted: #68756b; --line: #d9e0db; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; font-size: 16px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { position: fixed; z-index: 30; top: 0; left: 0; width: 100%; min-height: 39px; background: var(--pine-deep); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; gap: 20px; }
+    .topbar-meta { display: flex; gap: 22px; }
+    .nav { position: fixed; z-index: 29; top: 39px; right: max(24px, calc((100vw - 1120px) / 2)); left: max(24px, calc((100vw - 1120px) / 2)); display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 24px; padding: 0 18px; border: 1px solid rgb(49 92 61 / 8%); background: rgb(255 255 255 / 92%); backdrop-filter: blur(12px); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-size: 14px; font-weight: 700; letter-spacing: .08em; }
+    .brand img { width: 48px; height: 48px; object-fit: contain; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; font-size: 12px; font-weight: 600; }
+    .nav-cta, .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 20px; background: var(--pine); color: var(--white); font-size: 13px; font-weight: 700; }
+    .nav-cta:hover, .button:hover { background: #254b30; }
+    .detail-hero { padding: 190px 0 82px; background: linear-gradient(135deg, var(--pine-deep), #f6f8f5 72%); }
+    .breadcrumbs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 34px; color: var(--muted); font-size: 12px; }
+    .breadcrumbs a { color: var(--pine); }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 62px; align-items: center; }
+    .eyebrow { margin: 0 0 16px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1, h2, h3, p { overflow-wrap: anywhere; }
+    h1 { max-width: 720px; margin: 0; color: var(--pine); font-size: clamp(42px, 6vw, 72px); line-height: 1.06; }
+    .hero-description { max-width: 650px; margin: 22px 0 0; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: 30px; }
+    .back-link { color: var(--pine); font-size: 13px; font-weight: 700; }
+    .summary-panel { padding: 28px; background: rgb(255 255 255 / 76%); border: 1px solid rgb(49 92 61 / 10%); }
+    .summary-panel p { margin: 0; color: var(--muted); font-size: 13px; }
+    .summary-panel strong { display: block; margin-bottom: 8px; color: var(--pine); font-size: 15px; }
+    .summary-panel .summary-label { margin-bottom: 18px; color: var(--pine-soft); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .content-section { padding: 82px 0; }
+    .content-section.alt { background: #eaf2e4; }
+    .section-heading { max-width: 680px; margin-bottom: 34px; }
+    .section-heading h2 { margin: 0; color: var(--pine); font-size: clamp(30px, 4vw, 44px); line-height: 1.14; }
+    .section-heading p { margin: 14px 0 0; color: var(--muted); }
+    .detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .detail-item { min-height: 170px; padding: 22px; background: var(--white); border: 1px solid rgb(49 92 61 / 8%); }
+    .detail-item span { color: var(--pine-soft); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .detail-item h3 { margin: 15px 0 8px; color: var(--pine); font-size: 19px; line-height: 1.25; }
+    .detail-item p { margin: 0; color: var(--muted); font-size: 13px; }
+    .list-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; }
+    .list-layout h2 { margin: 0 0 16px; color: var(--pine); font-size: 32px; line-height: 1.18; }
+    .list-layout > div > p { margin: 0; color: var(--muted); font-size: 14px; }
+    .plain-list { display: grid; gap: 0; padding: 0; margin: 0; list-style: none; border-top: 1px solid var(--line); }
+    .plain-list li { position: relative; padding: 16px 12px 16px 28px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 14px; }
+    .plain-list li::before { position: absolute; top: 16px; left: 2px; color: var(--pine-soft); content: "+"; font-size: 18px; line-height: 1; }
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; padding: 0; margin: 0; list-style: none; }
+    .steps li { min-height: 156px; padding: 20px; background: var(--white); border: 1px solid rgb(49 92 61 / 8%); }
+    .steps span { color: var(--pine-soft); font-size: 13px; font-weight: 700; }
+    .steps h3 { margin: 12px 0 6px; color: var(--pine); font-size: 17px; }
+    .steps p { margin: 0; color: var(--muted); font-size: 12px; }
+    .notice { margin-top: 28px; padding: 18px 20px; background: var(--pine-deep); color: var(--ink); font-size: 13px; }
+    .related { padding: 70px 0; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .related-link { display: block; min-height: 82px; padding: 16px; background: var(--white); border: 1px solid var(--line); color: var(--pine); font-size: 13px; font-weight: 700; }
+    .related-link:hover, .related-link:focus-visible { border-color: var(--pine-soft); outline: 2px solid var(--pine-soft); outline-offset: 2px; }
+    .not-found { padding: 220px 0 100px; text-align: center; }
+    .not-found h1 { margin-inline: auto; font-size: 48px; }
+    .not-found p { margin: 18px auto 28px; color: var(--muted); }
+    footer { padding: 24px 0; background: #e3e8e5; color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+    @media (max-width: 800px) {
+      .hero-grid, .list-layout { grid-template-columns: 1fr; gap: 34px; }
+      .detail-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .related-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 36px); }
+      .topbar-meta { display: none; }
+      .nav { right: 12px; left: 12px; min-height: 68px; padding: 0 12px; }
+      .brand img { width: 40px; height: 40px; }
+      .nav-links { gap: 12px; font-size: 11px; }
+      .nav-links a:nth-child(n+3) { display: none; }
+      .nav-cta { min-height: 40px; padding: 0 12px; }
+      .detail-hero { padding: 150px 0 60px; }
+      .content-section { padding: 62px 0; }
+      .detail-grid, .steps, .related-grid { grid-template-columns: 1fr; }
+      .detail-item, .steps li { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span>Giải pháp tài chính cho doanh nghiệp</span>
+      <div class="topbar-meta"><a href="tel:+84358608830">0358 608 830</a><a href="mailto:nguyentung1809@outlook.com">Email FIN BIZ</a></div>
+    </div>
+  </div>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="FIN BIZ, về trang chủ"><img src="LOGO.png" alt="" width="48" height="48">FIN BIZ</a>
+    <nav class="nav-links" aria-label="Điều hướng chính">
+      <a href="index.html">Trang chủ</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="kien-thuc-vay-von.html">Kiến thức</a>
+      <a class="nav-cta" href="dang-ky-vay.html">Đăng ký tư vấn</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="not-found" data-product-missing hidden>
+      <div class="wrap">
+        <p class="eyebrow">Sản phẩm FIN BIZ</p>
+        <h1>Không tìm thấy sản phẩm.</h1>
+        <p>Vui lòng chọn một sản phẩm trong danh mục để xem thông tin chi tiết.</p>
+        <a class="button" href="san-pham.html">Xem danh mục sản phẩm</a>
+      </div>
+    </div>
+
+    <div data-product-view hidden>
+      <section class="detail-hero">
+        <div class="wrap">
+          <nav class="breadcrumbs" aria-label="Đường dẫn">
+            <a href="index.html">Trang chủ</a><span aria-hidden="true">/</span>
+            <a href="san-pham.html">Sản phẩm</a><span aria-hidden="true">/</span>
+            <span data-breadcrumb-product></span>
+          </nav>
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow" data-product-provider></p>
+              <h1 data-product-title></h1>
+              <p class="hero-description" data-product-summary></p>
+              <div class="hero-actions">
+                <a class="button" href="dang-ky-vay.html">Đăng ký tư vấn <span aria-hidden="true">↗</span></a>
+                <a class="back-link" href="san-pham.html">← Quay lại danh mục</a>
+              </div>
+            </div>
+            <aside class="summary-panel">
+              <p class="summary-label">Tổng quan sản phẩm</p>
+              <p><strong>Nhóm giải pháp</strong><span data-product-category></span></p>
+              <p style="margin-top: 20px"><strong>Nhu cầu tham khảo</strong><span data-product-purpose></span></p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Thông tin cần biết</p>
+            <h2>Kiểm tra mức độ phù hợp trước khi đăng ký.</h2>
+            <p>Nội dung dưới đây là định hướng để doanh nghiệp chuẩn bị trao đổi. Đơn vị cung cấp sẽ xác nhận sản phẩm, điều kiện và hồ sơ cụ thể.</p>
+          </div>
+          <div class="detail-grid">
+            <article class="detail-item"><span>01 / Đối tượng</span><h3>Ai có thể tìm hiểu?</h3><p data-product-audience></p></article>
+            <article class="detail-item"><span>02 / Nhu cầu</span><h3>Sử dụng vào việc gì?</h3><p data-product-purpose-detail></p></article>
+            <article class="detail-item"><span>03 / Thẩm định</span><h3>Ai quyết định?</h3><p>Đối tác tài chính xem xét hồ sơ và quyết định hạn mức, chi phí, thời hạn cùng kết quả cấp vốn.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section alt">
+        <div class="wrap list-layout">
+          <div>
+            <p class="eyebrow">Chuẩn bị trước</p>
+            <h2>Thông tin nên sẵn sàng khi trao đổi.</h2>
+            <p>Chỉ gửi hồ sơ theo hướng dẫn của đơn vị có thẩm quyền. FIN BIZ sẽ trao đổi trước để làm rõ nhu cầu và phạm vi tư vấn.</p>
+          </div>
+          <ul class="plain-list" data-product-documents></ul>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <div class="wrap list-layout">
+          <div>
+            <p class="eyebrow">Cần xác nhận</p>
+            <h2>Hỏi rõ điều kiện trước khi quyết định.</h2>
+            <p>Điều khoản có thể khác theo hồ sơ và thời điểm. Hãy yêu cầu đối tác thông tin rõ bằng văn bản.</p>
+          </div>
+          <ul class="plain-list" data-product-questions></ul>
+        </div>
+        <div class="wrap notice">FIN BIZ là đơn vị tư vấn và kết nối. FIN BIZ không phê duyệt khoản vay và không cam kết hồ sơ sẽ được cấp vốn.</div>
+      </section>
+
+      <section class="content-section alt">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Quy trình tham khảo</p>
+            <h2>Các bước trao đổi cùng FIN BIZ.</h2>
+          </div>
+          <ol class="steps">
+            <li><span>01</span><h3>Làm rõ nhu cầu</h3><p>Trao đổi mục đích vốn, tình trạng kinh doanh và thời điểm cần vốn.</p></li>
+            <li><span>02</span><h3>Rà soát thông tin</h3><p>Đối chiếu thông tin hiện có với nhóm giải pháp đang tìm hiểu.</p></li>
+            <li><span>03</span><h3>Xác nhận với đối tác</h3><p>Làm rõ điều kiện, chi phí và giấy tờ trực tiếp với đơn vị cung cấp.</p></li>
+            <li><span>04</span><h3>Doanh nghiệp quyết định</h3><p>Chỉ tiếp tục khi doanh nghiệp đã hiểu và đồng ý với điều khoản.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="related">
+        <div class="wrap">
+          <div class="section-heading"><p class="eyebrow">Khám phá thêm</p><h2>Các sản phẩm khác</h2></div>
+          <div class="related-grid" data-related-products></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>© 2026 FIN BIZ · Nội dung mang tính tham khảo.</span><a href="index.html#contact">Liên hệ tư vấn</a></div></footer>
+
+  <script>
+    const products = {
+      "smart-sme-grow": {
+        provider: "SmartSME · Tín chấp doanh nghiệp",
+        name: "SmartSME GROW",
+        category: "Vay tín chấp doanh nghiệp",
+        purpose: "Bổ sung vốn phục vụ hoạt động kinh doanh.",
+        summary: "Tìm hiểu phương án tín chấp dành cho doanh nghiệp có nhu cầu bổ sung vốn. Đơn vị cho vay sẽ thẩm định hồ sơ và xác nhận điều kiện áp dụng.",
+        audience: "Doanh nghiệp đang cần tìm hiểu nguồn vốn bổ sung và muốn rà soát hồ sơ trước khi làm việc với bên cho vay.",
+        purposeDetail: "Có thể trao đổi về nhu cầu vốn lưu động hoặc kế hoạch kinh doanh; mục đích sử dụng được đối tác xác nhận theo chính sách sản phẩm.",
+        documents: ["Thông tin pháp lý và ngành nghề kinh doanh", "Nhu cầu vốn, kế hoạch sử dụng và thời điểm cần vốn", "Thông tin doanh thu, dòng tiền và các nghĩa vụ vay hiện tại"],
+        questions: ["Điều kiện hoạt động và tiêu chí xét duyệt hiện hành", "Hạn mức, chi phí, lãi suất và lịch trả nợ", "Hồ sơ cần cung cấp và cách bảo vệ dữ liệu doanh nghiệp"]
+      },
+      "smart-sme-od": {
+        provider: "SmartSME · Thấu chi",
+        name: "SmartSME OD",
+        category: "Hạn mức thấu chi",
+        purpose: "Xử lý chênh lệch dòng tiền và nhu cầu thanh toán ngắn hạn.",
+        summary: "Tìm hiểu hạn mức thấu chi cho những thời điểm dòng tiền vào và chi phí vận hành chưa khớp nhau. Hạn mức và cách tính chi phí do đơn vị cho vay thẩm định.",
+        audience: "Doanh nghiệp có các khoản thu, chi theo chu kỳ và muốn trao đổi về phương án vốn linh hoạt.",
+        purposeDetail: "Có thể rà soát lịch thanh toán, thời điểm thu tiền và nhu cầu vốn ngắn hạn để xem giải pháp có phù hợp hay không.",
+        documents: ["Lịch thu tiền và các khoản thanh toán dự kiến", "Thông tin tài khoản và báo cáo dòng tiền theo yêu cầu của bên cho vay", "Dư nợ hiện tại và kế hoạch trả nợ"],
+        questions: ["Cách tính lãi và phí trong thời gian sử dụng hạn mức", "Cách thanh toán, tái tục và xử lý khi vượt hạn mức", "Điều kiện duy trì hạn mức và các trường hợp bị điều chỉnh"]
+      },
+      "funding-societies": {
+        provider: "Funding Societies · Vốn vận hành",
+        name: "Funding Societies",
+        category: "Tài trợ vốn vận hành",
+        purpose: "Bổ sung nguồn vốn cho các hoạt động thường xuyên của doanh nghiệp.",
+        summary: "Tìm hiểu phương án tài trợ vốn vận hành cho doanh nghiệp cần duy trì hoạt động, thanh toán chi phí hoặc xử lý nhu cầu vốn theo chu kỳ.",
+        audience: "Doanh nghiệp muốn so sánh thêm một nguồn tài trợ và có thể cung cấp thông tin về hoạt động, dòng tiền cùng nhu cầu sử dụng vốn.",
+        purposeDetail: "Trao đổi về vốn lưu động, lịch thu chi và kế hoạch thanh toán để đối tác đánh giá phương án phù hợp.",
+        documents: ["Hồ sơ pháp lý và thông tin hoạt động doanh nghiệp", "Báo cáo doanh thu, dòng tiền và công nợ", "Kế hoạch sử dụng vốn và lịch thanh toán dự kiến"],
+        questions: ["Đơn vị trực tiếp cấp vốn và điều kiện tham gia", "Toàn bộ chi phí, kỳ hạn và phương thức thanh toán", "Trách nhiệm của doanh nghiệp và điều khoản khi thanh toán chậm"]
+      },
+      "fimex-ar-flex": {
+        provider: "Fimex · Tài trợ khoản phải thu",
+        name: "Fimex AR Flex",
+        category: "Tài trợ theo hóa đơn / khoản phải thu",
+        purpose: "Tìm hiểu phương án vốn dựa trên khoản phải thu từ giao dịch bán hàng.",
+        summary: "Giải pháp tham khảo cho doanh nghiệp có hóa đơn hoặc khoản phải thu và muốn trao đổi về cách chuyển dòng tiền dự kiến thành nguồn vốn phục vụ hoạt động.",
+        audience: "Doanh nghiệp phát sinh giao dịch bán hàng có chứng từ và đang chờ khách hàng thanh toán.",
+        purposeDetail: "Đơn vị tài chính cần xem xét hóa đơn, bên mua, thời hạn thanh toán và tính xác thực của khoản phải thu.",
+        documents: ["Hợp đồng, đơn hàng hoặc hóa đơn liên quan", "Thông tin về bên mua và lịch thanh toán", "Chứng từ giao nhận hoặc xác nhận công nợ nếu có"],
+        questions: ["Loại hóa đơn và giao dịch nào được xem xét", "Cách tính khoản tài trợ, phí và thời điểm thanh toán", "Trách nhiệm xử lý nếu bên mua trả chậm hoặc phát sinh tranh chấp"]
+      },
+      "export-finance": {
+        provider: "Tài trợ thương mại · Xuất khẩu",
+        name: "Tài trợ xuất khẩu",
+        category: "Vốn theo chứng từ xuất khẩu",
+        purpose: "Hỗ trợ doanh nghiệp tìm hiểu vốn gắn với đơn hàng và giao dịch xuất khẩu.",
+        summary: "Phương án tham khảo cho doanh nghiệp có hoạt động xuất khẩu cần cân đối vốn theo tiến độ đơn hàng, giao chứng từ hoặc thu tiền.",
+        audience: "Doanh nghiệp xuất khẩu có hợp đồng hoặc giao dịch cụ thể và cần làm rõ khoảng thiếu hụt vốn trong chu kỳ thực hiện.",
+        purposeDetail: "Nhu cầu vốn được đối chiếu với hợp đồng, điều kiện giao hàng, bộ chứng từ và phương thức thanh toán của giao dịch.",
+        documents: ["Hợp đồng ngoại thương hoặc đơn hàng", "Thông tin về tiến độ giao hàng và điều kiện thanh toán", "Chứng từ xuất khẩu và thông tin đối tác mua hàng theo yêu cầu"],
+        questions: ["Thị trường, loại hàng và giao dịch nào được tiếp nhận", "Bộ chứng từ, điều kiện giải ngân và cách xử lý ngoại tệ", "Chi phí, thời hạn và nghĩa vụ khi người mua thanh toán chậm"]
+      },
+      "smart-sme-tax-hhb": {
+        provider: "SmartSME · Hộ kinh doanh",
+        name: "SmartSME Tax HHB",
+        category: "Vay theo thông tin thuế hộ kinh doanh",
+        purpose: "Tìm hiểu giải pháp vốn có xem xét hồ sơ thuế của hộ kinh doanh.",
+        summary: "Sản phẩm tham khảo cho hộ kinh doanh muốn trao đổi về phương án vay dựa trên thông tin hoạt động và hồ sơ thuế. Điều kiện cụ thể cần được đối tác xác nhận.",
+        audience: "Hộ kinh doanh đang hoạt động, có thể cung cấp thông tin kinh doanh và chứng từ thuế theo yêu cầu của bên cho vay.",
+        purposeDetail: "Thông tin thuế có thể là một phần hồ sơ đánh giá; đối tác cần xác nhận loại giấy tờ, thời kỳ và tiêu chí chấp nhận.",
+        documents: ["Giấy tờ đăng ký hộ kinh doanh và giấy tờ người đại diện", "Tờ khai, chứng từ thuế hoặc dữ liệu kinh doanh sẵn có", "Nhu cầu vốn, doanh thu và các khoản vay hiện tại"],
+        questions: ["Hộ kinh doanh và ngành nghề nào được áp dụng", "Chứng từ thuế nào cần chuẩn bị và thời gian dữ liệu được xét", "Chi phí, hạn mức và lịch thanh toán được xác định ra sao"]
+      },
+      "smart-sme-upper-hhb": {
+        provider: "SmartSME · Doanh nghiệp và hộ kinh doanh",
+        name: "SmartSME Upper HHB",
+        category: "Tín chấp doanh nghiệp / hộ kinh doanh",
+        purpose: "Tìm hiểu phương án tín chấp theo chính sách của đơn vị cung cấp.",
+        summary: "Lựa chọn tham khảo dành cho doanh nghiệp hoặc hộ kinh doanh muốn tìm hiểu nguồn vốn tín chấp. Nhóm khách hàng, hồ sơ và tiêu chí xét duyệt cần được xác nhận trực tiếp.",
+        audience: "Doanh nghiệp và hộ kinh doanh muốn trao đổi trước về khả năng tiếp cận vốn không dựa trên tài sản bảo đảm.",
+        purposeDetail: "Doanh nghiệp nên làm rõ mục tiêu vay, dòng tiền trả nợ và loại hồ sơ có thể cung cấp trước khi đăng ký.",
+        documents: ["Giấy tờ pháp lý của doanh nghiệp hoặc hộ kinh doanh", "Thông tin hoạt động, doanh thu và dòng tiền", "Dư nợ, nghĩa vụ tài chính và nhu cầu vốn dự kiến"],
+        questions: ["Phân khúc khách hàng và điều kiện hoạt động áp dụng", "Có yêu cầu tài sản bảo đảm hoặc bảo lãnh hay không", "Chi phí, phương thức trả nợ và các điều khoản liên quan"]
+      },
+      "vietcredit-sme": {
+        provider: "VietCredit · Doanh nghiệp SME",
+        name: "VietCredit SME",
+        category: "Hạn mức tín chấp doanh nghiệp",
+        purpose: "Tìm hiểu hạn mức vốn tín chấp dành cho doanh nghiệp nhỏ và vừa.",
+        summary: "Sản phẩm tham khảo cho doanh nghiệp SME đang tìm kiếm phương án tín chấp. Hồ sơ, hạn mức và quyết định cấp vốn do đơn vị tài chính thẩm định.",
+        audience: "Doanh nghiệp nhỏ và vừa muốn so sánh nguồn vốn và có thông tin cơ bản về tình hình kinh doanh, dòng tiền.",
+        purposeDetail: "Hạn mức phù hợp cần được xác định dựa trên nhu cầu vốn, năng lực trả nợ và tiêu chí của bên cho vay.",
+        documents: ["Hồ sơ pháp lý và thông tin doanh nghiệp", "Báo cáo hoạt động, doanh thu và dòng tiền", "Nhu cầu vốn, dư nợ hiện có và kế hoạch trả nợ"],
+        questions: ["Điều kiện doanh nghiệp SME và ngành nghề được xét", "Hạn mức, phí, lãi suất và cách trả nợ", "Các trường hợp cần bổ sung bảo đảm hoặc giấy tờ"]
+      }
+    };
+
+    const selectedProduct = products[new URLSearchParams(window.location.search).get("product")];
+    const productView = document.querySelector("[data-product-view]");
+    const missingView = document.querySelector("[data-product-missing]");
+
+    if (!selectedProduct) {
+      productView.hidden = true;
+      missingView.hidden = false;
+    } else {
+      productView.hidden = false;
+      missingView.hidden = true;
+      document.title = `${selectedProduct.name} | Sản phẩm FIN BIZ`;
+      document.querySelector('meta[name="description"]').content = selectedProduct.summary;
+      document.querySelector("[data-breadcrumb-product]").textContent = selectedProduct.name;
+      document.querySelector("[data-product-provider]").textContent = selectedProduct.provider;
+      document.querySelector("[data-product-title]").textContent = selectedProduct.name;
+      document.querySelector("[data-product-summary]").textContent = selectedProduct.summary;
+      document.querySelector("[data-product-category]").textContent = selectedProduct.category;
+      document.querySelector("[data-product-purpose]").textContent = selectedProduct.purpose;
+      document.querySelector("[data-product-audience]").textContent = selectedProduct.audience;
+      document.querySelector("[data-product-purpose-detail]").textContent = selectedProduct.purposeDetail;
+
+      const addListItems = (selector, items) => {
+        const list = document.querySelector(selector);
+        for (const text of items) {
+          const item = document.createElement("li");
+          item.textContent = text;
+          list.append(item);
+        }
+      };
+
+      addListItems("[data-product-documents]", selectedProduct.documents);
+      addListItems("[data-product-questions]", selectedProduct.questions);
+
+      const relatedProducts = document.querySelector("[data-related-products]");
+      for (const [slug, product] of Object.entries(products)) {
+        if (product === selectedProduct) continue;
+        const link = document.createElement("a");
+        link.className = "related-link";
+        link.href = `san-pham-chi-tiet.html?product=${encodeURIComponent(slug)}`;
+        link.textContent = product.name;
+        relatedProducts.append(link);
+      }
+    }
+  </script>
+</body>
+</html>
