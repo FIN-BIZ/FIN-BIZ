@@ -50,12 +50,22 @@
     .check-card { padding:20px; border-top:3px solid var(--pine-soft); background:var(--white); }
     .check-card h3 { margin:0 0 8px; color:var(--pine); font-size:17px; }
     .check-card p { margin:0; color:var(--muted); font-size:13px; }
+    .faq-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; margin-top:58px; }
+    .faq-grid h2 { margin:0; color:var(--pine); font-size:clamp(27px,3.5vw,38px); line-height:1.18; }
+    .faq-grid>div>p { margin:12px 0 0; color:var(--muted); font-size:14px; }
+    .faq-list { border-top:1px solid var(--line); }
+    .faq-item { border-bottom:1px solid var(--line); }
+    .faq-item summary { position:relative; padding:17px 34px 17px 0; color:var(--pine); font-size:14px; font-weight:700; cursor:pointer; list-style:none; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { position:absolute; top:13px; right:2px; content:"+"; color:var(--pine-soft); font-size:21px; font-weight:400; }
+    .faq-item[open] summary::after { content:"−"; }
+    .faq-item p { margin:0 0 18px; color:var(--muted); font-size:13px; }
     .cta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; margin-top:54px; padding:28px; background:var(--pine-deep); }
     .cta h2 { margin:0; color:var(--pine); font-size:25px; }
     .cta p { margin:8px 0 0; color:var(--muted); font-size:13px; }
     footer { padding:25px 0; background:#e3e8e5; color:var(--muted); font-size:12px; }
     .footer-links { display:flex; flex-wrap:wrap; gap:10px 18px; }
-    @media(max-width:800px) { .area-index { grid-template-columns:repeat(2,minmax(0,1fr)); } .check-grid { grid-template-columns:1fr 1fr; } .intro-row { grid-template-columns:1fr; gap:12px; } }
+    @media(max-width:800px) { .area-index { grid-template-columns:repeat(2,minmax(0,1fr)); } .check-grid { grid-template-columns:1fr 1fr; } .intro-row,.faq-grid { grid-template-columns:1fr; gap:12px; } }
     @media(max-width:600px) { .wrap { width:calc(100% - 36px); } .topbar-inner { min-height:35px; } .topbar-meta { display:none; } .nav-inner { min-height:68px; } .brand img { width:40px; height:40px; } .nav-links { gap:10px; font-size:11px; } .nav-links a:nth-child(n+3) { display:none; } .nav-cta { min-height:40px; padding:0 11px; } .hero { padding:54px 0 36px; } .content { padding:40px 0 60px; } .area-list,.check-grid { grid-template-columns:1fr; } .area-card { padding:20px; } .cta { padding:21px; } }
   </style>
 </head>
@@ -80,9 +90,19 @@
       <div class="notice"><strong>Lưu ý:</strong> địa bàn hỗ trợ, hạn mức, lãi suất và điều kiện xét duyệt thay đổi theo từng sản phẩm và thời điểm. Hãy yêu cầu đơn vị cho vay xác nhận bằng văn bản trước khi quyết định.</div>
       <div class="section-heading"><h2>Thông tin lender thường cần đối chiếu</h2><p>Chuẩn bị theo giao dịch và pháp nhân thực tế giúp đối tác đánh giá nhanh hơn, nhưng không bảo đảm kết quả phê duyệt.</p></div>
       <div class="check-grid"><article class="check-card"><h3>Pháp nhân &amp; địa chỉ</h3><p>Đăng ký doanh nghiệp, địa điểm kinh doanh, chi nhánh và nơi hoạt động thực tế.</p></article><article class="check-card"><h3>Dòng tiền địa bàn</h3><p>Doanh thu, sao kê, hóa đơn và hợp đồng liên quan khách hàng/nhà cung cấp.</p></article><article class="check-card"><h3>Nhu cầu &amp; trả nợ</h3><p>Số vốn cần, thời điểm sử dụng, mục đích và nguồn tiền dự kiến hoàn trả.</p></article></div>
+      <section class="faq-grid" id="cau-hoi">
+        <div><p class="eyebrow">Câu hỏi thường gặp</p><h2>Vay vốn theo khu vực cần lưu ý gì?</h2><p>Địa bàn giúp xác định phạm vi tiếp nhận và nơi xác minh hoạt động; đây không phải tiêu chí duy nhất để cấp vốn.</p></div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>Trụ sở đăng ký khác nơi hoạt động có trao đổi vay được không?</summary><p>Có thể trao đổi, nhưng cần trình bày rõ mối liên hệ giữa pháp nhân, chi nhánh và địa điểm kinh doanh. Lender sẽ xác nhận địa chỉ nào đủ điều kiện và cần giấy tờ gì.</p></details>
+          <details class="faq-item"><summary>Doanh nghiệp ở tỉnh/thành chưa liệt kê có thể nộp hồ sơ không?</summary><p>Danh sách trên là hướng dẫn chuẩn bị, không phải danh sách địa bàn được duyệt. Hãy hỏi đơn vị cho vay xem sản phẩm hiện tiếp nhận địa phương đó không trước khi gửi dữ liệu.</p></details>
+          <details class="faq-item"><summary>Có thể dùng doanh thu từ nhiều chi nhánh để giải trình không?</summary><p>Có thể tập hợp doanh thu toàn doanh nghiệp, nhưng cần thống nhất cách hạch toán và chứng minh dòng tiền thuộc đúng pháp nhân xin vay.</p></details>
+          <details class="faq-item"><summary>Đăng ký kinh doanh tại Hà Nội có bảo đảm được duyệt không?</summary><p>Không. Địa chỉ chỉ là một phần thông tin; quyết định còn phụ thuộc sản phẩm, hồ sơ, dòng tiền, nghĩa vụ vay và chính sách thẩm định của lender.</p></details>
+          <details class="faq-item"><summary>Nên gửi hồ sơ nhạy cảm thế nào?</summary><p>Xác minh danh tính đơn vị nhận và kênh gửi trước. Chỉ cung cấp giấy tờ cần thiết, không gửi bản gốc hoặc mật khẩu/OTP, và hỏi rõ dữ liệu được sử dụng ra sao.</p></details>
+        </div>
+      </section>
       <div class="cta"><div><h2>Cần rà soát hồ sơ theo địa bàn?</h2><p>FIN BIZ trao đổi nhu cầu và giúp doanh nghiệp chuẩn bị thông tin trước khi làm việc với đối tác.</p></div><a class="button" href="dang-ky-vay.html">Đăng ký tư vấn ↗</a></div>
     </div></section>
-+  </main>
-+  <footer><div class="wrap"><div class="footer-links"><a href="vay-von-theo-khu-vuc.html">Vay vốn theo khu vực</a><a href="vay-von-theo-nganh-nghe.html">Vay vốn theo ngành nghề</a><a href="ho-so-dieu-kien-vay.html">Hồ sơ và điều kiện vay</a><a href="kien-thuc-vay-von.html">Kiến thức</a><a href="san-pham.html">Sản phẩm</a></div><p>© 2026 FIN BIZ · Nội dung tham khảo, không phải cam kết cấp vốn.</p></div></footer>
-+</body>
-+</html>
+  </main>
+  <footer><div class="wrap"><div class="footer-links"><a href="vay-von-theo-khu-vuc.html">Vay vốn theo khu vực</a><a href="vay-von-theo-nganh-nghe.html">Vay vốn theo ngành nghề</a><a href="ho-so-dieu-kien-vay.html">Hồ sơ và điều kiện vay</a><a href="kien-thuc-vay-von.html">Kiến thức</a><a href="san-pham.html">Sản phẩm</a></div><p>© 2026 FIN BIZ · Nội dung tham khảo, không phải cam kết cấp vốn.</p></div></footer>
+</body>
+</html>

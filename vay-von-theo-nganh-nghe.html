@@ -16,6 +16,30 @@
     .content{padding:56px 0 82px}.intro-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-bottom:36px}.intro-row h2,.section-heading h2{margin:0;color:var(--pine);font-size:clamp(27px,3.5vw,38px);line-height:1.18}.intro-row p,.section-heading p{margin:0;color:var(--muted);font-size:14px}.industry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.industry-card{scroll-margin-top:120px;padding:24px;background:var(--white);border:1px solid rgb(49 92 61 / 9%)}.industry-card>span{color:var(--pine-soft);font-size:11px;font-weight:700;letter-spacing:.08em}.industry-card h2{margin:12px 0 9px;color:var(--pine);font-size:23px}.industry-card>p{margin:0 0 18px;color:var(--muted);font-size:13px}.industry-card dl{display:grid;gap:12px;margin:0}.industry-card dt{color:var(--ink);font-size:12px;font-weight:700}.industry-card dd{margin:3px 0 0;color:var(--muted);font-size:13px}.section-heading{max-width:720px;margin:54px 0 22px}.check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.check-card{padding:20px;border-top:3px solid var(--pine-soft);background:var(--white)}.check-card h3{margin:0 0 8px;color:var(--pine);font-size:17px}.check-card p{margin:0;color:var(--muted);font-size:13px}.notice{margin-top:26px;padding:18px 20px;background:#edf0ee;color:var(--ink);font-size:13px}.cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:48px;padding:28px;background:var(--pine-deep)}.cta h2{margin:0;color:var(--pine);font-size:25px}.cta p{margin:8px 0 0;color:var(--muted);font-size:13px}footer{padding:25px 0;background:#e3e8e5;color:var(--muted);font-size:12px}.footer-links{display:flex;flex-wrap:wrap;gap:10px 18px}
     @media(max-width:800px){.check-grid{grid-template-columns:1fr 1fr}.intro-row{grid-template-columns:1fr;gap:12px}}
     @media(max-width:600px){.wrap{width:calc(100% - 36px)}.topbar-inner{min-height:35px}.topbar-inner span:last-child{display:none}.nav-inner{min-height:68px}.brand img{width:40px;height:40px}.nav-links{gap:10px;font-size:11px}.nav-links a:nth-child(n+3){display:none}.nav-cta{min-height:40px;padding:0 11px}.hero{padding:54px 0 36px}.content{padding:40px 0 60px}.industry-grid,.check-grid{grid-template-columns:1fr}.industry-card{padding:20px}.cta{padding:21px}}
+    .product-ref { color:var(--pine); font-weight:700; text-decoration:underline; text-decoration-color:var(--pine-soft); text-underline-offset:3px; }
+    .faq-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; margin-top:58px; }
+    .faq-grid h2 { margin:0; color:var(--pine); font-size:clamp(27px,3.5vw,38px); line-height:1.18; }
+    .faq-grid>div>p { margin:12px 0 0; color:var(--muted); font-size:14px; }
+    .faq-list { border-top:1px solid var(--line); }
+    .faq-item { border-bottom:1px solid var(--line); }
+    .faq-item summary { position:relative; padding:17px 34px 17px 0; color:var(--pine); font-size:14px; font-weight:700; cursor:pointer; list-style:none; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { position:absolute; top:13px; right:2px; content:"+"; color:var(--pine-soft); font-size:21px; font-weight:400; }
+    .faq-item[open] summary::after { content:"−"; }
+    .faq-item p { margin:0 0 18px; color:var(--muted); font-size:13px; }
+    @media(max-width:800px) { .faq-grid { grid-template-columns:1fr; gap:12px; } }
+    .product-ref { color:var(--pine); font-weight:700; text-decoration:underline; text-decoration-color:var(--pine-soft); text-underline-offset:3px; }
+    .faq-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; margin-top:58px; }
+    .faq-grid h2 { margin:0; color:var(--pine); font-size:clamp(27px,3.5vw,38px); line-height:1.18; }
+    .faq-grid>div>p { margin:12px 0 0; color:var(--muted); font-size:14px; }
+    .faq-list { border-top:1px solid var(--line); }
+    .faq-item { border-bottom:1px solid var(--line); }
+    .faq-item summary { position:relative; padding:17px 34px 17px 0; color:var(--pine); font-size:14px; font-weight:700; cursor:pointer; list-style:none; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after { position:absolute; top:13px; right:2px; content:"+"; color:var(--pine-soft); font-size:21px; font-weight:400; }
+    .faq-item[open] summary::after { content:"−"; }
+    .faq-item p { margin:0 0 18px; color:var(--muted); font-size:13px; }
+    @media(max-width:800px) { .faq-grid { grid-template-columns:1fr; gap:12px; } }
   </style>
 </head>
 <body>
@@ -33,6 +57,15 @@
         <article class="industry-card" id="ban-le"><span>05 / BÁN LẺ</span><h2>Bán lẻ và chuỗi cửa hàng</h2><p>Nhu cầu vốn có thể đến từ nhập hàng, tiền thuê, mùa cao điểm và chi phí vận hành nhiều điểm bán.</p><dl><div><dt>Hồ sơ trọng tâm</dt><dd>Báo cáo bán hàng, hóa đơn đầu vào, sao kê nhận tiền và danh sách điểm kinh doanh.</dd></div><div><dt>Nên làm rõ</dt><dd>Doanh thu tiền mặt/chuyển khoản, biên lợi nhuận và tính mùa vụ.</dd></div><div><dt>Câu hỏi cho lender</dt><dd>Cần đối chiếu doanh thu qua tài khoản nào và có yêu cầu dữ liệu từng điểm bán không?</dd></div></dl></article>
         <article class="industry-card" id="xay-dung"><span>06 / XÂY DỰNG &amp; VẬT LIỆU</span><h2>Thi công, xây dựng và vật liệu</h2><p>Tiến độ thanh toán theo công trình có thể không trùng với thời điểm mua vật tư, trả nhân công và nhà thầu phụ.</p><dl><div><dt>Hồ sơ trọng tâm</dt><dd>Hợp đồng, phụ lục, khối lượng nghiệm thu, hóa đơn vật tư và công nợ theo công trình.</dd></div><div><dt>Nên làm rõ</dt><dd>Khoản tạm ứng, thời điểm nghiệm thu và nguồn thu cho từng nghĩa vụ trả nợ.</dd></div><div><dt>Câu hỏi cho lender</dt><dd>Hồ sơ dự án nào được chấp nhận và điều kiện giải ngân theo tiến độ ra sao?</dd></div></dl></article>
       </div>
+      <div class="section-heading"><h2>Gói sản phẩm để tìm hiểu thêm</h2><p>Các liên kết dưới đây giúp tham khảo nhóm giải pháp; không đồng nghĩa sản phẩm chắc chắn phù hợp hoặc lender sẽ phê duyệt.</p></div>
+      <div class="check-grid"><article class="check-card"><h3>Phân phối &amp; sản xuất</h3><p><a class="product-ref" href="san-pham-chi-tiet.html?product=funding-societies">Funding Societies</a> · <a class="product-ref" href="san-pham-chi-tiet.html?product=fimex-ar-flex">Fimex AR Flex</a> · <a class="product-ref" href="san-pham-chi-tiet.html?product=smart-sme-grow">SmartSME GROW</a></p></article><article class="check-card"><h3>Xuất nhập khẩu</h3><p><a class="product-ref" href="san-pham-chi-tiet.html?product=export-finance">VietEdge tài trợ xuất khẩu</a> · <a class="product-ref" href="san-pham-chi-tiet.html?product=funding-societies">Funding Societies</a></p></article><article class="check-card"><h3>Bán lẻ &amp; hộ kinh doanh</h3><p><a class="product-ref" href="san-pham-chi-tiet.html?product=smart-sme-tax-hhb">SmartSME Tax HHB</a> · <a class="product-ref" href="san-pham-chi-tiet.html?product=smart-sme-upper-hhb">SmartSME Upper HHB</a></p></article></div>
+      <section class="faq-grid" id="cau-hoi"><div><p class="eyebrow">Câu hỏi thường gặp</p><h2>Ngành nghề ảnh hưởng đến hồ sơ vay ra sao?</h2><p>Tách rõ thông tin công khai, chứng từ giao dịch và điều kiện lender yêu cầu cho hồ sơ cụ thể.</p></div><div class="faq-list">
+        <details class="faq-item"><summary>Ngành nghề nào cũng có thể vay vốn không?</summary><p>Không thể khẳng định chung. Mỗi tổ chức có danh mục ngành được tiếp nhận hoặc hạn chế riêng, có thể thay đổi theo sản phẩm và thời điểm. Hãy hỏi trước khi gửi hồ sơ.</p></details>
+        <details class="faq-item"><summary>Doanh thu theo mùa vụ nên giải trình thế nào?</summary><p>Chuẩn bị số liệu theo tháng/quý, nêu rõ mùa cao điểm, chi phí nhập hàng và thời gian thu tiền. Tránh chỉ gửi doanh thu của một kỳ đại diện mà không giải thích biến động.</p></details>
+        <details class="faq-item"><summary>Hợp đồng hoặc hóa đơn có giúp chứng minh nhu cầu vốn không?</summary><p>Có thể giúp mô tả giao dịch và dòng tiền, nhưng lender quyết định loại chứng từ được chấp nhận, tỷ lệ tài trợ và cách xác minh bên mua/bên bán.</p></details>
+        <details class="faq-item"><summary>Doanh nghiệp nhiều ngành nghề nên chọn ngành nào?</summary><p>Trình bày ngành tạo doanh thu chính và giao dịch gắn với nhu cầu vay. Chuẩn bị giấy phép, báo cáo và chứng từ cho từng hoạt động liên quan.</p></details>
+        <details class="faq-item"><summary>Thông tin trong hồ sơ có đảm bảo được duyệt không?</summary><p>Không. Hồ sơ đầy đủ giúp đối tác xem xét; quyết định cấp vốn, hạn mức và điều khoản thuộc về tổ chức cho vay.</p></details>
+      </div></section>
       <div class="notice"><strong>Không có gói vay phù hợp cho mọi ngành.</strong> Một số ngành hoặc mô hình giao dịch có thể bị hạn chế theo chính sách từng lender. Hãy xác nhận ngành nghề, giấy phép và loại chứng từ được chấp nhận trước khi nộp hồ sơ.</div>
       <div class="section-heading"><h2>Bảng đối chiếu nhanh</h2><p>Chuẩn bị dữ liệu đủ để giải thích doanh nghiệp tạo tiền và trả nợ như thế nào.</p></div>
       <div class="check-grid"><article class="check-card"><h3>Chu kỳ vốn</h3><p>Thời điểm chi tiền, hoàn thành đơn hàng, xuất hóa đơn và thu tiền.</p></article><article class="check-card"><h3>Chứng từ</h3><p>Hợp đồng, đơn hàng, hóa đơn, nghiệm thu, vận đơn hoặc xác nhận công nợ.</p></article><article class="check-card"><h3>Khả năng trả nợ</h3><p>Kịch bản doanh thu thấp, khoản vay hiện hữu và dòng tiền dự phòng.</p></article></div>
@@ -40,5 +73,5 @@
     </div></section>
   </main>
   <footer><div class="wrap"><div class="footer-links"><a href="vay-von-theo-khu-vuc.html">Vay vốn theo khu vực</a><a href="vay-von-theo-nganh-nghe.html">Vay vốn theo ngành nghề</a><a href="ho-so-dieu-kien-vay.html">Hồ sơ và điều kiện vay</a><a href="kien-thuc-vay-von.html">Kiến thức</a><a href="san-pham.html">Sản phẩm</a></div><p>© 2026 FIN BIZ · Nội dung tham khảo, không phải cam kết cấp vốn.</p></div></footer>
-+</body>
-+</html>
+</body>
+</html>
