@@ -41,6 +41,12 @@
     .summary-panel .summary-label { margin-bottom: 18px; color: var(--pine-soft); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
     .content-section { padding: 82px 0; }
     .content-section.alt { background: #eaf2e4; }
+    .facts-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .fact-card { min-height: 132px; padding: 20px; background: var(--white); border-top: 3px solid var(--pine-soft); }
+    .fact-card span { display: block; color: var(--muted); font-size: 12px; }
+    .fact-card strong { display: block; margin-top: 12px; color: var(--pine); font-size: 22px; line-height: 1.25; }
+    .source-note { margin-top: 20px; padding: 16px 18px; border: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .source-note a { color: var(--pine); font-weight: 700; text-decoration: underline; }
     .section-heading { max-width: 680px; margin-bottom: 34px; }
     .section-heading h2 { margin: 0; color: var(--pine); font-size: clamp(30px, 4vw, 44px); line-height: 1.14; }
     .section-heading p { margin: 14px 0 0; color: var(--muted); }
@@ -49,6 +55,8 @@
     .detail-item span { color: var(--pine-soft); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
     .detail-item h3 { margin: 15px 0 8px; color: var(--pine); font-size: 19px; line-height: 1.25; }
     .detail-item p { margin: 0; color: var(--muted); font-size: 13px; }
+    .eligibility-list { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
+    .eligibility-list li { padding: 16px 18px; background: var(--white); border-left: 3px solid var(--pine-soft); color: var(--ink); font-size: 14px; }
     .list-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; }
     .list-layout h2 { margin: 0 0 16px; color: var(--pine); font-size: 32px; line-height: 1.18; }
     .list-layout > div > p { margin: 0; color: var(--muted); font-size: 14px; }
@@ -72,6 +80,7 @@
     .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
     @media (max-width: 800px) {
       .hero-grid, .list-layout { grid-template-columns: 1fr; gap: 34px; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
       .detail-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
       .related-grid { grid-template-columns: 1fr 1fr; }
@@ -87,6 +96,7 @@
       .detail-hero { padding: 150px 0 60px; }
       .content-section { padding: 62px 0; }
       .detail-grid, .steps, .related-grid { grid-template-columns: 1fr; }
+      .facts-grid { grid-template-columns: 1fr; }
       .detail-item, .steps li { min-height: 0; }
     }
   </style>
@@ -148,19 +158,38 @@
       <section class="content-section">
         <div class="wrap">
           <div class="section-heading">
-            <p class="eyebrow">Thông tin cần biết</p>
-            <h2>Kiểm tra mức độ phù hợp trước khi đăng ký.</h2>
-            <p>Nội dung dưới đây là định hướng để doanh nghiệp chuẩn bị trao đổi. Đơn vị cung cấp sẽ xác nhận sản phẩm, điều kiện và hồ sơ cụ thể.</p>
+            <p class="eyebrow">Thông số công khai</p>
+            <h2>Điểm cần xem trước khi đăng ký.</h2>
+            <p>Đây là thông tin tham khảo từ trang sản phẩm của đối tác; đề nghị xác nhận lại điều kiện và biểu phí tại thời điểm nộp hồ sơ.</p>
           </div>
-          <div class="detail-grid">
-            <article class="detail-item"><span>01 / Đối tượng</span><h3>Ai có thể tìm hiểu?</h3><p data-product-audience></p></article>
-            <article class="detail-item"><span>02 / Nhu cầu</span><h3>Sử dụng vào việc gì?</h3><p data-product-purpose-detail></p></article>
-            <article class="detail-item"><span>03 / Thẩm định</span><h3>Ai quyết định?</h3><p>Đối tác tài chính xem xét hồ sơ và quyết định hạn mức, chi phí, thời hạn cùng kết quả cấp vốn.</p></article>
+          <div class="facts-grid" data-product-facts></div>
+          <div class="source-note">Nguồn tham khảo: <a data-product-source target="_blank" rel="noopener noreferrer">Trang sản phẩm BizLoan</a> · Đối chiếu ngày 01/10/2026. Hạn mức, lãi suất, phí, thời hạn và tiêu chí có thể thay đổi theo chính sách đối tác và kết quả thẩm định.</div>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Sản phẩm giải quyết nhu cầu nào?</p>
+            <h2>Hiểu cách sản phẩm có thể gắn với dòng tiền.</h2>
+            <p data-product-detail-intro></p>
           </div>
+          <div class="detail-grid" data-product-features></div>
         </div>
       </section>
 
       <section class="content-section alt">
+        <div class="wrap list-layout">
+          <div>
+            <p class="eyebrow">Đối tượng &amp; điều kiện</p>
+            <h2>Những tiêu chí nên tự rà soát.</h2>
+            <p>Các tiêu chí dưới đây được tổng hợp từ thông tin công khai và không thay thế kết quả xét duyệt của tổ chức cho vay.</p>
+          </div>
+          <ul class="eligibility-list" data-product-eligibility></ul>
+        </div>
+      </section>
+
+      <section class="content-section">
         <div class="wrap list-layout">
           <div>
             <p class="eyebrow">Chuẩn bị trước</p>
@@ -171,7 +200,7 @@
         </div>
       </section>
 
-      <section class="content-section">
+      <section class="content-section alt">
         <div class="wrap list-layout">
           <div>
             <p class="eyebrow">Cần xác nhận</p>
@@ -183,7 +212,7 @@
         <div class="wrap notice">FIN BIZ là đơn vị tư vấn và kết nối. FIN BIZ không phê duyệt khoản vay và không cam kết hồ sơ sẽ được cấp vốn.</div>
       </section>
 
-      <section class="content-section alt">
+      <section class="content-section">
         <div class="wrap">
           <div class="section-heading">
             <p class="eyebrow">Quy trình tham khảo</p>
@@ -214,90 +243,113 @@
       "smart-sme-grow": {
         provider: "SmartSME · Tín chấp doanh nghiệp",
         name: "SmartSME GROW",
+        source: "https://bizloan.vn/san-pham/smart-sme-grow",
         category: "Vay tín chấp doanh nghiệp",
         purpose: "Bổ sung vốn phục vụ hoạt động kinh doanh.",
         summary: "Tìm hiểu phương án tín chấp dành cho doanh nghiệp có nhu cầu bổ sung vốn. Đơn vị cho vay sẽ thẩm định hồ sơ và xác nhận điều kiện áp dụng.",
-        audience: "Doanh nghiệp đang cần tìm hiểu nguồn vốn bổ sung và muốn rà soát hồ sơ trước khi làm việc với bên cho vay.",
-        purposeDetail: "Có thể trao đổi về nhu cầu vốn lưu động hoặc kế hoạch kinh doanh; mục đích sử dụng được đối tác xác nhận theo chính sách sản phẩm.",
-        documents: ["Thông tin pháp lý và ngành nghề kinh doanh", "Nhu cầu vốn, kế hoạch sử dụng và thời điểm cần vốn", "Thông tin doanh thu, dòng tiền và các nghĩa vụ vay hiện tại"],
-        questions: ["Điều kiện hoạt động và tiêu chí xét duyệt hiện hành", "Hạn mức, chi phí, lãi suất và lịch trả nợ", "Hồ sơ cần cung cấp và cách bảo vệ dữ liệu doanh nghiệp"]
+        detailIntro: "Nguồn tham khảo mô tả sản phẩm tín chấp có thể phục vụ một số nhu cầu vốn kinh doanh. Doanh nghiệp nên làm rõ hình thức sử dụng vốn và tiêu chí áp dụng với bên cho vay.",
+        facts: [{ label: "Hạn mức tham khảo", value: "Tối đa 1 tỷ đồng" }, { label: "Chi phí công bố", value: "1,1%–1,2%/tháng; lender quyết định" }, { label: "Thời hạn công bố", value: "Tối đa 12 tháng" }],
+        features: [{ title: "Nhiều hình thức vốn", text: "Nguồn tham khảo nhắc đến vốn bổ sung và một số hình thức cấp vốn khác; cần xác nhận gói đang mở." }, { title: "Không mặc định tài sản bảo đảm", text: "Trang nguồn mô tả sản phẩm không yêu cầu tài sản bảo đảm. Đối tác cần xác nhận điều kiện áp dụng theo hồ sơ." }, { title: "Nộp hồ sơ trực tuyến", text: "Nguồn giới thiệu quy trình online; việc tiếp nhận và thẩm định vẫn thuộc đơn vị cho vay." }],
+        eligibility: ["Nguồn công khai nêu thời gian hoạt động tối thiểu 1 năm liên tục.", "Thông tin tham khảo đề cập doanh thu năm gần nhất từ 2 tỷ đồng và tổng dư nợ không vượt ngưỡng do bên cho vay quy định.", "Tiêu chí về lịch sử tín dụng, ngành nghề, độ tuổi và địa bàn cần xác nhận lại trước khi đăng ký."],
+        documents: ["Pháp lý: giấy chứng nhận đăng ký doanh nghiệp và giấy phép kinh doanh có điều kiện nếu ngành nghề yêu cầu.", "Chủ sở hữu: giấy tờ định danh người đại diện và thành viên góp vốn; điều lệ, biên bản họp theo loại hình công ty.", "Tài chính: báo cáo tài chính năm gần nhất, tờ khai VAT theo kỳ nguồn yêu cầu, hóa đơn mua/bán kèm hợp đồng.", "Kế hoạch vốn: số tiền cần, mục đích sử dụng và dự kiến nguồn trả nợ."],
+        questions: ["Lender nào đang cấp vốn và tiêu chí nào đang áp dụng?", "Lãi suất, phí, lịch trả nợ và tổng chi phí thực trả được tính thế nào?", "Hạn mức có cần tài sản bảo đảm hoặc bảo lãnh trong trường hợp hồ sơ cụ thể không?", "Thông tin được lưu trữ và chia sẻ với bên nào?"]
       },
       "smart-sme-od": {
         provider: "SmartSME · Thấu chi",
         name: "SmartSME OD",
+        source: "https://bizloan.vn/san-pham/smart-sme-od",
         category: "Hạn mức thấu chi",
         purpose: "Xử lý chênh lệch dòng tiền và nhu cầu thanh toán ngắn hạn.",
         summary: "Tìm hiểu hạn mức thấu chi cho những thời điểm dòng tiền vào và chi phí vận hành chưa khớp nhau. Hạn mức và cách tính chi phí do đơn vị cho vay thẩm định.",
-        audience: "Doanh nghiệp có các khoản thu, chi theo chu kỳ và muốn trao đổi về phương án vốn linh hoạt.",
-        purposeDetail: "Có thể rà soát lịch thanh toán, thời điểm thu tiền và nhu cầu vốn ngắn hạn để xem giải pháp có phù hợp hay không.",
-        documents: ["Lịch thu tiền và các khoản thanh toán dự kiến", "Thông tin tài khoản và báo cáo dòng tiền theo yêu cầu của bên cho vay", "Dư nợ hiện tại và kế hoạch trả nợ"],
-        questions: ["Cách tính lãi và phí trong thời gian sử dụng hạn mức", "Cách thanh toán, tái tục và xử lý khi vượt hạn mức", "Điều kiện duy trì hạn mức và các trường hợp bị điều chỉnh"]
+        detailIntro: "Thấu chi cho phép doanh nghiệp tiếp cận phần vốn ngắn hạn khi tài khoản thiếu hụt trong chu kỳ thu chi. Hiệu quả phụ thuộc cách tính lãi, phí và khả năng hoàn trả nhanh.",
+        facts: [{ label: "Hạn mức tham khảo", value: "Tối đa 300 triệu đồng" }, { label: "Cách tính lãi được giới thiệu", value: "Theo phần hạn mức đã sử dụng" }, { label: "Cách sử dụng được nêu", value: "Rút/trả linh hoạt 24/7" }],
+        features: [{ title: "Dùng theo nhu cầu", text: "Nguồn giới thiệu nhấn mạnh chỉ trả lãi trên phần hạn mức đã sử dụng; cách tính thực tế cần lender xác nhận." }, { title: "Xoay vòng dòng tiền", text: "Có thể cân nhắc khi lịch thu tiền và lịch thanh toán của doanh nghiệp lệch nhau." }, { title: "Lưu ý về bảo đảm", text: "Thông tin BizLoan mô tả sản phẩm có tài sản bảo đảm. Cần hỏi rõ loại tài sản và thủ tục liên quan." }],
+        eligibility: ["Sản phẩm dành cho doanh nghiệp theo phạm vi thông tin công khai.", "Địa bàn hỗ trợ được trang nguồn liệt kê gồm Hà Nội, Bắc Ninh, Hải Phòng, TP. Hồ Chí Minh, Đồng Nai và Tây Ninh.", "Nguồn trang chi tiết không hiển thị đầy đủ tiêu chí doanh thu, tuổi doanh nghiệp và kỳ hạn; cần lấy bản điều kiện hiện hành từ lender."],
+        documents: ["Pháp lý: giấy đăng ký doanh nghiệp, giấy phép ngành nghề có điều kiện nếu có.", "Định danh: giấy tờ người đại diện và thành viên góp vốn; điều lệ/biên bản nội bộ theo yêu cầu.", "Tài chính: báo cáo năm gần nhất, tờ khai VAT và hóa đơn/hợp đồng mua bán.", "Dòng tiền: sao kê, lịch thu/chi, mục đích dùng hạn mức và kế hoạch hoàn trả."],
+        questions: ["Khoản thấu chi có tài sản bảo đảm hay yêu cầu bảo lãnh nào?", "Lãi chỉ tính trên dư nợ thực dùng hay còn phí hạn mức/phí duy trì?", "Thời điểm thu lãi, hoàn trả gốc và điều kiện gia hạn là gì?", "Lender xử lý thế nào khi phát sinh giao dịch vượt hạn mức?"]
       },
       "funding-societies": {
         provider: "Funding Societies · Vốn vận hành",
         name: "Funding Societies",
+        source: "https://bizloan.vn/san-pham/funding-societies-vn",
         category: "Tài trợ vốn vận hành",
         purpose: "Bổ sung nguồn vốn cho các hoạt động thường xuyên của doanh nghiệp.",
         summary: "Tìm hiểu phương án tài trợ vốn vận hành cho doanh nghiệp cần duy trì hoạt động, thanh toán chi phí hoặc xử lý nhu cầu vốn theo chu kỳ.",
-        audience: "Doanh nghiệp muốn so sánh thêm một nguồn tài trợ và có thể cung cấp thông tin về hoạt động, dòng tiền cùng nhu cầu sử dụng vốn.",
-        purposeDetail: "Trao đổi về vốn lưu động, lịch thu chi và kế hoạch thanh toán để đối tác đánh giá phương án phù hợp.",
-        documents: ["Hồ sơ pháp lý và thông tin hoạt động doanh nghiệp", "Báo cáo doanh thu, dòng tiền và công nợ", "Kế hoạch sử dụng vốn và lịch thanh toán dự kiến"],
-        questions: ["Đơn vị trực tiếp cấp vốn và điều kiện tham gia", "Toàn bộ chi phí, kỳ hạn và phương thức thanh toán", "Trách nhiệm của doanh nghiệp và điều khoản khi thanh toán chậm"]
+        detailIntro: "Nguồn tham khảo nêu các nhu cầu tài trợ hàng tồn kho, hóa đơn và khoản phải trả. Doanh nghiệp nên xác định rõ giao dịch nào cần vốn và chứng từ hiện có.",
+        facts: [{ label: "Khoảng hạn mức công bố", value: "500 triệu–4 tỷ đồng" }, { label: "Chi phí công bố", value: "Từ 1,5%/tháng; lender quyết định" }, { label: "Kỳ hạn công bố", value: "3–5 tháng" }, { label: "Thời gian xử lý được nêu", value: "5–6 ngày làm việc sau khi đủ hồ sơ" }],
+        features: [{ title: "Tài trợ theo giao dịch", text: "Có thể trao đổi về hàng tồn kho, khoản phải thu/hóa đơn hoặc khoản phải trả cho nhà cung cấp." }, { title: "Nhu cầu chuỗi cung ứng", text: "Trang nguồn định hướng sản phẩm tới doanh nghiệp B2B, phân phối và sản xuất." }, { title: "Đồng tiền giải ngân", text: "Nguồn tham khảo nêu khả năng VND hoặc ngoại tệ; đơn vị cấp vốn cần xác nhận đồng tiền, tỷ giá và điều kiện." }],
+        eligibility: ["Trang nguồn tham khảo nêu doanh nghiệp hoạt động từ 2 năm và doanh thu năm trên 5 tỷ đồng.", "Nguồn đề cập tỷ lệ dư nợ so với doanh thu và hoạt động kinh doanh/sản xuất thực tế.", "Địa vị pháp lý, chủ sở hữu, ngành nghề, ngoại tệ và điều kiện giao dịch phải được Funding Societies xác nhận."],
+        documents: ["Pháp lý: giấy đăng ký doanh nghiệp, điều lệ và thông tin người đại diện/chủ sở hữu.", "Giao dịch: hợp đồng mua bán, đơn đặt hàng, hóa đơn, chứng từ giao nhận hoặc khoản phải trả/phải thu.", "Tài chính: báo cáo doanh thu, sao kê dòng tiền, công nợ và dư nợ hiện tại.", "Kế hoạch vốn: mục đích sử dụng, số vốn cần, lịch thanh toán và nguồn trả."],
+        questions: ["Khoản tài trợ là khoản vay hay hình thức tài trợ thương mại nào?", "Mức phí, kỳ hạn, tiền tệ giải ngân và tỷ giá được chốt thế nào?", "Bên mua/bên bán cần xác nhận hoặc cung cấp chứng từ gì?", "Ai chịu trách nhiệm nếu hóa đơn bị tranh chấp hoặc đối tác thanh toán chậm?"]
       },
       "fimex-ar-flex": {
         provider: "Fimex · Tài trợ khoản phải thu",
         name: "Fimex AR Flex",
+        source: "https://bizloan.vn/san-pham/fimex-ar-flex",
         category: "Tài trợ theo hóa đơn / khoản phải thu",
         purpose: "Tìm hiểu phương án vốn dựa trên khoản phải thu từ giao dịch bán hàng.",
         summary: "Giải pháp tham khảo cho doanh nghiệp có hóa đơn hoặc khoản phải thu và muốn trao đổi về cách chuyển dòng tiền dự kiến thành nguồn vốn phục vụ hoạt động.",
-        audience: "Doanh nghiệp phát sinh giao dịch bán hàng có chứng từ và đang chờ khách hàng thanh toán.",
-        purposeDetail: "Đơn vị tài chính cần xem xét hóa đơn, bên mua, thời hạn thanh toán và tính xác thực của khoản phải thu.",
-        documents: ["Hợp đồng, đơn hàng hoặc hóa đơn liên quan", "Thông tin về bên mua và lịch thanh toán", "Chứng từ giao nhận hoặc xác nhận công nợ nếu có"],
-        questions: ["Loại hóa đơn và giao dịch nào được xem xét", "Cách tính khoản tài trợ, phí và thời điểm thanh toán", "Trách nhiệm xử lý nếu bên mua trả chậm hoặc phát sinh tranh chấp"]
+        detailIntro: "AR Flex gắn khoản tài trợ với hóa đơn bán hàng để doanh nghiệp B2B xem xét nhu cầu vốn trong lúc chờ bên mua thanh toán.",
+        facts: [{ label: "Khoảng hạn mức công bố", value: "2–10 tỷ đồng" }, { label: "Chi phí công bố", value: "Từ 1,5%/tháng; Fimex quyết định" }, { label: "Kỳ hạn công bố", value: "1–3 tháng" }, { label: "Thời gian xử lý được nêu", value: "Khoảng 5 ngày làm việc sau thẩm định" }],
+        features: [{ title: "Gắn với hóa đơn", text: "Khoản phải thu và chứng từ bán hàng là trọng tâm để đối tác xác minh giao dịch." }, { title: "Xử lý khoảng chờ thanh toán", text: "Nguồn tham khảo nêu chu kỳ khách hàng thanh toán 30–90 ngày; thời hạn thực tế phụ thuộc từng hóa đơn." }, { title: "Không mặc định thế chấp", text: "Trang nguồn giới thiệu không cần tài sản cố định; cần kiểm tra điều kiện bảo đảm trong hợp đồng cụ thể." }],
+        eligibility: ["Nguồn công khai nêu doanh nghiệp hoạt động tối thiểu 12 tháng và có hóa đơn bán hàng hợp lệ.", "Doanh thu tham khảo trên trang nguồn là 50–1.000 tỷ đồng/năm; xác nhận lại ngưỡng hiện hành với Fimex.", "Bên mua, hợp đồng, giao nhận và lịch sử thanh toán có thể được đối tác xác minh."],
+        documents: ["Hóa đơn bán hàng, hợp đồng/đơn hàng và chứng từ giao hàng.", "Thông tin bên mua, ngày đến hạn và xác nhận công nợ nếu được yêu cầu.", "Hồ sơ pháp lý doanh nghiệp, báo cáo doanh thu và sao kê dòng tiền.", "Thông tin các khoản vay, nghĩa vụ trả nợ và cách xử lý nếu bên mua chậm thanh toán."],
+        questions: ["Hóa đơn, bên mua và thời hạn thanh toán nào được chấp nhận?", "Tỷ lệ tài trợ tính trên hóa đơn được xác định ra sao?", "Phí tính theo ngày hay tháng; có phí thẩm định/thu xếp khác không?", "Ai chịu nghĩa vụ thanh toán nếu khách hàng mua hàng chậm hoặc không thanh toán?"]
       },
       "export-finance": {
-        provider: "Tài trợ thương mại · Xuất khẩu",
-        name: "Tài trợ xuất khẩu",
+        provider: "VietEdge · Tài trợ thương mại",
+        name: "VietEdge Tài trợ xuất khẩu",
+        source: "https://bizloan.vn/san-pham/vietedge-tai-tro-xuat-khau",
         category: "Vốn theo chứng từ xuất khẩu",
         purpose: "Hỗ trợ doanh nghiệp tìm hiểu vốn gắn với đơn hàng và giao dịch xuất khẩu.",
-        summary: "Phương án tham khảo cho doanh nghiệp có hoạt động xuất khẩu cần cân đối vốn theo tiến độ đơn hàng, giao chứng từ hoặc thu tiền.",
-        audience: "Doanh nghiệp xuất khẩu có hợp đồng hoặc giao dịch cụ thể và cần làm rõ khoảng thiếu hụt vốn trong chu kỳ thực hiện.",
-        purposeDetail: "Nhu cầu vốn được đối chiếu với hợp đồng, điều kiện giao hàng, bộ chứng từ và phương thức thanh toán của giao dịch.",
-        documents: ["Hợp đồng ngoại thương hoặc đơn hàng", "Thông tin về tiến độ giao hàng và điều kiện thanh toán", "Chứng từ xuất khẩu và thông tin đối tác mua hàng theo yêu cầu"],
-        questions: ["Thị trường, loại hàng và giao dịch nào được tiếp nhận", "Bộ chứng từ, điều kiện giải ngân và cách xử lý ngoại tệ", "Chi phí, thời hạn và nghĩa vụ khi người mua thanh toán chậm"]
+        detailIntro: "VietEdge được BizLoan giới thiệu cho nhu cầu vốn lưu động của doanh nghiệp xuất khẩu, dựa trên tiến độ giao dịch và chứng từ thương mại.",
+        facts: [{ label: "Hạn mức công bố", value: "Đến 500 tỷ đồng" }, { label: "Chi phí công bố", value: "0,028%/ngày; lender quyết định" }, { label: "Thời hạn công bố", value: "Tối đa 24 tháng" }, { label: "Phương thức thanh toán nêu nguồn", value: "CAD, OA, DA, DP" }],
+        features: [{ title: "Vốn theo giao dịch xuất khẩu", text: "Hồ sơ tham khảo gồm hợp đồng, hóa đơn/chứng từ đầu vào và đầu ra cùng tiến độ giao hàng." }, { title: "Nhiều phương thức thanh toán", text: "Nguồn giới thiệu các phương thức CAD, OA, DA và DP; khả năng áp dụng phụ thuộc thị trường và lender." }, { title: "Có thể liên quan ngoại tệ", text: "Cần xác nhận đồng tiền giải ngân, tỷ giá, phí chuyển đổi và nghĩa vụ trả nợ với đơn vị tài trợ." }],
+        eligibility: ["Trang nguồn nêu doanh nghiệp hoạt động từ 2 năm; địa bàn được liệt kê là Hà Nội và TP. Hồ Chí Minh.", "Sản phẩm hướng tới chủ doanh nghiệp xuất khẩu có chứng từ giao dịch; điều kiện ngành hàng và bên mua do VietEdge/lender thẩm định.", "Nguồn có nhắc hỗ trợ một số hồ sơ có nợ chú ý; không đồng nghĩa hồ sơ được duyệt và cần xác nhận trực tiếp."],
+        documents: ["Pháp lý: đăng ký doanh nghiệp; công ty cổ phần có thể cần danh sách cổ đông, giấy tờ định danh và nghị quyết/biên bản.", "Thương mại: hợp đồng ngoại thương, đơn hàng, hóa đơn và chứng từ xuất nhập khẩu.", "Tài chính: báo cáo tài chính năm gần nhất, hóa đơn đầu vào/đầu ra và chứng từ VAT theo kỳ đối tác yêu cầu.", "Giao dịch: phương thức thanh toán, ngoại tệ, lịch giao hàng và nguồn trả nợ."],
+        questions: ["Ngành hàng, thị trường và điều kiện giao dịch nào được tiếp nhận?", "Chi phí 0,028%/ngày được tính trên dư nợ hay giá trị nào; có phí khác không?", "CAD/OA/DA/DP áp dụng ra sao và ai chịu rủi ro chậm thanh toán?", "Điều kiện tỷ giá, giải ngân ngoại tệ và hồ sơ bổ sung là gì?"]
       },
       "smart-sme-tax-hhb": {
         provider: "SmartSME · Hộ kinh doanh",
         name: "SmartSME Tax HHB",
+        source: "https://bizloan.vn/san-pham/tax-hhb",
         category: "Vay theo thông tin thuế hộ kinh doanh",
         purpose: "Tìm hiểu giải pháp vốn có xem xét hồ sơ thuế của hộ kinh doanh.",
         summary: "Sản phẩm tham khảo cho hộ kinh doanh muốn trao đổi về phương án vay dựa trên thông tin hoạt động và hồ sơ thuế. Điều kiện cụ thể cần được đối tác xác nhận.",
-        audience: "Hộ kinh doanh đang hoạt động, có thể cung cấp thông tin kinh doanh và chứng từ thuế theo yêu cầu của bên cho vay.",
-        purposeDetail: "Thông tin thuế có thể là một phần hồ sơ đánh giá; đối tác cần xác nhận loại giấy tờ, thời kỳ và tiêu chí chấp nhận.",
-        documents: ["Giấy tờ đăng ký hộ kinh doanh và giấy tờ người đại diện", "Tờ khai, chứng từ thuế hoặc dữ liệu kinh doanh sẵn có", "Nhu cầu vốn, doanh thu và các khoản vay hiện tại"],
-        questions: ["Hộ kinh doanh và ngành nghề nào được áp dụng", "Chứng từ thuế nào cần chuẩn bị và thời gian dữ liệu được xét", "Chi phí, hạn mức và lịch thanh toán được xác định ra sao"]
+        detailIntro: "Tax HHB được giới thiệu là phương án vốn dành cho hộ kinh doanh có chứng từ thuế VAT. Hãy kiểm tra kỳ kê khai cần nộp và khu vực áp dụng trước khi chuẩn bị hồ sơ.",
+        facts: [{ label: "Hạn mức công bố", value: "Tối đa 500 triệu đồng" }, { label: "Chi phí công bố", value: "Từ 1,5%/tháng; lender quyết định" }, { label: "Thời hạn công bố", value: "Tối đa 60 tháng" }],
+        features: [{ title: "Xem xét chứng từ thuế", text: "Nguồn nêu chứng từ VAT là căn cứ quan trọng để đánh giá hoạt động hộ kinh doanh." }, { title: "Không yêu cầu tài sản bảo đảm", text: "Thông tin nguồn giới thiệu không yêu cầu tài sản bảo đảm; xác nhận điều kiện cuối cùng với lender." }, { title: "Vốn phục vụ kinh doanh", text: "Trao đổi cụ thể khoản cần thanh toán, thời điểm cần tiền và nguồn trả nợ dự kiến." }],
+        eligibility: ["Nguồn công khai nêu hộ kinh doanh hoạt động từ 2 năm và có chứng từ VAT trong 8 quý/24 tháng gần nhất.", "Trang nguồn liệt kê độ tuổi 22–65 và khu vực Hà Nội, Bắc Ninh, Hải Phòng, TP. Hồ Chí Minh, Đồng Nai, Tây Ninh.", "Đối tượng, thu nhập, lịch sử tín dụng và điều kiện theo từng địa bàn cần xác nhận lại với SmartSME/lender."],
+        documents: ["Pháp lý: giấy đăng ký hộ kinh doanh và CCCD chủ hộ; hỏi lender có cần giấy tờ người phối ngẫu không.", "Thuế: chứng từ VAT/tờ khai theo số quý và định dạng lender yêu cầu.", "Hoạt động: thông tin địa điểm, ngành nghề, thời gian kinh doanh và doanh thu.", "Nhu cầu vốn: số tiền, mục đích, lịch sử vay và kế hoạch trả."],
+        questions: ["Chứng từ thuế nào được tính và cần đủ bao nhiêu kỳ?", "Độ tuổi, thu nhập và địa bàn nào đang được tiếp nhận?", "Lãi suất, phí, thời hạn và tổng tiền phải trả là bao nhiêu?", "Có yêu cầu người đồng trả nợ hoặc giấy tờ bổ sung nào không?"]
       },
       "smart-sme-upper-hhb": {
         provider: "SmartSME · Doanh nghiệp và hộ kinh doanh",
         name: "SmartSME Upper HHB",
+        source: "https://bizloan.vn/san-pham/upper-hhb",
         category: "Tín chấp doanh nghiệp / hộ kinh doanh",
         purpose: "Tìm hiểu phương án tín chấp theo chính sách của đơn vị cung cấp.",
         summary: "Lựa chọn tham khảo dành cho doanh nghiệp hoặc hộ kinh doanh muốn tìm hiểu nguồn vốn tín chấp. Nhóm khách hàng, hồ sơ và tiêu chí xét duyệt cần được xác nhận trực tiếp.",
-        audience: "Doanh nghiệp và hộ kinh doanh muốn trao đổi trước về khả năng tiếp cận vốn không dựa trên tài sản bảo đảm.",
-        purposeDetail: "Doanh nghiệp nên làm rõ mục tiêu vay, dòng tiền trả nợ và loại hồ sơ có thể cung cấp trước khi đăng ký.",
-        documents: ["Giấy tờ pháp lý của doanh nghiệp hoặc hộ kinh doanh", "Thông tin hoạt động, doanh thu và dòng tiền", "Dư nợ, nghĩa vụ tài chính và nhu cầu vốn dự kiến"],
-        questions: ["Phân khúc khách hàng và điều kiện hoạt động áp dụng", "Có yêu cầu tài sản bảo đảm hoặc bảo lãnh hay không", "Chi phí, phương thức trả nợ và các điều khoản liên quan"]
+        detailIntro: "Upper HHB hướng tới chủ doanh nghiệp và hộ kinh doanh có nhu cầu vay tín chấp. Nguồn tham khảo đồng thời đề cập thông tin sở hữu bất động sản, nên cần phân biệt rõ tài sản tham chiếu với tài sản bảo đảm.",
+        facts: [{ label: "Hạn mức công bố", value: "Tối đa 2 tỷ đồng" }, { label: "Chi phí công bố", value: "Từ 1,5%/tháng; lender quyết định" }, { label: "Thời hạn công bố", value: "Tối đa 60 tháng" }, { label: "Thời gian xử lý được nêu", value: "3–5 ngày sau khi đủ hồ sơ" }],
+        features: [{ title: "Dành cho chủ doanh nghiệp/HKD", text: "Nguồn mô tả đối tượng gồm chủ doanh nghiệp/người góp vốn và chủ hộ kinh doanh." }, { title: "Đánh giá thông tin tài chính", text: "Thuế, doanh thu, lịch sử tín dụng và năng lực trả nợ được dùng để lender thẩm định." }, { title: "Làm rõ vai trò tài sản", text: "BizLoan nêu không cầm giấy tờ tài sản nhưng có thu thập thông tin sở hữu bất động sản tham khảo; hỏi rõ bằng văn bản." }],
+        eligibility: ["Thông tin nguồn nêu hoạt động từ 2 năm, doanh thu tối thiểu 2 tỷ đồng và độ tuổi 22–65.", "Đối tượng được mô tả gồm chủ doanh nghiệp/người góp vốn từ tỷ lệ nhất định và chủ hộ kinh doanh.", "Trang nguồn có tiêu chí lịch sử tín dụng và khu vực; lender cần xác nhận ngưỡng hiện hành cùng hồ sơ từng trường hợp."],
+        documents: ["Pháp lý: đăng ký doanh nghiệp/hộ kinh doanh; CCCD chủ doanh nghiệp và giấy tờ theo yêu cầu.", "Tài chính: chứng từ VAT theo các quý gần nhất, báo cáo doanh thu và thông tin dòng tiền.", "Sở hữu tài sản: chỉ cung cấp thông tin khi được yêu cầu, đồng thời hỏi rõ có phải tài sản bảo đảm hay không.", "Nghĩa vụ: liệt kê các khoản vay, lịch trả nợ và mục đích vốn dự kiến."],
+        questions: ["Tỷ lệ sở hữu, doanh thu và thời gian hoạt động tối thiểu hiện hành là gì?", "Bất động sản chỉ dùng tham khảo hay được yêu cầu bảo đảm?", "Khoản vay có phí trả trước, phí thẩm định hoặc phí quản lý nào?", "Thời gian 3–5 ngày bắt đầu tính từ lúc nào và phụ thuộc bước nào?"]
       },
       "vietcredit-sme": {
         provider: "VietCredit · Doanh nghiệp SME",
         name: "VietCredit SME",
+        source: "https://bizloan.vn/san-pham/vietcredit-sme",
         category: "Hạn mức tín chấp doanh nghiệp",
         purpose: "Tìm hiểu hạn mức vốn tín chấp dành cho doanh nghiệp nhỏ và vừa.",
         summary: "Sản phẩm tham khảo cho doanh nghiệp SME đang tìm kiếm phương án tín chấp. Hồ sơ, hạn mức và quyết định cấp vốn do đơn vị tài chính thẩm định.",
-        audience: "Doanh nghiệp nhỏ và vừa muốn so sánh nguồn vốn và có thông tin cơ bản về tình hình kinh doanh, dòng tiền.",
-        purposeDetail: "Hạn mức phù hợp cần được xác định dựa trên nhu cầu vốn, năng lực trả nợ và tiêu chí của bên cho vay.",
-        documents: ["Hồ sơ pháp lý và thông tin doanh nghiệp", "Báo cáo hoạt động, doanh thu và dòng tiền", "Nhu cầu vốn, dư nợ hiện có và kế hoạch trả nợ"],
-        questions: ["Điều kiện doanh nghiệp SME và ngành nghề được xét", "Hạn mức, phí, lãi suất và cách trả nợ", "Các trường hợp cần bổ sung bảo đảm hoặc giấy tờ"]
+        detailIntro: "VietCredit SME hướng tới vốn tín chấp cho doanh nghiệp nhỏ và vừa. Nguồn công khai nêu vốn có thể gắn với thanh toán nhà cung cấp, lương hoặc bảo hiểm; lender sẽ xác nhận mục đích được chấp nhận.",
+        facts: [{ label: "Khoảng hạn mức công bố", value: "200 triệu–3 tỷ đồng" }, { label: "Lãi suất công bố", value: "Từ 18%/năm; lender quyết định" }, { label: "Thời hạn công bố", value: "12 tháng" }],
+        features: [{ title: "Nhiều khoản chi kinh doanh", text: "Nguồn nêu ví dụ như thanh toán nhà cung cấp, tiền lương và bảo hiểm xã hội theo chứng từ." }, { title: "Giải ngân theo hồ sơ chi", text: "Thông tin công khai mô tả việc giải ngân gắn với hóa đơn/chứng từ; hỏi rõ cơ chế thanh toán." }, { title: "Thẩm định doanh nghiệp", text: "Nguồn đề cập bước đánh giá, xác thực hạn mức và giải ngân theo từng đợt khi có hồ sơ phù hợp." }],
+        eligibility: ["Trang nguồn nêu doanh nghiệp thành lập trên 2 năm, doanh thu năm gần nhất từ 10 tỷ đồng và kết quả kinh doanh dương.", "Nguồn liệt kê Hà Nội và TP. Hồ Chí Minh; ngành sản xuất/gia công và thương mại B2B thiết yếu được ưu tiên.", "Người đại diện và cổ đông từ 10% vốn có tiêu chí lịch sử tín dụng; lender xác nhận tiêu chí áp dụng hiện tại."],
+        documents: ["Pháp lý: đăng ký kinh doanh, điều lệ, giấy phép có điều kiện và CCCD người đại diện/cổ đông liên quan.", "Tài chính: báo cáo thuế 2 năm gần nhất, tờ khai VAT 12 tháng và sao kê tài khoản giao dịch chính.", "Mục đích vay: hóa đơn/chứng từ thanh toán nhà cung cấp, lương, bảo hiểm hoặc khoản chi dự kiến.", "Nội bộ: đề nghị cấp tín dụng và nghị quyết/quyết định công ty nếu lender yêu cầu."],
+        questions: ["Tỷ lệ lãi được tính theo dư nợ giảm dần hay phương thức nào?", "Hạn mức được giải ngân một lần hay từng đợt theo chứng từ?", "Doanh nghiệp ở địa bàn/ngành nghề nào đủ điều kiện?", "Bên cho vay cần xác thực thực địa và cổ đông theo quy trình nào?"]
       }
     };
 
@@ -319,8 +371,8 @@
       document.querySelector("[data-product-summary]").textContent = selectedProduct.summary;
       document.querySelector("[data-product-category]").textContent = selectedProduct.category;
       document.querySelector("[data-product-purpose]").textContent = selectedProduct.purpose;
-      document.querySelector("[data-product-audience]").textContent = selectedProduct.audience;
-      document.querySelector("[data-product-purpose-detail]").textContent = selectedProduct.purposeDetail;
+      document.querySelector("[data-product-detail-intro]").textContent = selectedProduct.detailIntro;
+      document.querySelector("[data-product-source]").href = selectedProduct.source;
 
       const addListItems = (selector, items) => {
         const list = document.querySelector(selector);
@@ -331,6 +383,33 @@
         }
       };
 
+      const facts = document.querySelector("[data-product-facts]");
+      for (const fact of selectedProduct.facts) {
+        const card = document.createElement("article");
+        card.className = "fact-card";
+        const label = document.createElement("span");
+        label.textContent = fact.label;
+        const value = document.createElement("strong");
+        value.textContent = fact.value;
+        card.append(label, value);
+        facts.append(card);
+      }
+
+      const features = document.querySelector("[data-product-features]");
+      for (const [index, feature] of selectedProduct.features.entries()) {
+        const card = document.createElement("article");
+        card.className = "detail-item";
+        const number = document.createElement("span");
+        number.textContent = `${String(index + 1).padStart(2, "0")} / LƯU Ý`;
+        const title = document.createElement("h3");
+        title.textContent = feature.title;
+        const description = document.createElement("p");
+        description.textContent = feature.text;
+        card.append(number, title, description);
+        features.append(card);
+      }
+
+      addListItems("[data-product-eligibility]", selectedProduct.eligibility);
       addListItems("[data-product-documents]", selectedProduct.documents);
       addListItems("[data-product-questions]", selectedProduct.questions);
 
