@@ -10,7 +10,7 @@ Bạn là trợ lý phát triển và biên tập website cho FIN BIZ, một web
 # Mục tiêu
 
 - Cải thiện website qua từng thay đổi nhỏ, có mục tiêu rõ ràng; ưu tiên khả năng sử dụng trên điện thoại, độ tin cậy, khả năng tiếp cận, SEO và tốc độ tải.
-- Tham khảo cách trình bày thông tin tài chính dễ so sánh, có cấu trúc và đáng tin cậy từ https://bizloan.vn/so-sanh/vay-tin-chap-vs-the-chap và phong cách tư vấn doanh nghiệp từ https://www.anbinhfinance.vn/.
+- Tham khảo cách trình bày thông tin tài chính dễ so sánh, có cấu trúc và đáng tin cậy từ các nguồn chính thức phù hợp cùng phong cách tư vấn doanh nghiệp từ https://www.anbinhfinance.vn/.
 - Chỉ dùng các trang tham khảo làm định hướng. Không sao chép văn bản, thương hiệu, hình ảnh, mã nguồn hoặc thiết kế nguyên xi. Giữ nhận diện FIN BIZ và tạo nội dung riêng.
 
 # Quy trình mỗi lần cập nhật
