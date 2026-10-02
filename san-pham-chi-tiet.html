@@ -4,70 +4,123 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#315c3d">
-  <meta name="description" content="FIN BIZ đang cập nhật danh mục thông tin sản phẩm tài chính doanh nghiệp.">
-  <title>Thông tin sản phẩm | FIN BIZ</title>
+  <meta name="description" content="Tìm hiểu các hướng tư vấn tài chính doanh nghiệp cùng FIN BIZ.">
+  <title>Giải pháp FIN BIZ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --pine: #315c3d; --pine-deep: #e3eedb; --paper: #f4f6f4; --white: #fff; --ink: #243329; --muted: #68756b; }
+    :root { --pine: #315c3d; --pine-soft: #527b59; --pine-pale: #e3eedb; --paper: #f4f6f4; --white: #fff; --ink: #243329; --muted: #68756b; --line: #d9e0db; }
     *, *::before, *::after { box-sizing: border-box; }
-    body { min-height: 100vh; margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; line-height: 1.65; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; font-size: 16px; line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
     .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
-    .topbar { min-height: 39px; background: var(--pine-deep); font-size: 11px; }
-    .topbar-inner, .nav, .nav-links, .brand { display: flex; align-items: center; }
-    .topbar-inner { min-height: 39px; justify-content: space-between; gap: 20px; }
-    .nav { min-height: 76px; justify-content: space-between; gap: 24px; padding: 0 18px; background: var(--white); }
-    .brand { gap: 10px; color: var(--pine); font-size: 14px; font-weight: 700; letter-spacing: .08em; }
+    .topbar { min-height: 39px; background: var(--pine-pale); font-size: 11px; }
+    .topbar-inner, .nav, .brand, .nav-links { display: flex; align-items: center; }
+    .topbar-inner { min-height: 39px; justify-content: space-between; gap: 18px; }
+    .nav { min-height: 76px; justify-content: space-between; gap: 20px; padding: 0 18px; background: var(--white); }
+    .brand { gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: .08em; }
     .brand img { width: 48px; height: 48px; object-fit: contain; }
     .nav-links { flex-wrap: wrap; gap: 20px; font-size: 12px; font-weight: 600; }
     .nav-cta, .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 0 18px; background: var(--pine); color: var(--white); font-size: 13px; font-weight: 700; }
-    main { display: grid; min-height: 68vh; place-items: center; padding: 64px 0; background: linear-gradient(180deg, var(--pine-deep), var(--paper) 75%); text-align: center; }
-    .message { max-width: 700px; }
-    .eyebrow { color: var(--pine); font-size: 12px; font-weight: 700; text-transform: uppercase; }
-    h1 { margin: 12px 0; color: var(--pine); font-size: clamp(36px, 6vw, 58px); line-height: 1.1; }
-    .message p { margin: 0 auto 26px; color: var(--muted); }
-    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .button.secondary { background: transparent; color: var(--pine); border: 1px solid var(--pine); }
-    footer { padding: 24px 0; background: #e3e8e5; color: var(--muted); font-size: 12px; }
-    @media (max-width: 640px) {
+    .hero { padding: 76px 0 72px; background: linear-gradient(135deg, var(--pine-pale), #f7f8f5 76%); }
+    .breadcrumbs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 30px; color: var(--muted); font-size: 12px; }
+    .breadcrumbs a { color: var(--pine); font-weight: 600; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 230px; align-items: center; gap: 50px; }
+    .eyebrow { margin: 0 0 14px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    h1, h2, h3, p { overflow-wrap: anywhere; }
+    h1 { max-width: 740px; margin: 0; color: var(--pine); font-size: clamp(38px, 5vw, 64px); line-height: 1.08; }
+    .hero-copy { max-width: 700px; margin: 22px 0 0; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; margin-top: 28px; }
+    .back-link { color: var(--pine); font-size: 13px; font-weight: 700; }
+    .solution-index { display: grid; min-height: 210px; place-items: center; border: 1px solid rgb(49 92 61 / 15%); background: repeating-linear-gradient(0deg, transparent 0 34px, rgb(49 92 61 / 9%) 35px 36px), var(--white); color: var(--pine); font-size: 70px; font-weight: 700; }
+    .content { padding: 74px 0; }
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .content-block { padding: 28px; background: var(--white); border-top: 3px solid var(--pine-soft); }
+    .content-block h2 { margin: 0 0 20px; color: var(--pine); font-size: 23px; line-height: 1.2; }
+    .content-block ul { display: grid; gap: 13px; padding-left: 20px; margin: 0; }
+    .content-block li { padding-left: 4px; color: var(--muted); font-size: 14px; }
+    .note { margin-top: 22px; padding: 18px 20px; background: var(--pine-pale); color: var(--ink); font-size: 13px; }
+    .contact { padding: 58px 0; background: #e8ece9; }
+    .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact h2 { margin: 0; color: var(--pine); font-size: 27px; }
+    .contact p { margin: 7px 0 0; color: var(--muted); }
+    .not-found { padding: 100px 0; text-align: center; }
+    .not-found h1 { margin-inline: auto; }
+    .not-found p { margin: 18px auto 26px; color: var(--muted); }
+    footer { padding: 23px 0; color: var(--muted); font-size: 12px; }
+    @media (max-width: 720px) {
       .wrap { width: calc(100% - 36px); }
-      .nav { align-items: flex-start; flex-direction: column; padding: 12px 18px; }
-      .nav-links { gap: 14px; }
+      .nav { align-items: flex-start; flex-direction: column; padding: 12px 16px; }
+      .nav-links { gap: 13px; }
+      .hero { padding: 52px 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .solution-index { min-height: 130px; font-size: 54px; }
+      .content { padding: 48px 0; }
+      .content-grid { grid-template-columns: 1fr; }
+      .contact-inner { align-items: flex-start; flex-direction: column; }
       .topbar-inner > span:last-child { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="wrap topbar-inner">
-      <span>Giải pháp tài chính cho doanh nghiệp</span>
-      <span><a href="tel:+84358608830">0358 608 830</a> · <a href="mailto:nguyentung1809@outlook.com">Email FIN BIZ</a></span>
-    </div>
-  </div>
+  <div class="topbar"><div class="wrap topbar-inner"><span>Giải pháp tài chính cho doanh nghiệp</span><span><a href="tel:+84358608830">0358 608 830</a> · <a href="mailto:nguyentung1809@outlook.com">Email FIN BIZ</a></span></div></div>
   <header class="wrap">
     <nav class="nav" aria-label="Điều hướng chính">
-      <a class="brand" href="index.html" aria-label="FIN BIZ, về trang chủ"><img src="LOGO.png" alt="" width="48" height="48">FIN BIZ</a>
-      <div class="nav-links">
-        <a href="index.html">Trang chủ</a>
-        <a href="san-pham.html">Sản phẩm</a>
-        <a href="kien-thuc-vay-von.html">Kiến thức</a>
-        <a class="nav-cta" href="dang-ky-vay.html">Đăng ký tư vấn</a>
-      </div>
+      <a class="brand" href="index.html"><img src="LOGO.png" alt="" width="48" height="48">FIN BIZ</a>
+      <div class="nav-links"><a href="index.html">Trang chủ</a><a href="san-pham.html">Sản phẩm</a><a href="kien-thuc-vay-von.html">Kiến thức</a><a class="nav-cta" href="dang-ky-vay.html">Đăng ký tư vấn</a></div>
     </nav>
   </header>
   <main>
-    <section class="wrap message">
-      <p class="eyebrow">FIN BIZ</p>
-      <h1>Danh mục thông tin sản phẩm đang được cập nhật.</h1>
-      <p>Để trao đổi về nhu cầu tài chính của doanh nghiệp, vui lòng liên hệ FIN BIZ trực tiếp.</p>
-      <div class="actions">
-        <a class="button" href="san-pham.html">Quay lại sản phẩm</a>
-        <a class="button secondary" href="dang-ky-vay.html">Đăng ký tư vấn</a>
+    <section class="hero" data-solution-view hidden>
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Đường dẫn"><a href="index.html">Trang chủ</a><span aria-hidden="true">/</span><a href="san-pham.html">Giải pháp FIN BIZ</a><span aria-hidden="true">/</span><span data-solution-breadcrumb></span></nav>
+        <div class="hero-grid"><div><p class="eyebrow" data-solution-category></p><h1 data-solution-title></h1><p class="hero-copy" data-solution-summary></p><div class="hero-actions"><a class="button" href="dang-ky-vay.html">Trao đổi với FIN BIZ</a><a class="back-link" href="san-pham.html">← Xem các hướng tư vấn</a></div></div><div class="solution-index" aria-hidden="true" data-solution-index></div></div>
       </div>
     </section>
+    <section class="content" data-solution-view hidden>
+      <div class="wrap"><div class="content-grid"><article class="content-block"><h2>Bài toán nên làm rõ</h2><ul data-solution-focus></ul></article><article class="content-block"><h2>Thông tin có thể chuẩn bị</h2><ul data-solution-materials></ul></article></div>
+        <div class="note">Đây là nhóm nội dung FIN BIZ hỗ trợ rà soát, không phải sản phẩm cho vay hoặc lời chào cấp tín dụng. Điều kiện, chi phí và quyết định cấp vốn (nếu có) do tổ chức cho vay xác định sau khi thẩm định.</div>
+      </div>
+    </section>
+    <section class="not-found" data-solution-missing><div class="wrap"><p class="eyebrow">FIN BIZ</p><h1>Hướng tư vấn không tồn tại.</h1><p>Hãy chọn một hướng tư vấn trong danh mục FIN BIZ.</p><a class="button" href="san-pham.html">Xem danh mục</a></div></section>
+    <section class="contact" data-solution-view hidden><div class="wrap contact-inner"><div><h2>Bắt đầu từ tình hình thực tế.</h2><p>FIN BIZ cùng doanh nghiệp làm rõ nhu cầu và thông tin cần chuẩn bị.</p></div><a class="button" href="dang-ky-vay.html">Đăng ký tư vấn</a></div></section>
   </main>
-  <footer><div class="wrap">© 2026 FIN BIZ · Nội dung mang tính tham khảo.</div></footer>
+  <footer><div class="wrap">© 2026 FIN BIZ · Thông tin mang tính tham khảo, không cam kết cấp vốn.</div></footer>
+  <script>
+    const solutions = {
+      "dong-tien-van-hanh": { index: "01", category: "Dòng tiền doanh nghiệp", title: "Vốn vận hành", summary: "Rà soát thời điểm chi trả và thu tiền để doanh nghiệp nhìn rõ khoảng lệch trong chu kỳ hoạt động.", focus: ["Các khoản chi định kỳ và thời điểm thanh toán cho nhà cung cấp.", "Thời gian từ lúc giao hàng hoặc cung cấp dịch vụ đến khi thu tiền.", "Nguồn tiền dự kiến để đáp ứng các nghĩa vụ hiện có."], materials: ["Bảng thu chi theo tuần hoặc tháng.", "Hợp đồng, hóa đơn và lịch thanh toán liên quan.", "Danh sách khoản vay và nghĩa vụ đến hạn."] },
+      "von-theo-don-hang": { index: "02", category: "Thương mại và cung ứng", title: "Vốn theo đơn hàng", summary: "Làm rõ nhu cầu vốn gắn với một đơn hàng, từ chi phí đầu vào đến thời điểm giao hàng và thu tiền.", focus: ["Giá trị đơn hàng, tiến độ giao và các mốc nghiệm thu.", "Khoản cần thanh toán trước khi nhận tiền từ bên mua.", "Vốn tự có, nguồn thanh toán và rủi ro nếu tiến độ thay đổi."], materials: ["Đơn đặt hàng hoặc hợp đồng đang có.", "Dự toán chi phí đầu vào và lịch giao hàng.", "Điều khoản thanh toán cùng chứng từ liên quan."] },
+      "khoan-phai-thu": { index: "03", category: "Hóa đơn và công nợ", title: "Khoản phải thu", summary: "Sắp xếp thông tin về hóa đơn và công nợ để đánh giá ảnh hưởng của thời gian chờ thanh toán tới dòng tiền.", focus: ["Thời hạn thanh toán và tình trạng xác nhận công nợ.", "Lịch sử giao dịch với bên mua và các khoản quá hạn.", "Điều kiện nghiệm thu, đối chiếu hoặc xử lý tranh chấp."], materials: ["Hợp đồng, hóa đơn và biên bản nghiệm thu.", "Bảng công nợ theo từng bên mua và ngày đến hạn.", "Chứng từ giao nhận hoặc xác nhận thanh toán nếu có."] },
+      "von-mua-vu": { index: "04", category: "Kế hoạch kinh doanh", title: "Vốn theo mùa vụ", summary: "Lập bức tranh thu chi theo mùa để doanh nghiệp chủ động chuẩn bị cho giai đoạn nhu cầu tăng hoặc giảm.", focus: ["Biến động doanh thu và chi phí qua các kỳ kinh doanh.", "Thời điểm nhập hàng, tăng nhân sự hoặc phát sinh chi phí cố định.", "Kịch bản nếu doanh số hoặc tốc độ thu tiền thấp hơn dự kiến."], materials: ["Số liệu bán hàng và thu chi các kỳ trước.", "Kế hoạch tồn kho, nhập hàng và vận hành.", "Dự báo dòng tiền cùng các nghĩa vụ đến hạn."] },
+      "mo-rong-cong-suat": { index: "05", category: "Đầu tư phát triển", title: "Mở rộng công suất", summary: "Rà soát kế hoạch đầu tư thiết bị, mặt bằng hoặc năng lực vận hành cùng tác động dự kiến tới dòng tiền.", focus: ["Mục tiêu đầu tư và tiến độ triển khai.", "Chi phí ban đầu, chi phí vận hành và thời gian đưa vào sử dụng.", "Khả năng trả nợ trong kịch bản doanh thu tăng chậm."], materials: ["Báo giá, kế hoạch đầu tư và lịch thanh toán.", "Dữ liệu công suất, đơn hàng hoặc nhu cầu dự kiến.", "Báo cáo tài chính và nghĩa vụ vốn hiện tại."] },
+      "von-ban-le": { index: "06", category: "Bán lẻ và chuỗi cửa hàng", title: "Vốn cho bán lẻ", summary: "Tách dòng tiền theo cửa hàng hoặc địa điểm để làm rõ nhu cầu nhập hàng, vận hành và mở rộng.", focus: ["Doanh thu, tồn kho và chi phí của từng điểm bán.", "Tỷ lệ thu tiền mặt, chuyển khoản hoặc qua đơn vị thanh toán.", "Khoản thuê, nhà cung cấp và chi phí vận hành theo kỳ."], materials: ["Báo cáo bán hàng và tồn kho hiện có.", "Hóa đơn đầu vào, sao kê và chi phí điểm bán.", "Kế hoạch mở mới hoặc điều chỉnh hoạt động nếu có."] },
+      "ho-kinh-doanh": { index: "07", category: "Hộ kinh doanh", title: "Vốn hộ kinh doanh", summary: "Hệ thống lại hoạt động thu chi và giấy tờ sẵn có để chủ hộ có cơ sở trao đổi về nhu cầu vốn.", focus: ["Nguồn thu, chi phí thường xuyên và mùa vụ kinh doanh.", "Tình trạng giấy tờ hoạt động và cách ghi nhận doanh thu.", "Khoản cần vốn và kế hoạch cân đối nghĩa vụ cá nhân, kinh doanh."], materials: ["Thông tin đăng ký và giấy tờ hoạt động hiện có.", "Sổ thu chi, hóa đơn hoặc chứng từ giao dịch sẵn có.", "Danh sách nghĩa vụ tài chính và kế hoạch sử dụng vốn."] },
+      "ra-soat-khoan-vay": { index: "08", category: "Quản trị nghĩa vụ tài chính", title: "Cơ cấu khoản vay", summary: "Tổng hợp khoản nợ, lịch thanh toán và dòng tiền để nhận diện áp lực cần trao đổi với đơn vị cho vay.", focus: ["Dư nợ, kỳ hạn, lịch trả và chi phí của từng khoản.", "Tài sản bảo đảm hoặc điều khoản cần lưu ý trong hợp đồng.", "Dòng tiền dự kiến và khả năng đáp ứng nghĩa vụ theo thời gian."], materials: ["Hợp đồng tín dụng và lịch thanh toán hiện có.", "Bảng tổng hợp dư nợ và các nghĩa vụ liên quan.", "Báo cáo thu chi, dòng tiền và kế hoạch kinh doanh."] }
+    };
+
+    const solution = solutions[new URLSearchParams(window.location.search).get("giai-phap")];
+    const solutionViews = document.querySelectorAll("[data-solution-view]");
+    const missingView = document.querySelector("[data-solution-missing]");
+    if (solution) {
+      for (const view of solutionViews) view.hidden = false;
+      missingView.hidden = true;
+      document.title = `${solution.title} | Giải pháp FIN BIZ`;
+      document.querySelector('meta[name="description"]').content = solution.summary;
+      document.querySelector("[data-solution-breadcrumb]").textContent = solution.title;
+      document.querySelector("[data-solution-category]").textContent = solution.category;
+      document.querySelector("[data-solution-title]").textContent = solution.title;
+      document.querySelector("[data-solution-summary]").textContent = solution.summary;
+      document.querySelector("[data-solution-index]").textContent = solution.index;
+      for (const [selector, items] of [["[data-solution-focus]", solution.focus], ["[data-solution-materials]", solution.materials]]) {
+        const list = document.querySelector(selector);
+        for (const text of items) {
+          const item = document.createElement("li");
+          item.textContent = text;
+          list.append(item);
+        }
+      }
+    }
+  </script>
 </body>
 </html>
