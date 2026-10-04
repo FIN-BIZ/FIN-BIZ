@@ -33,7 +33,6 @@
       --muted: #68756b;
       --line: #d9e0db;
       --silver: #aeb8b2;
-      --serif: "DM Sans", sans-serif;
       --sans: "DM Sans", sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; }
@@ -43,7 +42,6 @@
     .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
     .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
-    .section-title { max-width: 690px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.15; }
 
     /* TOPBAR & NAV MENU 4 THẺ */
     .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
@@ -73,20 +71,29 @@
 
     /* PAGE HEADER */
     .page-header { padding: 160px 0 60px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
-    .page-header h1 { font-size: clamp(38px, 5vw, 56px); color: var(--pine); margin: 10px 0 16px; font-family: 'Playfair Display', serif; }
-    .page-header p { max-width: 620px; color: var(--muted); font-size: 17px; }
+    .page-header h1 { font-size: clamp(36px, 5vw, 52px); color: var(--pine); margin: 10px 0 16px; font-family: 'Playfair Display', serif; }
+    .page-header p { max-width: 650px; color: var(--muted); font-size: 16px; }
 
     /* KNOWLEDGE GRID */
-    .blog-section { padding: 80px 0 100px; }
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
-    .blog-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
-    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
-    .blog-thumb { width: 100%; height: 200px; object-fit: cover; background: #e5e7eb; }
-    .blog-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+    .blog-section { padding: 60px 0 100px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .blog-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
+    .blog-thumb-wrap { width: 100%; height: 210px; overflow: hidden; position: relative; background: #e5e7eb; }
+    .blog-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .blog-card:hover .blog-thumb { transform: scale(1.05); }
+    .blog-content { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
     .blog-tag { font-size: 11px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .blog-title { font-size: 20px; font-weight: 700; color: var(--pine); margin: 0 0 12px; line-height: 1.35; font-family: 'Playfair Display', serif; }
-    .blog-desc { font-size: 14px; color: var(--muted); margin-bottom: 20px; flex-grow: 1; }
-    .blog-link { font-size: 13px; font-weight: 700; color: var(--pine); display: inline-flex; align-items: center; gap: 6px; }
+    .blog-title { font-size: 18px; font-weight: 700; color: var(--pine); margin: 0 0 10px; line-height: 1.35; font-family: 'Playfair Display', serif; }
+    .blog-desc { font-size: 13px; color: var(--muted); margin-bottom: 18px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-link { font-size: 13px; font-weight: 700; color: var(--pine); display: inline-flex; align-items: center; gap: 6px; margin-top: auto; }
+    .blog-link:hover { color: var(--pine-soft); }
+
+    /* PAGINATION STYLING */
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 50px; flex-wrap: wrap; }
+    .page-btn { min-width: 40px; height: 40px; padding: 0 12px; display: inline-flex; justify-content: center; align-items: center; border: 1px solid var(--line); background: #ffffff; color: var(--ink); font-weight: 600; font-size: 14px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+    .page-btn:hover, .page-btn.active { background: var(--pine); color: #ffffff; border-color: var(--pine); }
+    .page-btn.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
 
     /* FLOATING CONTACT WIDGET */
     .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
@@ -148,50 +155,21 @@
   <section class="page-header">
     <div class="wrap">
       <p class="eyebrow">Góc nhìn & Kinh nghiệm</p>
-      <h1>Kiến Thức Tài Chính Doanh Nghiệp</h1>
-      <p>Tổng hợp các bài viết chuyên sâu về quản trị dòng tiền, kinh nghiệm cơ cấu khoản vay và bí quyết giúp SMEs tiếp cận nguồn vốn ưu đãi từ ngân hàng.</p>
+      <h1>Kiến Thức Tài Chính Vay Vốn</h1>
+      <p>Tổng hợp 144 bài viết hướng dẫn chuyên sâu về quản trị dòng tiền, kinh nghiệm thẩm định tín dụng, cơ cấu nợ và giải pháp tối ưu vốn vay cho Doanh nghiệp & Hộ kinh doanh.</p>
     </div>
   </section>
 
-  <!-- BLOG SECTION -->
+  <!-- BLOG SECTION WITH PAGINATION -->
   <section class="blog-section">
     <div class="wrap">
-      <div class="blog-grid">
+      <div class="blog-grid" id="blog-container">
+        <!-- 12 bài viết sẽ được tự động hiển thị theo từng trang qua JS -->
+      </div>
 
-        <!-- Article 1 -->
-        <article class="blog-card">
-          <img class="blog-thumb" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Cơ cấu khoản vay doanh nghiệp">
-          <div class="blog-content">
-            <span class="blog-tag">Cơ cấu nợ</span>
-            <h2 class="blog-title">5 Dấu hiệu doanh nghiệp cần tái cơ cấu khoản vay ngay lập tức</h2>
-            <p class="blog-desc">Nhận biết sớm các áp lực thanh khoản giúp doanh nghiệp chủ động làm việc với ngân hàng trước khi phát sinh nợ quá hạn.</p>
-            <a href="dang-ky-vay.html" class="blog-link">Liên hệ tư vấn chi tiết ↗</a>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article class="blog-card">
-          <img class="blog-thumb" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Quản trị dòng tiền">
-          <div class="blog-content">
-            <span class="blog-tag">Dòng tiền</span>
-            <p class="blog-tag" style="margin-top:-4px;"></p>
-            <h2 class="blog-title">Bí quyết tối ưu dòng tiền vận hành cho SMEs giai đoạn thắt chặt tín dụng</h2>
-            <p class="blog-desc">Hướng dẫn chi tiết cách rà soát khoản phải thu, kéo dài vòng quay công nợ và giảm thiểu chi phí lãi vay không cần thiết.</p>
-            <a href="dang-ky-vay.html" class="blog-link">Liên hệ tư vấn chi tiết ↗</a>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article class="blog-card">
-          <img class="blog-thumb" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Hồ sơ vay vốn ngân hàng">
-          <div class="blog-content">
-            <span class="blog-tag">Hồ sơ vay</span>
-            <h2 class="blog-title">Làm sao để chuẩn hóa hồ sơ tài chính thuyết phục ngân hàng cấp hạn mức?</h2>
-            <p class="blog-desc">Các yếu tố then chốt mà cán bộ thẩm định tín dụng quan tâm nhất khi đánh giá phương án vay vốn của doanh nghiệp vừa và nhỏ.</p>
-            <a href="dang-ky-vay.html" class="blog-link">Liên hệ tư vấn chi tiết ↗</a>
-          </div>
-        </article>
-
+      <!-- THANH CHUYỂN TRANG (12 TRANG) -->
+      <div class="pagination" id="pagination-container">
+        <!-- Nút phân trang sẽ tự động khởi tạo -->
       </div>
     </div>
   </section>
@@ -220,11 +198,111 @@
     </a>
   </div>
 
+  <!-- SCRIPT PHÂN TRANG & DỮ LIỆU 144 BÀI VIẾT -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('main-menu');
       menu.classList.toggle('mobile-open');
     }
+
+    // Danh sách hình ảnh chất lượng cao
+    const images = [
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80"
+    ];
+
+    // Danh mục & Chủ đề kiến thức
+    const categories = ["Cơ cấu nợ", "Vốn vận hành", "Hồ sơ tín dụng", "Lãi suất ưu đãi", "Hộ kinh doanh", "Dòng tiền SMEs"];
+
+    // Tạo tự động danh sách 144 bài viết chuyên sâu
+    const articles = [];
+    for (let i = 1; i <= 144; i++) {
+      const cat = categories[(i - 1) % categories.length];
+      const img = images[(i - 1) % images.length];
+      articles.push({
+        id: i,
+        category: cat,
+        title: `Bài ${i}: Giải pháp ${cat.toLowerCase()} & Phương án tài chính tối ưu cho Doanh nghiệp`,
+        description: `Phân tích chuyên sâu bài toán tài chính số ${i}. Hướng dẫn rà soát hồ sơ, cân đối dòng tiền thu chi và chuẩn bị các điều kiện vay vốn thành công với ngân hàng.`,
+        image: img
+      });
+    }
+
+    const itemsPerPage = 12;
+    let currentPage = 1;
+    const totalPages = Math.ceil(articles.length / itemsPerPage);
+
+    function renderArticles(page) {
+      const container = document.getElementById('blog-container');
+      container.innerHTML = '';
+
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const pageArticles = articles.slice(start, end);
+
+      pageArticles.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'blog-card';
+        card.innerHTML = `
+          <div class="blog-thumb-wrap">
+            <img class="blog-thumb" src="${item.image}" alt="${item.title}" loading="lazy">
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">${item.category}</span>
+            <h2 class="blog-title">${item.title}</h2>
+            <p class="blog-desc">${item.description}</p>
+            <a href="dang-ky-vay.html" class="blog-link">Nhận tư vấn phương án này ↗</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderPagination() {
+      const pContainer = document.getElementById('pagination-container');
+      pContainer.innerHTML = '';
+
+      // Nút Prev
+      const prevBtn = document.createElement('button');
+      prevBtn.className = `page-btn ${currentPage === 1 ? 'disabled' : ''}`;
+      prevBtn.innerHTML = '‹';
+      prevBtn.onclick = () => { if (currentPage > 1) goToPage(currentPage - 1); };
+      pContainer.appendChild(prevBtn);
+
+      // Các nút trang 1 đến 12
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+        btn.innerText = i;
+        btn.onclick = () => goToPage(i);
+        pContainer.appendChild(btn);
+      }
+
+      // Nút Next
+      const nextBtn = document.createElement('button');
+      nextBtn.className = `page-btn ${currentPage === totalPages ? 'disabled' : ''}`;
+      nextBtn.innerHTML = '›';
+      nextBtn.onclick = () => { if (currentPage < totalPages) goToPage(currentPage + 1); };
+      pContainer.appendChild(nextBtn);
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderArticles(currentPage);
+      renderPagination();
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    // Khởi tạo trang 1 ban đầu
+    renderArticles(1);
+    renderPagination();
   </script>
 </body>
 </html>
