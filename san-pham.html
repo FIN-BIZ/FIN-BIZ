@@ -4,11 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#315c3d">
-  <meta name="description" content="Sản phẩm tài chính doanh nghiệp - Giải pháp vay vốn, cơ cấu nợ và hỗ trợ doanh nghiệp phát triển bền vững.">
-  <title>Sản phẩm | FIN BIZ</title>
+  <meta name="description" content="Danh mục 8 giải pháp tín dụng và sản phẩm tài chính doanh nghiệp toàn diện từ FIN BIZ.">
+  <title>Sản Phẩm & Giải Pháp Tài Chính | FIN BIZ</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="apple-touch-icon" href="LOGO.png">
+
+  <!-- Open Graph / Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fin-biz.github.io/FIN-BIZ/san-pham.html">
+  <meta property="og:title" content="Sản Phẩm & Giải Pháp Tài Chính | FIN BIZ">
+  <meta property="og:description" content="Tối ưu hạn mức, giảm chi phí vốn với 8 gói giải pháp tín dụng thiết kế riêng cho SMEs.">
+  <meta property="og:image" content="https://fin-biz.github.io/FIN-BIZ/LOGO.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --pine: #315c3d;
@@ -20,542 +33,446 @@
       --muted: #68756b;
       --line: #d9e0db;
       --silver: #aeb8b2;
-      --silver-dark: #66736b;
-      --lime: #e7f0df;
-      --serif: "DM Sans", sans-serif;
       --sans: "DM Sans", sans-serif;
     }
-
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 132px; }
     body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
-    button { font: inherit; }
     .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
     .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
-    .section-title { max-width: 690px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(36px, 4.4vw, 58px); font-weight: 700; line-height: 1.12; }
-    .section-lead { max-width: 570px; margin: 18px 0 0; color: var(--muted); }
-    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--pine); color: var(--white); transition: background .2s ease, transform .2s ease; }
-    .button:hover { background: #254b30; transform: translateY(-2px); }
-    .button-arrow { font-size: 19px; line-height: 1; }
-    .text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-size: 12px; font-weight: 600; }
-    .text-link span { color: var(--pine-soft); font-size: 18px; }
 
+    /* TOPBAR & NAV MENU 4 THẺ */
     .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
     .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
     .topbar-note { display: flex; align-items: center; gap: 9px; }
     .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
     .topbar-meta { display: flex; gap: 24px; }
-
-    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); }
+    
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); border-radius: 6px; }
     .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
-    .brand-logo { display: block; width: 60px; height: 60px; flex: 0 0 auto; object-fit: contain; }
-    .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
-    .brand-caption { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--ink); font-size: 12px; font-weight: 600; }
-    .nav-links a:not(.nav-cta):hover { color: var(--pine-soft); }
-    .nav-cta { min-height: 42px; padding: 0 17px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); }
-    .nav-cta:hover { border-color: #254b30; background: #254b30; color: var(--white); }
-    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.nav-cta) { position: relative; padding: 4px 0; }
+    .nav-links a:not(.nav-cta):hover, .nav-links a.active { color: var(--pine); }
+    .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
+    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 4px; transition: all .2s ease; }
+    .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); }
+    
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; border-radius: 4px; }
     .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
     .menu-glyph { position: relative; }
     .menu-glyph::before, .menu-glyph::after { position: absolute; left: 0; }
     .menu-glyph::before { top: -6px; }
     .menu-glyph::after { top: 6px; }
 
-    .product-hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--pine-deep) 0%, #edf4ea 100%); padding-top: 185px; padding-bottom: 70px; }
-    .product-hero::before { position: absolute; inset: 0 auto auto 48%; width: 620px; height: 620px; border: 1px solid rgba(49,92,61,.1); border-radius: 50%; content: ""; transform: translateX(10%); }
-    .product-hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
-    .hero-copy h1 { max-width: 650px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(48px, 6vw, 76px); line-height: 1.04; }
-    .hero-copy p { margin: 22px 0 0; max-width: 560px; color: var(--muted); font-size: 18px; }
-    .hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 32px; }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 16px 28px; padding: 0; margin: 32px 0 0; list-style: none; color: var(--ink); font-size: 14px; font-weight: 600; }
-    .hero-meta li { display: flex; align-items: center; gap: 10px; }
-    .hero-meta li::before { width: 8px; height: 8px; border-radius: 50%; background: var(--pine-soft); content: ""; }
+    /* PAGE HEADER */
+    .page-header { padding: 160px 0 60px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
+    .page-header h1 { font-size: clamp(36px, 5vw, 52px); color: var(--pine); margin: 10px 0 16px; font-family: 'Playfair Display', serif; }
+    .page-header p { max-width: 650px; color: var(--muted); font-size: 16px; }
 
-    .hero-panel { position: relative; max-width: 430px; margin-left: auto; padding: 34px 28px; background: rgba(255,255,255,.72); border: 1px solid rgba(49,92,61,.1); box-shadow: 0 20px 60px rgba(36,51,41,.08); }
-    .hero-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .chip { display: inline-flex; min-height: 30px; align-items: center; padding: 0 12px; border-radius: 999px; background: var(--pine-deep); color: var(--pine); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .panel-kpi { margin: 26px 0 0; padding: 0; list-style: none; }
-    .panel-kpi li { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-    .panel-kpi li:first-child { padding-top: 0; }
-    .panel-kpi strong { color: var(--pine); font-family: var(--serif); font-size: 28px; }
-    .panel-kpi span { color: var(--muted); font-size: 12px; }
-    .panel-foot { margin-top: 22px; background: #edf4ea; padding: 16px 18px; color: var(--ink); font-size: 13px; }
+    /* PRODUCTS GRID */
+    .products-section { padding: 60px 0 100px; }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .product-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
+    .product-thumb-wrap { width: 100%; height: 190px; overflow: hidden; position: relative; background: #e5e7eb; }
+    .product-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .product-card:hover .product-thumb { transform: scale(1.05); }
+    .product-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-code { font-size: 11px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .product-title { font-size: 18px; font-weight: 700; color: var(--pine); margin: 0 0 10px; line-height: 1.3; font-family: 'Playfair Display', serif; }
+    .product-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .product-link { font-size: 13px; font-weight: 700; color: var(--pine); display: inline-flex; align-items: center; gap: 6px; margin-top: auto; }
 
-    .stats { background: #edf0ee; }
-    .stats-inner { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; align-items: stretch; }
-    .stats-intro, .stat-item { display: flex; min-height: 112px; align-items: center; padding: 20px 25px; }
-    .stats-intro { padding-left: 0; color: var(--pine); font-family: var(--serif); font-size: 20px; line-height: 1.35; }
-    .stat-item { gap: 14px; border-left: 1px solid var(--line); }
-    .stat-no { color: var(--pine-soft); font-family: var(--serif); font-size: 28px; }
-    .stat-label { color: var(--muted); font-size: 12px; line-height: 1.4; }
+    /* MODAL ĐỌC CHI TIẾT SẢN PHẨM */
+    .product-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
+    .product-modal.active { display: flex; }
+    .modal-box { background: #ffffff; width: min(850px, 100%); max-height: 90vh; border-radius: 12px; overflow-y: auto; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: modalUp 0.3s ease; }
+    @keyframes modalUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); font-size: 20px; font-weight: 700; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
+    .modal-close:hover { background: var(--pine); color: #fff; }
+    .modal-hero-img { width: 100%; height: 320px; object-fit: cover; }
+    .modal-body { padding: 40px; }
+    .modal-code { font-size: 12px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
+    .modal-title { font-size: clamp(24px, 3.5vw, 32px); font-weight: 700; color: var(--pine); margin: 0 0 20px; font-family: 'Playfair Display', serif; line-height: 1.25; }
+    
+    .product-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--paper); padding: 20px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--line); }
+    .spec-item { display: flex; flex-direction: column; }
+    .spec-label { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; letter-spacing: 0.5px; }
+    .spec-val { font-size: 15px; font-weight: 700; color: var(--pine); margin-top: 4px; }
 
-    .products { padding: 110px 0 90px; }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 54px; }
-    .products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
-    .product-card { position: relative; display: block; min-height: 382px; padding: 0; background: var(--white); border: 1px solid rgba(49,92,61,.08); box-shadow: 0 10px 24px rgba(36,51,41,.02); transition: transform .2s ease, box-shadow .2s ease; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(36,51,41,.06); }
-    .product-card-link { position: absolute; inset: 0; display: block; color: inherit; text-decoration: none; }
-    .product-card-link:focus-visible { outline: 3px solid var(--pine-soft); outline-offset: 3px; }
-    .product-card-image { display: block; width: 100%; height: 156px; object-fit: cover; background: var(--pine-deep); }
-    .solution-art { position: relative; display: flex; height: 156px; align-items: flex-end; overflow: hidden; padding: 18px 20px; background-color: var(--pine); background-image: linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,.13) 50%, transparent 50.5%), linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px); background-size: 100% 100%, 100% 28px; color: var(--white); }
-    .solution-art::before { position: absolute; right: 24px; bottom: 22px; width: 88px; height: 58px; border-bottom: 2px solid rgba(255,255,255,.72); border-left: 2px solid rgba(255,255,255,.72); content: ""; transform: skewY(-28deg); }
-    .solution-art::after { position: absolute; right: 38px; bottom: 28px; width: 12px; height: 30px; background: rgba(255,255,255,.78); box-shadow: 22px -12px 0 rgba(255,255,255,.55), 44px -24px 0 rgba(255,255,255,.34); content: ""; }
-    .solution-art-label { position: relative; z-index: 1; font-size: 11px; font-weight: 700; }
-    .solution-art--order { background-color: #896a3d; background-image: linear-gradient(135deg, transparent 0 48%, rgba(255,255,255,.13) 48.2% 48.8%, transparent 49%), repeating-linear-gradient(0deg, transparent 0 23px, rgba(255,255,255,.12) 24px 25px); }
-    .solution-art--receivables { background-color: #426b73; background-image: linear-gradient(90deg, transparent 0 24%, rgba(255,255,255,.13) 24.2% 24.8%, transparent 25%), linear-gradient(0deg, transparent 0 49%, rgba(255,255,255,.12) 49.2% 49.8%, transparent 50%); }
-    .solution-art--seasonal { background-color: #8a574d; background-image: repeating-linear-gradient(135deg, transparent 0 22px, rgba(255,255,255,.12) 23px 24px); }
-    .solution-art--expansion { background-color: #536f56; background-image: linear-gradient(90deg, transparent 0 32%, rgba(255,255,255,.13) 32.2% 32.8%, transparent 33%), linear-gradient(0deg, transparent 0 66%, rgba(255,255,255,.12) 66.2% 66.8%, transparent 67%); }
-    .solution-art--retail { background-color: #9a6943; background-image: repeating-linear-gradient(90deg, transparent 0 30px, rgba(255,255,255,.13) 31px 32px); }
-    .solution-art--household { background-color: #477267; background-image: repeating-linear-gradient(0deg, transparent 0 20px, rgba(255,255,255,.12) 21px 22px), linear-gradient(90deg, transparent 50%, rgba(255,255,255,.12) 50.2% 50.8%, transparent 51%); }
-    .solution-art--debt { background-color: #59636b; background-image: linear-gradient(135deg, transparent 0 49%, rgba(255,255,255,.14) 49.2% 49.8%, transparent 50%), linear-gradient(45deg, transparent 0 49%, rgba(255,255,255,.1) 49.2% 49.8%, transparent 50%); }
-    .product-card-content { padding: 17px 20px 70px; }
-    .product-card-heading { display: flex; min-height: 36px; align-items: center; gap: 10px; }
-    .product-card-icon { display: block; width: 34px; height: 34px; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 50%; object-fit: cover; }
-    .product-index { color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .product-card h3 { margin: 15px 0 8px; color: var(--pine); font-family: var(--serif); font-size: 25px; line-height: 1.15; }
-    .product-card p { margin: 0; color: var(--muted); font-size: 14px; }
-    .product-meta { position: absolute; right: 22px; bottom: 22px; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--pine-deep); color: var(--pine); font-size: 20px; }
+    .modal-content p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .modal-content h3 { font-size: 19px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 24px 0 10px; }
+    .modal-content ul { padding-left: 20px; margin-bottom: 20px; }
+    .modal-content li { margin-bottom: 8px; font-size: 15px; }
 
-    .comparison { background: #eaf2e4; }
-    .comparison-inner { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; padding-top: 110px; padding-bottom: 110px; }
-    .comparison-copy p { margin: 20px 0 0; max-width: 530px; color: var(--muted); }
-    .compare-table { display: grid; gap: 14px; }
-    .compare-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 12px; align-items: center; padding: 18px 18px; background: rgba(255,255,255,.45); border: 1px solid rgba(49,92,61,.08); }
-    .compare-row.header { background: var(--white); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--pine-soft); }
-    .compare-row span { color: var(--ink); font-size: 14px; }
-    .compare-row .pill { display: inline-flex; min-height: 28px; align-items: center; justify-content: center; padding: 0 10px; border-radius: 999px; background: var(--pine-deep); color: var(--pine); font-size: 11px; font-weight: 700; }
+    .modal-cta-box { background: var(--pine-deep); border: 1px solid var(--line); border-radius: 8px; padding: 28px; text-align: center; margin-top: 35px; }
+    .modal-cta-box h4 { font-size: 20px; color: var(--pine); margin: 0 0 10px; font-family: 'Playfair Display', serif; }
+    .modal-cta-box p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .btn-modal-action { display: inline-flex; padding: 12px 28px; background: var(--pine); color: #fff; font-weight: 700; border-radius: 4px; font-size: 14px; }
+    .btn-modal-action:hover { background: #24482f; }
 
-    .benefits { padding: 110px 0; }
-    .benefits-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; margin-top: 42px; }
-    .benefit { padding: 30px 24px; background: var(--white); border: 1px solid rgba(49,92,61,.08); }
-    .benefit-mark { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: var(--pine-deep); color: var(--pine); font-size: 20px; }
-    .benefit h3 { margin: 18px 0 12px; color: var(--pine); font-family: var(--serif); font-size: 26px; line-height: 1.2; }
-    .benefit p { margin: 0; color: var(--muted); font-size: 14px; }
+    /* FLOATING CONTACT WIDGET */
+    .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+    .widget-btn { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); transition: transform 0.25s ease; }
+    .widget-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .widget-btn.phone { background-color: var(--pine); }
+    .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
+    .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
-    .process { background: #edf0ee; padding: 110px 0; }
-    .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; margin-top: 34px; }
-    .step-card { background: var(--white); padding: 24px 20px; border: 1px solid rgba(49,92,61,.08); }
-    .step-num { color: var(--pine-soft); font-family: var(--serif); font-size: 18px; }
-    .step-card h3 { margin: 18px 0 10px; color: var(--pine); font-family: var(--serif); font-size: 24px; }
-    .step-card p { margin: 0; color: var(--muted); font-size: 13px; }
-
-    .faq { padding: 110px 0 120px; }
-    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; }
-    .faq-list { border-top: 1px solid #d1ddcc; }
-    .faq-item { border-bottom: 1px solid #d1ddcc; }
-    .faq-item summary { position: relative; padding: 20px 42px 20px 0; color: var(--pine); font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { position: absolute; top: 17px; right: 2px; content: "+"; color: var(--pine-soft); font-size: 22px; }
-    .faq-item[open] summary::after { content: "−"; }
-    .faq-item p { max-width: 620px; margin: -4px 0 20px; color: var(--muted); font-size: 13px; }
-
-    .contact { position: relative; overflow: hidden; background: var(--pine-deep); }
-    .contact::after { position: absolute; top: -160px; right: -90px; width: 430px; height: 430px; border: 1px solid rgba(49,92,61,.16); border-radius: 50%; box-shadow: 0 0 0 45px rgba(49,92,61,.02); content: ""; }
-    .contact-inner { position: relative; z-index: 1; display: flex; min-height: 300px; align-items: center; justify-content: space-between; gap: 40px; padding-top: 70px; padding-bottom: 70px; }
-    .contact-copy { max-width: 580px; margin: 15px 0 0; color: var(--muted); }
-    .contact-details { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 23px; }
-    .contact-details a { color: var(--pine); font-size: 14px; font-weight: 600; }
-
-    footer { padding: 26px 0; background: #e3e8e5; color: #566659; font-size: 11px; }
+    footer { padding: 32px 0; background: #e3e8e5; color: #566659; font-size: 12px; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
     .footer-logo { width: 38px; height: 38px; object-fit: contain; }
-    .footer-links { display: flex; gap: 22px; }
+    .footer-links { display: flex; gap: 22px; font-weight: 600; }
 
-    @media (max-width: 900px) {
-      .wrap { width: min(100% - 48px, 720px); }
-      .nav-links { gap: 20px; }
-      .product-hero-inner { grid-template-columns: 1fr; }
-      .hero-panel { margin-left: 0; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
-      .stats-intro, .stat-item { min-height: 90px; padding: 18px; }
-      .stats-intro { padding-left: 0; }
-      .stats-intro, .stat-item { border-left: 0; }
-      .products-grid { grid-template-columns: 1fr 1fr; }
-      .compare-row { grid-template-columns: 1fr 1fr; }
-      .benefits-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .faq-grid { grid-template-columns: 1fr; gap: 38px; }
-      .contact-inner { min-height: 360px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 28px; }
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 640px) {
-      body { font-size: 15px; }
       .wrap { width: calc(100% - 40px); }
-      .topbar-inner { min-height: 35px; }
       .topbar-meta { display: none; }
-      .nav { position: fixed; top: 35px; right: 20px; left: 20px; min-height: 76px; padding: 0 12px; }
-      .brand-logo { width: 48px; height: 48px; }
-      .brand-name { font-size: 12px; }
-      .brand-caption { font-size: 8px; }
+      .nav { right: 20px; left: 20px; }
+      .nav-links { display: none; }
+      .nav-links.mobile-open { display: flex; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 6px; }
       .menu-toggle { display: block; }
-      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px; background: var(--white); color: var(--ink); box-shadow: 0 18px 30px rgba(36,51,41,.08); }
-      .nav-links.is-open { display: flex; flex-direction: column; }
-      .nav-links a:not(.nav-cta) { padding: 13px 0; border-bottom: 1px solid var(--line); }
-      .nav-cta { justify-content: center; margin: 12px 0 7px; }
-      .product-hero { padding-top: 160px; }
-      .hero-copy h1 { font-size: clamp(41px, 12vw, 58px); }
-      .hero-copy p { font-size: 15px; }
-      .hero-actions { align-items: flex-start; flex-direction: column; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
-      .section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
-      .section-title { font-size: 39px; }
-      .compare-row { grid-template-columns: 1fr 1fr; }
-      .process-grid { grid-template-columns: 1fr; }
-      .footer-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
-      .footer-links { flex-wrap: wrap; gap: 14px; }
+      .product-spec-grid { grid-template-columns: 1fr; }
+      .modal-body { padding: 24px; }
     }
   </style>
-  <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
 </head>
 <body>
+
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap topbar-inner">
       <span class="topbar-note">Giải pháp tài chính cho doanh nghiệp</span>
-      <div class="topbar-meta"><a href="tel:+84358608830">0358 608 830</a><a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a></div>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
     </div>
   </div>
 
-  <header class="product-hero">
+  <!-- MENU CHÍNH 4 THẺ -->
+  <nav class="nav" aria-label="Điều hướng chính">
+    <a class="brand" href="index.html" aria-label="FIN BIZ">
+      <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
+      <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
+    <div class="nav-links" id="main-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="san-pham.html" class="active">Sản phẩm</a>
+      <a href="kien-thuc.html">Kiến thức</a>
+      <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
     <div class="wrap">
-      <nav class="nav" aria-label="Điều hướng chính">
-        <a class="brand" href="index.html" aria-label="FIN BIZ, về trang chủ">
-          <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="60" height="60">
-          <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
-        </a>
-        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu"><span class="menu-glyph"></span></button>
-        <div class="nav-links" id="main-menu">
-          <a href="index.html#services">Dịch vụ</a>
-          <a href="san-pham.html">Sản phẩm</a>
-          <a href="index.html#approach">Quy trình</a>
-          <a href="index.html#about">Về chúng tôi</a>
-          <a href="index.html#faq">Hỏi đáp</a>
-          <a href="kien-thuc-vay-von.html">Kiến thức</a>
-          <a href="tin-tuc.html">Tin tức</a>
-          <a href="dang-ky-vay.html">Đăng ký vay</a>
-          <a class="nav-cta" href="#contact">Trao đổi cùng chuyên gia <span aria-hidden="true">↗</span></a>
-        </div>
-      </nav>
+      <p class="eyebrow">Giải pháp tín dụng B2B</p>
+      <h1>8 Sản Phẩm Tài Chính Doanh Nghiệp</h1>
+      <p>Cung cấp các gói tư vấn, thế chấp tài sản, thế chấp quyền đòi nợ và tài trợ dòng tiền ngắn - trung hạn tối ưu chi phí vốn dành cho Doanh nghiệp & Hộ kinh doanh.</p>
+    </div>
+  </section>
 
-      <div class="product-hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">Sản phẩm</p>
-          <h1>Giải pháp tài chính gắn với thực tế doanh nghiệp.</h1>
-          <p>FIN BIZ giúp doanh nghiệp tìm hiểu các lựa chọn vốn từ đơn vị tài chính và chuẩn bị phương án phù hợp với nhu cầu thực tế.</p>
-          <div class="hero-actions">
-            <a class="button" href="dang-ky-vay.html">Đăng ký tư vấn <span class="button-arrow" aria-hidden="true">↗</span></a>
-            <a class="text-link" href="tel:+84358608830">Gọi tư vấn: 0358 608 830 <span aria-hidden="true">↓</span></a>
+  <!-- PRODUCTS GRID -->
+  <section class="products-section">
+    <div class="wrap">
+      <div class="products-grid" id="products-container">
+        <!-- 8 Sản phẩm sẽ tự động tạo qua Script bên dưới -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL XEM CHI TIẾT SẢN PHẨM -->
+  <div class="product-modal" id="productModal" onclick="closeModalOnBg(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      <img class="modal-hero-img" id="pImage" src="" alt="FIN BIZ Product">
+      <div class="modal-body">
+        <span class="modal-code" id="pCode">FINBIZ-PRODUCT</span>
+        <h2 class="modal-title" id="pTitle">Tên sản phẩm</h2>
+        
+        <div class="product-spec-grid">
+          <div class="spec-item">
+            <span class="spec-label">Hạn mức vay</span>
+            <span class="spec-val" id="pLimit">Lên tới 80%</span>
           </div>
-          <ul class="hero-meta">
-            <li>Hạn mức tư vấn linh hoạt</li>
-            <li>Phù hợp SME và doanh nghiệp phát triển</li>
-            <li>Phân tích theo hồ sơ thực tế</li>
-          </ul>
+          <div class="spec-item">
+            <span class="spec-label">Thời hạn tín dụng</span>
+            <span class="spec-val" id="pTerm">Lên tới 12 - 36 tháng</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Tài sản bảo đảm</span>
+            <span class="spec-val" id="pCollateral">Linh hoạt</span>
+          </div>
         </div>
 
-        <div class="hero-panel" aria-label="Thông tin sản phẩm nổi bật">
-          <div class="hero-panel-top">
-            <span class="chip">Nổi bật</span>
-            <span style="color: var(--muted); font-size: 12px;">Tư vấn cá nhân hóa</span>
-          </div>
-          <ul class="panel-kpi">
-            <li><span>Trao đổi</span><strong>Theo nhu cầu</strong></li>
-            <li><span>Rà soát</span><strong>Hồ sơ</strong></li>
-            <li><span>Định hướng</span><strong>Phù hợp</strong></li>
-          </ul>
-          <div class="panel-foot">Phương án được xây dựng dựa trên cấu trúc nợ hiện tại, dòng tiền và mục tiêu phát triển của từng doanh nghiệp.</div>
+        <div class="modal-content" id="pContent">
+          <!-- Chi tiết nội dung sản phẩm -->
+        </div>
+
+        <div class="modal-cta-box">
+          <h4>Cần tư vấn gói sản phẩm tài chính này?</h4>
+          <p>Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích nhu cầu và lập phương án cấp hạn mức tối ưu nhất cho bạn.</p>
+          <a href="dang-ky-vay.html" class="btn-modal-action">Đăng ký nhận tư vấn sản phẩm ↗</a>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main>
-    <section class="stats" aria-label="Thống kê nhanh">
-      <div class="wrap stats-inner">
-        <div class="stats-intro">Thấu hiểu nợ vay,<br>để doanh nghiệp đi đúng hướng.</div>
-        <div class="stat-item"><span class="stat-no">01</span><span class="stat-label">Rà soát hồ sơ và điểm yếu thực tế</span></div>
-        <div class="stat-item"><span class="stat-no">02</span><span class="stat-label">Xây dựng phương án theo dòng tiền</span></div>
-        <div class="stat-item"><span class="stat-no">03</span><span class="stat-label">Đồng hành từ hồ sơ đến kết nối đối tác</span></div>
-      </div>
-    </section>
-
-    <section class="products" id="products">
-      <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Sản phẩm</p>
-            <h2 class="section-title">Tám hướng tư vấn, bắt đầu từ dòng tiền.</h2>
-          </div>
-          <p class="section-lead">Mỗi mục là một bài toán để FIN BIZ cùng doanh nghiệp rà soát. Đây không phải cam kết khoản vay hay điều kiện cấp vốn.</p>
-        </div>
-
-        <div class="products-grid">
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=dong-tien-van-hanh">
-              <div class="solution-art" aria-hidden="true"><span class="solution-art-label">01 / VẬN HÀNH</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">DÒNG TIỀN</span></div>
-                <h3>Vốn vận hành</h3>
-                <p>Khoanh rõ thời điểm chi, thu và phần vốn cần cho chu kỳ hoạt động.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=von-theo-don-hang">
-              <div class="solution-art solution-art--order" aria-hidden="true"><span class="solution-art-label">02 / ĐƠN HÀNG</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">THƯƠNG MẠI</span></div>
-                <h3>Vốn theo đơn hàng</h3>
-                <p>Đối chiếu giá trị đơn, lịch giao, điều khoản thanh toán và vốn đối ứng.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=khoan-phai-thu">
-              <div class="solution-art solution-art--receivables" aria-hidden="true"><span class="solution-art-label">03 / CÔNG NỢ</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">HÓA ĐƠN</span></div>
-                <h3>Khoản phải thu</h3>
-                <p>Rà soát hóa đơn, nghiệm thu, lịch thanh toán và tình hình công nợ.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=von-mua-vu">
-              <div class="solution-art solution-art--seasonal" aria-hidden="true"><span class="solution-art-label">04 / MÙA VỤ</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">KẾ HOẠCH</span></div>
-                <h3>Vốn theo mùa vụ</h3>
-                <p>Lập dòng tiền cho giai đoạn cao điểm, thấp điểm và chu kỳ nhập hàng.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=mo-rong-cong-suat">
-              <div class="solution-art solution-art--expansion" aria-hidden="true"><span class="solution-art-label">05 / ĐẦU TƯ</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">TĂNG TRƯỞNG</span></div>
-                <h3>Mở rộng công suất</h3>
-                <p>Đánh giá kế hoạch thiết bị, mặt bằng và khả năng cân đối dòng tiền.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=von-ban-le">
-              <div class="solution-art solution-art--retail" aria-hidden="true"><span class="solution-art-label">06 / BÁN LẺ</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">NHIỀU ĐIỂM BÁN</span></div>
-                <h3>Vốn cho bán lẻ</h3>
-                <p>Nhìn rõ tồn kho, doanh thu và chi phí theo cửa hàng hoặc địa điểm.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=ho-kinh-doanh">
-              <div class="solution-art solution-art--household" aria-hidden="true"><span class="solution-art-label">07 / HỘ KINH DOANH</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">HOẠT ĐỘNG THỰC TẾ</span></div>
-                <h3>Vốn hộ kinh doanh</h3>
-                <p>Hệ thống lại hoạt động, thu chi và giấy tờ hiện có trước khi tìm hiểu vốn.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-          <article class="product-card">
-            <a class="product-card-link" href="san-pham-chi-tiet.html?giai-phap=ra-soat-khoan-vay">
-              <div class="solution-art solution-art--debt" aria-hidden="true"><span class="solution-art-label">08 / CẤU TRÚC NỢ</span></div>
-              <div class="product-card-content"><div class="product-card-heading"><span class="product-index">RÀ SOÁT</span></div>
-                <h3>Cơ cấu khoản vay</h3>
-                <p>Đặt lịch trả nợ, chi phí và dòng tiền cạnh nhau để xác định điểm cần xử lý.</p>
-              </div>
-              <span class="product-meta" aria-hidden="true">↗</span>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="comparison">
-      <div class="wrap comparison-inner">
-        <div class="comparison-copy">
-          <p class="eyebrow">Phù hợp từng giai đoạn</p>
-          <h2 class="section-title">Nội dung sản phẩm được thiết kế cho doanh nghiệp đang ở các bước khác nhau.</h2>
-          <p>Không phải doanh nghiệp nào cũng cần cùng một giải pháp. Một số cần cân bằng dòng tiền, số khác cần tái cơ cấu nợ, và còn có nhóm cần chuẩn bị hồ sơ ra mắt với đối tác tài chính.</p>
-        </div>
-
-        <div class="compare-table" aria-label="Bảng so sánh sản phẩm">
-          <div class="compare-row header">
-            <span>Giai đoạn</span>
-            <span>Vấn đề chính</span>
-            <span>Giải pháp</span>
-            <span>Hướng đi</span>
-          </div>
-          <div class="compare-row">
-            <span>Doanh nghiệp mới</span>
-            <span>Thiếu dữ liệu tài chính</span>
-            <span><span class="pill">Đánh giá sơ bộ</span></span>
-            <span>Chuẩn bị hồ sơ</span>
-          </div>
-          <div class="compare-row">
-            <span>Đang vận hành</span>
-            <span>Áp lực trả nợ</span>
-            <span><span class="pill">Cơ cấu nợ</span></span>
-            <span>Giảm chi phí</span>
-          </div>
-          <div class="compare-row">
-            <span>Đang mở rộng</span>
-            <span>Dòng tiền chậm</span>
-            <span><span class="pill">Tài trợ vốn</span></span>
-            <span>Tăng trưởng</span>
-          </div>
-          <div class="compare-row">
-            <span>Đã ổn định</span>
-            <span>Muốn tối ưu cơ cấu</span>
-            <span><span class="pill">Kết nối đối tác</span></span>
-            <span>Chiến lược dài hạn</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="benefits">
-      <div class="wrap">
-        <p class="eyebrow">Lợi ích</p>
-        <h2 class="section-title">Mỗi phương án đều tập trung vào 3 yếu tố then chốt.</h2>
-        <div class="benefits-grid">
-          <article class="benefit">
-            <span class="benefit-mark" aria-hidden="true">✓</span>
-            <h3>Đánh giá đúng</h3>
-            <p>Hiểu rõ tình hình nợ, dòng tiền và khả năng thanh toán trước khi đưa ra phương án.</p>
-          </article>
-          <article class="benefit">
-            <span class="benefit-mark" aria-hidden="true">✓</span>
-            <h3>Phương án thực tế</h3>
-            <p>Không đưa ra lời khuyên chung chung, mà dựa trên hồ sơ và mục tiêu kinh doanh thực tế.</p>
-          </article>
-          <article class="benefit">
-            <span class="benefit-mark" aria-hidden="true">✓</span>
-            <h3>Đồng hành rõ ràng</h3>
-            <p>Doanh nghiệp luôn rõ từng bước, từ đánh giá đến khi cần trao đổi với đối tác tài chính.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="process">
-      <div class="wrap">
-        <p class="eyebrow">Quy trình</p>
-        <h2 class="section-title">Bốn bước rõ ràng để tìm giải pháp phù hợp.</h2>
-        <div class="process-grid">
-          <article class="step-card">
-            <span class="step-num">01</span>
-            <h3>Đánh giá hiện trạng</h3>
-            <p>Rà soát khoản vay, kỳ hạn, tài sản đảm bảo và áp lực thanh toán hiện tại.</p>
-          </article>
-          <article class="step-card">
-            <span class="step-num">02</span>
-            <h3>Phân tích dòng tiền</h3>
-            <p>Đối chiếu lịch trả nợ, doanh thu và nhu cầu vốn để xác định hướng đi phù hợp.</p>
-          </article>
-          <article class="step-card">
-            <span class="step-num">03</span>
-            <h3>Đề xuất phương án</h3>
-            <p>Trình bày lựa chọn tài chính, điều kiện và điểm cần lưu ý dựa trên thực tế tài chính.</p>
-          </article>
-          <article class="step-card">
-            <span class="step-num">04</span>
-            <h3>Tiếp cận đối tác</h3>
-            <p>Chuẩn bị hồ sơ và hỗ trợ trao đổi với doanh nghiệp để tăng hiệu quả gặp gỡ.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq" id="faq">
-      <div class="wrap faq-grid">
-        <div>
-          <p class="eyebrow">Hỏi đáp</p>
-          <h2 class="section-title">Bắt đầu từ những điều cần rõ.</h2>
-          <p class="section-lead">Một số câu hỏi phổ biến trước khi doanh nghiệp xác định hướng đi phù hợp.</p>
-        </div>
-        <div class="faq-list">
-          <details class="faq-item" open>
-            <summary>FIN BIZ có cam kết được khoản vay không?</summary>
-            <p>Không. Quyết định cấp vốn thuộc về tổ chức cho vay và tùy thuộc vào hồ sơ, điều kiện, dòng tiền và rủi ro thực tế của doanh nghiệp. Mục tiêu của FIN BIZ là giúp doanh nghiệp hiểu rõ, chuẩn bị tốt hơn và đưa ra lựa chọn sáng suốt.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Doanh nghiệp có cần hồ sơ hoàn chỉnh trước khi trao đổi?</summary>
-            <p>Không bắt buộc. Buổi trao đổi đầu tiên có thể bắt đầu từ mục tiêu vốn, tình hình hiện tại và những bất cập trong cấu trúc nợ. Từ đó, doanh nghiệp có thể nắm rõ cần chuẩn bị thêm những thông tin nào.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Sản phẩm này phù hợp cho doanh nghiệp nhỏ và vừa không?</summary>
-            <p>Có. FIN BIZ tập trung vào doanh nghiệp nhỏ và vừa đang cần cân bằng dòng tiền, tối ưu cấu trúc nợ hoặc chuẩn bị cho giai đoạn tăng trưởng. Các phương án luôn được điều chỉnh theo thực trạng thực tế.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Thông tin tài chính có được bảo mật?</summary>
-            <p>Có. Toàn bộ thông tin trao đổi chỉ được sử dụng cho mục đích tư vấn và phân tích. FIN BIZ luôn ưu tiên sự minh bạch, bảo mật và tôn trọng dữ liệu doanh nghiệp.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="wrap contact-inner">
-        <div>
-          <p class="eyebrow">Kết nối</p>
-          <h2 class="section-title">Cùng làm rõ bài toán tài chính của bạn.</h2>
-          <p class="contact-copy">Hãy chia sẻ tình hình hiện tại, mục tiêu vốn và những điểm doanh nghiệp đang gặp khó khăn. FIN BIZ sẽ hỗ trợ bạn định hình hướng đi phù hợp nhất.</p>
-          <div class="contact-details">
-            <a href="tel:+84358608830">0358 608 830</a>
-            <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
-          </div>
-        </div>
-        <a class="button" href="mailto:nguyentung1809@outlook.com?subject=Yeu%20cau%20tu%20van%20tai%20chinh">Gửi email tư vấn <span class="button-arrow" aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-  </main>
-
+  <!-- FOOTER -->
   <footer>
     <div class="wrap footer-inner">
-      <span class="footer-brand"><img class="footer-logo" src="LOGO.png" alt="" width="38" height="38">FIN BIZ · TÀI CHÍNH &amp; TƯ VẤN</span>
-      <span>© 2026 FIN BIZ. Nội dung mang tính chất tham khảo.</span>
+      <div class="footer-brand">
+        <img class="footer-logo" src="LOGO.png" alt="Logo FIN BIZ">
+        <span>FIN BIZ</span>
+      </div>
       <div class="footer-links">
-        <a href="index.html#services">Dịch vụ</a>
+        <a href="index.html">Trang chủ</a>
         <a href="san-pham.html">Sản phẩm</a>
-        <a href="vay-von-theo-khu-vuc.html">Vay vốn theo khu vực</a>
-        <a href="vay-von-theo-nganh-nghe.html">Vay vốn theo ngành nghề</a>
-        <a href="ho-so-dieu-kien-vay.html">Hồ sơ và điều kiện vay</a>
-        <a href="kien-thuc-vay-von.html">Kiến thức</a>
-        <a href="tin-tuc.html">Tin tức</a>
-        <a href="index.html#contact">Liên hệ</a>
+        <a href="kien-thuc.html">Kiến thức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
       </div>
     </div>
   </footer>
 
+  <!-- FLOATING CONTACT WIDGET -->
+  <div class="floating-widget" aria-label="Kênh liên hệ nhanh">
+    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat Zalo">Zalo</a>
+    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <!-- SCRIPT DỮ LIỆU & HIỂN THỊ 8 SẢN PHẨM -->
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('#main-menu');
+    function toggleMobileMenu() {
+      const menu = document.getElementById('main-menu');
+      menu.classList.toggle('mobile-open');
+    }
 
-    if (menuToggle && menu) {
-      menuToggle.addEventListener('click', () => {
-        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', String(!isOpen));
-        menuToggle.setAttribute('aria-label', isOpen ? 'Mở menu' : 'Đóng menu');
-        menu.classList.toggle('is-open', !isOpen);
-      });
+    // Danh sách 8 Sản phẩm chuẩn mực mô hình tín dụng doanh nghiệp
+    const products = [
+      {
+        id: 1,
+        code: "FINBIZ - AR FLEX",
+        title: "Tài trợ Thế chấp Quyền đòi nợ (Khoản phải thu)",
+        limit: "Tối đa 85% giá trị hóa đơn",
+        term: "Tối đa 6 - 12 tháng",
+        collateral: "Hợp đồng & Hóa đơn đầu ra",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+        description: "Giải pháp chuyển đổi các khoản phải thu từ hợp đồng bán hàng thành nguồn vốn lưu động tức thì mà không cần thế chấp Bất động sản.",
+        details: `
+          <p>Sản phẩm <strong>FINBIZ - AR FLEX</strong> hỗ trợ doanh nghiệp giải tỏa áp lực đọng vốn khi bán hàng trả chậm cho đối tác lớn, giúp biến các hóa đơn tài chính thành nguồn vốn vận hành quay vòng nhanh chóng.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Tỷ lệ tài trợ lên đến 85% giá trị hóa đơn/nghiệm thu.</li>
+            <li>Không bắt buộc thế chấp thêm Bất động sản hay xe cộ.</li>
+            <li>Giải ngân linh hoạt theo từng đợt giao hàng hoặc nghiệm thu.</li>
+            <li>Lãi suất tính theo số ngày sử dụng vốn thực tế.</li>
+          </ul>
+          <h3>Đối tượng áp dụng:</h3>
+          <p>Doanh nghiệp sản xuất, thương mại, xây dựng có hợp đồng kinh tế và lịch sử giao dịch ổn định với các đối tác mua hàng uy tín.</p>
+        `
+      },
+      {
+        id: 2,
+        code: "FINBIZ - PO FINANCE",
+        title: "Tài trợ Vốn theo Đơn hàng & Hợp đồng",
+        limit: "Tối đa 70% giá trị PO/Hợp đồng",
+        term: "Theo chu kỳ đơn hàng",
+        collateral: "Quyền tài sản từ Hợp đồng",
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+        description: "Cấp nguồn vốn kịp thời để nhập nguyên vật liệu, sản xuất và thực hiện các đơn hàng kinh tế có quy mô lớn.",
+        details: `
+          <p>Sản phẩm <strong>Tài trợ Vốn theo Đơn hàng</strong> giúp doanh nghiệp tự tin tiếp nhận các đơn hàng có giá trị lớn mà không lo thiếu hụt vốn mua nguyên vật liệu hoặc chi phí nhân công ban đầu.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Bổ sung vốn lưu động ngay khi ký kết hợp đồng/đơn hàng (PO).</li>
+            <li>Mức cấp hạn mức tín dụng linh hoạt theo từng hợp đồng cụ thể.</li>
+            <li>Thu nợ trực tiếp từ nguồn thanh toán của bên mua hàng.</li>
+          </ul>
+          <h3>Đối tượng áp dụng:</h3>
+          <p>Các Doanh nghiệp cung ứng hàng hóa, nhà thầu xây lắp, nhà gia công có hợp đồng trúng thầu hoặc đơn hàng xác nhận chính thức.</p>
+        `
+      },
+      {
+        id: 3,
+        code: "FINBIZ - WORKING CAPITAL",
+        title: "Tài trợ Vốn vận hành Thường xuyên (Hạn mức)",
+        limit: "Theo dòng tiền thu chi",
+        term: "Hạn mức 12 tháng",
+        collateral: "BĐS, Động sản, Máy móc",
+        image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+        description: "Gói hạn mức tín dụng lưu động tuần hoàn giúp doanh nghiệp chủ động chi trả lương, chi phí quản lý và nhập hàng định kỳ.",
+        details: `
+          <p>Cung cấp hạn mức vay vốn lưu động quay vòng trong vòng 12 tháng, giúp doanh nghiệp hoàn toàn chủ động rút vốn và trả nợ linh hoạt theo nhịp kinh doanh thực tế.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Rút vốn và trả nợ nhiều lần trong thời hạn cam kết.</li>
+            <li>Đa dạng tài sản thế chấp: Bất động sản, phương tiện vận tải, máy móc thiết bị.</li>
+            <li>Thủ tục rút vốn đơn giản, giải ngân nhanh trong ngày.</li>
+          </ul>
+        `
+      },
+      {
+        id: 4,
+        code: "FINBIZ - DEBT RESTRUCT",
+        title: "Tái cơ cấu & Chuyển đổi Khoản vay Ưu đãi",
+        limit: "100% dư nợ hiện tại",
+        term: "Lên tới 60 - 120 tháng",
+        collateral: "Tài sản đảm bảo hiện có",
+        image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
+        description: "Tư vấn và hỗ trợ tái cấu trúc kỳ hạn trả nợ, chuyển đổi khoản vay sang ngân hàng có lãi suất thấp hơn để giảm áp lực tài chính.",
+        details: `
+          <p>Dành cho các doanh nghiệp đang chịu áp lực chi phí lãi vay cao hoặc lịch trả gốc ngắn hạn không phù hợp với dòng tiền thực tế hiện tại.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Giảm chi phí lãi vay hàng tháng từ 1.5% - 3.5%/năm.</li>
+            <li>Kéo dài kỳ hạn trả nợ gốc để giảm bớt gánh nặng dòng tiền.</li>
+            <li>Hỗ trợ chuyển đổi toàn bộ dư nợ sang ngân hàng đối tác ưu đãi.</li>
+          </ul>
+        `
+      },
+      {
+        id: 5,
+        code: "FINBIZ - CAPEX LOAN",
+        title: "Vốn Đầu tư Tài sản cố định & Mở rộng",
+        limit: "Tối đa 75% tổng vốn đầu tư",
+        term: "Trung - Dài hạn (3 - 7 năm)",
+        collateral: "BĐS hoặc TS hình thành từ vốn vay",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+        description: "Nguồn vốn trung và dài hạn hỗ trợ doanh nghiệp mua sắm máy móc dây chuyền, xưởng sản xuất và mở rộng quy mô kinh doanh.",
+        details: `
+          <p>Tài trợ dài hạn dành riêng cho kế hoạch mở rộng nhà xưởng, mua sắm phương tiện vận tải, máy móc thiết bị hiện đại phục vụ nâng cao năng suất.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Thời gian vay dài hạn giúp phân bổ chi phí đầu tư hợp lý.</li>
+            <li>Cho phép thế chấp bằng chính tài sản hình thành từ vốn vay.</li>
+            <li>Ân hạn nợ gốc từ 6 - 12 tháng đầu tiên.</li>
+          </ul>
+        `
+      },
+      {
+        id: 6,
+        code: "FINBIZ - GUARANTEE",
+        title: "Bảo lãnh Ngân hàng & Tín dụng Thư (LC)",
+        limit: "Không giới hạn theo phương án",
+        term: "Linh hoạt theo Hợp đồng",
+        collateral: "Ký quỹ hoặc Tài sản bảo đảm",
+        image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
+        description: "Phát hành bảo lãnh dự thầu, bảo lãnh thực hiện hợp đồng, bảo lãnh tạm ứng và mở LC xuất nhập khẩu giá rẻ.",
+        details: `
+          <p>Hỗ trợ doanh nghiệp phát hành nhanh chóng các loại chứng thư bảo lãnh tín dụng ngân hàng với mức phí cực kỳ ưu đãi và tỷ lệ ký quỹ tối thiểu.</p>
+          <h3>Các hình thức bảo lãnh:</h3>
+          <ul>
+            <li>Bảo lãnh dự thầu / Bảo lãnh thực hiện hợp đồng.</li>
+            <li>Bảo lãnh tạm ứng & Bảo lãnh bảo hành chất lượng công trình.</li>
+            <li>Tín dụng thư L/C trả chậm / LC trả ngay cho doanh nghiệp xuất nhập khẩu.</li>
+          </ul>
+        `
+      },
+      {
+        id: 7,
+        code: "FINBIZ - RETAIL & SME",
+        title: "Tín dụng Cho Hộ kinh doanh & DNTN nhỏ",
+        limit: "Từ 200 Triệu đến 5 Tỷ VNĐ",
+        term: "Lên tới 36 - 60 tháng",
+        collateral: "Linh hoạt theo thực địa kinh doanh",
+        image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
+        description: "Gói giải pháp tài chính đơn giản hóa thủ tục chứng minh thu nhập dành cho Hộ kinh doanh cá thể và Doanh nghiệp siêu nhỏ.",
+        details: `
+          <p>Giải pháp tháo gỡ vướng mắc cho các hộ kinh doanh gia đình, cửa hàng bán lẻ không có đầy đủ sổ sách kế toán chuẩn mực theo quy định.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Thẩm định dựa trên doanh thu và dòng tiền bán hàng thực tế.</li>
+            <li>Thủ tục tinh gọn, duyệt và giải ngân siêu tốc trong 48 giờ.</li>
+            <li>Được chuyên gia tư vấn lộ trình chuyển đổi lên mô hình Doanh nghiệp.</li>
+          </ul>
+        `
+      },
+      {
+        id: 8,
+        code: "FINBIZ - DISCOUNT LC",
+        title: "Chiết khấu Bộ chứng từ L/C & Xuất nhập khẩu",
+        limit: "Tối đa 95% trị giá L/C",
+        term: "Theo thời hạn của L/C",
+        collateral: "Bộ chứng từ L/C hợp lệ",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+        description: "Ứng trước tiền bán hàng xuất khẩu ngay khi giao hàng và xuất trình bộ chứng từ L/C hợp lệ cho ngân hàng.",
+        details: `
+          <p>Hỗ trợ các doanh nghiệp xuất khẩu nhận tiền thanh toán ngay lập tức mà không cần chờ đợi đến thời hạn thanh toán L/C trả chậm của ngân hàng người mua.</p>
+          <h3>Lợi ích nổi bật:</h3>
+          <ul>
+            <li>Tỷ lệ chiết khấu cao lên tới 95% trị giá L/C.</li>
+            <li>Miễn trừ rủi ro tỷ giá và rủi ro thanh toán từ đối tác nước ngoài.</li>
+            <li>Tăng tốc độ vòng quay vốn lưu động cho doanh nghiệp xuất khẩu.</li>
+          </ul>
+        `
+      }
+    ];
 
-      menu.addEventListener('click', (event) => {
-        if (event.target.closest('a')) {
-          menuToggle.setAttribute('aria-expanded', 'false');
-          menuToggle.setAttribute('aria-label', 'Mở menu');
-          menu.classList.remove('is-open');
-        }
+    function renderProducts() {
+      const container = document.getElementById('products-container');
+      container.innerHTML = '';
+
+      products.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.onclick = () => openProductModal(p.id);
+        card.innerHTML = `
+          <div class="product-thumb-wrap">
+            <img class="product-thumb" src="${p.image}" alt="${p.title}" loading="lazy">
+          </div>
+          <div class="product-content">
+            <span class="product-code">${p.code}</span>
+            <h2 class="product-title">${p.title}</h2>
+            <p class="product-desc">${p.description}</p>
+            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+          </div>
+        `;
+        container.appendChild(card);
       });
     }
+
+    function openProductModal(id) {
+      const p = products.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('pImage').src = p.image;
+      document.getElementById('pCode').innerText = p.code;
+      document.getElementById('pTitle').innerText = p.title;
+      document.getElementById('pLimit').innerText = p.limit;
+      document.getElementById('pTerm').innerText = p.term;
+      document.getElementById('pCollateral').innerText = p.collateral;
+      document.getElementById('pContent').innerHTML = p.details;
+
+      document.getElementById('productModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target.id === 'productModal') {
+        closeProductModal();
+      }
+    }
+
+    // Khởi tạo hiển thị 8 sản phẩm
+    renderProducts();
   </script>
 </body>
 </html>
