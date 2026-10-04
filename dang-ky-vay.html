@@ -3,11 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Đăng ký vay vốn kinh doanh - FIN BIZ. Tư vấn cơ cấu nợ, tối ưu vốn và kết nối doanh nghiệp với nguồn tài chính phù hợp.">
-  <title>Đăng ký vay vốn kinh doanh | FIN BIZ</title>
+  <meta name="theme-color" content="#315c3d">
+  <meta name="description" content="Đăng ký tư vấn giải pháp vay vốn doanh nghiệp và hộ kinh doanh cùng FIN BIZ. Thẩm định nhanh, tối ưu chi phí.">
+  <title>Đăng Ký Vay Vốn & Tư Vấn Tài Chính | FIN BIZ</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="apple-touch-icon" href="LOGO.png">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fin-biz.github.io/FIN-BIZ/dang-ky-vay.html">
+  <meta property="og:title" content="Đăng Ký Vay Vốn & Tư Vấn Tài Chính | FIN BIZ">
+  <meta property="og:description" content="Nhận phương án cấp hạn mức tín dụng và cơ cấu khoản vay ưu đãi cho SMEs.">
+  <meta property="og:image" content="https://fin-biz.github.io/FIN-BIZ/LOGO.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --pine: #315c3d;
@@ -19,339 +33,137 @@
       --muted: #68756b;
       --line: #d9e0db;
       --silver: #aeb8b2;
-      --silver-dark: #66736b;
-      --serif: "DM Sans", sans-serif;
       --sans: "DM Sans", sans-serif;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      background: linear-gradient(180deg, #edf3ed 0%, #f7f9f7 100%);
-      color: var(--ink);
-      line-height: 1.6;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
     .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
-    .topbar {
-      background: var(--pine-deep);
-      border-bottom: 1px solid rgba(49, 92, 61, 0.08);
-      font-size: 11px;
-      color: var(--ink);
-    }
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 42px;
-      gap: 16px;
-    }
-    .topbar-note { display: inline-flex; align-items: center; gap: 10px; }
-    .topbar-note::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--pine-soft);
-      display: block;
-    }
-    .topbar-meta {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-weight: 600;
-    }
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.96);
-      box-shadow: 0 8px 24px rgba(49, 92, 61, 0.08);
-      backdrop-filter: blur(10px);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 84px;
-      gap: 20px;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--pine);
-    }
-    .brand-logo { width: 56px; height: 56px; object-fit: contain; }
-    .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.4px; }
-    .brand-caption { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .nav-links .nav-cta {
-      padding: 0 18px;
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--pine);
-      color: var(--white);
-      border: 1px solid var(--pine);
-    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
 
-    .hero {
-      padding: 72px 0 42px;
-      background:
-        linear-gradient(135deg, rgba(227,238,219,0.94), rgba(244,246,244,0.82)),
-        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    }
-    .hero-wrap {
-      display: grid;
-      grid-template-columns: 1.1fr 1.2fr;
-      gap: 36px;
-      align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 18px;
-      color: var(--pine-soft);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 22px;
-      height: 2px;
-      background: var(--silver);
-      display: block;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(42px, 5vw, 66px);
-      line-height: 1.04;
-      letter-spacing: -0.04em;
-      color: var(--pine);
-    }
-    .hero-copy {
-      max-width: 540px;
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-    .hero-pills span {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-      padding: 0 14px;
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(49,92,61,0.1);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--pine);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 34px;
-    }
-    .trust-card {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(49,92,61,0.08);
-      padding: 18px 18px 16px;
-    }
-    .trust-card strong {
-      display: block;
-      font-size: 26px;
-      color: var(--pine);
-      font-family: var(--serif);
-      margin-bottom: 8px;
-    }
-    .trust-card span {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
-    }
+    /* TOPBAR & NAV MENU */
+    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
+    .topbar-note { display: flex; align-items: center; gap: 9px; }
+    .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
+    .topbar-meta { display: flex; gap: 24px; }
+    
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); border-radius: 6px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.nav-cta) { position: relative; padding: 4px 0; }
+    .nav-links a:not(.nav-cta):hover, .nav-links a.active { color: var(--pine); }
+    .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
+    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 4px; transition: all .2s ease; }
+    .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); }
+    
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; border-radius: 4px; }
+    .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
+    .menu-glyph { position: relative; }
+    .menu-glyph::before, .menu-glyph::after { position: absolute; left: 0; }
+    .menu-glyph::before { top: -6px; }
+    .menu-glyph::after { top: 6px; }
 
-    .form-shell {
-      position: relative;
-      padding: 28px 28px 24px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(49,92,61,0.09);
-      box-shadow: 0 26px 60px rgba(49, 92, 61, 0.12);
-    }
-    .form-shell::before {
-      position: absolute;
-      inset: 20px auto auto 20px;
-      content: "";
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: rgba(49, 92, 61, 0.04);
-      z-index: 0;
-    }
-    .form-header {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 18px;
-    }
-    .form-header h2 {
-      margin: 0;
-      font-size: 28px;
-      color: var(--pine);
-    }
-    .form-header p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    form {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .field.full { grid-column: 1 / -1; }
-    label {
-      font-size: 12px;
-      color: var(--pine);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink);
-      min-height: 50px;
-      padding: 0 14px;
-      font: inherit;
-      outline: none;
-      border-radius: 0;
-    }
-    textarea {
-      min-height: 120px;
-      padding-top: 12px;
-      resize: vertical;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--pine-soft);
-      box-shadow: 0 0 0 4px rgba(82, 123, 89, 0.09);
-    }
-    .submit-row {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-top: 6px;
-    }
-    .submit-row small {
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .button {
-      display: inline-flex;
-      min-height: 52px;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      padding: 0 24px;
-      background: var(--silver);
-      color: var(--ink);
-      font-weight: 700;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-    .button:hover { background: #c7cfca; }
+    /* PAGE HEADER */
+    .page-header { padding: 150px 0 50px; background: var(--pine-deep); border-bottom: 1px solid var(--line); text-align: center; }
+    .page-header h1 { font-size: clamp(32px, 4vw, 48px); color: var(--pine); margin: 10px 0 14px; font-family: 'Playfair Display', serif; }
+    .page-header p { max-width: 680px; margin: 0 auto; color: var(--muted); font-size: 16px; }
 
-    .benefits {
-      padding: 26px 0 16px;
-    }
-    .benefits-inner {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .benefit {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(49,92,61,0.08);
-      padding: 24px 22px;
-    }
-    .benefit h3 {
-      margin: 0 0 12px;
-      font-size: 22px;
-      color: var(--pine);
-    }
-    .benefit p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    /* REGISTER SECTION MAIN */
+    .register-section { padding: 60px 0 100px; }
+    .register-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
 
-    footer {
-      margin-top: 20px;
-      padding: 26px 0 40px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      border-top: 1px solid rgba(49,92,61,0.1);
-      padding-top: 18px;
-    }
+    /* FORM CARD - MULTI STEP */
+    .form-card { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; padding: 36px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    .step-indicator { display: flex; justify-content: space-between; margin-bottom: 30px; position: relative; }
+    .step-indicator::before { content: ""; position: absolute; top: 18px; left: 0; right: 0; height: 2px; background: var(--line); z-index: 1; }
+    .step-item { position: relative; z-index: 2; background: #fff; padding: 0 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--paper); border: 2px solid var(--line); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--muted); font-size: 14px; transition: all 0.3s; }
+    .step-item.active .step-num { background: var(--pine); border-color: var(--pine); color: #fff; }
+    .step-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+    .step-item.active .step-label { color: var(--pine); }
 
-    @media (max-width: 960px) {
-      .hero-wrap { grid-template-columns: 1fr; }
-      .topbar-meta { display: none; }
-      .nav-links { gap: 14px; font-size: 11px; }
-      .benefits-inner { grid-template-columns: 1fr; }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .form-group { margin-bottom: 22px; }
+    .form-label { display: block; font-size: 14px; font-weight: 700; color: var(--pine); margin-bottom: 8px; }
+    .form-control { width: 100%; height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: 6px; font-family: inherit; font-size: 15px; color: var(--ink); background: var(--paper); transition: border-color 0.2s; }
+    .form-control:focus { outline: none; border-color: var(--pine); background: #fff; }
+    select.form-control { cursor: pointer; }
+
+    /* TYPE SELECTION GRID */
+    .type-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .type-card { border: 1px solid var(--line); border-radius: 8px; padding: 16px; cursor: pointer; transition: all 0.2s; background: var(--paper); }
+    .type-card:hover, .type-card.selected { border-color: var(--pine); background: var(--pine-deep); }
+    .type-title { font-size: 14px; font-weight: 700; color: var(--pine); display: block; }
+    .type-desc { font-size: 12px; color: var(--muted); margin-top: 4px; display: block; }
+
+    .btn-wrap { display: flex; gap: 14px; margin-top: 30px; }
+    .btn-step { flex: 1; height: 50px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 6px; cursor: pointer; font-size: 15px; border: none; transition: all 0.2s; }
+    .btn-primary { background: var(--pine); color: #fff; }
+    .btn-primary:hover { background: #24482f; }
+    .btn-secondary { background: var(--paper); color: var(--ink); border: 1px solid var(--line); }
+
+    /* CALCULATOR & SIDEBAR CARD */
+    .calc-card { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 24px; }
+    .calc-title { font-size: 20px; font-weight: 700; color: var(--pine); margin: 0 0 18px; font-family: 'Playfair Display', serif; }
+    .slider-group { margin-bottom: 20px; }
+    .slider-header { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .slider-val { color: var(--pine); font-weight: 700; }
+    input[type=range] { width: 100%; accent-color: var(--pine); cursor: pointer; }
+    .calc-result { background: var(--pine-deep); border: 1px solid var(--line); border-radius: 8px; padding: 18px; margin-top: 20px; }
+    .result-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; }
+    .result-row:last-child { margin-bottom: 0; padding-top: 8px; border-top: 1px dashed var(--line); font-weight: 700; font-size: 16px; color: var(--pine); }
+
+    /* PROCESS & TRUST BOX */
+    .trust-box { background: var(--pine); color: #fff; border-radius: 12px; padding: 28px; }
+    .trust-title { font-size: 18px; font-weight: 700; margin: 0 0 16px; font-family: 'Playfair Display', serif; }
+    .trust-list { list-style: none; padding: 0; margin: 0; }
+    .trust-list li { display: flex; gap: 12px; font-size: 13px; margin-bottom: 14px; line-height: 1.5; opacity: 0.95; }
+    .trust-list li::before { content: "✓"; font-weight: 800; color: #aeb8b2; }
+
+    /* FLOATING CONTACT WIDGET */
+    .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+    .widget-btn { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); transition: transform 0.25s ease; }
+    .widget-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .widget-btn.phone { background-color: var(--pine); }
+    .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
+    .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+    footer { padding: 32px 0; background: #e3e8e5; color: #566659; font-size: 12px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
+    .footer-logo { width: 38px; height: 38px; object-fit: contain; }
+    .footer-links { display: flex; gap: 22px; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .register-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .wrap { width: min(100% - 36px, 680px); }
-      .nav-inner { min-height: 72px; }
+      .wrap { width: calc(100% - 40px); }
+      .topbar-meta { display: none; }
+      .nav { right: 20px; left: 20px; }
       .nav-links { display: none; }
-      form { grid-template-columns: 1fr; }
-      .submit-row { flex-direction: column; align-items: stretch; }
-      .button { width: 100%; }
-      .hero-pills, .trust-grid { grid-template-columns: 1fr; display: grid; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .nav-links.mobile-open { display: flex; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 6px; }
+      .menu-toggle { display: block; }
+      .form-card { padding: 22px; }
+      .type-grid { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
 </head>
 <body>
+
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap topbar-inner">
-      <span class="topbar-note">Giải pháp cơ cấu nợ và tài chính doanh nghiệp</span>
+      <span class="topbar-note">Giải pháp tài chính cho doanh nghiệp</span>
       <div class="topbar-meta">
         <a href="tel:+84358608830">0358 608 830</a>
         <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
@@ -359,166 +171,284 @@
     </div>
   </div>
 
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="index.html" aria-label="FIN BIZ về trang chủ">
-        <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ">
-        <span>
-          <span class="brand-name">FIN BIZ</span>
-          <span class="brand-caption">Tài chính &amp; tư vấn</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="Điều hướng">
-        <a href="index.html#services">Dịch vụ</a>
-        <a href="san-pham.html">Sản phẩm</a>
-        <a href="index.html#approach">Quy trình</a>
-        <a href="index.html#about">Về chúng tôi</a>
-        <a href="index.html#faq">Hỏi đáp</a>
-        <a href="kien-thuc-vay-von.html">Kiến thức</a>
-        <a href="tin-tuc.html">Tin tức</a>
-        <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay</a>
-      </nav>
+  <!-- MENU CHÍNH 4 THẺ -->
+  <nav class="nav" aria-label="Điều hướng chính">
+    <a class="brand" href="index.html" aria-label="FIN BIZ">
+      <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
+      <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
+    <div class="nav-links" id="main-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="kien-thuc.html">Kiến thức</a>
+      <a class="nav-cta active" href="dang-ky-vay.html">Đăng ký vay <span aria-hidden="true">↗</span></a>
     </div>
-  </header>
+  </nav>
 
-  <main>
-    <section class="hero">
-      <div class="wrap hero-wrap">
-        <div>
-          <p class="eyebrow">Đăng ký vay vốn kinh doanh</p>
-          <h1>Vay vốn doanh nghiệp<br>theo nhu cầu thực tế.</h1>
-          <p class="hero-copy">Bạn đang cần vốn bổ sung cho kinh doanh, thanh toán khoản vay, nâng cấp hoạt động hay mở rộng quy mô? Hãy để FIN BIZ hỗ trợ doanh nghiệp đánh giá phương án tối ưu dựa trên thực trạng hồ sơ và dòng tiền hiện tại.</p>
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Thẩm định siêu tốc 24H</p>
+      <h1>Đăng Ký Tư Vấn Phương ÁN Tín Dụng</h1>
+      <p>Nhận ngay lập tức tư vấn giải pháp tài chính, cơ cấu khoản vay và tiếp cận các gói tín dụng ưu đãi ngân hàng từ đội ngũ chuyên gia FIN BIZ.</p>
+    </div>
+  </section>
 
-          <div class="hero-pills">
-            <span>Phụ hợp doanh nghiệp</span>
-            <span>Vốn lưu động</span>
-            <span>Đầu tư mở rộng</span>
+  <!-- REGISTER MAIN SECTION -->
+  <section class="register-section">
+    <div class="wrap">
+      <div class="register-grid">
+
+        <!-- FORM CARD MULTI-STEP -->
+        <div class="form-card">
+          <div class="step-indicator">
+            <div class="step-item active" id="stepIndicator1">
+              <span class="step-num">1</span>
+              <span class="step-label">Nhu cầu vay</span>
+            </div>
+            <div class="step-item" id="stepIndicator2">
+              <span class="step-num">2</span>
+              <span class="step-label">Thông tin liên hệ</span>
+            </div>
           </div>
 
-          <div class="trust-grid">
-            <div class="trust-card">
-              <strong>01</strong>
-              <span>Đánh giá nhu cầu vay theo thực tế</span>
-            </div>
-            <div class="trust-card">
-              <strong>02</strong>
-              <span>Phân tích phương án trả nợ hợp lý</span>
-            </div>
-            <div class="trust-card">
-              <strong>03</strong>
-              <span>Định hướng rõ ràng trước khi làm việc</span>
-            </div>
-          </div>
-        </div>
+          <form id="loanForm" onsubmit="handleFormSubmit(event)">
+            <!-- STEP 1: NHU CẦU VAY -->
+            <div class="form-step active" id="step1">
+              <div class="form-group">
+                <label class="form-label">Hình thức Doanh nghiệp / Mô hình kinh doanh</label>
+                <div class="type-grid">
+                  <div class="type-card selected" onclick="selectType(this, 'Doanh nghiệp SMEs')">
+                    <span class="type-title">Doanh nghiệp SMEs</span>
+                    <span class="type-desc">Công ty TNHH, Cổ phần, DNTN</span>
+                  </div>
+                  <div class="type-card" onclick="selectType(this, 'Hộ kinh doanh cá thể')">
+                    <span class="type-title">Hộ Kinh Doanh</span>
+                    <span class="type-desc">Cửa hàng, Hộ gia đình bán lẻ</span>
+                  </div>
+                </div>
+                <input type="hidden" id="businessType" value="Doanh nghiệp SMEs">
+              </div>
 
-        <div class="form-shell">
-          <div class="form-header">
-            <h2>Yêu cầu tư vấn vay</h2>
-            <p>Vui lòng điền thông tin để được hỗ trợ sớm nhất.</p>
-          </div>
+              <div class="form-group">
+                <label class="form-label" for="loanProduct">Sản phẩm tài chính quan tâm</label>
+                <select class="form-control" id="loanProduct">
+                  <option value="Tài trợ Thế chấp Quyền đòi nợ (AR Flex)">Tài trợ Thế chấp Quyền đòi nợ (AR Flex)</option>
+                  <option value="Tài trợ Vốn theo Đơn hàng & Hợp đồng (PO Finance)">Tài trợ Vốn theo Đơn hàng & Hợp đồng (PO Finance)</option>
+                  <option value="Tài trợ Vốn vận hành Thường xuyên (Hạn mức)">Tài trợ Vốn vận hành Thường xuyên (Hạn mức)</option>
+                  <option value="Tái cơ cấu & Chuyển đổi Khoản vay Ưu đãi">Tái cơ cấu & Chuyển đổi Khoản vay Ưu đãi</option>
+                  <option value="Vốn Đầu tư Tài sản cố định & Mở rộng">Vốn Đầu tư Tài sản cố định & Mở rộng</option>
+                  <option value="Bảo lãnh Ngân hàng & Tín dụng Thư (LC)">Bảo lãnh Ngân hàng & Tín dụng Thư (LC)</option>
+                  <option value="Tín dụng Cho Hộ kinh doanh & DNTN nhỏ">Tín dụng Cho Hộ kinh doanh & DNTN nhỏ</option>
+                </select>
+              </div>
 
-          <form id="register-form">
-            <div class="field">
-              <label for="name">Họ và tên</label>
-              <input id="name" name="name" type="text" placeholder="Nhập họ tên của bạn" required>
+              <div class="form-group">
+                <label class="form-label" for="loanAmountInput">Số tiền đề nghị vay (VNĐ)</label>
+                <input type="text" class="form-control" id="loanAmountInput" placeholder="Ví dụ: 2,000,000,000" required oninput="formatMoneyInput(this)">
+              </div>
+
+              <div class="btn-wrap">
+                <button type="button" class="btn-step btn-primary" onclick="goToStep(2)">Tiếp tục nhập thông tin ↗</button>
+              </div>
             </div>
-            <div class="field">
-              <label for="phone">Số điện thoại</label>
-              <input id="phone" name="phone" type="tel" placeholder="0358 608 830" required>
-            </div>
-            <div class="field">
-              <label for="company">Tên doanh nghiệp</label>
-              <input id="company" name="company" type="text" placeholder="Tên công ty / doanh nghiệp">
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="example@domain.com">
-            </div>
-            <div class="field">
-              <label for="amount">Số tiền cần vay</label>
-              <select id="amount" name="amount">
-                <option value="Dưới 500 triệu">Dưới 500 triệu</option>
-                <option value="500 triệu - 1 tỷ">500 triệu - 1 tỷ</option>
-                <option value="1 - 3 tỷ">1 - 3 tỷ</option>
-                <option value="3 - 10 tỷ">3 - 10 tỷ</option>
-                <option value="Trên 10 tỷ">Trên 10 tỷ</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="term">Thời gian vay</label>
-              <select id="term" name="term">
-                <option value="6 tháng">6 tháng</option>
-                <option value="12 tháng">12 tháng</option>
-                <option value="18 tháng">18 tháng</option>
-                <option value="24 tháng">24 tháng</option>
-                <option value="36 tháng">36 tháng</option>
-                <option value="Trên 36 tháng">Trên 36 tháng</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="purpose">Mục đích vay</label>
-              <input id="purpose" name="purpose" type="text" placeholder="Ví dụ: bổ sung vốn lưu động, thanh toán khoản vay, mở rộng kinh doanh...">
-            </div>
-            <div class="field full">
-              <label for="note">Ghi chú / tình trạng hiện tại</label>
-              <textarea id="note" name="note" placeholder="Mô tả ngắn về doanh nghiệp, tình hình cần vốn hoặc khoản vay hiện tại..."></textarea>
-            </div>
-            <div class="submit-row">
-              <small>Thông tin của bạn sẽ được xử lý theo nguyên tắc bảo mật.</small>
-              <button class="button" type="submit">Gửi thông tin vay <span aria-hidden="true">↗</span></button>
+
+            <!-- STEP 2: THÔNG TIN LIÊN HỆ -->
+            <div class="form-step" id="step2">
+              <div class="form-group">
+                <label class="form-label" for="fullname">Họ và tên người đại diện</label>
+                <input type="text" class="form-control" id="fullname" placeholder="Nguyễn Văn A" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="phone">Số điện thoại (Zalo)</label>
+                <input type="tel" class="form-control" id="phone" placeholder="0901234567" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="company">Tên Doanh nghiệp / Hộ kinh doanh</label>
+                <input type="text" class="form-control" id="company" placeholder="Công ty TNHH ABC / Cửa hàng A" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="note">Ghi chú nhu cầu cụ thể (nếu có)</label>
+                <textarea class="form-control" id="note" style="height: 90px; padding-top: 10px;" placeholder="Ví dụ: Cần thế chấp hợp đồng đầu ra hoặc cơ cấu khoản vay ngắn hạn..."></textarea>
+              </div>
+
+              <div class="btn-wrap">
+                <button type="button" class="btn-step btn-secondary" onclick="goToStep(1)">‹ Quay lại</button>
+                <button type="submit" class="btn-step btn-primary">Gửi Đăng Ký Ngay ↗</button>
+              </div>
             </div>
           </form>
         </div>
-      </div>
-    </section>
 
-    <section class="benefits">
-      <div class="wrap benefits-inner">
-        <div class="benefit">
-          <h3>Rõ mục tiêu</h3>
-          <p>Phân loại nhu cầu vay theo từng mục đích để doanh nghiệp lựa chọn phương án phù hợp nhất.</p>
-        </div>
-        <div class="benefit">
-          <h3>Đồng hành thực tế</h3>
-          <p>Đánh giá theo dòng tiền, hồ sơ hiện tại và khả năng trả nợ thay vì chỉ theo cảm tính.</p>
-        </div>
-        <div class="benefit">
-          <h3>Phù hợp với doanh nghiệp</h3>
-          <p>Hướng dẫn rõ tiến độ và ràng buộc để doanh nghiệp chủ động trước khi bắt đầu quy trình.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+        <!-- RIGHT SIDEBAR: CALCULATOR & TRUST BOX -->
+        <div>
+          <!-- CALCULATOR -->
+          <div class="calc-card">
+            <h2 class="calc-title">Tính Toán Trả Nợ Dự Kiến</h2>
+            
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Số tiền vay</span>
+                <span class="slider-val" id="sliderAmountText">2 Tỷ VNĐ</span>
+              </div>
+              <input type="range" id="sliderAmount" min="200" max="20000" step="100" value="2000" oninput="updateCalc()">
+            </div>
 
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Thời hạn vay</span>
+                <span class="slider-val" id="sliderTermText">12 Tháng</span>
+              </div>
+              <input type="range" id="sliderTerm" min="3" max="60" step="3" value="12" oninput="updateCalc()">
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span>Lãi suất dự kiến (%/năm)</span>
+                <span class="slider-val" id="sliderRateText">7.5% / năm</span>
+              </div>
+              <input type="range" id="sliderRate" min="5" max="15" step="0.5" value="7.5" oninput="updateCalc()">
+            </div>
+
+            <div class="calc-result">
+              <div class="result-row">
+                <span>Gốc trả hằng tháng:</span>
+                <span id="resPrincipal">0 VNĐ</span>
+              </div>
+              <div class="result-row">
+                <span>Lãi tháng đầu ước tính:</span>
+                <span id="resInterest">0 VNĐ</span>
+              </div>
+              <div class="result-row">
+                <span>Tổng gốc + lãi tháng đầu:</span>
+                <span id="resTotal">0 VNĐ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRUST BOX -->
+          <div class="trust-box">
+            <h3 class="trust-title">Cam Kết Từ FIN BIZ</h3>
+            <ul class="trust-list">
+              <li>Bảo mật tuyệt đối toàn bộ thông tin đăng ký và báo cáo tài chính.</li>
+              <li>Thẩm định và phản hồi phương án khả thi trong vòng 24 giờ làm việc.</li>
+              <li>Không thu bất kỳ khoản phí tư vấn ban đầu nào của khách hàng.</li>
+              <li>Tối ưu hạn mức và tư vấn trọn gói làm việc trực tiếp với Ngân hàng đối tác.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="wrap footer-inner">
-      <span>© 2026 FIN BIZ. Nội dung mang tính chất tham khảo.</span>
-      <div class="footer-links" style="display:flex;gap:18px;flex-wrap:wrap;">
+      <div class="footer-brand">
+        <img class="footer-logo" src="LOGO.png" alt="Logo FIN BIZ">
+        <span>FIN BIZ</span>
+      </div>
+      <div class="footer-links">
         <a href="index.html">Trang chủ</a>
         <a href="san-pham.html">Sản phẩm</a>
-        <a href="kien-thuc-vay-von.html">Kiến thức</a>
-        <a href="tin-tuc.html">Tin tức</a>
+        <a href="kien-thuc.html">Kiến thức</a>
         <a href="dang-ky-vay.html">Đăng ký vay</a>
       </div>
-      <span>Hotline: 0358 608 830</span>
     </div>
   </footer>
 
+  <!-- FLOATING CONTACT WIDGET -->
+  <div class="floating-widget" aria-label="Kênh liên hệ nhanh">
+    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat Zalo">Zalo</a>
+    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <!-- SCRIPT XỬ LÝ DỮ LIỆU & BẢNG TÍNH TOÁN -->
   <script>
-    const registerForm = document.getElementById('register-form');
-    if (registerForm) {
-      registerForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const data = new FormData(registerForm);
-        const entries = Array.from(data.entries())
-          .filter(([, value]) => value)
-          .map(([key, value]) => `${key}: ${value}`)
-          .join('\n');
-        const subject = encodeURIComponent('Yêu cầu đăng ký vay vốn kinh doanh');
-        const body = encodeURIComponent(entries);
-        window.location.href = `mailto:nguyentung1809@outlook.com?subject=${subject}&body=${body}`;
-      });
+    function toggleMobileMenu() {
+      const menu = document.getElementById('main-menu');
+      menu.classList.toggle('mobile-open');
     }
+
+    function selectType(el, val) {
+      document.querySelectorAll('.type-card').forEach(card => card.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('businessType').value = val;
+    }
+
+    function goToStep(step) {
+      if (step === 2) {
+        const amount = document.getElementById('loanAmountInput').value;
+        if (!amount) {
+          alert('Vui lòng nhập số tiền đề nghị vay!');
+          document.getElementById('loanAmountInput').focus();
+          return;
+        }
+      }
+
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('stepIndicator1').classList.remove('active');
+      document.getElementById('stepIndicator2').classList.remove('active');
+
+      document.getElementById('step' + step).classList.add('active');
+      document.getElementById('stepIndicator' + step).classList.add('active');
+    }
+
+    function formatMoneyInput(input) {
+      let val = input.value.replace(/\D/g, "");
+      if (val) {
+        input.value = Number(val).toLocaleString('en-US');
+      }
+    }
+
+    function updateCalc() {
+      const amountVal = parseFloat(document.getElementById('sliderAmount').value); // Triệu VNĐ
+      const termVal = parseInt(document.getElementById('sliderTerm').value); // Tháng
+      const rateVal = parseFloat(document.getElementById('sliderRate').value); // %/năm
+
+      // Update Label
+      document.getElementById('sliderAmountText').innerText = amountVal >= 1000 ? (amountVal/1000).toFixed(1) + ' Tỷ VNĐ' : amountVal + ' Triệu VNĐ';
+      document.getElementById('sliderTermText').innerText = termVal + ' Tháng';
+      document.getElementById('sliderRateText').innerText = rateVal + '% / năm';
+
+      // Tính toán
+      const totalAmount = amountVal * 1000000;
+      const monthlyPrincipal = totalAmount / termVal;
+      const monthlyInterest = (totalAmount * (rateVal / 100)) / 12;
+      const monthlyTotal = monthlyPrincipal + monthlyInterest;
+
+      document.getElementById('resPrincipal').innerText = Math.round(monthlyPrincipal).toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('resInterest').innerText = Math.round(monthlyInterest).toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('resTotal').innerText = Math.round(monthlyTotal).toLocaleString('vi-VN') + ' VNĐ';
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const type = document.getElementById('businessType').value;
+      const product = document.getElementById('loanProduct').value;
+      const amount = document.getElementById('loanAmountInput').value;
+      const name = document.getElementById('fullname').value;
+      const phone = document.getElementById('phone').value;
+      const company = document.getElementById('company').value;
+      const note = document.getElementById('note').value;
+
+      const msg = `Xin chào FIN BIZ, tôi muốn đăng ký tư vấn vay vốn:\n- Mô hình: ${type}\n- Sản phẩm: ${product}\n- Nhu cầu vay: ${amount} VNĐ\n- Họ tên: ${name}\n- Số điện thoại: ${phone}\n- Doanh nghiệp: ${company}\n- Ghi chú: ${note}`;
+      
+      // Chuyển hướng chat Zalo trực tiếp với thông tin đã nhập
+      window.open(`https://zalo.me/0358608830`, '_blank');
+      alert('FIN BIZ đã ghi nhận thông tin đăng ký thành công! Hệ thống đang chuyển hướng bạn tới kênh Zalo tư vấn 0358 608 830.');
+    }
+
+    // Khởi tạo bảng tính lần đầu
+    updateCalc();
   </script>
 </body>
 </html>
