@@ -77,7 +77,7 @@
     /* KNOWLEDGE GRID */
     .blog-section { padding: 60px 0 100px; }
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-    .blog-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; }
+    .blog-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; }
     .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
     .blog-thumb-wrap { width: 100%; height: 210px; overflow: hidden; position: relative; background: #e5e7eb; }
     .blog-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
@@ -94,6 +94,25 @@
     .page-btn { min-width: 40px; height: 40px; padding: 0 12px; display: inline-flex; justify-content: center; align-items: center; border: 1px solid var(--line); background: #ffffff; color: var(--ink); font-weight: 600; font-size: 14px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
     .page-btn:hover, .page-btn.active { background: var(--pine); color: #ffffff; border-color: var(--pine); }
     .page-btn.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+    /* MODAL ĐỌC BÀI VIẾT TRỰC TIẾP (144 BÀI VIẾT) */
+    .article-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
+    .article-modal.active { display: flex; }
+    .modal-box { background: #ffffff; width: min(850px, 100%); max-height: 90vh; border-radius: 12px; overflow-y: auto; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: modalUp 0.3s ease; }
+    @keyframes modalUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); font-size: 20px; font-weight: 700; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
+    .modal-close:hover { background: var(--pine); color: #fff; }
+    .modal-hero-img { width: 100%; height: 320px; object-fit: cover; }
+    .modal-body { padding: 40px; }
+    .modal-tag { font-size: 12px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
+    .modal-title { font-size: clamp(24px, 3.5vw, 34px); font-weight: 700; color: var(--pine); margin: 0 0 20px; font-family: 'Playfair Display', serif; line-height: 1.25; }
+    .modal-content p { color: var(--ink); font-size: 16px; line-height: 1.7; margin-bottom: 18px; }
+    .modal-content h3 { font-size: 20px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 28px 0 12px; }
+    .modal-cta-box { background: var(--pine-deep); border: 1px solid var(--line); border-radius: 8px; padding: 28px; text-align: center; margin-top: 35px; }
+    .modal-cta-box h4 { font-size: 20px; color: var(--pine); margin: 0 0 10px; font-family: 'Playfair Display', serif; }
+    .modal-cta-box p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .btn-modal-action { display: inline-flex; padding: 12px 28px; background: var(--pine); color: #fff; font-weight: 700; border-radius: 4px; font-size: 14px; }
+    .btn-modal-action:hover { background: #24482f; }
 
     /* FLOATING CONTACT WIDGET */
     .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
@@ -120,6 +139,7 @@
       .nav-links.mobile-open { display: flex; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 6px; }
       .menu-toggle { display: block; }
       .blog-grid { grid-template-columns: 1fr; }
+      .modal-body { padding: 24px; }
     }
   </style>
 </head>
@@ -174,6 +194,26 @@
     </div>
   </section>
 
+  <!-- MODAL ĐỌC BÀI VIẾT TRỰC TIẾP KHÔNG BỊ LỘ BIZLOAN -->
+  <div class="article-modal" id="articleModal" onclick="closeModalOnBg(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeArticleModal()">&times;</button>
+      <img class="modal-hero-img" id="mImage" src="" alt="FIN BIZ Article">
+      <div class="modal-body">
+        <span class="modal-tag" id="mTag">FIN BIZ KNOWLEDGE</span>
+        <h2 class="modal-title" id="mTitle">Tiêu đề bài viết</h2>
+        <div class="modal-content" id="mContent">
+          <!-- Nội dung bài viết được sinh ra tự động -->
+        </div>
+        <div class="modal-cta-box">
+          <h4>Cần hỗ trợ phương án tài chính cho doanh nghiệp?</h4>
+          <p>Chuyên gia tư vấn FIN BIZ sẵn sàng hỗ trợ bạn rà soát hồ sơ và làm việc cùng ngân hàng đối tác.</p>
+          <a href="dang-ky-vay.html" class="btn-modal-action">Đăng ký nhận phương án tư vấn ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="wrap footer-inner">
@@ -198,7 +238,7 @@
     </a>
   </div>
 
-  <!-- SCRIPT PHÂN TRANG & DỮ LIỆU 144 BÀI VIẾT -->
+  <!-- SCRIPT PHÂN TRANG & HIỂN THỊ ĐỌC 144 BÀI VIẾT -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('main-menu');
@@ -207,21 +247,20 @@
 
     // Danh sách hình ảnh chất lượng cao
     const images = [
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
     ];
 
-    // Danh mục & Chủ đề kiến thức
     const categories = ["Cơ cấu nợ", "Vốn vận hành", "Hồ sơ tín dụng", "Lãi suất ưu đãi", "Hộ kinh doanh", "Dòng tiền SMEs"];
 
-    // Tạo tự động danh sách 144 bài viết chuyên sâu
+    // Tạo tự động danh sách 144 bài viết chuyên sâu có nội dung chi tiết
     const articles = [];
     for (let i = 1; i <= 144; i++) {
       const cat = categories[(i - 1) % categories.length];
@@ -231,7 +270,24 @@
         category: cat,
         title: `Bài ${i}: Giải pháp ${cat.toLowerCase()} & Phương án tài chính tối ưu cho Doanh nghiệp`,
         description: `Phân tích chuyên sâu bài toán tài chính số ${i}. Hướng dẫn rà soát hồ sơ, cân đối dòng tiền thu chi và chuẩn bị các điều kiện vay vốn thành công với ngân hàng.`,
-        image: img
+        image: img,
+        content: `
+          <p>Trong bối cảnh kinh tế hiện tại, việc quản trị dòng tiền và tối ưu vốn vay giữ vai trò sống còn đối với sự phát triển bền vững của doanh nghiệp. Để giải quyết bài toán <strong>${cat}</strong> một cách hiệu quả nhất, doanh nghiệp cần thấu hiểu góc nhìn từ phía tổ chức tín dụng.</p>
+          
+          <h3>1. Thực trạng & Thách thức dòng tiền hiện tại</h3>
+          <p>Nhiều doanh nghiệp gặp khó khăn do khoảng lệch kỳ hạn giữa các khoản thu và khoản chi. Khi khoản vay ngắn hạn không đủ bù đắp cho tài sản lưu động hoặc mở rộng kinh doanh, áp lực trả gốc và lãi vay hàng tháng sẽ gia tăng đáng kể.</p>
+          
+          <h3>2. Giải pháp cơ cấu & Tối ưu nguồn vốn từ FIN BIZ</h3>
+          <p>Đội ngũ chuyên gia FIN BIZ hỗ trợ doanh nghiệp thực hiện các bước chuẩn hóa sau đây:</p>
+          <ul>
+            <li><strong>Rà soát lại toàn bộ dư nợ:</strong> Đối chiếu lãi suất, thời hạn và tài sản đảm bảo của từng hợp đồng tín dụng hiện có.</li>
+            <li><strong>Xây dựng lại báo cáo tài chính:</strong> Minh bạch hóa nguồn thu, công nợ phải thu và các phương án kinh doanh khả thi.</li>
+            <li><strong>Chuyển đổi gói vay ưu đãi:</strong> Tiếp cận các chương trình tín dụng lãi suất thấp dành riêng cho SMEs từ mạng lưới đối tác ngân hàng.</li>
+          </ul>
+
+          <h3>3. Lời khuyên cho chủ doanh nghiệp</h3>
+          <p>Đừng chờ đến khi khoản vay phát sinh nợ quá hạn mới tìm phương án xử lý. Việc chủ động rà soát hồ sơ và cơ cấu lại các khoản nợ ngay từ sớm sẽ giúp duy trì lịch sử tín dụng sạch (CIC tốt) và mở ra nhiều cơ hội tiếp cận hạn mức vay lớn hơn.</p>
+        `
       });
     }
 
@@ -250,6 +306,7 @@
       pageArticles.forEach(item => {
         const card = document.createElement('article');
         card.className = 'blog-card';
+        card.onclick = () => openArticleModal(item.id);
         card.innerHTML = `
           <div class="blog-thumb-wrap">
             <img class="blog-thumb" src="${item.image}" alt="${item.title}" loading="lazy">
@@ -258,7 +315,7 @@
             <span class="blog-tag">${item.category}</span>
             <h2 class="blog-title">${item.title}</h2>
             <p class="blog-desc">${item.description}</p>
-            <a href="dang-ky-vay.html" class="blog-link">Nhận tư vấn phương án này ↗</a>
+            <span class="blog-link">Đọc bài viết chi tiết ↗</span>
           </div>
         `;
         container.appendChild(card);
@@ -269,14 +326,12 @@
       const pContainer = document.getElementById('pagination-container');
       pContainer.innerHTML = '';
 
-      // Nút Prev
       const prevBtn = document.createElement('button');
       prevBtn.className = `page-btn ${currentPage === 1 ? 'disabled' : ''}`;
       prevBtn.innerHTML = '‹';
       prevBtn.onclick = () => { if (currentPage > 1) goToPage(currentPage - 1); };
       pContainer.appendChild(prevBtn);
 
-      // Các nút trang 1 đến 12
       for (let i = 1; i <= totalPages; i++) {
         const btn = document.createElement('button');
         btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
@@ -285,7 +340,6 @@
         pContainer.appendChild(btn);
       }
 
-      // Nút Next
       const nextBtn = document.createElement('button');
       nextBtn.className = `page-btn ${currentPage === totalPages ? 'disabled' : ''}`;
       nextBtn.innerHTML = '›';
@@ -300,7 +354,32 @@
       window.scrollTo({ top: 300, behavior: 'smooth' });
     }
 
-    // Khởi tạo trang 1 ban đầu
+    // Xử lý bật/tắt Modal Đọc bài viết
+    function openArticleModal(id) {
+      const art = articles.find(a => a.id === id);
+      if (!art) return;
+
+      document.getElementById('mImage').src = art.image;
+      document.getElementById('mTag').innerText = art.category;
+      document.getElementById('mTitle').innerText = art.title;
+      document.getElementById('mContent').innerHTML = art.content;
+
+      document.getElementById('articleModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeArticleModal() {
+      document.getElementById('articleModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target.id === 'articleModal') {
+        closeArticleModal();
+      }
+    }
+
+    // Khởi tạo trang 1
     renderArticles(1);
     renderPagination();
   </script>
