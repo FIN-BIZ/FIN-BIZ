@@ -125,10 +125,13 @@
     .proof-no { color: var(--pine-soft); font-family: var(--serif); font-size: 28px; }
     .proof-label { color: var(--muted); font-size: 12px; line-height: 1.4; }
 
+    /* KHỐI LOGO NGÂN HÀNG ĐỐI TÁC */
     .bank-partners { padding: 45px 0; background: #ffffff; border-bottom: 1px solid var(--line); }
     .bank-partners-title { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--silver-dark); margin-bottom: 25px; }
-    .bank-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; }
-    .bank-badge { font-weight: 700; font-size: 15px; color: var(--pine); letter-spacing: 1px; padding: 8px 18px; background: var(--paper); border-radius: 6px; border: 1px solid var(--line); }
+    .bank-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 32px; }
+    .bank-logo-card { display: flex; align-items: center; justify-content: center; padding: 12px 24px; background: #f9fbf9; border: 1px solid var(--line); border-radius: 8px; min-width: 140px; height: 52px; transition: transform 0.2s ease, border-color 0.2s ease; }
+    .bank-logo-card:hover { transform: translateY(-2px); border-color: var(--pine-soft); }
+    .bank-logo-img { max-height: 28px; width: auto; object-fit: contain; filter: grayscale(20%); opacity: 0.9; }
 
     /* LOAN CALCULATOR */
     .calc-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: #ffffff; padding: 40px; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
@@ -194,6 +197,8 @@
       .floating-widget { bottom: 18px; right: 18px; gap: 10px; }
       .widget-btn { width: 48px; height: 48px; }
       .calc-box { padding: 20px; }
+      .bank-logos { gap: 16px; }
+      .bank-logo-card { min-width: 120px; padding: 8px 16px; height: 46px; }
     }
   </style>
   <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
@@ -237,7 +242,7 @@
     </div>
   </header>
 
-  <!-- KHÔI PHỤC SECTION VIDEO -->
+  <!-- SECTION VIDEO -->
   <section class="homepage-video" aria-labelledby="homepage-video-title">
     <div class="wrap homepage-video-inner">
       <div class="homepage-video-copy">
@@ -253,7 +258,7 @@
     </div>
   </section>
 
-  <!-- KHÔI PHỤC 8 BÀI TOÁN VỐN -->
+  <!-- 8 BÀI TOÁN VỐN -->
   <section class="home-products" aria-labelledby="home-products-title">
     <div class="wrap">
       <div class="home-products-heading">
@@ -277,7 +282,7 @@
     </div>
   </section>
 
-  <!-- SỐ LIỆU VÀ ĐỐI TÁC NGÂN HÀNG -->
+  <!-- SỐ LIỆU PROOF -->
   <section class="proof" aria-label="Nguyên tắc tư vấn">
     <div class="wrap proof-inner">
       <div class="proof-intro">Thấu hiểu nợ vay,<br>để doanh nghiệp đi đúng hướng.</div>
@@ -287,16 +292,32 @@
     </div>
   </section>
 
+  <!-- HÀNG LOGO NGÂN HÀNG ĐỐI TÁC CÓ HÌNH ẢNH CỤ THỂ -->
   <section class="bank-partners">
     <div class="wrap">
       <p class="bank-partners-title">Mạng lưới đối tác Ngân hàng & Tổ chức Tài chính</p>
       <div class="bank-logos">
-        <span class="bank-badge">VIETCOMBANK</span>
-        <span class="bank-badge">MB BANK</span>
-        <span class="bank-badge">VPBANK</span>
-        <span class="bank-badge">TECHCOMBANK</span>
-        <span class="bank-badge">BIDV</span>
-        <span class="bank-badge">AGRIBANK</span>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png" alt="MB Bank">
+        </div>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Vietcombank_logo.svg/1200px-Vietcombank_logo.svg.png" alt="Vietcombank">
+        </div>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/VPBank_logo.svg/1200px-VPBank_logo.svg.png" alt="VPBank">
+        </div>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Techcombank_logo.svg/1200px-Techcombank_logo.svg.png" alt="Techcombank">
+        </div>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/BIDV_Logo.svg/1200px-BIDV_Logo.svg.png" alt="BIDV">
+        </div>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Vietinbank_logo.svg/1200px-Vietinbank_logo.svg.png" alt="VietinBank">
+        </div>
+        <div class="bank-logo-card">
+          <img class="bank-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Agribank_logo.svg/1200px-Agribank_logo.svg.png" alt="Agribank">
+        </div>
       </div>
     </div>
   </section>
