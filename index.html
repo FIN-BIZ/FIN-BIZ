@@ -57,34 +57,41 @@
     .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
     .section-title { max-width: 690px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(36px, 4.4vw, 58px); font-weight: 700; letter-spacing: 0; line-height: 1.12; }
     .section-lead { max-width: 570px; margin: 18px 0 0; color: var(--muted); }
-    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--silver); color: var(--ink); font-weight: 600; cursor: pointer; }
-    .button:hover { background: #c7cfca; transform: translateY(-2px); }
-    .button-arrow { font-size: 19px; line-height: 1; }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 12px; padding: 0 24px; border: 1px solid transparent; background: var(--pine); color: var(--white); font-weight: 600; cursor: pointer; border-radius: 4px; transition: all 0.2s ease; }
+    .button:hover { background: #24482f; transform: translateY(-2px); }
+    .button-arrow { font-size: 18px; line-height: 1; }
 
     .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
     .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
     .topbar-note { display: flex; align-items: center; gap: 9px; }
     .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
     .topbar-meta { display: flex; gap: 24px; }
+    
     .hero { position: relative; display: flex; min-height: 690px; min-height: min(790px, 94svh); align-items: center; overflow: hidden; background: var(--pine-deep); color: var(--ink); }
     .hero-photo { position: absolute; inset: 0 0 0 auto; width: 52%; height: 100%; object-fit: cover; object-position: 58% center; }
     .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, var(--pine-deep) 0%, var(--pine-deep) 43%, rgb(227 238 219 / 92%) 55%, rgb(227 238 219 / 25%) 76%, transparent 100%); content: ""; }
     .hero-inner { position: relative; z-index: 1; width: 100%; padding-top: 75px; }
-    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); }
+    
+    /* NAV MENU - 4 THẺ CHÍNH */
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); border-radius: 6px; }
     .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
-    .brand-logo { display: block; width: 60px; height: 60px; flex: 0 0 auto; object-fit: contain; }
-    .brand-name { display: block; font-size: 14px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
-    .brand-caption { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--ink); font-size: 12px; font-weight: 600; }
-    .nav-links a:not(.nav-cta):hover { color: var(--pine-soft); }
-    .nav-cta { min-height: 42px; padding: 0 17px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); transition: background .2s ease, transform .2s ease; }
-    .nav-cta:hover { border-color: #254b30; background: #254b30; color: var(--white); }
-    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.nav-cta) { position: relative; padding: 4px 0; }
+    .nav-links a:not(.nav-cta):hover, .nav-links a.active { color: var(--pine); }
+    .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
+    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 4px; transition: all .2s ease; }
+    .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); }
+    
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; border-radius: 4px; }
     .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
     .menu-glyph { position: relative; }
     .menu-glyph::before, .menu-glyph::after { position: absolute; left: 0; }
     .menu-glyph::before { top: -6px; }
     .menu-glyph::after { top: 6px; }
+    
     .hero-copy { max-width: 690px; padding: 82px 0 100px; animation: rise .7s ease both; }
     .hero-kicker { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 24px; color: var(--pine-soft); font-size: 11px; font-weight: 700; letter-spacing: 1.7px; text-transform: uppercase; }
     .hero-kicker::before { width: 27px; height: 1px; background: currentColor; content: ""; }
@@ -94,7 +101,7 @@
     .rotating-phrase.is-changing { opacity: 0; transform: translateY(.2em); }
     .hero-description { max-width: 500px; margin: 23px 0 30px; color: var(--muted); font-size: 16px; }
     .hero-actions { display: flex; align-items: center; gap: 25px; }
-    .text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-size: 12px; font-weight: 600; }
+    .text-link { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-size: 13px; font-weight: 600; }
     .text-link span { color: var(--pine-soft); font-size: 18px; }
     .hero-index { position: absolute; right: 0; bottom: 38px; color: var(--muted); font-size: 10px; letter-spacing: 1.2px; }
 
@@ -109,7 +116,8 @@
     .home-products { padding: 100px 0 108px; background: var(--paper); }
     .home-products-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 38px; }
     .home-products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-    .home-product { min-height: 174px; padding: 21px 20px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .home-product { min-height: 174px; padding: 21px 20px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.2s; }
+    .home-product:hover { background: #ffffff; }
     .home-product a { display: block; height: 100%; }
     .home-product-index { color: var(--pine-soft); font-size: 11px; font-weight: 700; }
     .home-product h3 { margin: 15px 0 7px; color: var(--pine); font-family: var(--serif); font-size: 21px; line-height: 1.2; }
@@ -122,10 +130,10 @@
     .proof-intro, .proof-item { display: flex; min-height: 112px; align-items: center; padding: 20px 25px; }
     .proof-intro { padding-left: 0; color: var(--pine); font-family: var(--serif); font-size: 20px; line-height: 1.35; }
     .proof-item { gap: 14px; border-left: 1px solid var(--line); }
-    .proof-no { color: var(--pine-soft); font-family: var(--serif); font-size: 28px; }
+    .proof-no { color: var(--pine-soft); font-family: var(--serif); font-size: 32px; font-weight: 700; }
     .proof-label { color: var(--muted); font-size: 12px; line-height: 1.4; }
 
-    /* KHỐI LOGO NGÂN HÀNG ĐỐI TÁC CẢI TIẾN CHUẨN HIỂN THỊ */
+    /* BANK LOGOS */
     .bank-partners { padding: 45px 0; background: #ffffff; border-bottom: 1px solid var(--line); }
     .bank-partners-title { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--silver-dark); margin-bottom: 25px; }
     .bank-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px; }
@@ -159,7 +167,6 @@
 
     .approach { background: #eaf2e4; color: var(--ink); }
     .approach-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; padding-top: 112px; padding-bottom: 112px; }
-    .approach-aside { display: flex; flex-direction: column; justify-content: space-between; padding-top: 12px; }
     .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 25px 30px; margin-top: 46px; }
     .principle { display: flex; align-items: flex-start; gap: 13px; color: var(--ink); font-size: 13px; }
     .principle-mark { flex: 0 0 20px; width: 20px; height: 20px; border: 1px solid var(--pine-soft); color: var(--pine-soft); font-size: 12px; line-height: 18px; text-align: center; }
@@ -177,11 +184,11 @@
     .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
     .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
-    footer { padding: 26px 0; background: #e3e8e5; color: #566659; font-size: 11px; }
+    footer { padding: 32px 0; background: #e3e8e5; color: #566659; font-size: 12px; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
     .footer-logo { width: 38px; height: 38px; object-fit: contain; }
-    .footer-links { display: flex; gap: 22px; }
+    .footer-links { display: flex; gap: 22px; font-weight: 600; }
 
     @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 900px) {
@@ -197,6 +204,7 @@
       .topbar-meta { display: none; }
       .nav { right: 20px; left: 20px; }
       .nav-links { display: none; }
+      .nav-links.mobile-open { display: flex; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 6px; }
       .menu-toggle { display: block; }
       .home-products-grid, .services-grid { grid-template-columns: 1fr; }
       .floating-widget { bottom: 18px; right: 18px; gap: 10px; }
@@ -209,31 +217,38 @@
   <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
 </head>
 <body>
+
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap topbar-inner">
       <span class="topbar-note">Giải pháp tài chính cho doanh nghiệp</span>
-      <div class="topbar-meta"><a href="tel:+84358608830">0358 608 830</a><a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a></div>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
     </div>
   </div>
 
+  <!-- HERO SECTION -->
   <header class="hero" id="home">
     <img class="hero-photo" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=85" alt="Đội ngũ chuyên gia FIN BIZ">
     <div class="wrap hero-inner">
+      
+      <!-- MENU CHÍNH 4 THẺ CHÍNH -->
       <nav class="nav" aria-label="Điều hướng chính">
-        <a class="brand" href="#home" aria-label="FIN BIZ">
-          <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="60" height="60">
+        <a class="brand" href="index.html" aria-label="FIN BIZ">
+          <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
           <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Mở menu"><span class="menu-glyph"></span></button>
+        <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
         <div class="nav-links" id="main-menu">
-          <a href="#services">Dịch vụ</a>
+          <a href="index.html" class="active">Trang chủ</a>
           <a href="san-pham.html">Sản phẩm</a>
-          <a href="#calculator">Tính khoản vay</a>
-          <a href="#approach">Quy trình</a>
-          <a href="dang-ky-vay.html">Đăng ký vay</a>
-          <a class="nav-cta" href="#quick-register">Trao đổi cùng chuyên gia <span aria-hidden="true">↗</span></a>
+          <a href="kien-thuc.html">Kiến thức</a>
+          <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay <span aria-hidden="true">↗</span></a>
         </div>
       </nav>
+
       <div class="hero-copy">
         <p class="hero-kicker">FIN BIZ · Tư vấn tài chính doanh nghiệp</p>
         <h1><span class="rotating-phrase" id="hero-phrase">Giảm lãi vay</span><br><em>DOANH NGHIỆP</em></h1>
@@ -247,14 +262,14 @@
     </div>
   </header>
 
-  <!-- SECTION VIDEO (ĐÃ THÊM POSTER ĐỂ TRÁNH MÀN HÌNH ĐEN TRÊN ĐIỆN THOẠI) -->
+  <!-- SECTION VIDEO -->
   <section class="homepage-video" aria-labelledby="homepage-video-title">
     <div class="wrap homepage-video-inner">
       <div class="homepage-video-copy">
         <p class="eyebrow">FIN BIZ · Góc nhìn tài chính</p>
         <h2 class="section-title" id="homepage-video-title">Tìm hướng vốn từ hồ sơ thực tế.</h2>
         <p class="section-lead">Rà soát dòng tiền, làm rõ nhu cầu và chuẩn bị phương án để doanh nghiệp chủ động trao đổi với tổ chức tài chính.</p>
-        <p class="homepage-video-note">FIN BIZ tư vấn và kết nối; quyết định cấp vốn thuộc về đơn vị cho vay.</p>
+        <p style="margin-top: 14px; font-size: 13px; color: var(--muted);">FIN BIZ tư vấn và kết nối; quyết định cấp vốn thuộc về đơn vị cho vay.</p>
       </div>
       <video class="homepage-video-player" controls playsinline preload="metadata" poster="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" width="480" height="854" aria-label="Video giới thiệu giải pháp tài chính doanh nghiệp của FIN BIZ">
         <source src="video.mp4" type="video/mp4">
@@ -274,16 +289,16 @@
         <p class="section-lead">Chọn chủ đề gần với tình hình doanh nghiệp để xem những thông tin nên rà soát trước khi trao đổi.</p>
       </div>
       <div class="home-products-grid">
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=dong-tien-van-hanh"><span class="home-product-index">01 / VẬN HÀNH</span><h3>Vốn vận hành</h3><p>Làm rõ nhịp thu chi và khoảng lệch dòng tiền.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=von-theo-don-hang"><span class="home-product-index">02 / ĐƠN HÀNG</span><h3>Vốn theo đơn hàng</h3><p>Rà soát tiến độ giao hàng và thanh toán.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=khoan-phai-thu"><span class="home-product-index">03 / CÔNG NỢ</span><h3>Khoản phải thu</h3><p>Nhìn rõ hóa đơn, nghiệm thu và lịch thu tiền.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=von-mua-vu"><span class="home-product-index">04 / MÙA VỤ</span><h3>Vốn theo mùa vụ</h3><p>Chuẩn bị dòng tiền theo nhịp kinh doanh.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=mo-rong-cong-suat"><span class="home-product-index">05 / ĐẦU TƯ</span><h3>Mở rộng công suất</h3><p>Rà soát kế hoạch đầu tư và khả năng chi trả.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=von-ban-le"><span class="home-product-index">06 / BÁN LẺ</span><h3>Vốn cho bán lẻ</h3><p>Phân tích doanh thu và chi phí theo điểm bán.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=ho-kinh-doanh"><span class="home-product-index">07 / HỘ KINH DOANH</span><h3>Vốn hộ kinh doanh</h3><p>Hệ thống thông tin hoạt động và thu chi.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=ra-soat-khoan-vay"><span class="home-product-index">08 / CẤU TRÚC NỢ</span><h3>Cơ cấu khoản vay</h3><p>Đối chiếu lịch nợ với dòng tiền hiện tại.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">01 / VẬN HÀNH</span><h3>Vốn vận hành</h3><p>Làm rõ nhịp thu chi và khoảng lệch dòng tiền.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">02 / ĐƠN HÀNG</span><h3>Vốn theo đơn hàng</h3><p>Rà soát tiến độ giao hàng và thanh toán.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">03 / CÔNG NỢ</span><h3>Khoản phải thu</h3><p>Nhìn rõ hóa đơn, nghiệm thu và lịch thu tiền.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">04 / MÙA VỤ</span><h3>Vốn theo mùa vụ</h3><p>Chuẩn bị dòng tiền theo nhịp kinh doanh.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">05 / ĐẦU TƯ</span><h3>Mở rộng công suất</h3><p>Rà soát kế hoạch đầu tư và khả năng chi trả.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">06 / BÁN LẺ</span><h3>Vốn cho bán lẻ</h3><p>Phân tích doanh thu và chi phí theo điểm bán.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">07 / HỘ KINH DOANH</span><h3>Vốn hộ kinh doanh</h3><p>Hệ thống thông tin hoạt động và thu chi.</p></a></article>
+        <article class="home-product"><a href="san-pham.html"><span class="home-product-index">08 / CẤU TRÚC NỢ</span><h3>Cơ cấu khoản vay</h3><p>Đối chiếu lịch nợ với dòng tiền hiện tại.</p></a></article>
       </div>
-      <p class="home-products-note">Đây là các hướng tư vấn của FIN BIZ, không phải cam kết khoản vay. <a href="dang-ky-vay.html">Trao đổi nhu cầu</a>.</p>
+      <p class="home-products-note">Đây là các hướng tư vấn của FIN BIZ, không phải cam kết khoản vay. <a href="dang-ky-vay.html" style="color: var(--pine); font-weight: 700;">Trao đổi nhu cầu ↗</a>.</p>
     </div>
   </section>
 
@@ -297,7 +312,7 @@
     </div>
   </section>
 
-  <!-- HÀNG LOGO NGÂN HÀNG ĐỐI TÁC HIỂN THỊ ĐẮT GIÁ -->
+  <!-- HÀNG LOGO NGÂN HÀNG ĐỐI TÁC -->
   <section class="bank-partners">
     <div class="wrap">
       <p class="bank-partners-title">Mạng lưới đối tác Ngân hàng & Tổ chức Tài chính</p>
@@ -343,8 +358,8 @@
 
           <div class="calc-result">
             <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.85;">Gốc + Lãi tháng đầu (Ước tính)</span>
-            <div id="monthly-payment" style="font-size: 34px; font-weight: 700; margin: 10px 0 20px; color: #e7f0df;">88,333,333 VNĐ</div>
-            <a href="#quick-register" class="button" style="background: var(--paper); color: var(--pine); text-align: center; border: none; font-weight: 700;">Nhận phương án chính xác ↗</a>
+            <div id="monthly-payment" style="font-size: 34px; font-weight: 700; margin: 10px 0 20px; color: #e7f0df;">90,416,667 VNĐ</div>
+            <a href="dang-ky-vay.html" class="button" style="background: var(--paper); color: var(--pine); text-align: center; border: none; font-weight: 700;">Nhận phương án chính xác ↗</a>
           </div>
         </div>
       </div>
@@ -431,6 +446,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand">
@@ -438,9 +454,10 @@
         <span>FIN BIZ</span>
       </div>
       <div class="footer-links">
-        <a href="#services">Dịch vụ</a>
+        <a href="index.html">Trang chủ</a>
+        <a href="san-pham.html">Sản phẩm</a>
+        <a href="kien-thuc.html">Kiến thức</a>
         <a href="dang-ky-vay.html">Đăng ký vay</a>
-        <a href="tel:+84358608830">0358 608 830</a>
       </div>
     </div>
   </footer>
@@ -453,22 +470,53 @@
     </a>
   </div>
 
+  <!-- SCRIPT XỬ LÝ -->
   <script>
+    // 1. Script tính toán khoản vay
+    function formatMoney(val) {
+      return new Intl.NumberFormat('vi-VN').format(Math.round(val)) + ' VNĐ';
+    }
+
     function updateCalc() {
       const amount = parseFloat(document.getElementById('loan-amount').value);
       const period = parseInt(document.getElementById('loan-period').value);
-      const rate = parseFloat(document.getElementById('loan-rate').value) / 100;
+      const rate = parseFloat(document.getElementById('loan-rate').value);
 
-      document.getElementById('amount-val').innerText = amount.toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('amount-val').innerText = formatMoney(amount);
       document.getElementById('period-val').innerText = period + ' Tháng';
-      document.getElementById('rate-val').innerText = (rate * 100).toFixed(1) + '%';
+      document.getElementById('rate-val').innerText = rate + '%';
 
       const monthlyPrincipal = amount / period;
-      const firstMonthInterest = (amount * rate) / 12;
-      const totalFirstMonth = monthlyPrincipal + firstMonthInterest;
+      const monthlyInterest = (amount * (rate / 100)) / 12;
+      const totalFirstMonth = monthlyPrincipal + monthlyInterest;
 
-      document.getElementById('monthly-payment').innerText = Math.round(totalFirstMonth).toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('monthly-payment').innerText = formatMoney(totalFirstMonth);
     }
+
+    // 2. Chữ xoay mượt ở Hero Title
+    const phrases = ["Giảm lãi vay", "Cơ cấu khoản nợ", "Tối ưu nguồn vốn", "Chuyển đổi khoản vay"];
+    let phraseIndex = 0;
+    const heroPhraseEl = document.getElementById('hero-phrase');
+
+    if (heroPhraseEl) {
+      setInterval(() => {
+        heroPhraseEl.classList.add('is-changing');
+        setTimeout(() => {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          heroPhraseEl.innerText = phrases[phraseIndex];
+          heroPhraseEl.classList.remove('is-changing');
+        }, 250);
+      }, 3000);
+    }
+
+    // 3. Toggle Menu trên Điện thoại
+    function toggleMobileMenu() {
+      const menu = document.getElementById('main-menu');
+      menu.classList.toggle('mobile-open');
+    }
+
+    // Chạy mặc định 1 lần khi load trang
+    updateCalc();
   </script>
 </body>
 </html>
