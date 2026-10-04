@@ -431,21 +431,54 @@
     }
 
     function handleFormSubmit(e) {
-      e.preventDefault();
-      const type = document.getElementById('businessType').value;
-      const product = document.getElementById('loanProduct').value;
-      const amount = document.getElementById('loanAmountInput').value;
-      const name = document.getElementById('fullname').value;
-      const phone = document.getElementById('phone').value;
-      const company = document.getElementById('company').value;
-      const note = document.getElementById('note').value;
+      // 1. DÁN LINK GOOGLE APPS SCRIPT CỦA BẠN VÀO GIỮA HAI DẤU NGOẶC KÉP DƯỚI ĐÂY
+const SCRIPT_URL = "https://script.google.com/macros/s/BẠN_DÁN_LINK_WEB_APP_Ở_BƯỚC_1_VÀO_ĐÂY/exechttps://script.google.com/macros/s/AKfycbymUTxemUkciKI9CyybvxW-Vy6asUve2lCA21S5gltfSxMSaAsJ01b3CIc9TLF2LQg62A/exec";
 
-      const msg = `Xin chào FIN BIZ, tôi muốn đăng ký tư vấn vay vốn:\n- Mô hình: ${type}\n- Sản phẩm: ${product}\n- Nhu cầu vay: ${amount} VNĐ\n- Họ tên: ${name}\n- Số điện thoại: ${phone}\n- Doanh nghiệp: ${company}\n- Ghi chú: ${note}`;
-      
-      // Chuyển hướng chat Zalo trực tiếp với thông tin đã nhập
-      window.open(`https://zalo.me/0358608830`, '_blank');
-      alert('FIN BIZ đã ghi nhận thông tin đăng ký thành công! Hệ thống đang chuyển hướng bạn tới kênh Zalo tư vấn 0358 608 830.');
-    }
+// 2. HÀM XỬ LÝ KHI NGƯỜI DÙNG BẤM NÚT "GỬI ĐĂNG KÝ NGAY"
+function handleFormSubmit(e) {
+  e.preventDefault();
+
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.innerText;
+  
+  // Hiển thị trạng thái đang gửi để người dùng biết
+  submitBtn.innerText = "Đang gửi dữ liệu...";
+  submitBtn.disabled = true;
+
+  // Gom toàn bộ thông tin người dùng đã nhập trong Form
+  const formData = new FormData();
+  formData.append('businessType', document.getElementById('businessType').value);
+  formData.append('loanProduct', document.getElementById('loanProduct').value);
+  formData.append('loanAmount', document.getElementById('loanAmountInput').value);
+  formData.append('fullname', document.getElementById('fullname').value);
+  formData.append('phone', document.getElementById('phone').value);
+  formData.append('company', document.getElementById('company').value);
+  formData.append('note', document.getElementById('note').value);
+
+  // Gửi dữ liệu tới Google Sheets qua đường link SCRIPT_URL
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    alert('Đăng ký thành công! Chuyên gia FIN BIZ sẽ liên hệ hỗ trợ bạn trong vòng 24h.');
+    
+    // Tự động mở tab Zalo để khách nhắn tin trực tiếp nếu muốn
+    window.open("https://zalo.me/0358608830", "_blank");
+    
+    // Khôi phục lại Form về trạng thái ban đầu
+    document.getElementById('loanForm').reset();
+    goToStep(1);
+    submitBtn.innerText = originalBtnText;
+    submitBtn.disabled = false;
+  })
+  .catch(error => {
+    console.error('Lỗi khi gửi dữ liệu:', error);
+    alert('Có lỗi xảy ra khi gửi dữ liệu. Bạn vui lòng liên hệ trực tiếp Zalo 0358 608 830 để được hỗ trợ nhanh nhất!');
+    submitBtn.innerText = originalBtnText;
+    submitBtn.disabled = false;
+  });
+}}
 
     // Khởi tạo bảng tính lần đầu
     updateCalc();
