@@ -207,6 +207,46 @@
     .footer-logo { width: 38px; height: 38px; object-fit: contain; }
     .footer-links { display: flex; gap: 22px; }
 
+    /* Floating Contact Widget CSS */
+    .floating-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .widget-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .widget-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .widget-btn.phone {
+      background-color: var(--pine);
+    }
+    .widget-btn.zalo {
+      background-color: #0068ff;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: -0.5px;
+    }
+    .widget-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
     @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
     @media (max-width: 900px) {
@@ -233,7 +273,7 @@
       .about-visual { min-height: 390px; }
       .faq-grid { grid-template-columns: 1fr; gap: 38px; }
       .homepage-video-inner { grid-template-columns: 1fr; gap: 28px; }
-      .homepage-video-copy { max-width: 700px; }
+      .homepage-video-player { max-height: 68svh; }
     }
     @media (max-width: 640px) {
       body { font-size: 15px; }
@@ -292,6 +332,8 @@
       .contact .section-title { font-size: 39px; }
       .footer-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
       .footer-links { flex-wrap: wrap; gap: 14px; }
+      .floating-widget { bottom: 18px; right: 18px; gap: 10px; }
+      .widget-btn { width: 48px; height: 48px; }
     }
   </style>
   <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
@@ -406,14 +448,14 @@
             <p>Kiểm tra phương án chuyển đổi, tái cơ cấu hoặc điều chỉnh thời hạn phù hợp với thực trạng doanh nghiệp.</p>
             <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="service-arrow" aria-hidden="true">↗</span>
-          </article>
-          <article class="service">
+          </article>          <article class="service">
             <span class="service-index">03 / HỒ SƠ</span>
             <h3>Rà soát hồ sơ tài chính</h3>
             <p>Đánh giá và chuẩn hóa hồ sơ tín dụng, tài chính, kế toán để tăng khả năng được tiếp nhận và thuyết phục.</p>
             <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80');"></div>
             <span class="service-arrow" aria-hidden="true">↗</span>
-          </article>          <article class="service">
+          </article>
+          <article class="service">
             <span class="service-index">04 / KẾT NỐI</span>
             <h3>Kết nối ngân hàng &amp; tổ chức tài chính</h3>
             <p>Chuẩn bị thông tin, mô tả doanh nghiệp và phương án tài chính để trao đổi hiệu quả với đối tác phù hợp.</p>
@@ -492,5 +534,17 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Contact Widget -->
+  <div class="floating-widget" aria-label="Kênh liên hệ nhanh">
+    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat qua Zalo">
+      Zalo
+    </a>
+    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện trực tiếp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+      </svg>
+    </a>
+  </div>
 </body>
 </html>
