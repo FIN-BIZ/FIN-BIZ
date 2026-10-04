@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="LOGO.png">
   <link rel="apple-touch-icon" href="LOGO.png">
 
-  <!-- Open Graph / Meta Tags cho Facebook, Zalo, Skype, Message -->
+  <!-- Open Graph / Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fin-biz.github.io/FIN-BIZ/">
   <meta property="og:title" content="FIN BIZ | Tư vấn &amp; Giải pháp Tài chính Doanh nghiệp">
@@ -49,7 +49,7 @@
     html { scroll-behavior: smooth; scroll-padding-top: 132px; }
     body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
     a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; }
+    button, input, select, textarea { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
     img { display: block; max-width: 100%; }
     .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
@@ -57,7 +57,7 @@
     .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
     .section-title { max-width: 690px; margin: 0; color: var(--pine); font-family: var(--serif); font-size: clamp(36px, 4.4vw, 58px); font-weight: 700; letter-spacing: 0; line-height: 1.12; }
     .section-lead { max-width: 570px; margin: 18px 0 0; color: var(--muted); }
-    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--silver); color: var(--ink); }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 22px; border: 1px solid transparent; background: var(--silver); color: var(--ink); font-weight: 600; cursor: pointer; }
     .button:hover { background: #c7cfca; transform: translateY(-2px); }
     .button-arrow { font-size: 19px; line-height: 1; }
 
@@ -98,6 +98,28 @@
     .text-link span { color: var(--pine-soft); font-size: 18px; }
     .hero-index { position: absolute; right: 0; bottom: 38px; color: var(--muted); font-size: 10px; letter-spacing: 1.2px; }
 
+    /* CSS Số liệu & Ngân hàng đối tác */
+    .bank-partners { padding: 50px 0; background: #ffffff; border-bottom: 1px solid var(--line); }
+    .bank-partners-title { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--silver-dark); margin-bottom: 25px; }
+    .bank-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 35px; }
+    .bank-badge { font-weight: 700; font-size: 18px; color: var(--pine); letter-spacing: 1px; padding: 10px 20px; background: var(--paper); border-radius: 6px; border: 1px solid var(--line); }
+
+    /* CSS Loan Calculator */
+    .calc-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: #ffffff; padding: 40px; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .calc-input-group { display: flex; flex-direction: column; gap: 22px; }
+    .calc-label { display: flex; justify-content: space-between; font-weight: 600; font-size: 15px; }
+    .calc-val { color: var(--pine); font-weight: 700; }
+    .calc-slider { width: 100%; height: 6px; accent-color: var(--pine); cursor: pointer; }
+    .calc-result { display: flex; flex-direction: column; justify-content: center; background: var(--pine); color: var(--white); padding: 35px; border-radius: 8px; }
+
+    /* Floating Contact Widget CSS */
+    .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+    .widget-btn { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); transition: transform 0.25s ease; }
+    .widget-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .widget-btn.phone { background-color: var(--pine); }
+    .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
+    .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
     .homepage-video { background: #eaf2e4; }
     .homepage-video-inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(280px, 1.1fr); align-items: center; gap: 54px; padding-top: 72px; padding-bottom: 72px; }
     .homepage-video-copy { max-width: 560px; }
@@ -106,12 +128,9 @@
 
     .home-products { padding: 100px 0 108px; background: var(--paper); }
     .home-products-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 38px; }
-    .home-products-heading .section-title { max-width: 650px; }
-    .home-products-heading .section-lead { max-width: 400px; margin-bottom: 5px; }
     .home-products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
     .home-product { min-height: 174px; padding: 21px 20px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .home-product a { display: block; height: 100%; }
-    .home-product a:focus-visible { outline: 3px solid var(--pine-soft); outline-offset: -3px; }
     .home-product-index { color: var(--pine-soft); font-size: 11px; font-weight: 700; }
     .home-product h3 { margin: 15px 0 7px; color: var(--pine); font-family: var(--serif); font-size: 21px; line-height: 1.2; }
     .home-product p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
@@ -132,7 +151,6 @@
 
     .services { padding: 118px 0 122px; }
     .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 54px; }
-    .section-heading .section-lead { max-width: 380px; margin-bottom: 5px; }
     .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .service { position: relative; min-height: 280px; padding: 31px 25px 31px 0; }
     .service + .service { padding-left: 25px; border-left: 1px solid var(--line); }
@@ -140,22 +158,9 @@
     .service h3 { margin: 35px 0 12px; color: var(--pine); font-family: var(--serif); font-size: 23px; font-weight: 500; line-height: 1.22; }
     .service p { margin: 0; color: var(--muted); font-size: 13px; }
     .service-arrow { position: absolute; right: 20px; bottom: 29px; color: var(--pine); font-size: 19px; }
-    .service-visual {
-      position: relative;
-      margin-top: 26px;
-      height: 120px;
-      border-radius: 18px;
-      background-size: cover;
-      background-position: center;
-      border: 1px solid rgba(49, 92, 61, 0.08);
-      overflow: hidden;
-    }
 
     .approach { background: #eaf2e4; color: var(--ink); }
     .approach-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; padding-top: 112px; padding-bottom: 112px; }
-    .approach .eyebrow { color: var(--pine-soft); }
-    .approach .section-title { color: var(--pine); }
-    .approach .section-lead { color: var(--muted); }
     .approach-aside { display: flex; flex-direction: column; justify-content: space-between; padding-top: 12px; }
     .approach-note { max-width: 400px; margin: 0; color: var(--muted); font-size: 15px; }
     .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 25px 30px; margin-top: 46px; }
@@ -167,173 +172,30 @@
     .step h3 { margin: 0 0 5px; font-size: 14px; font-weight: 600; }
     .step p { margin: 0; color: var(--muted); font-size: 12px; }
 
-    .about { padding: 118px 0; }
-    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 90px; }
-    .about-visual { position: relative; min-height: 445px; background: #e0e5e2; }
-    .about-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .about-stamp { position: absolute; right: -24px; bottom: 25px; display: grid; width: 150px; min-height: 96px; place-content: center; padding: 14px; background: var(--white); color: var(--pine); box-shadow: 0 18px 32px rgb(36 51 41 / 12%); }
-    .about-stamp strong { font-family: var(--sans); font-size: 14px; font-weight: 700; line-height: 1.3; }
-    .about-stamp span { margin-top: 5px; color: var(--muted); font-size: 9px; font-weight: 600; }
-    .about-copy .section-title { max-width: 540px; }
-    .about-copy > p:not(.eyebrow) { max-width: 500px; margin: 22px 0; color: var(--muted); }
-    .about-list { display: grid; gap: 0; max-width: 500px; margin: 28px 0 31px; border-top: 1px solid var(--line); }
-    .about-list span { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); color: var(--pine); font-size: 13px; font-weight: 600; }
-    .about-list span::before { color: var(--pine-soft); content: "+"; font-size: 17px; font-weight: 400; }
-
-    .faq { padding: 104px 0 112px; background: #edf0ee; }
-    .faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 100px; }
-    .faq-list { border-top: 1px solid #d1ddcc; }
-    .faq-item { border-bottom: 1px solid #d1ddcc; }
-    .faq-item summary { position: relative; padding: 20px 42px 20px 0; color: var(--pine); font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { position: absolute; top: 17px; right: 2px; color: var(--pine-soft); content: "+"; font-size: 22px; font-weight: 400; }
-    .faq-item[open] summary::after { content: "−"; }
-    .faq-item p { max-width: 620px; margin: -4px 0 20px; color: var(--muted); font-size: 13px; }
-
-    .contact { position: relative; overflow: hidden; background: var(--pine-deep); color: var(--ink); }
-    .contact::after { position: absolute; top: -160px; right: -90px; width: 430px; height: 430px; border: 1px solid rgb(49 92 61 / 16%); border-radius: 50%; box-shadow: 0 0 0 45px rgb(49 92 61 / 4%); content: ""; }
-    .contact-inner { position: relative; z-index: 1; display: flex; min-height: 300px; align-items: center; justify-content: space-between; gap: 40px; padding-top: 70px; padding-bottom: 70px; }
-    .contact .eyebrow { color: var(--pine-soft); }
-    .contact .section-title { max-width: 650px; color: var(--pine); }
-    .contact-copy { max-width: 580px; margin: 15px 0 0; color: var(--muted); }
-    .contact-details { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 23px; }
-    .contact-details a { color: var(--pine); font-size: 14px; font-weight: 600; }
-    .contact-details a:hover { color: var(--pine-soft); }
-    .contact .button { flex: 0 0 auto; }
-
     footer { padding: 26px 0; background: #e3e8e5; color: #566659; font-size: 11px; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
     .footer-logo { width: 38px; height: 38px; object-fit: contain; }
     .footer-links { display: flex; gap: 22px; }
 
-    /* Floating Contact Widget CSS */
-    .floating-widget {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 999;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .widget-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      color: #ffffff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .widget-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-    .widget-btn.phone {
-      background-color: var(--pine);
-    }
-    .widget-btn.zalo {
-      background-color: #0068ff;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: -0.5px;
-    }
-    .widget-btn svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
     @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
     @media (max-width: 900px) {
       .wrap { width: min(100% - 48px, 720px); }
-      .nav-links { gap: 20px; }
       .proof-inner { grid-template-columns: 1fr 1fr; }
-      .proof-intro, .proof-item { min-height: 90px; padding: 18px; }
-      .proof-intro { padding-left: 0; }
-      .proof-item:nth-child(2) { border-left: 1px solid var(--line); }
-      .proof-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
-      .proof-item:nth-child(4) { border-top: 1px solid var(--line); }
-      .section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
-      .home-products-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
       .home-products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .services-grid { grid-template-columns: 1fr 1fr; }
-      .service { min-height: 245px; padding-left: 0; }
-      .service:nth-child(odd) { border-left: 0; padding-left: 0; }
-      .service:nth-child(even) { padding-left: 25px; border-left: 1px solid var(--line); }
-      .service:nth-child(n+3) { border-top: 1px solid var(--line); }
       .approach-inner { grid-template-columns: 1fr; gap: 55px; }
-      .approach-aside { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-      .principles { grid-template-columns: 1fr; margin-top: 0; }
-      .about-grid { gap: 55px; }
-      .about-visual { min-height: 390px; }
-      .faq-grid { grid-template-columns: 1fr; gap: 38px; }
-      .homepage-video-inner { grid-template-columns: 1fr; gap: 28px; }
-      .homepage-video-player { max-height: 68svh; }
     }
     @media (max-width: 640px) {
-      body { font-size: 15px; }
       .wrap { width: calc(100% - 40px); }
-      .topbar-inner { min-height: 35px; }
       .topbar-meta { display: none; }
-      .hero { min-height: 770px; min-height: 100svh; }
-      .hero-photo { inset: auto 0 0; width: 100%; height: 43%; object-position: center; opacity: .38; }
-      .hero::after { background: linear-gradient(180deg, var(--pine-deep) 0%, var(--pine-deep) 54%, rgb(227 238 219 / 90%) 72%, rgb(227 238 219 / 54%) 100%); }
-      .hero-inner { padding-top: 46px; }
-      .nav { position: fixed; top: 35px; right: 20px; left: 20px; min-height: 76px; padding: 0 12px; }
-      .brand-logo { width: 48px; height: 48px; }
-      .brand-name { font-size: 12px; }
-      .brand-caption { font-size: 8px; }
+      .nav { right: 20px; left: 20px; }
+      .nav-links { display: none; }
       .menu-toggle { display: block; }
-      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px; background: var(--white); color: var(--ink); box-shadow: 0 18px 30px rgba(36,51,41,.08); }
-      .nav-links.is-open { display: flex; flex-direction: column; }
-      .nav-links a:not(.nav-cta) { padding: 13px 0; border-bottom: 1px solid var(--line); }
-      .nav-cta { justify-content: center; margin: 12px 0 7px; }
-      .hero-copy { padding: 70px 0 115px; }
-      h1 { max-width: 450px; font-size: clamp(45px, 12vw, 62px); }
-      .hero-description { max-width: 390px; font-size: 14px; }
-      .hero-actions { align-items: flex-start; flex-direction: column; gap: 19px; }
-      .hero-index { bottom: 25px; }
-      .proof-inner { grid-template-columns: 1fr 1fr; }
-      .proof-intro, .proof-item { min-height: 84px; padding: 13px 8px; }
-      .proof-intro { padding-left: 0; font-size: 17px; }
-      .proof-item { gap: 9px; }
-      .proof-no { font-size: 24px; }
-      .proof-label { font-size: 10px; }
-      .services, .about { padding: 82px 0; }
-      .section-title { font-size: 39px; }
-      .home-products { padding: 64px 0; }
-      .home-products-grid { grid-template-columns: 1fr; }
-      .home-product { min-height: 145px; }
-      .section-heading { margin-bottom: 35px; }
-      .section-lead { font-size: 14px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service, .service + .service { min-height: 205px; padding: 24px 30px 25px 0; border-left: 0; }
-      .service + .service { border-top: 1px solid var(--line); }
-      .service h3 { margin-top: 22px; }
-      .service-arrow { right: 3px; bottom: 24px; }
-      .approach-inner { gap: 38px; padding-top: 82px; padding-bottom: 82px; }
-      .approach-aside { grid-template-columns: 1fr; gap: 30px; }
-      .principles { grid-template-columns: 1fr 1fr; gap: 18px 12px; }
-      .principle { gap: 8px; font-size: 11px; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-visual { min-height: 350px; margin-right: 14px; }
-      .about-stamp { right: -14px; width: 106px; height: 106px; }
-      .about-stamp strong { font-size: 25px; }
-      .faq { padding: 80px 0; }
-      .faq-grid { gap: 28px; }
-      .homepage-video-inner { padding-top: 52px; padding-bottom: 52px; }
-      .homepage-video-player { max-height: 68svh; }
-      .contact-inner { min-height: 360px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 28px; padding-top: 65px; padding-bottom: 65px; }
-      .contact .section-title { font-size: 39px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; gap: 12px; }
-      .footer-links { flex-wrap: wrap; gap: 14px; }
+      .home-products-grid, .services-grid { grid-template-columns: 1fr; }
       .floating-widget { bottom: 18px; right: 18px; gap: 10px; }
       .widget-btn { width: 48px; height: 48px; }
+      .calc-box { padding: 20px; }
     }
   </style>
   <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
@@ -347,204 +209,213 @@
   </div>
 
   <header class="hero" id="home">
-    <img class="hero-photo" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=85" alt="Đội ngũ chuyên gia đang trao đổi trong buổi làm việc">
+    <img class="hero-photo" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=85" alt="Đội ngũ chuyên gia FIN BIZ">
     <div class="wrap hero-inner">
       <nav class="nav" aria-label="Điều hướng chính">
-        <a class="brand" href="#home" aria-label="FIN BIZ, về đầu trang">
+        <a class="brand" href="#home" aria-label="FIN BIZ">
           <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="60" height="60">
-          <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; đưa ra giải pháp</span></span>
+          <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu"><span class="menu-glyph"></span></button>
+        <button class="menu-toggle" type="button" aria-label="Mở menu"><span class="menu-glyph"></span></button>
         <div class="nav-links" id="main-menu">
+          <a href="#calculator">Tính khoản vay</a>
           <a href="#services">Dịch vụ</a>
-          <a href="san-pham.html">Sản phẩm</a>
           <a href="#approach">Quy trình</a>
-          <a href="#about">Về chúng tôi</a>
           <a href="#faq">Hỏi đáp</a>
-          <a href="kien-thuc-vay-von.html">Kiến thức</a>
-          <a href="tin-tuc.html">Tin tức</a>
-          <a href="dang-ky-vay.html">Đăng ký vay</a>
-          <a class="nav-cta" href="#contact">Trao đổi cùng chuyên gia <span aria-hidden="true">↗</span></a>
+          <a href="#quick-register">Đăng ký vay</a>
+          <a class="nav-cta" href="#quick-register">Tư vấn miễn phí <span aria-hidden="true">↗</span></a>
         </div>
       </nav>
       <div class="hero-copy">
         <p class="hero-kicker">FIN BIZ · Tư vấn tài chính doanh nghiệp</p>
         <h1><span class="rotating-phrase" id="hero-phrase">Giảm lãi vay</span><br><em>DOANH NGHIỆP</em></h1>
-        <p class="hero-description">Đơn vị tiên phong hỗ trợ doanh nghiệp tối ưu nguồn vốn và tiếp cận giải pháp tài chính phù hợp với thực trạng hoạt động và kế hoạch phát triển.</p>
+        <p class="hero-description">Hỗ trợ doanh nghiệp tái cấu trúc nợ, tối ưu dòng tiền và tiếp cận nguồn vốn ưu đãi từ các tổ chức tài chính hàng đầu.</p>
         <div class="hero-actions">
-          <a class="button" href="dang-ky-vay.html">Đăng ký vay vốn <span class="button-arrow" aria-hidden="true">↗</span></a>
-          <a class="text-link" href="tel:+84358608830">Gọi tư vấn: 0358 608 830 <span aria-hidden="true">↓</span></a>
+          <a class="button" href="#quick-register">Đăng ký tư vấn vốn <span class="button-arrow" aria-hidden="true">↗</span></a>
+          <a class="text-link" href="tel:+84358608830">Hotline: 0358 608 830 <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <span class="hero-index">CƠ CẤU NỢ · CHUYỂN ĐỔI KHOẢN VAY · HỒ SƠ DOANH NGHIỆP</span>
+      <span class="hero-index">CƠ CẤU NỢ · TỐI ƯU DÒNG TIỀN · CHUYỂN ĐỔI KHOẢN VAY</span>
     </div>
   </header>
 
-  <section class="homepage-video" aria-labelledby="homepage-video-title">
-    <div class="wrap homepage-video-inner">
-      <div class="homepage-video-copy">
-        <p class="eyebrow">FIN BIZ · Góc nhìn tài chính</p>
-        <h2 class="section-title" id="homepage-video-title">Tìm hướng vốn từ hồ sơ thực tế.</h2>
-        <p class="section-lead">Rà soát dòng tiền, làm rõ nhu cầu và chuẩn bị phương án để doanh nghiệp chủ động trao đổi với tổ chức tài chính.</p>
-        <p class="homepage-video-note">FIN BIZ tư vấn và kết nối; quyết định cấp vốn thuộc về đơn vị cho vay.</p>
-      </div>
-      <video class="homepage-video-player" controls playsinline preload="metadata" width="480" height="854" aria-label="Video giới thiệu giải pháp tài chính doanh nghiệp của FIN BIZ">
-        <source src="video.mp4" type="video/mp4">
-        Trình duyệt của bạn không hỗ trợ video HTML5.
-      </video>
-    </div>
-  </section>
-
-  <section class="home-products" aria-labelledby="home-products-title">
-    <div class="wrap">
-      <div class="home-products-heading">
-        <div>
-          <p class="eyebrow">Hướng tư vấn FIN BIZ</p>
-          <h2 class="section-title" id="home-products-title">Tám bài toán vốn, nhìn từ dòng tiền.</h2>
-        </div>
-        <p class="section-lead">Chọn chủ đề gần với tình hình doanh nghiệp để xem những thông tin nên rà soát trước khi trao đổi.</p>
-      </div>
-      <div class="home-products-grid">
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=dong-tien-van-hanh"><span class="home-product-index">01 / VẬN HÀNH</span><h3>Vốn vận hành</h3><p>Làm rõ nhịp thu chi và khoảng lệch dòng tiền.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=von-theo-don-hang"><span class="home-product-index">02 / ĐƠN HÀNG</span><h3>Vốn theo đơn hàng</h3><p>Rà soát tiến độ giao hàng và thanh toán.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=khoan-phai-thu"><span class="home-product-index">03 / CÔNG NỢ</span><h3>Khoản phải thu</h3><p>Nhìn rõ hóa đơn, nghiệm thu và lịch thu tiền.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=von-mua-vu"><span class="home-product-index">04 / MÙA VỤ</span><h3>Vốn theo mùa vụ</h3><p>Chuẩn bị dòng tiền theo nhịp kinh doanh.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=mo-rong-cong-suat"><span class="home-product-index">05 / ĐẦU TƯ</span><h3>Mở rộng công suất</h3><p>Rà soát kế hoạch đầu tư và khả năng chi trả.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=von-ban-le"><span class="home-product-index">06 / BÁN LẺ</span><h3>Vốn cho bán lẻ</h3><p>Phân tích doanh thu và chi phí theo điểm bán.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=ho-kinh-doanh"><span class="home-product-index">07 / HỘ KINH DOANH</span><h3>Vốn hộ kinh doanh</h3><p>Hệ thống thông tin hoạt động và thu chi.</p></a></article>
-        <article class="home-product"><a href="san-pham-chi-tiet.html?giai-phap=ra-soat-khoan-vay"><span class="home-product-index">08 / CẤU TRÚC NỢ</span><h3>Cơ cấu khoản vay</h3><p>Đối chiếu lịch nợ với dòng tiền hiện tại.</p></a></article>
-      </div>
-      <p class="home-products-note">Đây là các hướng tư vấn của FIN BIZ, không phải cam kết khoản vay. <a href="dang-ky-vay.html">Trao đổi nhu cầu</a>.</p>
-    </div>
-  </section>
-
-  <section class="proof" aria-label="Nguyên tắc tư vấn">
+  <!-- 1. TÍNH NĂNG: SỐ LIỆU & ĐỐI TÁC NGÂN HÀNG -->
+  <section class="proof" aria-label="Thành tựu và Đối tác">
     <div class="wrap proof-inner">
-      <div class="proof-intro">Thấu hiểu nợ vay,<br>để doanh nghiệp đi đúng hướng.</div>
-      <div class="proof-item"><span class="proof-no">01</span><span class="proof-label">Rà soát hồ sơ từng khoản vay để tìm điểm yếu thực tế</span></div>
-      <div class="proof-item"><span class="proof-no">02</span><span class="proof-label">Xây dựng phương án theo dòng tiền và mục tiêu phát triển</span></div>
-      <div class="proof-item"><span class="proof-no">03</span><span class="proof-label">Đồng hành từ chuẩn bị hồ sơ đến trao đổi với tổ chức tài chính</span></div>
+      <div class="proof-intro">Đồng hành tín dụng,<br>vững bước thành công.</div>
+      <div class="proof-item"><span class="proof-no">500+</span><span class="proof-label">Doanh nghiệp đã được tư vấn cấu trúc nợ thành công</span></div>
+      <div class="proof-item"><span class="proof-no">20+</span><span class="proof-label">Đối tác Ngân hàng & Tổ chức tài chính liên kết</span></div>
+      <div class="proof-item"><span class="proof-no">24h</span><span class="proof-label">Thời gian phản hồi & đưa ra phương án ban đầu</span></div>
+    </div>
+  </section>
+
+  <section class="bank-partners">
+    <div class="wrap">
+      <p class="bank-partners-title">Mạng lưới đối tác Ngân hàng & Tổ chức Tài chính</p>
+      <div class="bank-logos">
+        <span class="bank-badge">VIETCOMBANK</span>
+        <span class="bank-badge">MB BANK</span>
+        <span class="bank-badge">VPBANK</span>
+        <span class="bank-badge">TECHCOMBANK</span>
+        <span class="bank-badge">BIDV</span>
+        <span class="bank-badge">AGRIBANK</span>
+      </div>
     </div>
   </section>
 
   <main>
+    <!-- 2. TÍNH NĂNG: CÔNG CỤ TÍNH KHOẢN VAY (LOAN CALCULATOR) -->
+    <section id="calculator" style="padding: 90px 0; background: var(--paper);">
+      <div class="wrap">
+        <div class="section-heading" style="margin-bottom: 40px;">
+          <div>
+            <p class="eyebrow">Công cụ tài chính</p>
+            <h2 class="section-title">Ước tính lịch trả nợ</h2>
+          </div>
+          <p class="section-lead">Chủ động dự tính nghĩa vụ tài chính hàng tháng trước khi trao đổi cùng chuyên gia.</p>
+        </div>
+
+        <div class="calc-box">
+          <div class="calc-input-group">
+            <div>
+              <div class="calc-label"><span>Số tiền cần vay:</span> <span class="calc-val" id="amount-val">1,000,000,000 VNĐ</span></div>
+              <input type="range" class="calc-slider" id="loan-amount" min="100000000" max="10000000000" step="100000000" value="1000000000" oninput="updateCalc()">
+            </div>
+            <div>
+              <div class="calc-label"><span>Thời hạn vay:</span> <span class="calc-val" id="period-val">12 Tháng</span></div>
+              <input type="range" class="calc-slider" id="loan-period" min="3" max="60" step="3" value="12" oninput="updateCalc()">
+            </div>
+            <div>
+              <div class="calc-label"><span>Lãi suất ước tính (%/năm):</span> <span class="calc-val" id="rate-val">8.5%</span></div>
+              <input type="range" class="calc-slider" id="loan-rate" min="5" max="15" step="0.5" value="8.5" oninput="updateCalc()">
+            </div>
+          </div>
+
+          <div class="calc-result">
+            <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.85;">Gốc + Lãi tháng đầu (Ước tính)</span>
+            <div id="monthly-payment" style="font-size: 34px; font-weight: 700; margin: 10px 0 20px; color: #e7f0df;">88,333,333 VNĐ</div>
+            <a href="#quick-register" class="button" style="background: var(--paper); color: var(--pine); text-align: center; border: none; font-weight: 700;">Nhận phương án chính xác ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DỊCH VỤ -->
     <section class="services" id="services">
       <div class="wrap">
         <div class="section-heading">
-          <div><p class="eyebrow">Dịch vụ</p><h2 class="section-title">Giải pháp tài chính doanh nghiệp<br>theo từng giai đoạn phát triển.</h2></div>
-          <p class="section-lead">FIN BIZ hỗ trợ doanh nghiệp giảm áp lực lãi vay, tối ưu cấu trúc nợ và nâng cao khả năng tiếp cận nguồn vốn từ các tổ chức tài chính.</p>
+          <div><p class="eyebrow">Dịch vụ</p><h2 class="section-title">Giải pháp tài chính toàn diện</h2></div>
+          <p class="section-lead">Tối ưu cấu trúc nợ và hỗ trợ khả năng tiếp cận nguồn vốn ưu đãi.</p>
         </div>
         <div class="services-grid">
           <article class="service">
             <span class="service-index">01 / CƠ CẤU NỢ</span>
             <h3>Cơ cấu nợ tối ưu</h3>
-            <p>Phân tích toàn bộ khoản vay, kỳ hạn, tài sản đảm bảo và phương án trả nợ để giảm áp lực thanh toán hiện tại.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
+            <p>Phân tích khoản vay, kỳ hạn và phương án trả nợ nhằm giảm áp lực dòng tiền.</p>
+            <span class="service-arrow">↗</span>
           </article>
           <article class="service">
             <span class="service-index">02 / TỐI ƯU VỐN</span>
             <h3>Chuyển đổi khoản vay</h3>
-            <p>Kiểm tra phương án chuyển đổi, tái cơ cấu hoặc điều chỉnh thời hạn phù hợp với thực trạng doanh nghiệp.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
-          </article>          <article class="service">
+            <p>Điều chỉnh thời hạn, lãi suất phù hợp với thực trạng vận hành doanh nghiệp.</p>
+            <span class="service-arrow">↗</span>
+          </article>
+          <article class="service">
             <span class="service-index">03 / HỒ SƠ</span>
             <h3>Rà soát hồ sơ tài chính</h3>
-            <p>Đánh giá và chuẩn hóa hồ sơ tín dụng, tài chính, kế toán để tăng khả năng được tiếp nhận và thuyết phục.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
+            <p>Chuẩn hóa hồ sơ tín dụng để tăng khả năng phê duyệt từ ngân hàng.</p>
+            <span class="service-arrow">↗</span>
           </article>
           <article class="service">
             <span class="service-index">04 / KẾT NỐI</span>
-            <h3>Kết nối ngân hàng &amp; tổ chức tài chính</h3>
-            <p>Chuẩn bị thông tin, mô tả doanh nghiệp và phương án tài chính để trao đổi hiệu quả với đối tác phù hợp.</p>
-            <div class="service-visual" style="background-image:linear-gradient(135deg, rgba(49,92,61,0.18), rgba(49,92,61,0.05)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55d?auto=format&fit=crop&w=900&q=80');"></div>
-            <span class="service-arrow" aria-hidden="true">↗</span>
+            <h3>Kết nối nguồn vốn</h3>
+            <p>Kết nối trực tiếp với danh mục đối tác tổ chức tài chính uy tín.</p>
+            <span class="service-arrow">↗</span>
           </article>
-        </div>
-        <div class="value-points">
-          <div class="value-point"><strong>Đánh giá đúng</strong><span>Hiểu rõ tình hình nợ và dòng tiền, không làm theo kiểu “đại khái”.</span></div>
-          <div class="value-point"><strong>Phương án thực tế</strong><span>Rà soát điều kiện, giới hạn và rủi ro trước khi doanh nghiệp quyết định.</span></div>
-          <div class="value-point"><strong>Đồng hành rõ ràng</strong><span>Từ hồ sơ ban đầu đến lựa chọn giải pháp, mọi bước đều được giải thích minh bạch và dễ hiểu.</span></div>
         </div>
       </div>
     </section>
 
+    <!-- QUY TRÌNH -->
     <section class="approach" id="approach">
       <div class="wrap approach-inner">
         <div>
           <p class="eyebrow">Quy trình làm việc</p>
-          <h2 class="section-title">Bốn bước rõ ràng.<br>Giải pháp theo hồ sơ.</h2>
-          <p class="section-lead">Mỗi phương án bắt đầu bằng việc hiểu đúng khoản vay và kết thúc bằng kế hoạch triển khai mà doanh nghiệp nắm rõ.</p>
+          <h2 class="section-title">Bốn bước minh bạch.<br>Giải pháp tối ưu.</h2>
           <div class="principles">
-            <div class="principle"><span class="principle-mark">✓</span><span>Đánh giá theo hồ sơ thực tế</span></div>
-            <div class="principle"><span class="principle-mark">✓</span><span>Làm rõ điều kiện và rủi ro</span></div>
-            <div class="principle"><span class="principle-mark">✓</span><span>Bảo mật thông tin trao đổi</span></div>
-            <div class="principle"><span class="principle-mark">✓</span><span>Không cam kết kết quả cấp vốn</span></div>
+            <div class="principle"><span class="principle-mark">✓</span><span>Đánh giá hồ sơ thực tế</span></div>
+            <div class="principle"><span class="principle-mark">✓</span><span>Bảo mật thông tin tuyệt đối</span></div>
           </div>
         </div>
-        <div class="approach-aside">
-          <p class="approach-note">Từ cuộc trao đổi đầu tiên đến lúc thống nhất hướng triển khai, mỗi bước đều được giải thích rõ để doanh nghiệp chủ động hơn trong quyết định tài chính.</p>
-          <div class="steps">
-            <div class="step">
-              <span class="step-number">01</span>
-              <div>
-                <h3>Tiếp nhận thông tin</h3>
-                <p>Lắng nghe nhu cầu, thực trạng hoạt động và thu thập hồ sơ liên quan.</p>
-              </div>
-            </div>
-            <div class="step">
-              <span class="step-number">02</span>
-              <div>
-                <h3>Phân tích &amp; Đánh giá</h3>
-                <p>So sánh dòng tiền, khoản nợ hiện tại và đánh giá tính khả thi.</p>
-              </div>
-            </div>
-            <div class="step">
-              <span class="step-number">03</span>
-              <div>
-                <h3>Xây dựng phương án</h3>
-                <p>Lập kế hoạch tái cơ cấu hoặc chuẩn bị hồ sơ vay vốn tối ưu.</p>
-              </div>
-            </div>
-            <div class="step">
-              <span class="step-number">04</span>
-              <div>
-                <h3>Thực thi &amp; Đồng hành</h3>
-                <p>Hỗ trợ làm việc với các tổ chức tài chính cho đến khi hoàn tất.</p>
-              </div>
-            </div>
-          </div>
+        <div class="steps">
+          <div class="step"><span class="step-number">01</span><div><h3>Tiếp nhận thông tin</h3><p>Thu thập thông tin nhu cầu & thực trạng nợ.</p></div></div>
+          <div class="step"><span class="step-number">02</span><div><h3>Phân tích & Đánh giá</h3><p>Rà soát dòng tiền và năng lực chi trả.</p></div></div>
+          <div class="step"><span class="step-number">03</span><div><h3>Xây dựng phương án</h3><p>Lập giải pháp cơ cấu/vay vốn phù hợp.</p></div></div>
+          <div class="step"><span class="step-number">04</span><div><h3>Thực thi & Đồng hành</h3><p>Hỗ trợ làm việc với ngân hàng cho đến khi hoàn tất.</p></div></div>
         </div>
+      </div>
+    </section>
+
+    <!-- 3. TÍNH NĂNG: FORM ĐĂNG KÝ TƯ VẤN TRỰC TIẾP (LEAD FORM) -->
+    <section id="quick-register" style="padding: 90px 0; background: var(--pine-deep);">
+      <div class="wrap" style="max-width: 800px; text-align: center;">
+        <p class="eyebrow" style="justify-content: center;">Đăng ký trực tiếp</p>
+        <h2 class="section-title" style="margin: 0 auto 16px;">Nhận tư vấn giải pháp nguồn vốn</h2>
+        <p class="section-lead" style="margin: 0 auto 40px;">Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích hồ sơ và liên hệ lại trong vòng 30 phút.</p>
+
+        <form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; text-align: left;" onsubmit="alert('Cảm ơn bạn! FIN BIZ sẽ liên hệ hỗ trợ ngay.'); return false;">
+          <input type="text" placeholder="Tên doanh nghiệp / Hộ kinh doanh" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
+          <input type="tel" placeholder="Số điện thoại / Zalo" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
+          <select style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink);">
+            <option value="">Nhu cầu cần tư vấn?</option>
+            <option value="Co cau no">Cơ cấu nợ & Giảm lãi vay</option>
+            <option value="Von van hanh">Bổ sung vốn vận hành</option>
+            <option value="Chuyen doi">Chuyển đổi khoản vay ưu đãi</option>
+          </select>
+          <button type="submit" class="button" style="background: var(--pine); color: #fff; border: none; grid-column: 1 / -1; min-height: 54px; font-weight: 700;">GỬI YÊU CẦU TƯ VẤN NGAY ↗</button>
+        </form>
       </div>
     </section>
   </main>
 
-  <footer id="contact">
+  <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand">
         <img class="footer-logo" src="LOGO.png" alt="Logo FIN BIZ">
         <span>FIN BIZ</span>
       </div>
       <div class="footer-links">
+        <a href="#calculator">Tính khoản vay</a>
         <a href="#services">Dịch vụ</a>
-        <a href="dang-ky-vay.html">Đăng ký vay</a>
         <a href="tel:+84358608830">0358 608 830</a>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Contact Widget -->
+  <!-- FLOATING CONTACT WIDGET -->
   <div class="floating-widget" aria-label="Kênh liên hệ nhanh">
-    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat qua Zalo">
-      Zalo
-    </a>
-    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện trực tiếp">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-      </svg>
+    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat Zalo">Zalo</a>
+    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
     </a>
   </div>
+
+  <script>
+    function updateCalc() {
+      const amount = parseFloat(document.getElementById('loan-amount').value);
+      const period = parseInt(document.getElementById('loan-period').value);
+      const rate = parseFloat(document.getElementById('loan-rate').value) / 100;
+
+      document.getElementById('amount-val').innerText = amount.toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('period-val').innerText = period + ' Tháng';
+      document.getElementById('rate-val').innerText = (rate * 100).toFixed(1) + '%';
+
+      const monthlyPrincipal = amount / period;
+      const firstMonthInterest = (amount * rate) / 12;
+      const totalFirstMonth = monthlyPrincipal + firstMonthInterest;
+
+      document.getElementById('monthly-payment').innerText = Math.round(totalFirstMonth).toLocaleString('vi-VN') + ' VNĐ';
+    }
+  </script>
 </body>
 </html>
