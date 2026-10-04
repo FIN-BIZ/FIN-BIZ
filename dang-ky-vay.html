@@ -190,7 +190,7 @@
   <section class="page-header">
     <div class="wrap">
       <p class="eyebrow">Thẩm định siêu tốc 24H</p>
-      <h1>Đăng Ký Tư Vấn Phương ÁN Tín Dụng</h1>
+      <h1>Đăng Ký Tư Vấn Phương Án Tín Dụng</h1>
       <p>Nhận ngay lập tức tư vấn giải pháp tài chính, cơ cấu khoản vay và tiếp cận các gói tín dụng ưu đãi ngân hàng từ đội ngũ chuyên gia FIN BIZ.</p>
     </div>
   </section>
@@ -370,8 +370,11 @@
     </a>
   </div>
 
-  <!-- SCRIPT XỬ LÝ DỮ LIỆU & BẢNG TÍNH TOÁN -->
+  <!-- SCRIPT XỬ LÝ DỮ LIỆU, TÍNH TOÁN VÀ GỬI GOOGLE SHEETS -->
   <script>
+    // ⚠️ LƯU Ý: Thay đường link Web App bạn nhận được từ Google Apps Script vào biến SCRIPT_URL bên dưới!
+    const SCRIPT_URL = "https://script.google.com/macros/s/BẠN_DÁN_LINK_WEB_APP_Ở_ĐÂY/exechttps://script.google.com/macros/s/AKfycbxG5ASxJKTn6HIf2Lvsam16t8-CzI-f1UsXar7_Oie_mnBxZxHYNx3YhUWpmY1iPq_gHQ/exec";
+
     function toggleMobileMenu() {
       const menu = document.getElementById('main-menu');
       menu.classList.toggle('mobile-open');
@@ -414,12 +417,10 @@
       const termVal = parseInt(document.getElementById('sliderTerm').value); // Tháng
       const rateVal = parseFloat(document.getElementById('sliderRate').value); // %/năm
 
-      // Update Label
       document.getElementById('sliderAmountText').innerText = amountVal >= 1000 ? (amountVal/1000).toFixed(1) + ' Tỷ VNĐ' : amountVal + ' Triệu VNĐ';
       document.getElementById('sliderTermText').innerText = termVal + ' Tháng';
       document.getElementById('sliderRateText').innerText = rateVal + '% / năm';
 
-      // Tính toán
       const totalAmount = amountVal * 1000000;
       const monthlyPrincipal = totalAmount / termVal;
       const monthlyInterest = (totalAmount * (rateVal / 100)) / 12;
@@ -430,55 +431,48 @@
       document.getElementById('resTotal').innerText = Math.round(monthlyTotal).toLocaleString('vi-VN') + ' VNĐ';
     }
 
+    // HÀM GỬI DỮ LIỆU TỰ ĐỘNG VỀ GOOGLE SHEETS
     function handleFormSubmit(e) {
-      // 1. DÁN LINK GOOGLE APPS SCRIPT CỦA BẠN VÀO GIỮA HAI DẤU NGOẶC KÉP DƯỚI ĐÂY
-const SCRIPT_URL = "https://script.google.com/macros/s/BẠN_DÁN_LINK_WEB_APP_Ở_BƯỚC_1_VÀO_ĐÂY/exechttps://script.google.com/macros/s/AKfycbymUTxemUkciKI9CyybvxW-Vy6asUve2lCA21S5gltfSxMSaAsJ01b3CIc9TLF2LQg62A/exec";
+      e.preventDefault();
 
-// 2. HÀM XỬ LÝ KHI NGƯỜI DÙNG BẤM NÚT "GỬI ĐĂNG KÝ NGAY"
-function handleFormSubmit(e) {
-  e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerText;
 
-  const submitBtn = e.target.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.innerText;
-  
-  // Hiển thị trạng thái đang gửi để người dùng biết
-  submitBtn.innerText = "Đang gửi dữ liệu...";
-  submitBtn.disabled = true;
+      submitBtn.innerText = "Đang gửi dữ liệu...";
+      submitBtn.disabled = true;
 
-  // Gom toàn bộ thông tin người dùng đã nhập trong Form
-  const formData = new FormData();
-  formData.append('businessType', document.getElementById('businessType').value);
-  formData.append('loanProduct', document.getElementById('loanProduct').value);
-  formData.append('loanAmount', document.getElementById('loanAmountInput').value);
-  formData.append('fullname', document.getElementById('fullname').value);
-  formData.append('phone', document.getElementById('phone').value);
-  formData.append('company', document.getElementById('company').value);
-  formData.append('note', document.getElementById('note').value);
+      const formData = new FormData();
+      formData.append('businessType', document.getElementById('businessType').value);
+      formData.append('loanProduct', document.getElementById('loanProduct').value);
+      formData.append('loanAmount', document.getElementById('loanAmountInput').value);
+      formData.append('fullname', document.getElementById('fullname').value);
+      formData.append('phone', document.getElementById('phone').value);
+      formData.append('company', document.getElementById('company').value);
+      formData.append('note', document.getElementById('note').value);
 
-  // Gửi dữ liệu tới Google Sheets qua đường link SCRIPT_URL
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
-    alert('Đăng ký thành công! Chuyên gia FIN BIZ sẽ liên hệ hỗ trợ bạn trong vòng 24h.');
-    
-    // Tự động mở tab Zalo để khách nhắn tin trực tiếp nếu muốn
-    window.open("https://zalo.me/0358608830", "_blank");
-    
-    // Khôi phục lại Form về trạng thái ban đầu
-    document.getElementById('loanForm').reset();
-    goToStep(1);
-    submitBtn.innerText = originalBtnText;
-    submitBtn.disabled = false;
-  })
-  .catch(error => {
-    console.error('Lỗi khi gửi dữ liệu:', error);
-    alert('Có lỗi xảy ra khi gửi dữ liệu. Bạn vui lòng liên hệ trực tiếp Zalo 0358 608 830 để được hỗ trợ nhanh nhất!');
-    submitBtn.innerText = originalBtnText;
-    submitBtn.disabled = false;
-  });
-}}
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        alert('Đăng ký thành công! Chuyên gia FIN BIZ sẽ liên hệ hỗ trợ bạn trong vòng 24h.');
+        
+        // Tự động mở tab Zalo tư vấn
+        window.open("https://zalo.me/0358608830", "_blank");
+        
+        // Reset form về trạng thái ban đầu
+        document.getElementById('loanForm').reset();
+        goToStep(1);
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+      })
+      .catch(error => {
+        console.error('Lỗi khi gửi dữ liệu:', error);
+        alert('Có lỗi xảy ra khi gửi dữ liệu. Bạn vui lòng liên hệ trực tiếp Zalo 0358 608 830 để được hỗ trợ nhanh nhất!');
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+      });
+    }
 
     // Khởi tạo bảng tính lần đầu
     updateCalc();
