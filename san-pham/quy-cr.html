@@ -3,88 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315c3d">
   <title>Quỹ Tài Trợ Chuỗi Cung Ứng CR (Credita) | FIN BIZ</title>
   <link rel="icon" type="image/png" href="../LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* KHỐI THẺ DUY NHẤT CHỨA TẤT CẢ NỘI DUNG */
-.single-product-card {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 36px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.info-section {
-  margin-bottom: 8px;
-}
-
-.section-title {
-  font-size: 22px;
-  color: var(--pine);
-  font-family: 'Playfair Display', serif;
-  margin: 0 0 16px;
-}
-
-.subsection-title {
-  font-size: 16px;
-  color: var(--ink);
-  margin: 16px 0 8px;
-  font-weight: 700;
-}
-
-.info-section p {
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.info-list, .step-list {
-  padding-left: 20px;
-  margin-bottom: 16px;
-}
-
-.info-list li, .step-list li {
-  margin-bottom: 10px;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* ĐƯỜNG PHÂN CÁCH GIỮA CÁC MỤC */
-.section-divider {
-  border: 0;
-  border-top: 1px dashed var(--line);
-  margin: 28px 0;
-}
-
-/* BUTTON SIDEBAR */
-.btn-zalo-sidebar {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 12px 20px;
-  background: #f0f6ff;
-  color: #0068ff;
-  border: 1px solid rgba(0, 104, 255, 0.2);
-  font-weight: 700;
-  border-radius: 6px;
-  margin-top: 10px;
-  font-size: 14px;
-  transition: all 0.2s;
-}
-.btn-zalo-sidebar:hover {
-  background: #0068ff;
-  color: #ffffff;
-}
+    :root { --pine: #315c3d; --pine-deep: #e3eedb; --pine-soft: #527b59; --bg-gray: #eef2ef; --white: #ffffff; --ink: #1f2a22; --muted: #5e6c61; --line: #d3dcd5; --silver: #9aa89f; --zalo-blue: #0068ff; --sans: "DM Sans", sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg-gray); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
+    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.1); border-radius: 8px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-cta { min-height: 42px; padding: 0 18px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 6px; font-weight: 700; }
+    .product-detail-header { padding: 150px 0 40px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
+    .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .product-detail-header h1 { font-size: clamp(28px, 4vw, 42px); color: var(--pine); margin: 8px 0 16px; font-family: 'Playfair Display', serif; }
+    .detail-container { padding: 50px 0 80px; }
+    .detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 36px; }
+    .product-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: #ffffff; padding: 24px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--line); }
+    .spec-item { display: flex; flex-direction: column; }
+    .spec-label { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .spec-val { font-size: 16px; font-weight: 700; color: var(--pine); margin-top: 4px; }
+    .single-product-card { background: #ffffff; border: 1px solid var(--line); border-radius: 10px; padding: 36px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+    .section-title { font-size: 22px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 0 0 16px; }
+    .info-section p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+    .info-list, .step-list { padding-left: 20px; margin-bottom: 16px; }
+    .info-list li, .step-list li { margin-bottom: 10px; font-size: 15px; }
+    .section-divider { border: 0; border-top: 1px dashed var(--line); margin: 28px 0; }
+    .sidebar-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; padding: 28px; position: sticky; top: 130px; }
+    .btn-apply { display: block; width: 100%; text-align: center; padding: 14px 20px; background: var(--pine); color: #ffffff; font-weight: 700; border-radius: 6px; }
+    .btn-zalo-sidebar { display: block; width: 100%; text-align: center; padding: 12px 20px; background: #f0f6ff; color: #0068ff; border: 1px solid rgba(0, 104, 255, 0.2); font-weight: 700; border-radius: 6px; margin-top: 10px; font-size: 14px; }
+    footer { padding: 32px 0; background: #e0e6e1; color: #4e5e51; font-size: 13px; margin-top: 40px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; }
+    .footer-logo { width: 38px; height: 38px; }
+    @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } .product-spec-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <div class="topbar"><div class="wrap topbar-inner"><span>Giải pháp tài chính & cấp vốn tín chấp doanh nghiệp</span><div>0358 608 830</div></div></div>
-  <nav class="nav"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span></span></a><div class="nav-links"><a href="../index.html">Trang chủ</a><a href="../san-pham.html" class="active">Sản phẩm</a><a class="nav-cta" href="../dang-ky-vay.html">Đăng ký vay ↗</a></div></nav>
+  <nav class="nav"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span></span></a><div class="nav-links"><a href="../index.html">Trang chủ</a><a href="../san-pham.html" class="active">Sản phẩm</a><a class="nav-cta" href="../dang-ky-vay.html">Kiểm tra điều kiện vay ↗</a></div></nav>
 
   <header class="product-detail-header">
     <div class="wrap">
@@ -93,89 +62,70 @@
       <h1>Quỹ Tài Trợ Chuỗi Cung Ứng CR (Credita)</h1>
     </div>
   </header>
-<main class="detail-container">
-  <div class="wrap detail-grid">
-    <!-- KHỐI NỘI DUNG CHÍNH: GỘP CHUNG TRONG 1 CARD DUY NHẤT -->
-    <div class="single-product-card">
-      
-      <!-- PHẦN 1: TỔNG QUAN SẢN PHẨM -->
-      <section class="info-section">
-        <h2 class="section-title">1. Tổng quan sản phẩm</h2>
-        <p>Sản phẩm hỗ trợ nguồn vốn tín chấp cho Doanh nghiệp & Hộ kinh doanh không cần thế chấp Bất động sản, thẩm định dựa trên năng lực tài chính thực tế và dòng tiền kinh doanh.</p>
-        <ul class="info-list">
-          <li><strong>Hạn mức cấp:</strong> Linh hoạt theo quy mô dòng tiền thực tế.</li>
-          <li><strong>Thời hạn cho vay:</strong> Tối đa lên tới 36 - 60 tháng.</li>
-          <li><strong>Lãi suất:</strong> Ưu đãi chỉ từ 1.2% - 1.5%/tháng.</li>
-        </ul>
-      </section>
 
-      <hr class="section-divider">
+  <main class="detail-container">
+    <div class="wrap detail-grid">
+      <div class="main-detail-content">
+        <div class="product-spec-grid">
+          <div class="spec-item"><span class="spec-label">Hạn mức vay</span><span class="spec-val">Theo hạn mức chuỗi</span></div>
+          <div class="spec-item"><span class="spec-label">Thời hạn tín dụng</span><span class="spec-val">3 - 6 tháng</span></div>
+          <div class="spec-item"><span class="spec-label">Tài sản bảo đảm</span><span class="spec-val">Liên kết chuỗi cung ứng</span></div>
+        </div>
 
-      <!-- PHẦN 2: ĐIỀU KIỆN, KHU VỰC & NGÀNH NGHỀ -->
-      <section class="info-section">
-        <h2 class="section-title">2. Điều kiện, Khu vực &amp; Ngành nghề áp dụng</h2>
-        <h3 class="subsection-title">A. Điều kiện &amp; Đối tượng:</h3>
-        <ul class="info-list">
-          <li>Doanh nghiệp/HKD hoạt động tối thiểu 12 tháng trở lên.</li>
-          <li>Không có nợ xấu CIC tại các TCTD trong 24 tháng gần nhất.</li>
-          <li>Có dòng tiền qua tài khoản ngân hàng ổn định.</li>
-        </ul>
-        <h3 class="subsection-title">B. Phạm vi &amp; Khu vực:</h3>
-        <p>Hỗ trợ phê duyệt và giải ngân trên phạm vi toàn quốc.</p>
-      </section>
+        <div class="single-product-card">
+          <section class="info-section">
+            <h2 class="section-title">1. Tổng quan sản phẩm</h2>
+            <p>Mô hình cấp vốn Credita giúp tài trợ vốn mua hàng không tài sản thế chấp dựa trên uy tín giao dịch trong chuỗi liên kết sản xuất.</p>
+          </section>
 
-      <hr class="section-divider">
+          <hr class="section-divider">
 
-      <!-- PHẦN 3: HỒ SƠ & CHỨNG TỪ CẦN THIẾT -->
-      <section class="info-section">
-        <h2 class="section-title">3. Hồ sơ &amp; Chứng từ cần thiết</h2>
-        <ul class="info-list">
-          <li><strong>Pháp lý:</strong> Giấy đăng ký kinh doanh (ĐKKD), CCCD người đại diện.</li>
-          <li><strong>Tài chính:</strong> Tờ khai thuế VAT / Báo cáo tài chính gần nhất.</li>
-          <li><strong>Dòng tiền:</strong> Sao kê tài khoản ngân hàng công ty / chủ cơ sở 6 - 12 tháng.</li>
-        </ul>
-      </section>
+          <section class="info-section">
+            <h2 class="section-title">2. Điều kiện, Khu vực & Ngành nghề áp dụng</h2>
+            <ul class="info-list">
+              <li>Các đại lý, nhà phân phối, nhà cung ứng phụ trợ của các tập đoàn/doanh nghiệp lớn.</li>
+            </ul>
+          </section>
 
-      <hr class="section-divider">
+          <hr class="section-divider">
 
-      <!-- PHẦN 4: QUY TRÌNH THẨM ĐỊNH & GIẢI NGÂN -->
-      <section class="info-section">
-        <h2 class="section-title">4. Quy trình thẩm định &amp; Giải ngân</h2>
-        <ol class="step-list">
-          <li><strong>Bước 1: Đăng ký thông tin:</strong> Khách hàng gửi nhu cầu vay và thông tin cơ bản.</li>
-          <li><strong>Bước 2: Thẩm định hồ sơ:</strong> Chuyên gia phân tích dòng tiền và kiểm tra điều kiện.</li>
-          <li><strong>Bước 3: Phê duyệt hạn mức:</strong> Thông báo hạn mức và điều kiện cấp tín dụng.</li>
-          <li><strong>Bước 4: Ký hợp đồng &amp; Giải ngân:</strong> Hoàn tất thủ tục và nhận vốn trong 24h - 48h.</li>
-        </ol>
-      </section>
+          <section class="info-section">
+            <h2 class="section-title">3. Hồ sơ & Chứng từ cần thiết</h2>
+            <ul class="info-list">
+              <li>Hợp đồng nhà cung cấp/Đại lý chính thức.</li>
+              <li>Lịch sử đơn hàng và tài chính doanh nghiệp.</li>
+            </ul>
+          </section>
 
-    </div>
+          <hr class="section-divider">
 
-    <!-- SIDEBAR ĐĂNG KÝ (BÊN PHẢI) -->
-    <aside class="sidebar-wrap">
-      <div class="sidebar-card">
-        <h3>Kiểm tra điều kiện vay</h3>
-        <p>Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích nhu cầu và hỗ trợ lập hồ sơ ngay.</p>
-        <a href="../dang-ky-vay.html" class="btn-apply">Kiểm tra ngay ↗</a>
-        <a href="https://zalo.me/0358608830" target="_blank" class="btn-zalo-sidebar">💬 Tư vấn Zalo 1:1</a>
+          <section class="info-section">
+            <h2 class="section-title">4. Quy trình thẩm định & Giải ngân</h2>
+            <ol class="step-list">
+              <li><strong>Bước 1:</strong> Xác minh uy tín giao dịch trong chuỗi.</li>
+              <li><strong>Bước 2:</strong> Cấp hạn mức nhập hàng.</li>
+              <li><strong>Bước 3:</strong> Giải ngân tài trợ chuỗi cung ứng.</li>
+            </ol>
+          </section>
+        </div>
       </div>
-    </aside>
-  </div>
-</main>
+
+      <aside class="sidebar-wrap">
+        <div class="sidebar-card">
+          <h3>Kiểm tra điều kiện vay</h3>
+          <p>Tài trợ vốn cho các đại lý trong chuỗi giá trị.</p>
+          <a href="../dang-ky-vay.html" class="btn-apply">Kiểm tra ngay ↗</a>
+          <a href="https://zalo.me/0358608830" target="_blank" class="btn-zalo-sidebar">💬 Tư vấn Zalo 1:1</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand"><img class="footer-logo" src="../LOGO.png" alt="Logo"><span>FIN BIZ</span></div>
       <div><a href="../index.html">Trang chủ</a> | <a href="../san-pham.html">Sản phẩm</a></div>
     </div>
   </footer>
-
-  <script>
-    function switchTab(index) {
-      const tabs = document.querySelectorAll('.sub-tab-btn');
-      const panels = document.querySelectorAll('.tab-content-panel');
-      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
-      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
-    }
-  </script>
 </body>
 </html>
