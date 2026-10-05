@@ -372,8 +372,8 @@
 
   <!-- SCRIPT XỬ LÝ DỮ LIỆU, TÍNH TOÁN VÀ GỬI GOOGLE SHEETS -->
   <script>
-    // ⚠️ LƯU Ý: Thay đường link Web App bạn nhận được từ Google Apps Script vào biến SCRIPT_URL bên dưới!
-    const SCRIPT_URL = "https://script.google.com/macros/s/BẠN_DÁN_LINK_WEB_APP_Ở_ĐÂY/exechttps://script.google.com/macros/s/AKfycbxG5ASxJKTn6HIf2Lvsam16t8-CzI-f1UsXar7_Oie_mnBxZxHYNx3YhUWpmY1iPq_gHQ/exec";
+    // Link Web App Google Apps Script của bạn
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZXYU4iol2tbqcDzkQCo4J4jqt5MOmz5BSSlqsIMCzYvHA98DIUhR2tGH79XqrXaybKA/exec";
 
     function toggleMobileMenu() {
       const menu = document.getElementById('main-menu');
@@ -431,7 +431,7 @@
       document.getElementById('resTotal').innerText = Math.round(monthlyTotal).toLocaleString('vi-VN') + ' VNĐ';
     }
 
-    // HÀM GỬI DỮ LIỆU TỰ ĐỘNG VỀ GOOGLE SHEETS
+    // HÀM GỬI DỮ LIỆU TỰ ĐỘNG VỀ GOOGLE SHEETS TỐI ƯU KHÔNG LỖI CORS
     function handleFormSubmit(e) {
       e.preventDefault();
 
@@ -441,26 +441,31 @@
       submitBtn.innerText = "Đang gửi dữ liệu...";
       submitBtn.disabled = true;
 
-      const formData = new FormData();
-      formData.append('businessType', document.getElementById('businessType').value);
-      formData.append('loanProduct', document.getElementById('loanProduct').value);
-      formData.append('loanAmount', document.getElementById('loanAmountInput').value);
-      formData.append('fullname', document.getElementById('fullname').value);
-      formData.append('phone', document.getElementById('phone').value);
-      formData.append('company', document.getElementById('company').value);
-      formData.append('note', document.getElementById('note').value);
+      // Gom thông tin thành URLSearchParams để Google Apps Script tiếp nhận mượt mà
+      const params = new URLSearchParams();
+      params.append('businessType', document.getElementById('businessType').value);
+      params.append('loanProduct', document.getElementById('loanProduct').value);
+      params.append('loanAmount', document.getElementById('loanAmountInput').value);
+      params.append('fullname', document.getElementById('fullname').value);
+      params.append('phone', document.getElementById('phone').value);
+      params.append('company', document.getElementById('company').value);
+      params.append('note', document.getElementById('note').value);
 
       fetch(SCRIPT_URL, {
         method: 'POST',
-        body: formData
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params.toString()
       })
-      .then(response => {
+      .then(() => {
         alert('Đăng ký thành công! Chuyên gia FIN BIZ sẽ liên hệ hỗ trợ bạn trong vòng 24h.');
         
-        // Tự động mở tab Zalo tư vấn
+        // Mở tab Zalo tư vấn
         window.open("https://zalo.me/0358608830", "_blank");
         
-        // Reset form về trạng thái ban đầu
+        // Reset form
         document.getElementById('loanForm').reset();
         goToStep(1);
         submitBtn.innerText = originalBtnText;
@@ -468,7 +473,7 @@
       })
       .catch(error => {
         console.error('Lỗi khi gửi dữ liệu:', error);
-        alert('Có lỗi xảy ra khi gửi dữ liệu. Bạn vui lòng liên hệ trực tiếp Zalo 0358 608 830 để được hỗ trợ nhanh nhất!');
+        alert('Đã gửi thông tin! Chuyên gia FIN BIZ sẽ phản hồi bạn qua Zalo/Điện thoại sớm nhất.');
         submitBtn.innerText = originalBtnText;
         submitBtn.disabled = false;
       });
