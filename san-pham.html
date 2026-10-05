@@ -34,9 +34,10 @@
       --muted: #5e6c61;          /* Chữ xám phụ */
       --line: #d3dcd5;           /* Viền xám nhạt */
       --silver: #9aa89f;
+      --zalo-blue: #0068ff;      /* Màu Zalo chuẩn */
       --sans: "DM Sans", sans-serif;
-      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05); /* Đổ bóng mỏng sang trọng */
-      --shadow-hover: 0 12px 32px rgba(49, 92, 61, 0.12); /* Đổ bóng khi hover */
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05); 
+      --shadow-hover: 0 12px 32px rgba(49, 92, 61, 0.12);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -59,13 +60,20 @@
     .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
     .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
     .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
-    .nav-links a:not(.nav-cta) { position: relative; padding: 4px 0; }
-    .nav-links a:not(.nav-cta):hover, .nav-links a.active { color: var(--pine); }
+    
+    .nav-links { display: flex; align-items: center; gap: 20px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.nav-cta):not(.nav-zalo) { position: relative; padding: 4px 0; margin-right: 8px; }
+    .nav-links a:not(.nav-cta):not(.nav-zalo):hover, .nav-links a.active { color: var(--pine); }
     .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
-    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 6px; font-weight: 700; transition: all .2s ease; }
+    
+    /* NHÓM NÚT CTA TRÊN NAVIGATION MENU */
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cta { min-height: 42px; padding: 0 16px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 6px; font-weight: 700; font-size: 13px; transition: all .2s ease; }
     .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); transform: translateY(-1px); }
     
+    .nav-zalo { min-height: 42px; padding: 0 16px; border: 1px solid var(--zalo-blue); display: inline-flex; align-items: center; gap: 6px; background: #f0f6ff; color: var(--zalo-blue); border-radius: 6px; font-weight: 700; font-size: 13px; transition: all .2s ease; }
+    .nav-zalo:hover { background: var(--zalo-blue); color: var(--white); transform: translateY(-1px); }
+
     .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; border-radius: 4px; }
     .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
     .menu-glyph { position: relative; }
@@ -78,7 +86,7 @@
     .page-header h1 { font-size: clamp(36px, 5vw, 52px); color: var(--pine); margin: 10px 0 16px; font-family: 'Playfair Display', serif; }
     .page-header p { max-width: 650px; color: var(--muted); font-size: 16px; }
 
-    /* PRODUCTS GRID - TĂNG ĐỘ TƯƠNG PHẢN THẺ NỔI (BIZLOAN STYLE) */
+    /* PRODUCTS GRID */
     .products-section { padding: 60px 0 100px; background: var(--bg-gray); }
     .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     
@@ -91,16 +99,13 @@
       flex-direction: column; 
       box-shadow: var(--shadow-card); 
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s; 
-      cursor: pointer; 
-      text-decoration: none; 
-      color: inherit; 
     }
     .product-card:hover { 
       transform: translateY(-6px); 
       box-shadow: var(--shadow-hover); 
       border-color: rgba(49, 92, 61, 0.3); 
     }
-    .product-thumb-wrap { width: 100%; height: 190px; overflow: hidden; position: relative; background: #e2e8e4; }
+    .product-thumb-wrap { width: 100%; height: 180px; overflow: hidden; position: relative; background: #e2e8e4; }
     .product-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .product-card:hover .product-thumb { transform: scale(1.06); }
     
@@ -109,15 +114,20 @@
     .product-title { font-size: 18px; font-weight: 700; color: var(--pine); margin: 0 0 10px; line-height: 1.35; font-family: 'Playfair Display', serif; }
     .product-desc { font-size: 13.5px; color: var(--muted); margin-bottom: 20px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
     
-    .product-link { font-size: 13px; font-weight: 700; color: var(--pine); display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); }
-    .product-card:hover .product-link { color: #24482f; text-decoration: underline; }
+    /* NÚT CTA TRÊN MỖI CARD SẢN PHẨM */
+    .card-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line); }
+    .btn-card-check { display: flex; align-items: center; justify-content: center; width: 100%; padding: 10px 12px; background: var(--pine); color: var(--white); font-size: 12.5px; font-weight: 700; border-radius: 6px; transition: background 0.2s; text-align: center; }
+    .btn-card-check:hover { background: #24482f; }
+    
+    .btn-card-zalo { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 8px 12px; background: #f0f6ff; color: var(--zalo-blue); border: 1px solid rgba(0, 104, 255, 0.2); font-size: 12px; font-weight: 700; border-radius: 6px; transition: all 0.2s; text-align: center; }
+    .btn-card-zalo:hover { background: var(--zalo-blue); color: var(--white); }
 
     /* FLOATING CONTACT WIDGET */
     .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
     .widget-btn { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform 0.25s ease; }
     .widget-btn:hover { transform: translateY(-3px) scale(1.05); }
     .widget-btn.phone { background-color: var(--pine); }
-    .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
+    .widget-btn.zalo { background-color: var(--zalo-blue); font-weight: 800; font-size: 13px; }
     .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
 
     footer { padding: 36px 0; background: #e0e6e1; color: #4e5e51; font-size: 13px; border-top: 1px solid var(--line); }
@@ -135,6 +145,8 @@
       .nav { right: 16px; left: 16px; }
       .nav-links { display: none; }
       .nav-links.mobile-open { display: flex; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 8px; }
+      .nav-actions { flex-direction: column; width: 100%; margin-top: 10px; }
+      .nav-cta, .nav-zalo { width: 100%; justify-content: center; }
       .menu-toggle { display: block; }
       .products-grid { grid-template-columns: 1fr; }
     }
@@ -153,7 +165,7 @@
     </div>
   </div>
 
-  <!-- MENU CHÍNH -->
+  <!-- MENU CHÍNH VỚI NHÓM NÚT CTA ĐA DẠNG -->
   <nav class="nav" aria-label="Điều hướng chính">
     <a class="brand" href="index.html" aria-label="FIN BIZ">
       <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
@@ -164,7 +176,15 @@
       <a href="index.html">Trang chủ</a>
       <a href="san-pham.html" class="active">Sản phẩm</a>
       <a href="kien-thuc.html">Kiến thức</a>
-      <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay <span aria-hidden="true">↗</span></a>
+      
+      <div class="nav-actions">
+        <a class="nav-zalo" href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer">
+          💬 Tư vấn Zalo 1:1
+        </a>
+        <a class="nav-cta" href="dang-ky-vay.html">
+          📋 Kiểm tra điều kiện vay ↗
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -173,7 +193,7 @@
     <div class="wrap">
       <p class="eyebrow">Giải pháp tín dụng B2B</p>
       <h1>10 Sản Phẩm Tài Chính Doanh Nghiệp</h1>
-      <p>Cung cấp các gói tư vấn, vay tín chấp, tài tài dòng tiền ngắn - trung hạn và chiết khấu xuất nhập khẩu tối ưu chi phí vốn dành cho Doanh nghiệp & Hộ kinh doanh.</p>
+      <p>Cung cấp các gói tư vấn, vay tín chấp, tài trợ dòng tiền ngắn - trung hạn và chiết khấu xuất nhập khẩu tối ưu chi phí vốn dành cho Doanh nghiệp & Hộ kinh doanh.</p>
     </div>
   </section>
 
@@ -183,7 +203,7 @@
       <div class="products-grid">
 
         <!-- 1. Upper HHB -->
-        <a href="san-pham/upper-hhb.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80" alt="Upper HHB" loading="lazy">
           </div>
@@ -191,25 +211,33 @@
             <span class="product-code">FINBIZ - UPPER HHB</span>
             <h2 class="product-title">Vay Tín Chấp Doanh Nghiệp & HKD Lớn (Upper HHB)</h2>
             <p class="product-desc">Gói vay tín chấp dành riêng cho Chủ hộ kinh doanh và Doanh nghiệp lớn có dòng tiền thực tế tốt và kê khai thuế minh bạch.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/upper-hhb.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 2. VP SME -->
-        <a href="san-pham/vp-sme.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="VP SME" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - VP SME</span>
             <h2 class="product-title">Vay Tín Chấp Bổ Sung Vốn Lưu Động SME</h2>
-            <p class="product-desc">Giải pháp tài tài vốn lưu động ngắn hạn dành cho các Doanh nghiệp vừa và nhỏ (SME) có lịch sử tín dụng tốt và doanh thu ổn định.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            <p class="product-desc">Giải pháp tài trợ vốn lưu động ngắn hạn dành cho các Doanh nghiệp vừa và nhỏ (SME) có lịch sử tín dụng tốt và doanh thu ổn định.</p>
+            
+            <div class="card-actions">
+              <a href="san-pham/vp-sme.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 3. Fimex AR Flex -->
-        <a href="san-pham/fimex-ar-flex.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Fimex AR Flex" loading="lazy">
           </div>
@@ -217,12 +245,16 @@
             <span class="product-code">FINBIZ - FIMEX AR FLEX</span>
             <h2 class="product-title">Tài Trợ Theo Hóa Đơn Bán Hàng (Fimex AR Flex)</h2>
             <p class="product-desc">Giải pháp ứng vốn nhanh dựa trên hóa đơn và công nợ bán hàng B2B, giải phóng tức thì dòng tiền bị đọng.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/fimex-ar-flex.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 4. Quỹ JF -->
-        <a href="san-pham/quy-jf.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Quỹ JF" loading="lazy">
           </div>
@@ -230,12 +262,16 @@
             <span class="product-code">FINBIZ - QUỸ JF</span>
             <h2 class="product-title">Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi)</h2>
             <p class="product-desc">Nguồn vốn quỹ Jenfi dành cho doanh nghiệp tăng trưởng, áp dụng phạm vi bán kính địa lý và danh mục ngành nghề thẩm định khắt khe.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/quy-jf.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 5. Quỹ PT -->
-        <a href="san-pham/quy-pt.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Quỹ PT" loading="lazy">
           </div>
@@ -243,12 +279,16 @@
             <span class="product-code">FINBIZ - QUỸ PT</span>
             <h2 class="product-title">Quỹ Cấp Vốn Vận Hành PT (Protus)</h2>
             <p class="product-desc">Giải pháp tài trợ hạ tầng máy chủ, thiết bị và vốn lưu động cho doanh nghiệp công nghệ, thương mại điện tử và dịch vụ số.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/quy-pt.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 6. Quỹ AD -->
-        <a href="san-pham/quy-ad.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80" alt="Quỹ AD" loading="lazy">
           </div>
@@ -256,25 +296,33 @@
             <span class="product-code">FINBIZ - QUỸ AD</span>
             <h2 class="product-title">Quỹ Tín Dụng Doanh Nghiệp AD (Advance)</h2>
             <p class="product-desc">Giải pháp ứng vốn chi trả lương (Payroll Financing) và ứng vốn ngắn hạn cho doanh nghiệp ổn định dòng tiền nhân sự.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/quy-ad.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 7. Quỹ CR -->
-        <a href="san-pham/quy-cr.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80" alt="Quỹ CR" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ CR</span>
             <h2 class="product-title">Quỹ Tài Trợ Chuỗi Cung Ứng CR (Credita)</h2>
-            <p class="product-desc">Sản phẩm tài trợ vốn chuyên sâu cho các đại lý, nhà phân phối và nhà cung ứng phụ trợ trong chuỗi liên kết sản xuất.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            <p class="product-desc">Sản phẩm tài tài vốn chuyên sâu cho các đại lý, nhà phân phối và nhà cung ứng phụ trợ trong chuỗi liên kết sản xuất.</p>
+            
+            <div class="card-actions">
+              <a href="san-pham/quy-cr.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 8. Quỹ FS -->
-        <a href="san-pham/funding-societies.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Funding Societies VN" loading="lazy">
           </div>
@@ -282,12 +330,16 @@
             <span class="product-code">FINBIZ - QUỸ FS</span>
             <h2 class="product-title">Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN)</h2>
             <p class="product-desc">Nguồn vốn thấu chi và vay tín chấp kinh doanh ngắn hạn thông qua nền tảng công nghệ tài chính P2P uy tín khu vực.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/funding-societies.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 9. Quỹ CL -->
-        <a href="san-pham/quy-cl.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Quỹ CL" loading="lazy">
           </div>
@@ -295,12 +347,16 @@
             <span class="product-code">FINBIZ - QUỸ CL</span>
             <h2 class="product-title">Quỹ Tín Dụng Linh Hoạt CL (Chailease)</h2>
             <p class="product-desc">Cho vay bổ sung vốn lưu động dành riêng cho các doanh nghiệp đang sử dụng dịch vụ thuê tài chính máy móc thiết bị.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/quy-cl.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
         <!-- 10. Quỹ MF -->
-        <a href="san-pham/quy-mf.html" class="product-card">
+        <div class="product-card">
           <div class="product-thumb-wrap">
             <img class="product-thumb" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Quỹ MF" loading="lazy">
           </div>
@@ -308,9 +364,13 @@
             <span class="product-code">FINBIZ - QUỸ MF</span>
             <h2 class="product-title">Quỹ Chiết Khấu T/T Trả Sau Cho DN Xuất Khẩu (MF)</h2>
             <p class="product-desc">Giải pháp chiết khấu T/T trả sau nâng cao năng lực cạnh tranh cho Doanh nghiệp Xuất khẩu, tài trợ lên tới 90% giá trị hóa đơn.</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
+            
+            <div class="card-actions">
+              <a href="san-pham/quy-mf.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
+              <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-card-zalo">💬 Tư vấn Zalo gói này</a>
+            </div>
           </div>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -327,7 +387,7 @@
         <a href="index.html">Trang chủ</a>
         <a href="san-pham.html">Sản phẩm</a>
         <a href="kien-thuc.html">Kiến thức</a>
-        <a href="dang-ky-vay.html">Đăng ký vay</a>
+        <a href="dang-ky-vay.html">Kiểm tra điều kiện vay</a>
       </div>
     </div>
   </footer>
