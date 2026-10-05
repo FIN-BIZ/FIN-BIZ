@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi) | FIN BIZ</title>
+  <link rel="icon" type="image/png" href="../LOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --pine: #315c3d; --pine-deep: #e3eedb; --pine-soft: #527b59; --paper: #f4f6f4; --white: #fff; --ink: #243329; --muted: #68756b; --line: #d9e0db; --silver: #aeb8b2; --sans: "DM Sans", sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
+    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); border-radius: 6px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 4px; }
+    .product-detail-header { padding: 150px 0 40px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
+    .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .product-detail-header h1 { font-size: clamp(28px, 4vw, 42px); color: var(--pine); margin: 8px 0 16px; font-family: 'Playfair Display', serif; }
+    .detail-container { padding: 50px 0 80px; }
+    .detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+    .product-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: #ffffff; padding: 24px; border-radius: 8px; margin-bottom: 30px; border: 1px solid var(--line); }
+    .spec-item { display: flex; flex-direction: column; }
+    .spec-label { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .spec-val { font-size: 16px; font-weight: 700; color: var(--pine); margin-top: 4px; }
+    .product-sub-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--line); margin-bottom: 28px; overflow-x: auto; }
+    .sub-tab-btn { padding: 12px 18px; background: transparent; border: none; font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; white-space: nowrap; }
+    .sub-tab-btn.active { color: var(--pine); border-bottom: 3px solid var(--pine); background: #ffffff; }
+    .tab-content-panel { display: none; background: #ffffff; padding: 32px; border-radius: 8px; border: 1px solid var(--line); }
+    .tab-content-panel.active { display: block; }
+    .tab-content-panel h2 { font-size: 22px; color: var(--pine); font-family: 'Playfair Display', serif; }
+    .sidebar-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; padding: 28px; position: sticky; top: 130px; }
+    .btn-apply { display: block; width: 100%; text-align: center; padding: 14px 20px; background: var(--pine); color: #ffffff; font-weight: 700; border-radius: 4px; }
+    footer { padding: 32px 0; background: #e3e8e5; color: #566659; font-size: 12px; margin-top: 40px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; }
+    .footer-logo { width: 38px; height: 38px; }
+    @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } .product-spec-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap topbar-inner"><span>Giải pháp tài chính & cấp vốn tín chấp doanh nghiệp</span><div>0358 608 830</div></div></div>
+  <nav class="nav"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span></span></a><div class="nav-links"><a href="../index.html">Trang chủ</a><a href="../san-pham.html" class="active">Sản phẩm</a><a class="nav-cta" href="../dang-ky-vay.html">Đăng ký vay ↗</a></div></nav>
+
+  <header class="product-detail-header">
+    <div class="wrap">
+      <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / <a href="../san-pham.html">Sản phẩm</a> / <span>Quỹ JF</span></div>
+      <p class="eyebrow">FINBIZ - QUỸ JF</p>
+      <h1>Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi)</h1>
+    </div>
+  </header>
+
+  <main class="detail-container">
+    <div class="wrap detail-grid">
+      <div class="main-detail-content">
+        <div class="product-spec-grid">
+          <div class="spec-item"><span class="spec-label">Hạn mức vay</span><span class="spec-val">Thỏa thuận theo quy mô</span></div>
+          <div class="spec-item"><span class="spec-label">Thời hạn tín dụng</span><span class="spec-val">Linh hoạt theo dòng tiền</span></div>
+          <div class="spec-item"><span class="spec-label">Tài sản bảo đảm</span><span class="spec-val">Đánh giá Dòng tiền/Doanh thu</span></div>
+        </div>
+
+        <div class="product-sub-tabs">
+          <button class="sub-tab-btn active" onclick="switchTab(0)">1. Tổng quan sản phẩm</button>
+          <button class="sub-tab-btn" onclick="switchTab(1)">2. Điều kiện, Khu vực &amp; Ngành nghề</button>
+          <button class="sub-tab-btn" onclick="switchTab(2)">3. Hồ sơ &amp; Chứng từ cần thiết</button>
+          <button class="sub-tab-btn" onclick="switchTab(3)">4. Quy trình thẩm định &amp; Giải ngân</button>
+        </div>
+
+        <div id="tab-0" class="tab-content-panel active">
+          <h2>1. Tổng quan sản phẩm Quỹ JF (Jenfi)</h2>
+          <p>Nguồn vốn quỹ Jenfi dành cho doanh nghiệp tăng trưởng, tài trợ dựa trên doanh thu thực tế từ nền tảng TMĐT và bán hàng B2B.</p>
+        </div>
+
+        <div id="tab-1" class="tab-content-panel">
+          <h2>2. Điều kiện, Khu vực & Ngành nghề áp dụng</h2>
+          <h3>Phạm vi địa lý hỗ trợ:</h3>
+          <p>Bán kính <strong>200 km từ trung tâm TP.HCM</strong> và <strong>50 km từ trung tâm Hà Nội</strong>.</p>
+          <h3>Danh mục ngành nghề LOẠI TRỪ:</h3>
+          <ul>
+            <li>Xây dựng & Vật liệu xây dựng.</li>
+            <li>Bất động sản và Dịch vụ cho thuê văn phòng/nhà ở.</li>
+            <li>Bán lẻ xăng dầu, khí đốt; Khai thác khoáng sản.</li>
+            <li>Vận tải, đại lý xe cũ/xe đã qua sử dụng.</li>
+            <li>Dịch vụ: du lịch, truyền thông, báo chí, bảo vệ, tư vấn luật/tài chính.</li>
+            <li>Tập đoàn đa quốc gia kinh doanh đa ngành nghề.</li>
+            <li>Bán buôn thuốc lá; Casino, cá độ, cờ bạc.</li>
+            <li><i>Ngành hạn chế:</i> Nông sản (chỉ nhận khi có dòng tiền xuất khẩu rõ ràng).</li>
+          </ul>
+        </div>
+
+        <div id="tab-2" class="tab-content-panel">
+          <h2>3. Hồ sơ & Chứng từ cần thiết</h2>
+          <ul>
+            <li>Sao kê tài khoản ngân hàng doanh nghiệp 12 tháng.</li>
+            <li>Báo cáo thuế & Dữ liệu doanh thu sàn TMĐT / Phần mềm bán hàng.</li>
+          </ul>
+        </div>
+
+        <div id="tab-3" class="tab-content-panel">
+          <h2>4. Quy trình thẩm định & Giải ngân</h2>
+          <ol>
+            <li>Kết nối dữ liệu bán hàng.</li>
+            <li>Đánh giá tốc độ tăng trưởng dòng tiền.</li>
+            <li>Phê duyệt và cấp vốn tăng trưởng.</li>
+          </ol>
+        </div>
+      </div>
+
+      <aside class="sidebar-wrap">
+        <div class="sidebar-card">
+          <h3>Đăng ký Quỹ JF</h3>
+          <p>Nhận hỗ trợ thẩm định địa bàn và dòng tiền trong 24h.</p>
+          <a href="../dang-ky-vay.html" class="btn-apply">Nộp hồ sơ ngay ↗</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand"><img class="footer-logo" src="../LOGO.png" alt="Logo"><span>FIN BIZ</span></div>
+      <div><a href="../index.html">Trang chủ</a> | <a href="../san-pham.html">Sản phẩm</a></div>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.sub-tab-btn');
+      const panels = document.querySelectorAll('.tab-content-panel');
+      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
+      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
+    }
+  </script>
+</body>
+</html>
