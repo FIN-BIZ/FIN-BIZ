@@ -27,7 +27,7 @@
       --pine: #315c3d;           /* Xanh lá thông chủ đạo */
       --pine-deep: #e3eedb;      /* Xanh lá nhạt header */
       --pine-soft: #527b59;      /* Xanh lá nhấn phụ */
-      --bg-gray: #eef2ef;        /* Nền xám nhẹ giúp nổi bật thẻ Card */
+      --bg-gray: #eef2ef;        /* Nền xám nhẹ làm nổi bật thẻ Card */
       --paper: #f4f6f4;
       --white: #ffffff;          /* Thẻ Card trắng tinh */
       --ink: #1f2a22;            /* Chữ xám đen đậm */
@@ -66,7 +66,6 @@
     .nav-links a:not(.nav-cta):not(.nav-zalo):hover, .nav-links a.active { color: var(--pine); }
     .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
     
-    /* NHÓM NÚT CTA TRÊN NAVIGATION MENU */
     .nav-actions { display: flex; align-items: center; gap: 10px; }
     .nav-cta { min-height: 42px; padding: 0 16px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 6px; font-weight: 700; font-size: 13px; transition: all .2s ease; }
     .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); transform: translateY(-1px); }
@@ -109,14 +108,19 @@
     .product-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .product-card:hover .product-thumb { transform: scale(1.06); }
     
-    .product-content { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; background: var(--white); }
-    .product-code { font-size: 11px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-    .product-title { font-size: 18px; font-weight: 700; color: var(--pine); margin: 0 0 10px; line-height: 1.35; font-family: 'Playfair Display', serif; }
-    .product-desc { font-size: 13.5px; color: var(--muted); margin-bottom: 20px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6; }
+    .product-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; background: var(--white); }
+    .product-code { font-size: 11px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .product-title { font-size: 17px; font-weight: 700; color: var(--pine); margin: 0 0 10px; line-height: 1.35; font-family: 'Playfair Display', serif; }
+
+    /* PHẦN PILL BADGES (THẺ TÓM TẮT THÔNG SỐ) */
+    .product-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .badge-pill { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: #f0f4f1; color: var(--pine); border: 1px solid rgba(49, 92, 61, 0.15); display: inline-flex; align-items: center; gap: 4px; }
+    .badge-pill.highlight { background: #e3eedb; border-color: rgba(49, 92, 61, 0.3); font-weight: 700; }
+
+    .product-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.55; }
     
-    /* NÚT CTA TRÊN MỖI CARD SẢN PHẨM */
     .card-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line); }
-    .btn-card-check { display: flex; align-items: center; justify-content: center; width: 100%; padding: 10px 12px; background: var(--pine); color: var(--white); font-size: 12.5px; font-weight: 700; border-radius: 6px; transition: background 0.2s; text-align: center; }
+    .btn-card-check { display: flex; align-items: center; justify-content: center; width: 100%; padding: 9px 12px; background: var(--pine); color: var(--white); font-size: 12.5px; font-weight: 700; border-radius: 6px; transition: background 0.2s; text-align: center; }
     .btn-card-check:hover { background: #24482f; }
     
     .btn-card-zalo { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 8px 12px; background: #f0f6ff; color: var(--zalo-blue); border: 1px solid rgba(0, 104, 255, 0.2); font-size: 12px; font-weight: 700; border-radius: 6px; transition: all 0.2s; text-align: center; }
@@ -136,7 +140,7 @@
     .footer-logo { width: 38px; height: 38px; object-fit: contain; }
     .footer-links { display: flex; gap: 22px; font-weight: 600; }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1100px) {
       .products-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
@@ -165,7 +169,7 @@
     </div>
   </div>
 
-  <!-- MENU CHÍNH VỚI NHÓM NÚT CTA ĐA DẠNG -->
+  <!-- MENU CHÍNH -->
   <nav class="nav" aria-label="Điều hướng chính">
     <a class="brand" href="index.html" aria-label="FIN BIZ">
       <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
@@ -205,11 +209,18 @@
         <!-- 1. Upper HHB -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80" alt="Upper HHB" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80" alt="Hợp đồng vay kinh doanh" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - UPPER HHB</span>
             <h2 class="product-title">Vay Tín Chấp Doanh Nghiệp & HKD Lớn (Upper HHB)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">💰 Đến 5 tỷ</span>
+              <span class="badge-pill">⏱️ 12 - 36 tháng</span>
+              <span class="badge-pill">🛡️ Không TSĐB</span>
+            </div>
+
             <p class="product-desc">Gói vay tín chấp dành riêng cho Chủ hộ kinh doanh và Doanh nghiệp lớn có dòng tiền thực tế tốt và kê khai thuế minh bạch.</p>
             
             <div class="card-actions">
@@ -222,11 +233,18 @@
         <!-- 2. VP SME -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="VP SME" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Sản xuất vận tải hàng hóa" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - VP SME</span>
             <h2 class="product-title">Vay Tín Chấp Bổ Sung Vốn Lưu Động SME</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">💰 Đến 3 tỷ</span>
+              <span class="badge-pill">📈 Lãi từ 1.2%/tháng</span>
+              <span class="badge-pill">🛡️ Tín chấp 100%</span>
+            </div>
+
             <p class="product-desc">Giải pháp tài trợ vốn lưu động ngắn hạn dành cho các Doanh nghiệp vừa và nhỏ (SME) có lịch sử tín dụng tốt và doanh thu ổn định.</p>
             
             <div class="card-actions">
@@ -239,11 +257,18 @@
         <!-- 3. Fimex AR Flex -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Fimex AR Flex" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Hóa đơn chứng từ B2B" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - FIMEX AR FLEX</span>
             <h2 class="product-title">Tài Trợ Theo Hóa Đơn Bán Hàng (Fimex AR Flex)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">📑 80% giá trị HĐ</span>
+              <span class="badge-pill">⚡ Giải ngân 24h</span>
+              <span class="badge-pill">🛡️ Linh hoạt</span>
+            </div>
+
             <p class="product-desc">Giải pháp ứng vốn nhanh dựa trên hóa đơn và công nợ bán hàng B2B, giải phóng tức thì dòng tiền bị đọng.</p>
             
             <div class="card-actions">
@@ -256,11 +281,18 @@
         <!-- 4. Quỹ JF -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Quỹ JF" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Đầu tư cấp vốn doanh nghiệp" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ JF</span>
             <h2 class="product-title">Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">💰 Đến 10 tỷ</span>
+              <span class="badge-pill">🚀 Doanh nghiệp tăng trưởng</span>
+              <span class="badge-pill">🛡️ Tín chấp</span>
+            </div>
+
             <p class="product-desc">Nguồn vốn quỹ Jenfi dành cho doanh nghiệp tăng trưởng, áp dụng phạm vi bán kính địa lý và danh mục ngành nghề thẩm định khắt khe.</p>
             
             <div class="card-actions">
@@ -273,12 +305,19 @@
         <!-- 5. Quỹ PT -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Quỹ PT" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Hạ tầng thiết bị công nghệ" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ PT</span>
             <h2 class="product-title">Quỹ Cấp Vốn Vận Hành PT (Protus)</h2>
-            <p class="product-desc">Giải pháp tài trợ hạ tầng máy chủ, thiết bị và vốn lưu động cho doanh nghiệp công nghệ, thương mại điện tử và dịch vụ số.</p>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">💰 Đến 2 tỷ</span>
+              <span class="badge-pill">💻 Ngành E-com / Tech</span>
+              <span class="badge-pill">🛡️ Hồ sơ đơn giản</span>
+            </div>
+
+            <p class="product-desc">Giải pháp tài tài hạ tầng máy chủ, thiết bị và vốn lưu động cho doanh nghiệp công nghệ, thương mại điện tử và dịch vụ số.</p>
             
             <div class="card-actions">
               <a href="san-pham/quy-pt.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
@@ -290,11 +329,18 @@
         <!-- 6. Quỹ AD -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80" alt="Quỹ AD" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80" alt="Ứng vốn nhân sự lương" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ AD</span>
             <h2 class="product-title">Quỹ Tín Dụng Doanh Nghiệp AD (Advance)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">👥 Vốn Payroll / Lương</span>
+              <span class="badge-pill">⏱️ Ngắn hạn 3-6 tháng</span>
+              <span class="badge-pill">🛡️ Tín chấp</span>
+            </div>
+
             <p class="product-desc">Giải pháp ứng vốn chi trả lương (Payroll Financing) và ứng vốn ngắn hạn cho doanh nghiệp ổn định dòng tiền nhân sự.</p>
             
             <div class="card-actions">
@@ -307,12 +353,19 @@
         <!-- 7. Quỹ CR -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80" alt="Quỹ CR" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Kho bãi nhà xưởng sản xuất" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ CR</span>
             <h2 class="product-title">Quỹ Tài Trợ Chuỗi Cung Ứng CR (Credita)</h2>
-            <p class="product-desc">Sản phẩm tài tài vốn chuyên sâu cho các đại lý, nhà phân phối và nhà cung ứng phụ trợ trong chuỗi liên kết sản xuất.</p>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">🏭 Chuỗi đại lý / NPP</span>
+              <span class="badge-pill">💰 Đến 5 tỷ</span>
+              <span class="badge-pill">🛡️️ Bảo lãnh chuỗi</span>
+            </div>
+
+            <p class="product-desc">Sản phẩm tài trợ vốn chuyên sâu cho các đại lý, nhà phân phối và nhà cung ứng phụ trợ trong chuỗi liên kết sản xuất.</p>
             
             <div class="card-actions">
               <a href="san-pham/quy-cr.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
@@ -324,11 +377,18 @@
         <!-- 8. Quỹ FS -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Funding Societies VN" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80" alt="Fintech P2P Lending" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ FS</span>
             <h2 class="product-title">Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">💳 Vốn thấu chi / Xoay vòng</span>
+              <span class="badge-pill">💰 Đến 2 tỷ</span>
+              <span class="badge-pill">🛡️ Duyệt Online</span>
+            </div>
+
             <p class="product-desc">Nguồn vốn thấu chi và vay tín chấp kinh doanh ngắn hạn thông qua nền tảng công nghệ tài chính P2P uy tín khu vực.</p>
             
             <div class="card-actions">
@@ -341,11 +401,18 @@
         <!-- 9. Quỹ CL -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Quỹ CL" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Máy móc thiết bị dây chuyền" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ CL</span>
             <h2 class="product-title">Quỹ Tín Dụng Linh Hoạt CL (Chailease)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">🚜 Thuê tài chính / Máy móc</span>
+              <span class="badge-pill">📈 Lãi cạnh tranh</span>
+              <span class="badge-pill">🛡️ Tín chấp kèm</span>
+            </div>
+
             <p class="product-desc">Cho vay bổ sung vốn lưu động dành riêng cho các doanh nghiệp đang sử dụng dịch vụ thuê tài chính máy móc thiết bị.</p>
             
             <div class="card-actions">
@@ -358,11 +425,18 @@
         <!-- 10. Quỹ MF -->
         <div class="product-card">
           <div class="product-thumb-wrap">
-            <img class="product-thumb" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Quỹ MF" loading="lazy">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Cảng biển xuất nhập khẩu B2B" loading="lazy">
           </div>
           <div class="product-content">
             <span class="product-code">FINBIZ - QUỸ MF</span>
             <h2 class="product-title">Quỹ Chiết Khấu T/T Trả Sau Cho DN Xuất Khẩu (MF)</h2>
+            
+            <div class="product-badges">
+              <span class="badge-pill highlight">🚢 Chiết khấu 90% L/C, T/T</span>
+              <span class="badge-pill">🌐 Doanh nghiệp XNK</span>
+              <span class="badge-pill">🛡️ Tín dụng XNK</span>
+            </div>
+
             <p class="product-desc">Giải pháp chiết khấu T/T trả sau nâng cao năng lực cạnh tranh cho Doanh nghiệp Xuất khẩu, tài trợ lên tới 90% giá trị hóa đơn.</p>
             
             <div class="card-actions">
