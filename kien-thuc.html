@@ -43,7 +43,7 @@
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
     .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
 
-    /* TOPBAR & NAV MENU 4 THẺ */
+    /* TOPBAR & NAV MENU */
     .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
     .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
     .topbar-note { display: flex; align-items: center; gap: 9px; }
@@ -95,7 +95,7 @@
     .page-btn:hover, .page-btn.active { background: var(--pine); color: #ffffff; border-color: var(--pine); }
     .page-btn.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
 
-    /* MODAL ĐỌC BÀI VIẾT TRỰC TIẾP (144 BÀI VIẾT) */
+    /* MODAL ĐỌC BÀI VIẾT TRỰC TIẾP */
     .article-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
     .article-modal.active { display: flex; }
     .modal-box { background: #ffffff; width: min(850px, 100%); max-height: 90vh; border-radius: 12px; overflow-y: auto; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: modalUp 0.3s ease; }
@@ -107,7 +107,7 @@
     .modal-tag { font-size: 12px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
     .modal-title { font-size: clamp(24px, 3.5vw, 34px); font-weight: 700; color: var(--pine); margin: 0 0 20px; font-family: 'Playfair Display', serif; line-height: 1.25; }
     .modal-content p { color: var(--ink); font-size: 16px; line-height: 1.7; margin-bottom: 18px; }
-    .modal-content h3 { font-size: 20px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 28px 0 12px; }
+    .modal-content h3, .modal-content h2, .modal-content h4 { font-size: 20px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 28px 0 12px; }
     .modal-cta-box { background: var(--pine-deep); border: 1px solid var(--line); border-radius: 8px; padding: 28px; text-align: center; margin-top: 35px; }
     .modal-cta-box h4 { font-size: 20px; color: var(--pine); margin: 0 0 10px; font-family: 'Playfair Display', serif; }
     .modal-cta-box p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
@@ -156,7 +156,7 @@
     </div>
   </div>
 
-  <!-- MENU CHÍNH 4 THẺ -->
+  <!-- MENU CHÍNH -->
   <nav class="nav" aria-label="Điều hướng chính">
     <a class="brand" href="index.html" aria-label="FIN BIZ">
       <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
@@ -176,7 +176,7 @@
     <div class="wrap">
       <p class="eyebrow">Góc nhìn & Kinh nghiệm</p>
       <h1>Kiến Thức Tài Chính Vay Vốn</h1>
-      <p>Tổng hợp 144 bài viết hướng dẫn chuyên sâu về quản trị dòng tiền, kinh nghiệm thẩm định tín dụng, cơ cấu nợ và giải pháp tối ưu vốn vay cho Doanh nghiệp & Hộ kinh doanh.</p>
+      <p>Tổng hợp các bài viết hướng dẫn chuyên sâu về quản trị dòng tiền, kinh nghiệm thẩm định tín dụng, cơ cấu nợ và giải pháp tối ưu vốn vay cho Doanh nghiệp & Hộ kinh doanh.</p>
     </div>
   </section>
 
@@ -184,17 +184,15 @@
   <section class="blog-section">
     <div class="wrap">
       <div class="blog-grid" id="blog-container">
-        <!-- 12 bài viết sẽ được tự động hiển thị theo từng trang qua JS -->
+        <p style="grid-column: 1 / -1; text-align: center; padding: 40px 0;">Đang tải danh sách bài viết...</p>
       </div>
 
-      <!-- THANH CHUYỂN TRANG (12 TRANG) -->
-      <div class="pagination" id="pagination-container">
-        <!-- Nút phân trang sẽ tự động khởi tạo -->
-      </div>
+      <!-- THANH CHUYỂN TRANG -->
+      <div class="pagination" id="pagination-container"></div>
     </div>
   </section>
 
-  <!-- MODAL ĐỌC BÀI VIẾT TRỰC TIẾP KHÔNG BỊ LỘ BIZLOAN -->
+  <!-- MODAL ĐỌC BÀI VIẾT TRỰC TIẾP -->
   <div class="article-modal" id="articleModal" onclick="closeModalOnBg(event)">
     <div class="modal-box">
       <button class="modal-close" onclick="closeArticleModal()">&times;</button>
@@ -202,9 +200,7 @@
       <div class="modal-body">
         <span class="modal-tag" id="mTag">FIN BIZ KNOWLEDGE</span>
         <h2 class="modal-title" id="mTitle">Tiêu đề bài viết</h2>
-        <div class="modal-content" id="mContent">
-          <!-- Nội dung bài viết được sinh ra tự động -->
-        </div>
+        <div class="modal-content" id="mContent"></div>
         <div class="modal-cta-box">
           <h4>Cần hỗ trợ phương án tài chính cho doanh nghiệp?</h4>
           <p>Chuyên gia tư vấn FIN BIZ sẵn sàng hỗ trợ bạn rà soát hồ sơ và làm việc cùng ngân hàng đối tác.</p>
@@ -238,66 +234,78 @@
     </a>
   </div>
 
-  <!-- SCRIPT PHÂN TRANG & HIỂN THỊ ĐỌC 144 BÀI VIẾT -->
+  <!-- SCRIPT PHÂN TRANG & TỰ ĐỘNG LẤY DỮ LIỆU TỪ FILE JSON -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('main-menu');
       menu.classList.toggle('mobile-open');
     }
 
-    // Danh sách hình ảnh chất lượng cao
-    const images = [
+    const defaultImages = [
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80"
     ];
 
-    const categories = ["Cơ cấu nợ", "Vốn vận hành", "Hồ sơ tín dụng", "Lãi suất ưu đãi", "Hộ kinh doanh", "Dòng tiền SMEs"];
-
-    // Tạo tự động danh sách 144 bài viết chuyên sâu có nội dung chi tiết
-    const articles = [];
-    for (let i = 1; i <= 144; i++) {
-      const cat = categories[(i - 1) % categories.length];
-      const img = images[(i - 1) % images.length];
-      articles.push({
-        id: i,
-        category: cat,
-        title: `Bài ${i}: Giải pháp ${cat.toLowerCase()} & Phương án tài chính tối ưu cho Doanh nghiệp`,
-        description: `Phân tích chuyên sâu bài toán tài chính số ${i}. Hướng dẫn rà soát hồ sơ, cân đối dòng tiền thu chi và chuẩn bị các điều kiện vay vốn thành công với ngân hàng.`,
-        image: img,
-        content: `
-          <p>Trong bối cảnh kinh tế hiện tại, việc quản trị dòng tiền và tối ưu vốn vay giữ vai trò sống còn đối với sự phát triển bền vững của doanh nghiệp. Để giải quyết bài toán <strong>${cat}</strong> một cách hiệu quả nhất, doanh nghiệp cần thấu hiểu góc nhìn từ phía tổ chức tín dụng.</p>
-          
-          <h3>1. Thực trạng & Thách thức dòng tiền hiện tại</h3>
-          <p>Nhiều doanh nghiệp gặp khó khăn do khoảng lệch kỳ hạn giữa các khoản thu và khoản chi. Khi khoản vay ngắn hạn không đủ bù đắp cho tài sản lưu động hoặc mở rộng kinh doanh, áp lực trả gốc và lãi vay hàng tháng sẽ gia tăng đáng kể.</p>
-          
-          <h3>2. Giải pháp cơ cấu & Tối ưu nguồn vốn từ FIN BIZ</h3>
-          <p>Đội ngũ chuyên gia FIN BIZ hỗ trợ doanh nghiệp thực hiện các bước chuẩn hóa sau đây:</p>
-          <ul>
-            <li><strong>Rà soát lại toàn bộ dư nợ:</strong> Đối chiếu lãi suất, thời hạn và tài sản đảm bảo của từng hợp đồng tín dụng hiện có.</li>
-            <li><strong>Xây dựng lại báo cáo tài chính:</strong> Minh bạch hóa nguồn thu, công nợ phải thu và các phương án kinh doanh khả thi.</li>
-            <li><strong>Chuyển đổi gói vay ưu đãi:</strong> Tiếp cận các chương trình tín dụng lãi suất thấp dành riêng cho SMEs từ mạng lưới đối tác ngân hàng.</li>
-          </ul>
-
-          <h3>3. Lời khuyên cho chủ doanh nghiệp</h3>
-          <p>Đừng chờ đến khi khoản vay phát sinh nợ quá hạn mới tìm phương án xử lý. Việc chủ động rà soát hồ sơ và cơ cấu lại các khoản nợ ngay từ sớm sẽ giúp duy trì lịch sử tín dụng sạch (CIC tốt) và mở ra nhiều cơ hội tiếp cận hạn mức vay lớn hơn.</p>
-        `
-      });
-    }
-
+    let articles = [];
     const itemsPerPage = 12;
     let currentPage = 1;
-    const totalPages = Math.ceil(articles.length / itemsPerPage);
+    let totalPages = 1;
+
+    // Lấy dữ liệu từ file JSON cào được
+    async function loadArticlesData() {
+      const container = document.getElementById('blog-container');
+      try {
+        const response = await fetch('data_articles_bizloan.json');
+        if (!response.ok) {
+          throw new Error('Không thể tải file dữ liệu JSON');
+        }
+        const data = await response.json();
+        
+        // Chuẩn hóa dữ liệu đọc từ JSON
+        articles = data.map((item, index) => {
+          // Lấy đoạn mô tả ngắn từ nội dung nếu chưa có
+          let desc = item.content_text || '';
+          if (desc.length > 150) {
+            desc = desc.substring(0, 150) + '...';
+          }
+
+          return {
+            id: item.id || (index + 1),
+            category: "KIẾN THỨC VAY VỐN",
+            title: item.title || "Bài viết kiến thức tài chính",
+            description: desc || "Thông tin hướng dẫn chi tiết về quy trình thẩm định và vốn vay cho doanh nghiệp.",
+            image: item.image || defaultImages[index % defaultImages.length],
+            content: item.content_html || `<p>${item.content_text}</p>`
+          };
+        });
+
+        totalPages = Math.ceil(articles.length / itemsPerPage);
+        renderArticles(1);
+        renderPagination();
+
+      } catch (error) {
+        console.error('Lỗi tải dữ liệu:', error);
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #fff; border-radius: 8px;">
+            <p style="color: #d9534f; font-weight: bold;">Chưa tìm thấy file 'data_articles_bizloan.json' trong thư mục web!</p>
+            <p style="color: #666; font-size: 14px;">Vui lòng upload file JSON chứa dữ liệu cào được lên cùng thư mục với file <strong>kien-thuc.html</strong> trên GitHub Repository.</p>
+          </div>
+        `;
+      }
+    }
 
     function renderArticles(page) {
       const container = document.getElementById('blog-container');
       container.innerHTML = '';
+
+      if (articles.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1 / -1; text-align: center;">Không có bài viết nào.</p>';
+        return;
+      }
 
       const start = (page - 1) * itemsPerPage;
       const end = start + itemsPerPage;
@@ -309,7 +317,7 @@
         card.onclick = () => openArticleModal(item.id);
         card.innerHTML = `
           <div class="blog-thumb-wrap">
-            <img class="blog-thumb" src="${item.image}" alt="${item.title}" loading="lazy">
+            <img class="blog-thumb" src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='${defaultImages[0]}'">
           </div>
           <div class="blog-content">
             <span class="blog-tag">${item.category}</span>
@@ -325,6 +333,8 @@
     function renderPagination() {
       const pContainer = document.getElementById('pagination-container');
       pContainer.innerHTML = '';
+
+      if (totalPages <= 1) return;
 
       const prevBtn = document.createElement('button');
       prevBtn.className = `page-btn ${currentPage === 1 ? 'disabled' : ''}`;
@@ -354,7 +364,6 @@
       window.scrollTo({ top: 300, behavior: 'smooth' });
     }
 
-    // Xử lý bật/tắt Modal Đọc bài viết
     function openArticleModal(id) {
       const art = articles.find(a => a.id === id);
       if (!art) return;
@@ -379,9 +388,8 @@
       }
     }
 
-    // Khởi tạo trang 1
-    renderArticles(1);
-    renderPagination();
+    // Khởi chạy khi trang tải xong
+    document.addEventListener('DOMContentLoaded', loadArticlesData);
   </script>
 </body>
 </html>
