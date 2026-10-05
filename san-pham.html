@@ -1,478 +1,102 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#315c3d">
-  <meta name="description" content="Danh mục 8 giải pháp tín dụng và sản phẩm tài chính doanh nghiệp toàn diện từ FIN BIZ.">
-  <title>Sản Phẩm & Giải Pháp Tài Chính | FIN BIZ</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="LOGO.png">
-  <link rel="apple-touch-icon" href="LOGO.png">
-
-  <!-- Open Graph / Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fin-biz.github.io/FIN-BIZ/san-pham.html">
-  <meta property="og:title" content="Sản Phẩm & Giải Pháp Tài Chính | FIN BIZ">
-  <meta property="og:description" content="Tối ưu hạn mức, giảm chi phí vốn với 8 gói giải pháp tín dụng thiết kế riêng cho SMEs.">
-  <meta property="og:image" content="https://fin-biz.github.io/FIN-BIZ/LOGO.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --pine: #315c3d;
-      --pine-deep: #e3eedb;
-      --pine-soft: #527b59;
-      --paper: #f4f6f4;
-      --white: #fff;
-      --ink: #243329;
-      --muted: #68756b;
-      --line: #d9e0db;
-      --silver: #aeb8b2;
-      --sans: "DM Sans", sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
-    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
-
-    /* TOPBAR & NAV MENU 4 THẺ */
-    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
-    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
-    .topbar-note { display: flex; align-items: center; gap: 9px; }
-    .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
-    .topbar-meta { display: flex; gap: 24px; }
-    
-    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); border-radius: 6px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
-    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
-    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
-    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
-    .nav-links a:not(.nav-cta) { position: relative; padding: 4px 0; }
-    .nav-links a:not(.nav-cta):hover, .nav-links a.active { color: var(--pine); }
-    .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
-    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 4px; transition: all .2s ease; }
-    .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); }
-    
-    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--pine); cursor: pointer; border-radius: 4px; }
-    .menu-glyph, .menu-glyph::before, .menu-glyph::after { display: block; width: 18px; height: 1px; margin: auto; background: currentColor; content: ""; }
-    .menu-glyph { position: relative; }
-    .menu-glyph::before, .menu-glyph::after { position: absolute; left: 0; }
-    .menu-glyph::before { top: -6px; }
-    .menu-glyph::after { top: 6px; }
-
-    /* PAGE HEADER */
-    .page-header { padding: 160px 0 60px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
-    .page-header h1 { font-size: clamp(36px, 5vw, 52px); color: var(--pine); margin: 10px 0 16px; font-family: 'Playfair Display', serif; }
-    .page-header p { max-width: 650px; color: var(--muted); font-size: 16px; }
-
-    /* PRODUCTS GRID */
-    .products-section { padding: 60px 0 100px; }
-    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .product-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
-    .product-thumb-wrap { width: 100%; height: 190px; overflow: hidden; position: relative; background: #e5e7eb; }
-    .product-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .product-card:hover .product-thumb { transform: scale(1.05); }
-    .product-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-code { font-size: 11px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-    .product-title { font-size: 18px; font-weight: 700; color: var(--pine); margin: 0 0 10px; line-height: 1.3; font-family: 'Playfair Display', serif; }
-    .product-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .product-link { font-size: 13px; font-weight: 700; color: var(--pine); display: inline-flex; align-items: center; gap: 6px; margin-top: auto; }
-
-    /* MODAL ĐỌC CHI TIẾT SẢN PHẨM */
-    .product-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
-    .product-modal.active { display: flex; }
-    .modal-box { background: #ffffff; width: min(850px, 100%); max-height: 90vh; border-radius: 12px; overflow-y: auto; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); animation: modalUp 0.3s ease; }
-    @keyframes modalUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); font-size: 20px; font-weight: 700; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
-    .modal-close:hover { background: var(--pine); color: #fff; }
-    .modal-hero-img { width: 100%; height: 320px; object-fit: cover; }
-    .modal-body { padding: 40px; }
-    .modal-code { font-size: 12px; font-weight: 700; color: var(--pine-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
-    .modal-title { font-size: clamp(24px, 3.5vw, 32px); font-weight: 700; color: var(--pine); margin: 0 0 20px; font-family: 'Playfair Display', serif; line-height: 1.25; }
-    
-    .product-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: var(--paper); padding: 20px; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--line); }
-    .spec-item { display: flex; flex-direction: column; }
-    .spec-label { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; letter-spacing: 0.5px; }
-    .spec-val { font-size: 15px; font-weight: 700; color: var(--pine); margin-top: 4px; }
-
-    .modal-content p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
-    .modal-content h3 { font-size: 19px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 24px 0 10px; }
-    .modal-content ul { padding-left: 20px; margin-bottom: 20px; }
-    .modal-content li { margin-bottom: 8px; font-size: 15px; }
-
-    .modal-cta-box { background: var(--pine-deep); border: 1px solid var(--line); border-radius: 8px; padding: 28px; text-align: center; margin-top: 35px; }
-    .modal-cta-box h4 { font-size: 20px; color: var(--pine); margin: 0 0 10px; font-family: 'Playfair Display', serif; }
-    .modal-cta-box p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
-    .btn-modal-action { display: inline-flex; padding: 12px 28px; background: var(--pine); color: #fff; font-weight: 700; border-radius: 4px; font-size: 14px; }
-    .btn-modal-action:hover { background: #24482f; }
-
-    /* FLOATING CONTACT WIDGET */
-    .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
-    .widget-btn { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); transition: transform 0.25s ease; }
-    .widget-btn:hover { transform: translateY(-3px) scale(1.05); }
-    .widget-btn.phone { background-color: var(--pine); }
-    .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
-    .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
-
-    footer { padding: 32px 0; background: #e3e8e5; color: #566659; font-size: 12px; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
-    .footer-logo { width: 38px; height: 38px; object-fit: contain; }
-    .footer-links { display: flex; gap: 22px; font-weight: 600; }
-
-    @media (max-width: 1024px) {
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
-      .wrap { width: calc(100% - 40px); }
-      .topbar-meta { display: none; }
-      .nav { right: 20px; left: 20px; }
-      .nav-links { display: none; }
-      .nav-links.mobile-open { display: flex; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 6px; }
-      .menu-toggle { display: block; }
-      .products-grid { grid-template-columns: 1fr; }
-      .product-spec-grid { grid-template-columns: 1fr; }
-      .modal-body { padding: 24px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="wrap topbar-inner">
-      <span class="topbar-note">Giải pháp tài chính cho doanh nghiệp</span>
-      <div class="topbar-meta">
-        <a href="tel:+84358608830">0358 608 830</a>
-        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MENU CHÍNH 4 THẺ -->
-  <nav class="nav" aria-label="Điều hướng chính">
-    <a class="brand" href="index.html" aria-label="FIN BIZ">
-      <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
-      <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
-    <div class="nav-links" id="main-menu">
-      <a href="index.html">Trang chủ</a>
-      <a href="san-pham.html" class="active">Sản phẩm</a>
-      <a href="kien-thuc.html">Kiến thức</a>
-      <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay <span aria-hidden="true">↗</span></a>
-    </div>
-  </nav>
-
-  <!-- PAGE HEADER -->
-  <section class="page-header">
-    <div class="wrap">
-      <p class="eyebrow">Giải pháp tín dụng B2B</p>
-      <h1>8 Sản Phẩm Tài Chính Doanh Nghiệp</h1>
-      <p>Cung cấp các gói tư vấn, thế chấp tài sản, thế chấp quyền đòi nợ và tài trợ dòng tiền ngắn - trung hạn tối ưu chi phí vốn dành cho Doanh nghiệp & Hộ kinh doanh.</p>
-    </div>
-  </section>
-
-  <!-- PRODUCTS GRID -->
-  <section class="products-section">
-    <div class="wrap">
-      <div class="products-grid" id="products-container">
-        <!-- 8 Sản phẩm sẽ tự động tạo qua Script bên dưới -->
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAL XEM CHI TIẾT SẢN PHẨM -->
-  <div class="product-modal" id="productModal" onclick="closeModalOnBg(event)">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeProductModal()">&times;</button>
-      <img class="modal-hero-img" id="pImage" src="" alt="FIN BIZ Product">
-      <div class="modal-body">
-        <span class="modal-code" id="pCode">FINBIZ-PRODUCT</span>
-        <h2 class="modal-title" id="pTitle">Tên sản phẩm</h2>
-        
-        <div class="product-spec-grid">
-          <div class="spec-item">
-            <span class="spec-label">Hạn mức vay</span>
-            <span class="spec-val" id="pLimit">Lên tới 80%</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Thời hạn tín dụng</span>
-            <span class="spec-val" id="pTerm">Lên tới 12 - 36 tháng</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Tài sản bảo đảm</span>
-            <span class="spec-val" id="pCollateral">Linh hoạt</span>
-          </div>
-        </div>
-
-        <div class="modal-content" id="pContent">
-          <!-- Chi tiết nội dung sản phẩm -->
-        </div>
-
-        <div class="modal-cta-box">
-          <h4>Cần tư vấn gói sản phẩm tài chính này?</h4>
-          <p>Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích nhu cầu và lập phương án cấp hạn mức tối ưu nhất cho bạn.</p>
-          <a href="dang-ky-vay.html" class="btn-modal-action">Đăng ký nhận tư vấn sản phẩm ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap footer-inner">
-      <div class="footer-brand">
-        <img class="footer-logo" src="LOGO.png" alt="Logo FIN BIZ">
-        <span>FIN BIZ</span>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Trang chủ</a>
-        <a href="san-pham.html">Sản phẩm</a>
-        <a href="kien-thuc.html">Kiến thức</a>
-        <a href="dang-ky-vay.html">Đăng ký vay</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- FLOATING CONTACT WIDGET -->
-  <div class="floating-widget" aria-label="Kênh liên hệ nhanh">
-    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat Zalo">Zalo</a>
-    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện">
-      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-    </a>
-  </div>
-
-  <!-- SCRIPT DỮ LIỆU & HIỂN THỊ 8 SẢN PHẨM -->
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('main-menu');
-      menu.classList.toggle('mobile-open');
-    }
-
-    // Danh sách 8 Sản phẩm chuẩn mực mô hình tín dụng doanh nghiệp
-    const products = [
-      {
-        id: 1,
-        code: "FINBIZ - AR FLEX",
-        title: "Tài trợ Thế chấp Quyền đòi nợ (Khoản phải thu)",
-        limit: "Tối đa 85% giá trị hóa đơn",
-        term: "Tối đa 6 - 12 tháng",
-        collateral: "Hợp đồng & Hóa đơn đầu ra",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-        description: "Giải pháp chuyển đổi các khoản phải thu từ hợp đồng bán hàng thành nguồn vốn lưu động tức thì mà không cần thế chấp Bất động sản.",
-        details: `
-          <p>Sản phẩm <strong>FINBIZ - AR FLEX</strong> hỗ trợ doanh nghiệp giải tỏa áp lực đọng vốn khi bán hàng trả chậm cho đối tác lớn, giúp biến các hóa đơn tài chính thành nguồn vốn vận hành quay vòng nhanh chóng.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Tỷ lệ tài trợ lên đến 85% giá trị hóa đơn/nghiệm thu.</li>
-            <li>Không bắt buộc thế chấp thêm Bất động sản hay xe cộ.</li>
-            <li>Giải ngân linh hoạt theo từng đợt giao hàng hoặc nghiệm thu.</li>
-            <li>Lãi suất tính theo số ngày sử dụng vốn thực tế.</li>
-          </ul>
-          <h3>Đối tượng áp dụng:</h3>
-          <p>Doanh nghiệp sản xuất, thương mại, xây dựng có hợp đồng kinh tế và lịch sử giao dịch ổn định với các đối tác mua hàng uy tín.</p>
-        `
-      },
-      {
-        id: 2,
-        code: "FINBIZ - PO FINANCE",
-        title: "Tài trợ Vốn theo Đơn hàng & Hợp đồng",
-        limit: "Tối đa 70% giá trị PO/Hợp đồng",
-        term: "Theo chu kỳ đơn hàng",
-        collateral: "Quyền tài sản từ Hợp đồng",
-        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
-        description: "Cấp nguồn vốn kịp thời để nhập nguyên vật liệu, sản xuất và thực hiện các đơn hàng kinh tế có quy mô lớn.",
-        details: `
-          <p>Sản phẩm <strong>Tài trợ Vốn theo Đơn hàng</strong> giúp doanh nghiệp tự tin tiếp nhận các đơn hàng có giá trị lớn mà không lo thiếu hụt vốn mua nguyên vật liệu hoặc chi phí nhân công ban đầu.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Bổ sung vốn lưu động ngay khi ký kết hợp đồng/đơn hàng (PO).</li>
-            <li>Mức cấp hạn mức tín dụng linh hoạt theo từng hợp đồng cụ thể.</li>
-            <li>Thu nợ trực tiếp từ nguồn thanh toán của bên mua hàng.</li>
-          </ul>
-          <h3>Đối tượng áp dụng:</h3>
-          <p>Các Doanh nghiệp cung ứng hàng hóa, nhà thầu xây lắp, nhà gia công có hợp đồng trúng thầu hoặc đơn hàng xác nhận chính thức.</p>
-        `
-      },
-      {
-        id: 3,
-        code: "FINBIZ - WORKING CAPITAL",
-        title: "Tài trợ Vốn vận hành Thường xuyên (Hạn mức)",
-        limit: "Theo dòng tiền thu chi",
-        term: "Hạn mức 12 tháng",
-        collateral: "BĐS, Động sản, Máy móc",
-        image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
-        description: "Gói hạn mức tín dụng lưu động tuần hoàn giúp doanh nghiệp chủ động chi trả lương, chi phí quản lý và nhập hàng định kỳ.",
-        details: `
-          <p>Cung cấp hạn mức vay vốn lưu động quay vòng trong vòng 12 tháng, giúp doanh nghiệp hoàn toàn chủ động rút vốn và trả nợ linh hoạt theo nhịp kinh doanh thực tế.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Rút vốn và trả nợ nhiều lần trong thời hạn cam kết.</li>
-            <li>Đa dạng tài sản thế chấp: Bất động sản, phương tiện vận tải, máy móc thiết bị.</li>
-            <li>Thủ tục rút vốn đơn giản, giải ngân nhanh trong ngày.</li>
-          </ul>
-        `
-      },
-      {
-        id: 4,
-        code: "FINBIZ - DEBT RESTRUCT",
-        title: "Tái cơ cấu & Chuyển đổi Khoản vay Ưu đãi",
-        limit: "100% dư nợ hiện tại",
-        term: "Lên tới 60 - 120 tháng",
-        collateral: "Tài sản đảm bảo hiện có",
-        image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
-        description: "Tư vấn và hỗ trợ tái cấu trúc kỳ hạn trả nợ, chuyển đổi khoản vay sang ngân hàng có lãi suất thấp hơn để giảm áp lực tài chính.",
-        details: `
-          <p>Dành cho các doanh nghiệp đang chịu áp lực chi phí lãi vay cao hoặc lịch trả gốc ngắn hạn không phù hợp với dòng tiền thực tế hiện tại.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Giảm chi phí lãi vay hàng tháng từ 1.5% - 3.5%/năm.</li>
-            <li>Kéo dài kỳ hạn trả nợ gốc để giảm bớt gánh nặng dòng tiền.</li>
-            <li>Hỗ trợ chuyển đổi toàn bộ dư nợ sang ngân hàng đối tác ưu đãi.</li>
-          </ul>
-        `
-      },
-      {
-        id: 5,
-        code: "FINBIZ - CAPEX LOAN",
-        title: "Vốn Đầu tư Tài sản cố định & Mở rộng",
-        limit: "Tối đa 75% tổng vốn đầu tư",
-        term: "Trung - Dài hạn (3 - 7 năm)",
-        collateral: "BĐS hoặc TS hình thành từ vốn vay",
-        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
-        description: "Nguồn vốn trung và dài hạn hỗ trợ doanh nghiệp mua sắm máy móc dây chuyền, xưởng sản xuất và mở rộng quy mô kinh doanh.",
-        details: `
-          <p>Tài trợ dài hạn dành riêng cho kế hoạch mở rộng nhà xưởng, mua sắm phương tiện vận tải, máy móc thiết bị hiện đại phục vụ nâng cao năng suất.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Thời gian vay dài hạn giúp phân bổ chi phí đầu tư hợp lý.</li>
-            <li>Cho phép thế chấp bằng chính tài sản hình thành từ vốn vay.</li>
-            <li>Ân hạn nợ gốc từ 6 - 12 tháng đầu tiên.</li>
-          </ul>
-        `
-      },
-      {
-        id: 6,
-        code: "FINBIZ - GUARANTEE",
-        title: "Bảo lãnh Ngân hàng & Tín dụng Thư (LC)",
-        limit: "Không giới hạn theo phương án",
-        term: "Linh hoạt theo Hợp đồng",
-        collateral: "Ký quỹ hoặc Tài sản bảo đảm",
-        image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
-        description: "Phát hành bảo lãnh dự thầu, bảo lãnh thực hiện hợp đồng, bảo lãnh tạm ứng và mở LC xuất nhập khẩu giá rẻ.",
-        details: `
-          <p>Hỗ trợ doanh nghiệp phát hành nhanh chóng các loại chứng thư bảo lãnh tín dụng ngân hàng với mức phí cực kỳ ưu đãi và tỷ lệ ký quỹ tối thiểu.</p>
-          <h3>Các hình thức bảo lãnh:</h3>
-          <ul>
-            <li>Bảo lãnh dự thầu / Bảo lãnh thực hiện hợp đồng.</li>
-            <li>Bảo lãnh tạm ứng & Bảo lãnh bảo hành chất lượng công trình.</li>
-            <li>Tín dụng thư L/C trả chậm / LC trả ngay cho doanh nghiệp xuất nhập khẩu.</li>
-          </ul>
-        `
-      },
-      {
-        id: 7,
-        code: "FINBIZ - RETAIL & SME",
-        title: "Tín dụng Cho Hộ kinh doanh & DNTN nhỏ",
-        limit: "Từ 200 Triệu đến 5 Tỷ VNĐ",
-        term: "Lên tới 36 - 60 tháng",
-        collateral: "Linh hoạt theo thực địa kinh doanh",
-        image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
-        description: "Gói giải pháp tài chính đơn giản hóa thủ tục chứng minh thu nhập dành cho Hộ kinh doanh cá thể và Doanh nghiệp siêu nhỏ.",
-        details: `
-          <p>Giải pháp tháo gỡ vướng mắc cho các hộ kinh doanh gia đình, cửa hàng bán lẻ không có đầy đủ sổ sách kế toán chuẩn mực theo quy định.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Thẩm định dựa trên doanh thu và dòng tiền bán hàng thực tế.</li>
-            <li>Thủ tục tinh gọn, duyệt và giải ngân siêu tốc trong 48 giờ.</li>
-            <li>Được chuyên gia tư vấn lộ trình chuyển đổi lên mô hình Doanh nghiệp.</li>
-          </ul>
-        `
-      },
-      {
-        id: 8,
-        code: "FINBIZ - DISCOUNT LC",
-        title: "Chiết khấu Bộ chứng từ L/C & Xuất nhập khẩu",
-        limit: "Tối đa 95% trị giá L/C",
-        term: "Theo thời hạn của L/C",
-        collateral: "Bộ chứng từ L/C hợp lệ",
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-        description: "Ứng trước tiền bán hàng xuất khẩu ngay khi giao hàng và xuất trình bộ chứng từ L/C hợp lệ cho ngân hàng.",
-        details: `
-          <p>Hỗ trợ các doanh nghiệp xuất khẩu nhận tiền thanh toán ngay lập tức mà không cần chờ đợi đến thời hạn thanh toán L/C trả chậm của ngân hàng người mua.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Tỷ lệ chiết khấu cao lên tới 95% trị giá L/C.</li>
-            <li>Miễn trừ rủi ro tỷ giá và rủi ro thanh toán từ đối tác nước ngoài.</li>
-            <li>Tăng tốc độ vòng quay vốn lưu động cho doanh nghiệp xuất khẩu.</li>
-          </ul>
-        `
-      }
-    ];
-
-    function renderProducts() {
-      const container = document.getElementById('products-container');
-      container.innerHTML = '';
-
-      products.forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'product-card';
-        card.onclick = () => openProductModal(p.id);
-        card.innerHTML = `
-          <div class="product-thumb-wrap">
-            <img class="product-thumb" src="${p.image}" alt="${p.title}" loading="lazy">
-          </div>
-          <div class="product-content">
-            <span class="product-code">${p.code}</span>
-            <h2 class="product-title">${p.title}</h2>
-            <p class="product-desc">${p.description}</p>
-            <span class="product-link">Xem chi tiết sản phẩm ↗</span>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function openProductModal(id) {
-      const p = products.find(item => item.id === id);
-      if (!p) return;
-
-      document.getElementById('pImage').src = p.image;
-      document.getElementById('pCode').innerText = p.code;
-      document.getElementById('pTitle').innerText = p.title;
-      document.getElementById('pLimit').innerText = p.limit;
-      document.getElementById('pTerm').innerText = p.term;
-      document.getElementById('pCollateral').innerText = p.collateral;
-      document.getElementById('pContent').innerHTML = p.details;
-
-      document.getElementById('productModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeProductModal() {
-      document.getElementById('productModal').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    function closeModalOnBg(e) {
-      if (e.target.id === 'productModal') {
-        closeProductModal();
-      }
-    }
-
-    // Khởi tạo hiển thị 8 sản phẩm
-    renderProducts();
-  </script>
-</body>
-</html>
+[
+  {
+    "id": "finbiz-upper-hhb",
+    "slug": "upper-hhb",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/upper-hhb.html",
+    "name": "Vay Tín Chấp Doanh Nghiệp & HKD Lớn (Upper HHB)",
+    "limit": "100 triệu - 2 tỷ đồng",
+    "interest": "Từ 1.5%/tháng",
+    "term": "Tối đa 60 tháng",
+    "description": "Gói tài trợ vốn tín chấp hạn mức cao cho HKD và Doanh nghiệp lớn dựa trên doanh thu và kê khai thuế."
+  },
+  {
+    "id": "finbiz-vp-sme",
+    "slug": "vay-tin-chap-sme",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/vay-tin-chap-sme.html",
+    "name": "Vay Tín Chấp Bổ Sung Vốn Lưu Động SME",
+    "limit": "Lên đến 5 tỷ đồng",
+    "interest": "Lãi suất ưu đãi gói SME",
+    "term": "12 - 36 tháng",
+    "description": "Cấp vốn lưu động không tài sản đảm bảo cho doanh nghiệp vừa và nhỏ phục vụ hoạt động sản xuất kinh doanh."
+  },
+  {
+    "id": "finbiz-ar-flex",
+    "slug": "fimex-ar-flex",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/fimex-ar-flex.html",
+    "name": "Tài Trợ Theo Hóa Đơn Bán Hàng (Fimex AR Flex)",
+    "limit": "2 tỷ - 10 tỷ đồng (Đến 85% giá trị hóa đơn)",
+    "interest": "Từ 1.5%/tháng",
+    "term": "1 - 3 tháng/hóa đơn",
+    "description": "Giải pháp giải phóng khoản phải thu tức thì dựa trên hóa đơn và hợp đồng bán hàng B2B."
+  },
+  {
+    "id": "finbiz-quy-jf",
+    "slug": "quy-jf",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-jf.html",
+    "name": "Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi)",
+    "limit": "Thỏa thuận theo quy mô",
+    "interest": "Lãi suất cạnh tranh",
+    "term": "Linh hoạt",
+    "description": "Cấp vốn cho DN trong bán kính 200km từ HCM & 50km từ Hà Nội (Áp dụng danh mục loại trừ ngành)."
+  },
+  {
+    "id": "finbiz-quy-pt",
+    "slug": "quy-pt",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-pt.html",
+    "name": "Quỹ Cấp Vốn Vận Hành PT (Protus)",
+    "limit": "Theo thẩm định dòng tiền",
+    "interest": "Ưu đãi tài trợ vận hành",
+    "term": "3 - 12 tháng",
+    "description": "Tài trợ vốn lưu động và hạ tầng công nghệ giúp tối ưu hóa vận hành cho doanh nghiệp số."
+  },
+  {
+    "id": "finbiz-quy-ad",
+    "slug": "quy-ad",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-ad.html",
+    "name": "Quỹ Tín Dụng Doanh Nghiệp AD (Advance)",
+    "limit": "Cấp theo quỹ lương & vận hành",
+    "interest": "Ưu đãi theo gói",
+    "term": "Ngắn hạn linh hoạt",
+    "description": "Giải pháp ứng vốn tài trợ quỹ lương và vốn lưu động ngắn hạn giải quyết bài toán thanh toán tức thì."
+  },
+  {
+    "id": "finbiz-quy-cr",
+    "slug": "quy-cr",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-cr.html",
+    "name": "Quỹ Tài Trợ Chuỗi Cung Ứng CR (Credita)",
+    "limit": "Theo hạn mức chuỗi liên kết",
+    "interest": "Cạnh tranh",
+    "term": "3 - 6 tháng",
+    "description": "Cấp vốn tín chấp cho các đại lý, nhà cung cấp phụ trợ nằm trong chuỗi liên kết sản xuất."
+  },
+  {
+    "id": "finbiz-quy-fs",
+    "slug": "quy-fs",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-fs.html",
+    "name": "Quỹ Giải Pháp Tài Chính FS (Funding Societies)",
+    "limit": "Lên đến 10 tỷ đồng",
+    "interest": "Theo hồ sơ năng lực",
+    "term": "1 - 24 tháng",
+    "description": "Cấp vốn thấu chi và cho vay tín chấp cho doanh nghiệp vừa và nhỏ bứt phá tăng trưởng."
+  },
+  {
+    "id": "finbiz-quy-cl",
+    "slug": "quy-cl",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-cl.html",
+    "name": "Quỹ Tín Dụng Linh Hoạt CL (Chailease)",
+    "limit": "Cấp hạn mức bổ sung",
+    "interest": "Tính trên dư nợ thực tế",
+    "term": "Theo hợp đồng cho vay",
+    "description": "Cho vay bổ sung vốn lưu động linh hoạt cho doanh nghiệp đang thuê tài chính máy móc thiết bị."
+  },
+  {
+    "id": "finbiz-quy-mf",
+    "slug": "quy-mf",
+    "url": "https://fin-biz.github.io/FIN-BIZ/san-pham/quy-mf.html",
+    "name": "Quỹ Tài Trợ Chiết Khấu T/T Xuất Khẩu MF",
+    "limit": "1 - 10 triệu USD (Đến 90% hóa đơn)",
+    "interest": "< 1%/tháng",
+    "term": "Ứng tiền lên tới 120 ngày",
+    "description": "Giải pháp chiết khấu T/T trả sau & CAD giúp doanh nghiệp xuất khẩu mở rộng tệp Buyers toàn cầu."
+  }
+]
