@@ -155,7 +155,16 @@
       .menu-toggle { display: block; }
       .form-card { padding: 22px; }
       .type-grid { grid-template-columns: 1fr; }
-    }
+    }/* Đèn đè màu chữ và nền cho nút Đăng ký vay khi ở trang active */
+.nav-links a.nav-cta.active {
+  background: #315c3d !important;
+  color: #ffffff !important;
+  border-color: #315c3d !important;
+}
+
+.nav-links a.nav-cta.active::after {
+  display: none !important; /* Xóa đường gạch chân bên dưới nút */
+}
   </style>
 </head>
 <body>
