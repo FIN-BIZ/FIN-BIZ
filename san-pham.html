@@ -105,9 +105,18 @@
     .spec-label { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; letter-spacing: 0.5px; }
     .spec-val { font-size: 15px; font-weight: 700; color: var(--pine); margin-top: 4px; }
 
+    /* TAB DẪN HƯỚNG 4 NỘI DUNG */
+    .product-sub-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--line); margin-bottom: 24px; overflow-x: auto; padding-bottom: 4px; }
+    .sub-tab-btn { padding: 10px 16px; background: transparent; border: none; font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer; white-space: nowrap; border-radius: 4px 4px 0 0; transition: all 0.2s; }
+    .sub-tab-btn:hover { color: var(--pine); background: var(--pine-deep); }
+    .sub-tab-btn.active { color: var(--pine); border-bottom: 3px solid var(--pine); background: var(--pine-deep); }
+    .tab-content-panel { display: none; }
+    .tab-content-panel.active { display: block; animation: fadeIn 0.25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
     .modal-content p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
-    .modal-content h3 { font-size: 19px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 24px 0 10px; }
-    .modal-content ul { padding-left: 20px; margin-bottom: 20px; }
+    .modal-content h3 { font-size: 19px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 20px 0 10px; }
+    .modal-content ul, .modal-content ol { padding-left: 20px; margin-bottom: 20px; }
     .modal-content li { margin-bottom: 8px; font-size: 15px; }
 
     .modal-cta-box { background: var(--pine-deep); border: 1px solid var(--line); border-radius: 8px; padding: 28px; text-align: center; margin-top: 35px; }
@@ -187,12 +196,12 @@
   <section class="products-section">
     <div class="wrap">
       <div class="products-grid" id="products-container">
-        <!-- 10 Sản phẩm sẽ tự động tạo qua Script bên dưới -->
+        <!-- 10 Sản phẩm sẽ được hiển thị ở đây -->
       </div>
     </div>
   </section>
 
-  <!-- MODAL XEM CHI TIẾT SẢN PHẨM -->
+  <!-- MODAL XEM CHI TIẾT SẢN PHẨM CHUẨN 4 TAB -->
   <div class="product-modal" id="productModal" onclick="closeModalOnBg(event)">
     <div class="modal-box">
       <button class="modal-close" onclick="closeProductModal()">&times;</button>
@@ -211,19 +220,28 @@
             <span class="spec-val" id="pTerm">Đang cập nhật</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Tài sản bảo đảm / Lãi suất</span>
+            <span class="spec-label">Lãi suất / TSĐB</span>
             <span class="spec-val" id="pCollateral">Linh hoạt</span>
           </div>
         </div>
 
-        <div class="modal-content" id="pContent">
-          <!-- Chi tiết nội dung sản phẩm -->
+        <!-- THANH CHUYỂN TAB 4 NỘI DUNG -->
+        <div class="product-sub-tabs" id="subTabsNav">
+          <button class="sub-tab-btn active" onclick="switchSubTab(0)">1. Tổng quan sản phẩm</button>
+          <button class="sub-tab-btn" onclick="switchSubTab(1)">2. Điều kiện, Khu vực &amp; Ngành nghề</button>
+          <button class="sub-tab-btn" onclick="switchSubTab(2)">3. Hồ sơ &amp; Chứng từ cần thiết</button>
+          <button class="sub-tab-btn" onclick="switchSubTab(3)">4. Quy trình thẩm định &amp; Giải ngân</button>
+        </div>
+
+        <!-- KHU VỰC HIỂN THỊ NỘI DUNG CỦA 4 TAB -->
+        <div class="modal-content" id="pContentPanels">
+          <!-- Chèn nội dung động -->
         </div>
 
         <div class="modal-cta-box">
-          <h4>Cần tư vấn gói sản phẩm tài chính này?</h4>
+          <h4>Đăng ký thẩm định gói sản phẩm này</h4>
           <p>Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích nhu cầu và lập phương án cấp hạn mức tối ưu nhất cho bạn.</p>
-          <a href="dang-ky-vay.html" class="btn-modal-action">Đăng ký nhận tư vấn sản phẩm ↗</a>
+          <a href="dang-ky-vay.html" class="btn-modal-action">Đăng ký vay ngay ↗</a>
         </div>
       </div>
     </div>
@@ -253,202 +271,178 @@
     </a>
   </div>
 
-  <!-- SCRIPT DỮ LIỆU & HIỂN THỊ 10 SẢN PHẨM -->
+  <!-- SCRIPT DỮ LIỆU CHÍNH TÍCH HỢP 10 SẢN PHẨM & 4 TAB CẤU TRÚC CHI TIẾT -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('main-menu');
       menu.classList.toggle('mobile-open');
     }
 
-    // Danh sách 10 Sản phẩm tín dụng doanh nghiệp FIN BIZ
+    // Danh sách 10 sản phẩm chuẩn FIN BIZ (mỗi sản phẩm có 4 Tab chi tiết)
     const products = [
       {
         id: 1,
         code: "FINBIZ - UPPER HHB",
-        slug: "upper-hhb",
         title: "Vay Tín Chấp Doanh Nghiệp & HKD Lớn (Upper HHB)",
         limit: "100 triệu - 2 tỷ VNĐ",
         term: "Tối đa 60 tháng",
         collateral: "Không TSĐB (Từ 1.5%/tháng)",
         image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
         description: "Gói vay tín chấp dành riêng cho Chủ hộ kinh doanh và Doanh nghiệp lớn có dòng tiền thực tế tốt và kê khai thuế minh bạch.",
-        details: `
-          <p>Sản phẩm <strong>Upper HHB</strong> hỗ trợ nguồn vốn tín chấp quy mô vừa và lớn không cần thế chấp Bất động sản, thẩm định dựa trên năng lực tài chính thực tế và dòng tiền bán hàng.</p>
-          <h3>Thông tin sản phẩm & Điều kiện:</h3>
-          <ul>
-            <li><strong>Hạn mức cấp:</strong> Từ 100 triệu VNĐ đến 2 tỷ VNĐ.</li>
-            <li><strong>Thời hạn vay:</strong> Tối đa lên tới 60 tháng (5 năm).</li>
-            <li><strong>Lãi suất:</strong> Chỉ từ 1.5%/tháng.</li>
-            <li><strong>Đối tượng:</strong> Chủ hộ kinh doanh, cá nhân kinh doanh hoặc thành viên góp vốn tối thiểu 30% VCSH doanh nghiệp; Thu nhập từ 50 triệu/tháng; Độ tuổi từ 22–65 tuổi; Có sở hữu BĐS (dùng làm cơ sở xác minh năng lực tài chính).</li>
-          </ul>
-        `
+        tabsData: [
+          `<h3>1. Tổng quan sản phẩm Upper HHB</h3><p>Gói vay tín chấp Upper HHB hỗ trợ cấp nguồn vốn lưu động quy mô vừa và lớn không cần thế chấp Bất động sản, thẩm định dựa trên dòng tiền kinh doanh và thuế VAT/TNCN.</p><ul><li><strong>Hạn mức:</strong> 100 triệu đến 2 tỷ VNĐ.</li><li><strong>Kỳ hạn:</strong> Tối đa 60 tháng.</li><li><strong>Lãi suất:</strong> Từ 1.5%/tháng.</li></ul>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p><strong>Điều kiện:</strong> Chủ HKD hoặc thành viên góp vốn >30% VCSH Doanh nghiệp, thu nhập từ 50 triệu/tháng, sở hữu BĐS (dùng làm căn cứ năng lực tài chính).</p><p><strong>Khu vực:</strong> Toàn quốc.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Pháp lý: ĐKKD/ĐKHKD, CCCD chủ doanh nghiệp/HKD.</li><li>Tài chính: Tờ khai thuế VAT 12 tháng, sao kê tài khoản ngân hàng 6 - 12 tháng.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Nộp hồ sơ online.</li><li>Thẩm định dòng tiền & thực địa kinh doanh.</li><li>Phê duyệt & giải ngân trong 48h.</li></ol>`
+        ]
       },
       {
         id: 2,
         code: "FINBIZ - VP SME",
-        slug: "vay-tin-chap-sme",
         title: "Vay Tín Chấp Bổ Sung Vốn Lưu Động SME",
-        limit: "Up to 3 - 5 tỷ VNĐ",
+        limit: "3 - 5 tỷ VNĐ",
         term: "12 - 36 tháng",
-        collateral: "Khống TSĐB (Lãi suất ưu đãi)",
+        collateral: "Tín chấp (Ưu đãi SME)",
         image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
-        description: "Giải pháp tài trợ vốn lưu động ngắn hạn dành cho các Doanh nghiệp vừa và nhỏ (SME) có lịch sử tín dụng tốt và doanh thu ổn định.",
-        details: `
-          <p>Dựa trên mô hình tín chấp SME của VPBank, sản phẩm mang đến giải pháp cấp hạn mức thấu chi hoặc cho vay ngắn hạn linh hoạt giúp giải quyết nhu cầu thanh toán tức thì.</p>
-          <h3>Lợi ích nổi bật:</h3>
-          <ul>
-            <li>Hạn mức tài trợ lên tới 5 tỷ VNĐ không cần tài sản đảm bảo.</li>
-            <li>Thủ tục phê duyệt tự động & thẩm định số hóa nhanh chóng.</li>
-            <li>Đối tượng: Doanh nghiệp SME hoạt động từ 12 - 24 tháng trở lên, báo cáo thuế/dòng tiền qua ngân hàng minh bạch.</li>
-          </ul>
-        `
+        description: "Giải pháp tài trợ vốn lưu động ngắn hạn dành cho các Doanh nghiệp vừa và nhỏ (SME) có lịch sử tín dụng tốt.",
+        tabsData: [
+          `<h3>1. Tổng quan sản phẩm VP SME</h3><p>Cấp hạn mức thấu chi hoặc cho vay tín chấp ngắn hạn dựa trên mô hình tài trợ SME ưu việt.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p>Doanh nghiệp SME hoạt động trên 12-24 tháng, doanh thu minh bạch, CIC không nợ xấu.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Giấy ĐKKD, BCTC 2 năm gần nhất, Báo cáo thuế VAT 12 tháng.</li><li>Sao kê tài khoản ngân hàng công ty 12 tháng.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Tiếp nhận hồ sơ.</li><li>Thẩm định số hóa.</li><li>Phê duyệt hạn mức và giải ngân.</li></ol>`
+        ]
       },
       {
         id: 3,
         code: "FINBIZ - FIMEX AR FLEX",
-        slug: "fimex-ar-flex",
         title: "Tài Trợ Theo Hóa Đơn Bán Hàng (Fimex AR Flex)",
         limit: "2 tỷ - 10 tỷ VNĐ (85% HĐ)",
         term: "1 - 3 tháng/hóa đơn",
         collateral: "Hóa đơn & Khoản phải thu",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-        description: "Giải pháp ứng vốn nhanh dựa trên hóa đơn và công nợ bán hàng B2B (Fimex.vn), giải phóng tức thì dòng tiền bị đọng.",
-        details: `
-          <p>Tương đương giải pháp Fimex AR Flex, gói cấp vốn hỗ trợ ứng tiền trước cho các hóa đơn bán hàng trả chậm cho đối tác B2B lớn mà không đòi hỏi tài sản cố định.</p>
-          <h3>Đặc điểm sản phẩm:</h3>
-          <ul>
-            <li><strong>Tỷ lệ ứng vốn:</strong> Lên tới 85% giá trị hóa đơn.</li>
-            <li><strong>Kỳ hạn vay:</strong> Linh hoạt 1 – 3 tháng/hóa đơn (Hạn mức chung 6 tháng).</li>
-            <li><strong>Lãi suất:</strong> Từ 1.5%/tháng (tính theo số ngày thực tế sử dụng vốn).</li>
-            <li><strong>Đối tượng:</strong> Doanh nghiệp B2B hoạt động >12 tháng, doanh thu 50 - 1.000 tỷ VNĐ/năm.</li>
-          </ul>
-        `
+        description: "Giải pháp ứng vốn nhanh dựa trên hóa đơn và công nợ bán hàng B2B, giải phóng tức thì dòng tiền bị đọng.",
+        tabsData: [
+          `<h3>1. Tổng quan sản phẩm Fimex AR Flex</h3><p>Tài trợ ứng trước tối đa 85% giá trị hóa đơn/hợp đồng bán hàng B2B trả chậm mà không cần thế chấp BĐS.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p>Doanh nghiệp B2B hoạt động >12 tháng, doanh thu từ 50 - 1.000 tỷ/năm, bên mua uy tín.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Hợp đồng kinh tế đầu ra, Hóa đơn tài chính, Biên bản nghiệm thu/giao hàng.</li><li>Bộ hồ sơ pháp lý & BCTC doanh nghiệp.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Thẩm định hợp đồng & Bên mua.</li><li>Phê duyệt tỷ lệ tài trợ.</li><li>Giải ngân theo từng hóa đơn.</li></ol>`
+        ]
       },
       {
         id: 4,
         code: "FINBIZ - QUỸ JF",
-        slug: "quy-jf",
         title: "Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi)",
         limit: "Thỏa thuận theo quy mô",
         term: "Linh hoạt",
-        collateral: "Đánh giá Doanh thu & Dòng tiền",
+        collateral: "Đánh giá Dòng tiền",
         image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
-        description: "Nguồn vốn quỹ Jenfi dành cho doanh nghiệp tăng trưởng, áp dụng phạm vi bán kính địa lý và danh mục ngành nghề thẩm định khắt khe.",
-        details: `
-          <p>Giải pháp cấp vốn tăng trưởng doanh thu dựa trên mô hình Jenfi dành cho doanh nghiệp Thương mại điện tử & B2B.</p>
-          <h3>Phạm vi địa lý hỗ trợ:</h3>
-          <p>Doanh nghiệp có địa điểm kinh doanh nằm trong bán kính <strong>200 km từ trung tâm TP.HCM</strong> và <strong>50 km từ trung tâm Hà Nội</strong>.</p>
-          <h3>Các ngành nghề KHÔNG hỗ trợ (Danh mục loại trừ):</h3>
-          <ul>
-            <li>Xây dựng & Vật liệu liên quan (gạch, xi măng, đá...); ngành ảnh hưởng bởi tính thời vụ/dự án.</li>
-            <li>Bất động sản và Dịch vụ cho thuê văn phòng/nhà ở.</li>
-            <li>Bán lẻ xăng dầu, khí đốt; Khai thác khoáng sản (than, đá...).</li>
-            <li>Vận tải, đại lý xe cũ/xe đã qua sử dụng.</li>
-            <li>Dịch vụ: du lịch, truyền thông, quảng cáo, báo chí, điện ảnh, bảo vệ, cung cấp nhân lực, tư vấn luật/tài chính.</li>
-            <li>Tập đoàn đa quốc gia kinh doanh đa ngành nghề.</li>
-            <li>Bán buôn thuốc lá (đóng góp >50% doanh thu); Casino, cá độ, cờ bạc.</li>
-            <li><i>Ngành hạn chế:</i> Thương mại mặt hàng nông sản (Chỉ nhận nếu Khách hàng có dòng tiền xuất khẩu rõ ràng).</li>
-          </ul>
-        `
+        description: "Quỹ cấp vốn tăng trưởng doanh thu dựa trên mô hình Jenfi dành cho doanh nghiệp Thương mại & B2B.",
+        tabsData: [
+          `<h3>1. Tổng quan Quỹ JF</h3><p>Nguồn vốn cấp tốc dựa trên doanh thu và dòng tiền thực tế của doanh nghiệp.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p><strong>Phạm vi địa lý:</strong> Bán kính <strong>200 km từ trung tâm TP.HCM</strong> và <strong>50 km từ trung tâm Hà Nội</strong>.</p><p><strong>Ngành loại trừ:</strong> Xây dựng & Vật liệu xây dựng; Bất động sản/Cho thuê nhà ở; Xăng dầu, Khai khoáng; Vận tải/Xe cũ; Du lịch, Truyền thông, Bảo vệ, Luật/Tài chính; Thuốc lá; Casino; Nông sản (trừ khi có dòng tiền xuất khẩu).</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Sao kê tài khoản ngân hàng 12 tháng gần nhất.</li><li>Báo cáo thuế & Dữ liệu bán hàng/Doanh thu.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Kết nối dữ liệu dòng tiền.</li><li>Thẩm định tự động & Thực địa địa bàn.</li><li>Giải ngân trực tiếp.</li></ol>`
+        ]
       },
       {
         id: 5,
         code: "FINBIZ - QUỸ PT",
-        slug: "quy-pt",
         title: "Quỹ Cấp Vốn Vận Hành PT (Protus)",
         limit: "Theo dòng tiền thực tế",
         term: "3 - 12 tháng",
-        collateral: "Tín chấp / Hạ tầng kinh doanh",
+        collateral: "Tín chấp / Hạ tầng số",
         image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
-        description: "Giải pháp tài trợ hạ tầng máy chủ, thiết bị và vốn lưu động cho doanh nghiệp công nghệ, thương mại điện tử và dịch vụ số.",
-        details: `
-          <p>Cung cấp nguồn vốn linh hoạt theo mô hình Protus Singapore, giúp tối ưu hóa chi phí vận hành máy chủ, hạ tầng hạ tầng dữ liệu và chuỗi cung ứng cho các doanh nghiệp công nghệ và kinh doanh trên nền tảng số.</p>
-        `
+        description: "Tài trợ hạ tầng công nghệ, máy chủ và vốn lưu động cho doanh nghiệp kinh doanh số (Protus Singapore).",
+        tabsData: [
+          `<h3>1. Tổng quan Quỹ PT</h3><p>Giải pháp cấp vốn tài trợ vận hành hạ tầng số và tối ưu hóa chi phí sản xuất.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p>Doanh nghiệp công nghệ, TMĐT và dịch vụ số tại các thành phố lớn (Hà Nội, TP.HCM, Đà Nẵng...).</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>ĐKKD, Hợp đồng thuê máy chủ/hạ tầng, BCTC và sao kê dòng tiền.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Đánh giá hạ tầng & Dòng tiền.</li><li>Tài trợ hạn mức linh hoạt.</li></ol>`
+        ]
       },
       {
         id: 6,
         code: "FINBIZ - QUỸ AD",
-        slug: "quy-ad",
         title: "Quỹ Tín Dụng Doanh Nghiệp AD (Advance)",
         limit: "Theo hạn mức quỹ lương",
         term: "Ngắn hạn linh hoạt",
-        collateral: "Dòng tiền nhân sự / Hợp đồng",
+        collateral: "Tín chấp quỹ lương",
         image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
-        description: "Giải pháp ứng vốn chi trả lương (Payroll Financing) và ứng vốn ngắn hạn cho doanh nghiệp ổn định dòng tiền nhân sự.",
-        details: `
-          <p>Tham chiếu mô hình Advance Vietnam, gói hỗ trợ tài chính giúp doanh nghiệp chủ động chi trả lương, thưởng và chi phí nhân sự đúng hạn mà không gây áp lực lên nguồn vốn lưu động tức thì.</p>
-        `
+        description: "Giải pháp ứng vốn chi trả lương (Payroll Financing) và ứng vốn vận hành ngắn hạn (Advance Vietnam).",
+        tabsData: [
+          `<h3>1. Tổng quan Quỹ AD</h3><p>Ứng vốn quỹ lương và chi phí nhân sự giúp doanh nghiệp chủ động dòng tiền.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p>Doanh nghiệp có quỹ lương ổn định, số lượng nhân sự >20 người, hoạt động >1 năm.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Danh sách lương nhân sự, Bảng sao kê chi lương ngân hàng 6 tháng.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Thẩm định quỹ lương.</li><li>Cấp hạn mức chi trả tức thì.</li></ol>`
+        ]
       },
       {
         id: 7,
         code: "FINBIZ - QUỸ CR",
-        slug: "quy-cr",
         title: "Quỹ Tài Trợ Chuỗi Cung Ứng CR (Credita)",
         limit: "Theo hạn mức chuỗi",
         term: "3 - 6 tháng",
         collateral: "Liên kết chuỗi cung ứng",
         image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
-        description: "Sản phẩm tài trợ vốn chuyên sâu cho các đại lý, nhà phân phối và nhà cung ứng phụ trợ trong chuỗi liên kết sản xuất.",
-        details: `
-          <p>Mô hình cấp vốn Credita giúp gắn kết chuỗi giá trị từ nhà sản xuất chính đến các đại lý phân phối, tài trợ vốn mua hàng không tài sản thế chấp dựa trên uy tín giao dịch trong chuỗi.</p>
-        `
+        description: "Cấp vốn tín chấp cho nhà cung ứng, đại lý nằm trong chuỗi liên kết sản xuất (Credita).",
+        tabsData: [
+          `<h3>1. Tổng quan Quỹ CR</h3><p>Tài trợ vốn lưu động tín chấp dành cho các đối tác thuộc chuỗi cung ứng doanh nghiệp lớn.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p>Đại lý, nhà cung cấp có hợp đồng hợp tác chính thức với doanh nghiệp lõi.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Hợp đồng nhà cung cấp/Đại lý, Đơn đặt hàng, Sao kê giao dịch chuỗi.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Xác nhận từ doanh nghiệp trung tâm.</li><li>Giải ngân cho nhà cung cấp.</li></ol>`
+        ]
       },
       {
         id: 8,
         code: "FINBIZ - QUỸ FS",
-        slug: "quy-fs",
-        title: "Quỹ Giải Pháp Tài Chính FS (Funding Societies)",
-        limit: "Lên đến 10 tỷ VNĐ",
-        term: "1 - 24 tháng",
-        collateral: "Đánh giá tín nhiệm P2P/Fintech",
+        title: "Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN)",
+        limit: "500 Triệu - 4 Tỷ VNĐ",
+        term: "3 - 5 tháng (Linh hoạt)",
+        collateral: "Không TSĐB (Từ 1%/tháng)",
         image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-        description: "Nguồn vốn thấu chi và vay tín chấp kinh doanh ngắn hạn thông qua nền tảng công nghệ tài chính P2P uy tín khu vực.",
-        details: `
-          <p>Tham chiếu gói Funding Societies VN (Bizloan), hỗ trợ doanh nghiệp tiếp cận các giải pháp thấu chi doanh nghiệp, tài trợ khoản phải thu và cho vay tín chấp với thời gian phê duyệt siêu tốc.</p>
-        `
+        description: "Nguồn vốn tài trợ ngắn hạn cấp tốc giúp doanh nghiệp bổ sung vốn lưu động mua hàng, nhập kho.",
+        tabsData: [
+          `<h3>1. Tổng quan sản phẩm Funding Societies VN</h3><p>Cấp hạn mức từ <strong>500 triệu đến 4 tỷ đồng</strong> giúp Doanh nghiệp vừa và nhỏ (SME) bổ sung vốn lưu động tức thì.</p><ul><li><strong>Lãi suất:</strong> Chỉ từ 1%/tháng.</li><li><strong>Bảo đảm:</strong> 100% Không yêu cầu thế chấp BĐS.</li></ul>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p><strong>Điều kiện:</strong> Doanh nghiệp hoạt động >2 năm, doanh thu năm >5 tỷ VNĐ, không nợ xấu CIC.</p><p><strong>Khu vực:</strong> Hà Nội (bán kính 50km), TP.HCM (bán kính 200km), Bắc Ninh, Hải Phòng, Bình Dương, Đồng Nai...</p><p><strong>Ngành nghề:</strong> Ưu tiên Sản xuất, Thương mại B2B, Chuỗi cung ứng. Loại trừ BĐS, Xăng dầu, Cờ bạc.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>ĐKKD, CCCD người đại diện, Điều lệ công ty.</li><li>BCTC 2 năm, Báo cáo thuế VAT 12 tháng.</li><li>Sao kê tài khoản công ty 6 - 12 tháng.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Nộp hồ sơ sơ duyệt trong 24h.</li><li>Thực địa nhà xưởng/văn phòng.</li><li>Phê duyệt & giải ngân trong ngày.</li></ol>`
+        ]
       },
       {
         id: 9,
         code: "FINBIZ - QUỸ CL",
-        slug: "quy-cl",
         title: "Quỹ Tín Dụng Linh Hoạt CL (Chailease)",
         limit: "Theo dư nợ thuê tài chính",
         term: "Theo hợp đồng cho vay",
         collateral: "Máy móc / Thiết bị thuê TC",
         image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
-        description: "Cho vay bổ sung vốn lưu động dành riêng cho các doanh nghiệp đang sử dụng dịch vụ thuê tài chính máy móc thiết bị.",
-        details: `
-          <p>Căn cứ theo sản phẩm bổ sung vốn lưu động Chailease, gói tín dụng này tài trợ thêm nguồn vốn lưu động song song dựa trên hợp đồng thuê tài chính hiện hữu của doanh nghiệp.</p>
-        `
+        description: "Cho vay bổ sung vốn lưu động dành riêng cho các doanh nghiệp đang sử dụng dịch vụ thuê tài chính.",
+        tabsData: [
+          `<h3>1. Tổng quan Quỹ CL</h3><p>Giải pháp cho vay bổ sung vốn lưu động đi kèm hợp đồng thuê tài chính máy móc thiết bị Chailease.</p>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p>Doanh nghiệp đang có hợp đồng thuê tài chính hoạt động tốt tại Chailease.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Hợp đồng thuê tài chính hiện hữu, BCTC cập nhật, Sao kê ngân hàng.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Rà soát lịch sử trả nợ thuê tài chính.</li><li>Cấp hạn mức bổ sung vốn lưu động.</li></ol>`
+        ]
       },
       {
         id: 10,
         code: "FINBIZ - QUỸ MF",
-        slug: "quy-mf",
         title: "Quỹ Chiết Khấu T/T Trả Sau Cho DN Xuất Khẩu (MF)",
         limit: "1 - 10 triệu USD (90% HĐ)",
         term: "Ứng tiền lên tới 120 ngày",
         collateral: "Hóa đơn xuất khẩu & T/T, CAD",
         image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
-        description: "Giải pháp chiết khấu T/T trả sau nâng cao năng lực cạnh tranh cho Doanh nghiệp Xuất khẩu, tài trợ lên tới 90% giá trị hóa đơn.",
-        details: `
-          <p>Gói giải pháp tài chính chuyên sâu nâng cao năng lực cạnh tranh toàn cầu cho Doanh nghiệp xuất khẩu Việt Nam.</p>
-          <h3>Thông tin hạn mức & Chi phí:</h3>
-          <ul>
-            <li><strong>Hạn mức cấp:</strong> Từ 1 - 10 triệu USD.</li>
-            <li><strong>Tỷ lệ tài trợ:</strong> Đến 90% giá trị hóa đơn xuất khẩu.</li>
-            <li><strong>Thời gian ứng tiền:</strong> Lên tới 120 ngày.</li>
-            <li><strong>Phương thức chấp nhận:</strong> T/T trả sau, CAD. Hỗ trợ đánh giá Buyers toàn cầu giúp mở rộng tệp KH.</li>
-            <li><strong>Lãi suất:</strong> &lt; 1%/tháng.</li>
-            <li><strong>Phí thiết lập hạn mức:</strong> 1% (chưa VAT, thu 1 lần).</li>
-            <li><strong>Phí chuyển tiền USD về VN:</strong> 38 USD/lần.</li>
-          </ul>
-          <h3>Ngành nghề hỗ trợ trọng điểm:</h3>
-          <p>Dệt may, Giày dép, Đồ gỗ, Nông sản, Thủy sản, Máy móc, Nhựa & Bao bì, Hóa chất, Sản xuất chế biến.</p>
-        `
+        description: "Giải pháp chiết khấu T/T trả sau nâng cao năng lực cạnh tranh cho Doanh nghiệp Xuất khẩu.",
+        tabsData: [
+          `<h3>1. Tổng quan Quỹ Chiết Khấu MF</h3><p>Tài trợ ứng trước tới 90% giá trị hóa đơn xuất khẩu theo phương thức thanh toán T/T trả sau hoặc CAD.</p><ul><li><strong>Hạn mức:</strong> 1 - 10 triệu USD.</li><li><strong>Thời gian ứng:</strong> Lên tới 120 ngày.</li><li><strong>Lãi suất:</strong> &lt; 1%/tháng.</li><li><strong>Phí:</strong> Phí mở hạn mức 1% (1 lần), Phí chuyển USD về VN: 38 USD/lần.</li></ul>`,
+          `<h3>2. Điều kiện, Khu vực & Ngành nghề</h3><p><strong>Đối tượng:</strong> Doanh nghiệp xuất khẩu có tệp Buyers quốc tế uy tín.</p><p><strong>Ngành hỗ trợ:</strong> Dệt may, Giày dép, Đồ gỗ, Nông sản, Thủy sản, Máy móc, Nhựa & Bao bì, Hóa chất, Sản xuất chế biến.</p>`,
+          `<h3>3. Hồ sơ & Chứng từ cần thiết</h3><ul><li>Bộ chứng từ xuất khẩu (Commercial Invoice, Bill of Lading, Packing List).</li><li>Hợp đồng mua bán ngoại thương & Thông tin Buyers.</li></ul>`,
+          `<h3>4. Quy trình thẩm định & Giải ngân</h3><ol><li>Thẩm định uy tín Buyers quốc tế.</li><li>Phê duyệt hạn mức chiết khấu.</li><li>Giải ngân USD/VNĐ ngay khi giao hàng.</li></ol>`
+        ]
       }
     ];
 
+    // Render danh sách thẻ sản phẩm
     function renderProducts() {
       const container = document.getElementById('products-container');
       container.innerHTML = '';
@@ -472,9 +466,14 @@
       });
     }
 
+    // Mở Modal và nạp 4 Tab nội dung
+    let currentActiveProduct = null;
+
     function openProductModal(id) {
       const p = products.find(item => item.id === id);
       if (!p) return;
+
+      currentActiveProduct = p;
 
       document.getElementById('pImage').src = p.image;
       document.getElementById('pCode').innerText = p.code;
@@ -482,10 +481,47 @@
       document.getElementById('pLimit').innerText = p.limit;
       document.getElementById('pTerm').innerText = p.term;
       document.getElementById('pCollateral').innerText = p.collateral;
-      document.getElementById('pContent').innerHTML = p.details;
+
+      // Nạp nội dung 4 Tab
+      loadProductTabsToModal(p);
 
       document.getElementById('productModal').classList.add('active');
       document.body.style.overflow = 'hidden';
+    }
+
+    function loadProductTabsToModal(pData) {
+      const container = document.getElementById('pContentPanels');
+      container.innerHTML = '';
+
+      pData.tabsData.forEach((htmlContent, index) => {
+        const panel = document.createElement('div');
+        panel.className = `tab-content-panel ${index === 0 ? 'active' : ''}`;
+        panel.innerHTML = htmlContent;
+        container.appendChild(panel);
+      });
+
+      switchSubTab(0);
+    }
+
+    function switchSubTab(index) {
+      const tabs = document.querySelectorAll('.sub-tab-btn');
+      const panels = document.querySelectorAll('.tab-content-panel');
+      
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      panels.forEach((panel, i) => {
+        if (i === index) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
     }
 
     function closeProductModal() {
@@ -499,7 +535,7 @@
       }
     }
 
-    // Khởi tạo hiển thị 10 sản phẩm
+    // Khởi chạy khi tải trang
     renderProducts();
   </script>
 </body>
