@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315c3d">
+  <meta name="description" content="Gói cấp vốn vận hành FS (Funding Societies VN) từ FIN BIZ - Hạn mức đến 4 tỷ VNĐ, không tài sản thế chấp.">
+  <title>Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN) | FIN BIZ</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../LOGO.png">
+  <link rel="apple-touch-icon" href="../LOGO.png">
+
+  <!-- Open Graph / Meta Tags cho Facebook/Zalo -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://fin-biz.github.io/FIN-BIZ/san-pham/funding-societies.html">
+  <meta property="og:title" content="Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN) | FIN BIZ">
+  <meta property="og:description" content="Tài trợ vốn lưu động ngắn hạn cấp tốc đến 4 tỷ VNĐ cho doanh nghiệp SME.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --pine: #315c3d;
+      --pine-deep: #e3eedb;
+      --pine-soft: #527b59;
+      --paper: #f4f6f4;
+      --white: #fff;
+      --ink: #243329;
+      --muted: #68756b;
+      --line: #d9e0db;
+      --silver: #aeb8b2;
+      --sans: "DM Sans", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
+
+    /* TOPBAR & NAVIGATION */
+    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
+    .topbar-note { display: flex; align-items: center; gap: 9px; }
+    .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
+    .topbar-meta { display: flex; gap: 24px; }
+    
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.08); border-radius: 6px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; color: var(--ink); font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.nav-cta) { position: relative; padding: 4px 0; }
+    .nav-links a:not(.nav-cta):hover, .nav-links a.active { color: var(--pine); }
+    .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
+    .nav-cta { min-height: 44px; padding: 0 20px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 4px; transition: all .2s ease; }
+    .nav-cta:hover { border-color: #24482f; background: #24482f; color: var(--white); }
+
+    /* BREADCRUMB & HEADER */
+    .product-detail-header { padding: 150px 0 40px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
+    .breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .breadcrumb a:hover { color: var(--pine); }
+    .product-detail-header h1 { font-size: clamp(28px, 4vw, 42px); color: var(--pine); margin: 8px 0 16px; font-family: 'Playfair Display', serif; line-height: 1.25; }
+
+    /* LAYOUT Bố CỤC PAGE CHI TIẾT */
+    .detail-container { padding: 50px 0 80px; }
+    .detail-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+    
+    /* SPEC BOX */
+    .product-spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; background: #ffffff; padding: 24px; border-radius: 8px; margin-bottom: 30px; border: 1px solid var(--line); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .spec-item { display: flex; flex-direction: column; }
+    .spec-label { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; letter-spacing: 0.5px; }
+    .spec-val { font-size: 16px; font-weight: 700; color: var(--pine); margin-top: 4px; }
+
+    /* TAB DẪN HƯỚNG NỘI DUNG */
+    .product-sub-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--line); margin-bottom: 28px; overflow-x: auto; padding-bottom: 4px; }
+    .sub-tab-btn { padding: 12px 18px; background: transparent; border: none; font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; white-space: nowrap; border-radius: 4px 4px 0 0; transition: all 0.2s; }
+    .sub-tab-btn:hover { color: var(--pine); background: #eef3ed; }
+    .sub-tab-btn.active { color: var(--pine); border-bottom: 3px solid var(--pine); background: #ffffff; }
+    
+    .tab-content-panel { display: none; background: #ffffff; padding: 32px; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .tab-content-panel.active { display: block; animation: fadeIn 0.25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .tab-content-panel h2 { font-size: 22px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 0 0 16px; }
+    .tab-content-panel h3 { font-size: 17px; color: var(--ink); margin: 20px 0 10px; }
+    .tab-content-panel p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+    .tab-content-panel ul, .tab-content-panel ol { padding-left: 20px; margin-bottom: 20px; }
+    .tab-content-panel li { margin-bottom: 10px; font-size: 15px; }
+
+    /* SIDEBAR ĐĂNG KÝ VAY */
+    .sidebar-card { background: #ffffff; border: 1px solid var(--line); border-radius: 8px; padding: 28px; position: sticky; top: 130px; box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+    .sidebar-card h3 { font-size: 20px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 0 0 12px; }
+    .sidebar-card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .btn-apply { display: block; width: 100%; text-align: center; padding: 14px 20px; background: var(--pine); color: #ffffff; font-weight: 700; border-radius: 4px; font-size: 15px; transition: background 0.2s; }
+    .btn-apply:hover { background: #24482f; }
+
+    /* FLOATING CONTACT WIDGET */
+    .floating-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 12px; }
+    .widget-btn { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; color: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); transition: transform 0.25s ease; }
+    .widget-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .widget-btn.phone { background-color: var(--pine); }
+    .widget-btn.zalo { background-color: #0068ff; font-weight: 800; font-size: 13px; }
+    .widget-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+    footer { padding: 32px 0; background: #e3e8e5; color: #566659; font-size: 12px; margin-top: 40px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; letter-spacing: 1px; }
+    .footer-logo { width: 38px; height: 38px; object-fit: contain; }
+    .footer-links { display: flex; gap: 22px; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; margin-top: 30px; }
+      .product-spec-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp tài chính & cấp vốn tín chấp cho doanh nghiệp</span>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU CHÍNH -->
+  <nav class="nav" aria-label="Điều hướng chính">
+    <a class="brand" href="../index.html" aria-label="FIN BIZ">
+      <img class="brand-logo" src="../LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
+      <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Trang chủ</a>
+      <a href="../san-pham.html" class="active">Sản phẩm</a>
+      <a href="../kien-thuc.html">Kiến thức</a>
+      <a class="nav-cta" href="../dang-ky-vay.html">Đăng ký vay <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+
+  <!-- HEADER TRANG CHI TIẾT SẢN PHẨM -->
+  <header class="product-detail-header">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="../index.html">Trang chủ</a> / <a href="../san-pham.html">Sản phẩm</a> / <span>Funding Societies VN</span>
+      </div>
+      <p class="eyebrow">FINBIZ - QUỸ FS</p>
+      <h1>Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN)</h1>
+    </div>
+  </header>
+
+  <!-- NỘI DUNG CHI TIẾT SẢN PHẨM -->
+  <main class="detail-container">
+    <div class="wrap detail-grid">
+      
+      <!-- CỘT TRÁI: THÔNG SỐ & 4 TAB NỘI DUNG CHUYÊN SÂU -->
+      <div class="main-detail-content">
+        
+        <!-- BẢNG THÔNG SỐ NHANH -->
+        <div class="product-spec-grid">
+          <div class="spec-item">
+            <span class="spec-label">Hạn mức vay</span>
+            <span class="spec-val">500 Triệu - 4 Tỷ VNĐ</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Thời hạn tín dụng</span>
+            <span class="spec-val">3 - 5 tháng (Linh hoạt)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Tài sản bảo đảm / Lãi suất</span>
+            <span class="spec-val">Không TSĐB (Từ 1%/tháng)</span>
+          </div>
+        </div>
+
+        <!-- THANH NÚT CHUYỂN TAB 4 NỘI DUNG CHUẨN BIZLOAN -->
+        <div class="product-sub-tabs">
+          <button class="sub-tab-btn active" onclick="switchTab(0)">1. Tổng quan sản phẩm</button>
+          <button class="sub-tab-btn" onclick="switchTab(1)">2. Điều kiện, Khu vực &amp; Ngành nghề</button>
+          <button class="sub-tab-btn" onclick="switchTab(2)">3. Hồ sơ &amp; Chứng từ cần thiết</button>
+          <button class="sub-tab-btn" onclick="switchTab(3)">4. Quy trình thẩm định &amp; Giải ngân</button>
+        </div>
+
+        <!-- PHẦN NỘI DUNG HIỂN THỊ TƯƠNG ỨNG 4 TAB -->
+        <div id="tab-0" class="tab-content-panel active">
+          <h2>1. Tổng quan sản phẩm Funding Societies VN</h2>
+          <p>Funding Societies VN là giải pháp vay vốn tín chấp doanh nghiệp ngắn hạn hàng đầu khu vực, hiện cung cấp hạn mức từ <strong>500 triệu đến 4 tỷ đồng</strong> nhằm hỗ trợ các Doanh nghiệp vừa và nhỏ (SME) bổ sung vốn lưu động tức thì.</p>
+          <ul>
+            <li><strong>Lãi suất ưu đãi:</strong> Chỉ từ 1%/tháng, tính lãi theo số ngày sử dụng vốn thực tế.</li>
+            <li><strong>Tài sản bảo đảm:</strong> 100% Không yêu cầu thế chấp Bất động sản hay tài sản cố định.</li>
+            <li><strong>Mục đích tài trợ:</strong> Mua hàng tồn kho, thanh toán hóa đơn nhà cung cấp, giải phóng công nợ ngắn hạn.</li>
+          </ul>
+        </div>
+
+        <div id="tab-1" class="tab-content-panel">
+          <h2>2. Điều kiện, Khu vực & Ngành nghề áp dụng</h2>
+          <h3>A. Điều kiện & Đối tượng áp dụng:</h3>
+          <ul>
+            <li>Doanh nghiệp (Công ty TNHH, Cổ phần) hoạt động trên 2 năm.</li>
+            <li>Doanh thu niên độ gần nhất tối thiểu từ 5 tỷ VNĐ (trung bình > 400 triệu/tháng).</li>
+            <li>Tổng dư nợ vay ngân hàng/tổ chức tín dụng không vượt quá 40% tổng doanh thu.</li>
+            <li>Chủ doanh nghiệp & Cổ đông góp vốn không có nợ xấu CIC (Nhóm 2-5).</li>
+          </ul>
+          <h3>B. Phạm vi & Khu vực hỗ trợ:</h3>
+          <ul>
+            <li><strong>Khu vực Hà Nội & Miền Bắc:</strong> Hà Nội (bán kính 50km), Bắc Ninh, Hải Phòng, Hưng Yên, Vĩnh Phúc.</li>
+            <li><strong>Khu vực TP.HCM & Miền Nam:</strong> TP. Hồ Chí Minh (bán kính 200km), Bình Dương, Đồng Nai, Long An, Tây Ninh.</li>
+          </ul>
+          <h3>C. Ngành nghề ưu tiên & Loại trừ:</h3>
+          <ul>
+            <li><i>Ưu tiên:</i> Doanh nghiệp Sản xuất, Thương mại & Phân phối B2B, Hàng tồn kho, Chuỗi cung ứng.</li>
+            <li><i>Loại trừ:</i> Bất động sản, Xăng dầu, Khai khoáng, Dịch vụ tài chính, Thuốc lá, Cờ bạc.</li>
+          </ul>
+        </div>
+
+        <div id="tab-2" class="tab-content-panel">
+          <h2>3. Hồ sơ & Chứng từ cần chuẩn bị</h2>
+          <p>Doanh nghiệp chuẩn bị đầy đủ bộ chứng từ sau để hoàn tất khâu thẩm định trong 24h-48h:</p>
+          <ul>
+            <li><strong>Pháp lý:</strong> Giấy ĐKKD, CCCD người đại diện & Cổ đông góp vốn, Điều lệ công ty.</li>
+            <li><strong>Tài chính:</strong> Báo cáo tài chính 2 năm gần nhất, Báo cáo thuế VAT 12 tháng gần nhất.</li>
+            <li><strong>Dòng tiền:</strong> Sao kê tài khoản ngân hàng công ty trong 6 - 12 tháng gần nhất.</li>
+            <li><strong>Thương mại:</strong> Top 3 hợp đồng/hóa đơn đầu ra và đầu vào tiêu biểu.</li>
+          </ul>
+        </div>
+
+        <div id="tab-3" class="tab-content-panel">
+          <h2>4. Quy trình thẩm định & Giải ngân</h2>
+          <ol>
+            <li><strong>Bước 1 - Tiếp nhận & Sơ duyệt:</strong> Đăng ký trực tuyến, FIN BIZ kiểm tra CIC và báo hạn mức dự kiến trong 24h.</li>
+            <li><strong>Bước 2 - Thực địa:</strong> Chuyên viên tài chính thẩm định trực tiếp tại văn phòng hoặc nhà xưởng doanh nghiệp.</li>
+            <li><strong>Bước 3 - Phê duyệt hạn mức:</strong> Phê duyệt chính thức thông báo hạn mức, lãi suất và điều kiện giải ngân.</li>
+            <li><strong>Bước 4 - Ký hợp đồng & Giải ngân:</strong> Hoàn tất hợp đồng tín dụng và nhận tiền chuyển khoản trực tiếp vào tài khoản công ty.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- CỘT PHẢI: KHU VỰC ĐĂNG KÝ CẤP VỐN CỐ ĐỊNH -->
+      <aside class="sidebar-wrap">
+        <div class="sidebar-card">
+          <h3>Đăng ký tư vấn gói FS</h3>
+          <p>Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích dòng tiền và lập phương án cấp hạn mức tối ưu nhất cho bạn.</p>
+          <a href="../dang-ky-vay.html" class="btn-apply">Nộp hồ sơ ngay ↗</a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="../LOGO.png" alt="Logo FIN BIZ">
+        <span>FIN BIZ</span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Trang chủ</a>
+        <a href="../san-pham.html">Sản phẩm</a>
+        <a href="../kien-thuc.html">Kiến thức</a>
+        <a href="../dang-ky-vay.html">Đăng ký vay</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING CONTACT WIDGET -->
+  <div class="floating-widget">
+    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo">Zalo</a>
+    <a href="tel:+84358608830" class="widget-btn phone">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    function switchTab(index) {
+      const tabs = document.querySelectorAll('.sub-tab-btn');
+      const panels = document.querySelectorAll('.tab-content-panel');
+      
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      panels.forEach((panel, i) => {
+        if (i === index) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
