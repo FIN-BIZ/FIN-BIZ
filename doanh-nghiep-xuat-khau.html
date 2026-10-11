@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315c3d">
+  <title>Tài Trợ Doanh Nghiệp Xuất Khẩu | FIN BIZ</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="apple-touch-icon" href="LOGO.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --pine: #315c3d;           
+      --pine-deep: #e3eedb;      
+      --pine-soft: #527b59;      
+      --bg-gray: #eef2ef;        
+      --white: #ffffff;          
+      --ink: #1f2a22;            
+      --muted: #5e6c61;          
+      --line: #d3dcd5;           
+      --silver: #9aa89f;
+      --zalo-blue: #0068ff;      
+      --sans: "DM Sans", sans-serif;
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05); 
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--bg-gray); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--pine-soft); font-size: 12px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--silver); content: ""; }
+
+    /* TOPBAR & NAV MENU (5 PHẦN CHUẨN) */
+    .topbar { position: fixed; z-index: 50; top: 0; left: 0; width: 100%; background: var(--pine-deep); color: var(--ink); font-size: 11px; }
+    .topbar-inner { display: flex; min-height: 39px; align-items: center; justify-content: space-between; }
+    .topbar-note { display: flex; align-items: center; gap: 9px; }
+    .topbar-note::before { width: 6px; height: 6px; border-radius: 50%; background: var(--pine-soft); content: ""; }
+    .topbar-meta { display: flex; gap: 24px; }
+    
+    .nav { position: fixed; z-index: 49; top: 39px; right: max(32px, calc((100vw - 1160px) / 2)); left: max(32px, calc((100vw - 1160px) / 2)); display: flex; min-height: 78px; align-items: center; justify-content: space-between; padding: 0 18px 0 10px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(14px); border: 1px solid rgba(49, 92, 61, 0.1); border-radius: 8px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03); }
+    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--pine); }
+    .brand-logo { display: block; width: 52px; height: 52px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; font-size: 15px; font-weight: 700; letter-spacing: 1.2px; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+    
+    .nav-links { display: flex; align-items: center; gap: 16px; color: var(--ink); font-size: 13.5px; font-weight: 600; }
+    .nav-links a:not(.nav-cta):not(.nav-zalo) { position: relative; padding: 4px 0; }
+    .nav-links a:not(.nav-cta):not(.nav-zalo):hover, .nav-links a.active { color: var(--pine); }
+    .nav-links a.active::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--pine); }
+    
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .nav-cta { min-height: 38px; padding: 0 14px; border: 1px solid var(--pine); display: inline-flex; align-items: center; background: var(--pine); color: var(--white); border-radius: 6px; font-weight: 700; font-size: 12.5px; }
+    .nav-zalo { min-height: 38px; padding: 0 14px; border: 1px solid var(--zalo-blue); display: inline-flex; align-items: center; gap: 4px; background: #f0f6ff; color: var(--zalo-blue); border-radius: 6px; font-weight: 700; font-size: 12.5px; }
+
+    /* PAGE HEADER */
+    .page-header { padding: 150px 0 50px; background: var(--pine-deep); border-bottom: 1px solid var(--line); }
+    .page-header h1 { font-size: clamp(30px, 4vw, 46px); color: var(--pine); margin: 8px 0 14px; font-family: 'Playfair Display', serif; }
+    .page-header p { max-width: 720px; color: var(--muted); font-size: 15.5px; }
+
+    /* CONTENT LAYOUT */
+    .export-container { padding: 50px 0 90px; }
+    .export-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
+    
+    .content-card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 36px; box-shadow: var(--shadow-card); }
+    .section-title { font-size: 21px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 0 0 14px; }
+    .subsection-title { font-size: 15.5px; color: var(--ink); margin: 18px 0 8px; font-weight: 700; }
+    .content-card p { color: var(--ink); font-size: 15px; line-height: 1.7; margin-bottom: 12px; }
+    .content-list, .step-list { padding-left: 20px; margin-bottom: 16px; }
+    .content-list li, .step-list li { margin-bottom: 10px; font-size: 14.5px; line-height: 1.6; }
+    .section-divider { border: 0; border-top: 1px dashed var(--line); margin: 28px 0; }
+
+    /* SIDEBAR */
+    .sidebar-card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 28px; position: sticky; top: 130px; box-shadow: var(--shadow-card); }
+    .sidebar-card h3 { font-size: 19px; color: var(--pine); font-family: 'Playfair Display', serif; margin: 0 0 10px; }
+    .sidebar-card p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+    .btn-apply { display: block; width: 100%; text-align: center; padding: 13px 20px; background: var(--pine); color: #ffffff; font-weight: 700; border-radius: 6px; font-size: 14.5px; }
+    .btn-zalo-sidebar { display: block; width: 100%; text-align: center; padding: 11px 20px; background: #f0f6ff; color: var(--zalo-blue); border: 1px solid rgba(0, 104, 255, 0.2); font-weight: 700; border-radius: 6px; margin-top: 10px; font-size: 14px; }
+
+    footer { padding: 36px 0; background: #e0e6e1; color: #4e5e51; font-size: 13px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--pine); font-weight: 700; }
+    .footer-logo { width: 38px; height: 38px; object-fit: contain; }
+    .footer-links { display: flex; gap: 18px; font-weight: 600; flex-wrap: wrap; }
+
+    @media (max-width: 950px) {
+      .export-grid { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp tín dụng quốc tế & tài trợ dòng tiền chuyên sâu cho Doanh nghiệp Xuất khẩu</span>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENU CHÍNH 5 PHẦN -->
+  <nav class="nav" aria-label="Điều hướng chính">
+    <a class="brand" href="index.html" aria-label="FIN BIZ">
+      <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
+      <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
+    </a>
+    
+    <div class="nav-links" id="main-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="doanh-nghiep-xuat-khau.html" class="active">Doanh nghiệp xuất khẩu</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="kien-thuc.html">Kiến thức</a>
+      
+      <div class="nav-actions">
+        <a class="nav-zalo" href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer">💬 Zalo 1:1</a>
+        <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Giải pháp tài chính B2B toàn cầu</p>
+      <h1>Tài Trợ & Chiết Khấu Dành Cho Doanh Nghiệp Xuất Khẩu</h1>
+      <p>Nền tảng cấp vốn chuyên sâu, hỗ trợ tối ưu hóa vòng quay dòng tiền ngắn hạn và giải phóng các khoản phải thu quốc tế an toàn, nhanh chóng.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTAINER CHỨA 5 PHẦN NỘI DUNG -->
+  <main class="export-container">
+    <div class="wrap export-grid">
+      
+      <!-- KHỐI 5 PHẦN NỘI DUNG CHÍNH -->
+      <div class="content-card">
+        
+        <!-- PHẦN 1: TỔNG QUAN -->
+        <section class="info-section">
+          <h2 class="section-title">1. Tổng quan giải pháp</h2>
+          <p>Đối với doanh nghiệp xuất khẩu, chu kỳ từ lúc mua nguyên phụ liệu, sản xuất đến khi vận chuyển và chờ đối tác nước ngoài thanh toán (T/T trả sau hoặc L/C) thường kéo dài từ 60 đến 120 ngày, gây áp lực cực lớn lên vốn lưu động.</p>
+          <p>Giải pháp tài trợ xuất khẩu của FIN BIZ giúp doanh nghiệp ứng vốn trước lên đến 90% giá trị hóa đơn/chứng từ ngay sau khi giao hàng, đảm bảo duy trì liên tục hoạt động sản xuất kinh doanh mà không bị đứt gãy dòng tiền.</p>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN 2: MẶT HÀNG -->
+        <section class="info-section">
+          <h2 class="section-title">2. Mặt hàng ưu tiên tài trợ</h2>
+          <p>Chúng tôi tập trung nguồn vốn vào các ngành hàng xuất khẩu có giá trị thực tế cao, chuỗi cung ứng ổn định và minh bạch chứng từ:</p>
+          <ul class="content-list">
+            <li><strong>Dệt may & Giày dép:</strong> Nguyên phụ liệu, hàng may mặc thành phẩm, giày dép các loại.</li>
+            <li><strong>Đồ gỗ & Nội thất:</strong> Gỗ ép, sản phẩm gỗ gia dụng và nội thất xuất khẩu tiêu chuẩn cao.</li>
+            <li><strong>Nông sản & Thủy sản:</strong> Gạo, cà phê, hạt điều, thủy hải sản đông lạnh và thực phẩm chế biến.</li>
+            <li><strong>Công nghiệp nhẹ & Cơ khí:</strong> Sản phẩm nhựa, bao bì công nghiệp, linh kiện cơ khí và vật liệu xây dựng phụ trợ.</li>
+          </ul>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN 3: THỊ TRƯỜNG & ĐỘ BỀN -->
+        <section class="info-section">
+          <h2 class="section-title">3. Thị trường xuất khẩu & Độ bền tài chính</h2>
+          <p>Đánh giá năng lực hấp thụ vốn dựa trên thị trường tiêu thụ quốc tế và độ bền vững của chuỗi tài chính doanh nghiệp:</p>
+          <ul class="content-list">
+            <li><strong>Thị trường trọng điểm:</strong> Hoa Kỳ, Liên minh Châu Âu (EU), Nhật Bản, Hàn Quốc và các nước khối ASEAN.</li>
+            <li><strong>Độ bền tài chính:</strong> Doanh nghiệp có lịch sử hoạt động trên 02 năm, Báo cáo tài chính lành mạnh, tỷ suất lợi nhuận ổn định và không phát sinh nợ xấu CIC.</li>
+            <li><strong>Quản <em>trị</em> rủi ro:</strong> Đảm bảo năng lực sản xuất thực tế tại xưởng/kho bãi và chuỗi cung ứng nguyên vật liệu đầu vào khép kín.</li>
+          </ul>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN 4: DOANH NGHIỆP NHẬP KHẨU (BUYERS) -->
+        <section class="info-section">
+          <h2 class="section-title">4. Doanh nghiệp nhập khẩu (Buyers)</h2>
+          <p>Chất lượng và uy tín của đối tác mua hàng quốc tế (Buyers) đóng vai trò then chốt trong việc phê duyệt hạn mức tài trợ:</p>
+          <ul class="content-list">
+            <li>Ưu tiên các Buyers là các tập đoàn bán lẻ lớn, nhà nhập khẩu uy tín có mã số định danh quốc tế hoặc lịch sử thanh toán sòng phẳng lâu năm.</li>
+            <li>Hồ sơ giao dịch yêu cầu đầy đủ Hợp đồng ngoại thương (Sales Contract), Hóa đơn thương mại (Commercial Invoice) và Bộ vận đơn (Bill of Lading).</li>
+          </ul>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- PHẦN 5: CẠNH TRANH ASEAN -->
+        <section class="info-section">
+          <h2 class="section-title">5. Năng lực cạnh tranh khu vực ASEAN</h2>
+          <p>Tối ưu hóa chi phí vốn giúp doanh nghiệp Việt Nam nâng cao lợi thế cạnh tranh trực tiếp với các đối thủ trong khu vực ASEAN:</p>
+          <ul class="content-list">
+            <li><strong>Tốc độ giải ngân:</strong> Hoàn thành thẩm định và giải ngân ngoại tệ/VNĐ chỉ trong 24h - 48h sau khi hoàn tất bộ chứng từ xuất khẩu.</li>
+            <li><strong>Chi phí tối ưu:</strong> Lãi suất và các loại phí dịch vụ tài chính ngoại thương cạnh tranh mạnh mẽ, minh bạch, giúp doanh nghiệp tự tin chốt các đơn hàng lớn với đối tác toàn cầu.</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- SIDEBAR ĐĂNG KÝ VAY -->
+      <aside class="sidebar-wrap">
+        <div class="sidebar-card">
+          <h3>Kiểm tra điều kiện vay</h3>
+          <p>Để lại thông tin để chuyên gia tài chính quốc tế của FIN BIZ hỗ trợ thẩm định hạn mức ngay hôm nay.</p>
+          <a href="dang-ky-vay.html" class="btn-apply">Kiểm tra ngay ↗</a>
+          <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="btn-zalo-sidebar">💬 Tư vấn Zalo 1:1</a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img class="footer-logo" src="LOGO.png" alt="Logo FIN BIZ">
+        <span>FIN BIZ</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Trang chủ</a>
+        <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
+        <a href="san-pham.html">Sản phẩm</a>
+        <a href="kien-thuc.html">Kiến thức</a>
+        <a href="dang-ky-vay.html">Đăng ký vay</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
