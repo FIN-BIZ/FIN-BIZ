@@ -50,10 +50,11 @@
     .footer-logo { width: 38px; height: 38px; }
     @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } .product-spec-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="../assets/finbiz-visual-refresh.css">
 </head>
 <body>
   <div class="topbar"><div class="wrap topbar-inner"><span>Giải pháp tài chính & cấp vốn tín chấp doanh nghiệp</span><div>0358 608 830</div></div></div>
-  <nav class="nav"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span></span></a><div class="nav-links"><a href="../index.html">Trang chủ</a><a href="../san-pham.html" class="active">Sản phẩm</a><a class="nav-cta" href="../dang-ky-vay.html">Kiểm tra điều kiện vay ↗</a></div></nav>
+  <nav class="nav" aria-label="Điều hướng chính"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button><div class="nav-links" id="main-menu"><a href="../index.html">Trang chủ</a><a href="../doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a><a href="../san-pham.html" class="active">Sản phẩm</a><a href="../kien-thuc.html">Kiến thức</a><a class="nav-cta" href="../dang-ky-vay.html">Đăng ký vay ↗</a></div></nav>
 
   <header class="product-detail-header">
     <div class="wrap">
@@ -63,13 +64,14 @@
     </div>
   </header>
 
+  <p class="content-disclaimer product-disclaimer">Tên sản phẩm và thông tin dưới đây chỉ để tham khảo. Vui lòng xác nhận tình trạng cung cấp, hạn mức, lãi suất, phí, hồ sơ và thời gian xử lý với đơn vị tài trợ trước khi quyết định.</p>
   <main class="detail-container">
     <div class="wrap detail-grid">
       <div class="main-detail-content">
         <div class="product-spec-grid">
-          <div class="spec-item"><span class="spec-label">Hạn mức vay</span><span class="spec-val">Lên đến 2 tỷ VNĐ</span></div>
+          <div class="spec-item"><span class="spec-label">Quy mô</span><span class="spec-val">Theo thẩm định</span></div>
           <div class="spec-item"><span class="spec-label">Thời hạn tín dụng</span><span class="spec-val">Tối đa 12 - 24 tháng</span></div>
-          <div class="spec-item"><span class="spec-label">Tài sản bảo đảm</span><span class="spec-val">Không TSĐB (P2P Lending)</span></div>
+          <div class="spec-item"><span class="spec-label">Điều kiện bảo đảm</span><span class="spec-val">Theo bên tài trợ</span></div>
         </div>
 
         <div class="single-product-card">
@@ -77,7 +79,7 @@
             <h2 class="section-title">1. Tổng quan sản phẩm</h2>
             <p>Giải pháp cấp vốn thấu chi và cho vay tín chấp kinh doanh ngắn hạn thông qua hệ thống fintech công nghệ hàng đầu Đông Nam Á.</p>
             <ul class="info-list">
-              <li>Hạn mức cấp linh hoạt đến 2 tỷ VNĐ.</li>
+              <li>Hạn mức và điều kiện cấp vốn do đơn vị tài trợ quyết định.</li>
               <li>Thẩm định dựa trên lịch sử giao dịch và dòng tiền thực tế.</li>
             </ul>
           </section>
@@ -108,7 +110,7 @@
             <h2 class="section-title">4. Quy trình thẩm định & Giải ngân</h2>
             <ol class="step-list">
               <li><strong>Bước 1:</strong> Đăng ký trực tuyến trên hệ thống.</li>
-              <li><strong>Bước 2:</strong> Phê duyệt hạn mức tự động qua thuật toán AI.</li>
+              <li><strong>Bước 2:</strong> Đơn vị tài trợ xem xét hồ sơ và thông báo kết quả.</li>
               <li><strong>Bước 3:</strong> Ký kết và giải ngân tiền trực tiếp về tài khoản công ty.</li>
             </ol>
           </section>
@@ -118,7 +120,7 @@
       <aside class="sidebar-wrap">
         <div class="sidebar-card">
           <h3>Kiểm tra điều kiện vay</h3>
-          <p>Nhận giải ngân siêu tốc từ quỹ Funding Societies.</p>
+          <p>Thông tin sản phẩm và khả năng tiếp nhận hồ sơ cần được xác nhận trước khi đăng ký.</p>
           <a href="../dang-ky-vay.html" class="btn-apply">Kiểm tra ngay ↗</a>
           <a href="https://zalo.me/0358608830" target="_blank" class="btn-zalo-sidebar">💬 Tư vấn Zalo 1:1</a>
         </div>
@@ -129,8 +131,9 @@
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand"><img class="footer-logo" src="../LOGO.png" alt="Logo"><span>FIN BIZ</span></div>
-      <div><a href="../index.html">Trang chủ</a> | <a href="../san-pham.html">Sản phẩm</a></div>
+      <div><a href="../index.html">Trang chủ</a> | <a href="../doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a> | <a href="../san-pham.html">Sản phẩm</a> | <a href="../kien-thuc.html">Kiến thức</a> | <a href="../dang-ky-vay.html">Đăng ký vay</a></div>
     </div>
   </footer>
+  <script src="../assets/finbiz-site.js"></script>
 </body>
 </html>

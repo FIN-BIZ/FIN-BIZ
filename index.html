@@ -240,7 +240,7 @@
           <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
           <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button>
         <div class="nav-links" id="main-menu">
   <a href="index.html">Trang chủ</a>
   <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
@@ -311,9 +311,9 @@
   <section class="proof" aria-label="Nguyên tắc tư vấn">
     <div class="wrap proof-inner">
       <div class="proof-intro">Thấu hiểu nợ vay,<br>để doanh nghiệp đi đúng hướng.</div>
-      <div class="proof-item"><span class="proof-no">500+</span><span class="proof-label">Doanh nghiệp đã tư vấn giải pháp dòng tiền</span></div>
-      <div class="proof-item"><span class="proof-no">20+</span><span class="proof-label">Đối tác Tổ chức Tài chính & Ngân hàng liên kết</span></div>
-      <div class="proof-item"><span class="proof-no">24h</span><span class="proof-label">Thời gian phản hồi & đề xuất hướng xử lý</span></div>
+      <div class="proof-item"><span class="proof-no">01</span><span class="proof-label">Làm rõ nhu cầu và hồ sơ doanh nghiệp</span></div>
+      <div class="proof-item"><span class="proof-no">02</span><span class="proof-label">Đối chiếu phương án và điều kiện phù hợp</span></div>
+      <div class="proof-item"><span class="proof-no">03</span><span class="proof-label">Đồng hành trong quá trình chuẩn bị hồ sơ</span></div>
     </div>
   </section>
 
@@ -434,18 +434,27 @@
       <div class="wrap" style="max-width: 800px; text-align: center;">
         <p class="eyebrow" style="justify-content: center;">Đăng ký trực tiếp</p>
         <h2 class="section-title" style="margin: 0 auto 16px;">Nhận tư vấn giải pháp nguồn vốn</h2>
-        <p class="section-lead" style="margin: 0 auto 40px;">Để lại thông tin, chuyên gia FIN BIZ sẽ phân tích hồ sơ và liên hệ lại trong vòng 30 phút.</p>
+        <p class="section-lead" style="margin: 0 auto 40px;">Để lại thông tin để FIN BIZ tiếp nhận nhu cầu và trao đổi bước tiếp theo.</p>
 
-        <form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; text-align: left;" onsubmit="alert('Cảm ơn bạn! FIN BIZ sẽ liên hệ hỗ trợ ngay.'); return false;">
-          <input type="text" placeholder="Tên doanh nghiệp / Hộ kinh doanh" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
-          <input type="tel" placeholder="Số điện thoại / Zalo" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
-          <select style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink);">
+        <form id="quickLeadForm" data-lead-form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; text-align: left;" onsubmit="submitFinbizLead(event)">
+          <input type="hidden" name="businessType" value="Doanh nghiệp / Hộ kinh doanh">
+          <label class="sr-only" for="quick-fullname">Họ tên người liên hệ</label>
+          <input id="quick-fullname" type="text" name="fullname" placeholder="Họ tên người liên hệ" autocomplete="name" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
+          <label class="sr-only" for="quick-company">Tên doanh nghiệp hoặc hộ kinh doanh</label>
+          <input id="quick-company" type="text" name="company" placeholder="Tên doanh nghiệp / Hộ kinh doanh" autocomplete="organization" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
+          <label class="sr-only" for="quick-phone">Số điện thoại hoặc Zalo</label>
+          <input id="quick-phone" type="tel" name="phone" placeholder="Số điện thoại / Zalo" autocomplete="tel" inputmode="tel" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff;">
+          <label class="sr-only" for="quick-product">Nhu cầu cần tư vấn</label>
+          <select id="quick-product" name="loanProduct" required style="padding: 14px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink);">
             <option value="">Nhu cầu cần tư vấn?</option>
-            <option value="Co cau no">Cơ cấu nợ & Giảm lãi vay</option>
-            <option value="Von van hanh">Bổ sung vốn vận hành</option>
-            <option value="Chuyen doi">Chuyển đổi khoản vay ưu đãi</option>
+            <option value="Cơ cấu nợ & Giảm lãi vay">Cơ cấu nợ & Giảm lãi vay</option>
+            <option value="Bổ sung vốn vận hành">Bổ sung vốn vận hành</option>
+            <option value="Chuyển đổi khoản vay ưu đãi">Chuyển đổi khoản vay ưu đãi</option>
           </select>
+          <input type="hidden" name="loanAmount" value="">
+          <input type="hidden" name="note" value="">
           <button type="submit" class="button" style="background: var(--pine); color: #fff; border: none; grid-column: 1 / -1; min-height: 54px; font-weight: 700;">GỬI YÊU CẦU TƯ VẤN NGAY ↗</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite" style="grid-column: 1 / -1; margin: 0;"></p>
         </form>
       </div>
     </section>
@@ -460,6 +469,7 @@
       </div>
       <div class="footer-links">
         <a href="index.html">Trang chủ</a>
+        <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
         <a href="san-pham.html">Sản phẩm</a>
         <a href="kien-thuc.html">Kiến thức</a>
         <a href="dang-ky-vay.html">Đăng ký vay</a>
@@ -523,5 +533,6 @@
     // Chạy mặc định 1 lần khi load trang
     updateCalc();
   </script>
+  <script src="assets/finbiz-site.js"></script>
 </body>
 </html>

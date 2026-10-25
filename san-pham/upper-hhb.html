@@ -86,6 +86,7 @@
 
     @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } .sidebar-card { position: static; } .product-spec-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="../assets/finbiz-visual-refresh.css">
 </head>
 <body>
   <div class="topbar">
@@ -100,9 +101,12 @@
       <img class="brand-logo" src="../LOGO.png" alt="Logo FIN BIZ">
       <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
     </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button>
     <div class="nav-links">
       <a href="../index.html">Trang chủ</a>
+      <a href="../doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
       <a href="../san-pham.html" class="active">Sản phẩm</a>
+      <a href="../kien-thuc.html">Kiến thức</a>
       <a class="nav-cta" href="../dang-ky-vay.html">Kiểm tra điều kiện vay ↗</a>
     </div>
   </nav>
@@ -115,24 +119,24 @@
     </div>
   </header>
 
+  <p class="content-disclaimer product-disclaimer">Tên sản phẩm và thông tin dưới đây chỉ để tham khảo. Vui lòng xác nhận tình trạng cung cấp, hạn mức, lãi suất, phí, hồ sơ và thời gian xử lý với đơn vị tài trợ trước khi quyết định.</p>
   <main class="detail-container">
     <div class="wrap detail-grid">
       <div class="main-detail-content">
         <div class="product-spec-grid">
-          <div class="spec-item"><span class="spec-label">Hạn mức vay</span><span class="spec-val">100 triệu - 2 tỷ VNĐ</span></div>
-          <div class="spec-item"><span class="spec-label">Thời hạn tín dụng</span><span class="spec-val">Tối đa 60 tháng</span></div>
-          <div class="spec-item"><span class="spec-label">Tài sản bảo đảm</span><span class="spec-val">Không TSĐB (Từ 1.5%/tháng)</span></div>
+          <div class="spec-item"><span class="spec-label">Quy mô</span><span class="spec-val">Theo thẩm định</span></div>
+          <div class="spec-item"><span class="spec-label">Thời hạn</span><span class="spec-val">Theo sản phẩm</span></div>
+          <div class="spec-item"><span class="spec-label">Điều kiện bảo đảm</span><span class="spec-val">Theo bên tài trợ</span></div>
         </div>
 
         <!-- THẺ DUY NHẤT CHỨA TẤT CẢ 4 MỤC -->
         <div class="single-product-card">
           <section class="info-section">
             <h2 class="section-title">1. Tổng quan sản phẩm</h2>
-            <p>Sản phẩm <strong>Upper HHB</strong> hỗ trợ nguồn vốn tín chấp quy mô vừa và lớn không cần thế chấp Bất động sản, thẩm định dựa trên năng lực tài chính thực tế và dòng tiền bán hàng.</p>
+            <p>Sản phẩm <strong>Upper HHB</strong> được giới thiệu như một hướng tham khảo cho nhu cầu vốn kinh doanh. Phạm vi cung cấp và điều kiện cần được xác nhận trực tiếp với đơn vị tài trợ.</p>
             <ul class="info-list">
-              <li><strong>Hạn mức cấp:</strong> Từ 100 triệu VNĐ đến 2 tỷ VNĐ.</li>
-              <li><strong>Thời hạn vay:</strong> Tối đa lên tới 60 tháng (5 năm).</li>
-              <li><strong>Lãi suất:</strong> Chỉ từ 1.5%/tháng.</li>
+              <li>Hạn mức, lãi suất, phí và thời hạn phụ thuộc vào kết quả thẩm định.</li>
+              <li>Xác nhận bằng văn bản mọi điều kiện bảo đảm trước khi ký hợp đồng.</li>
             </ul>
           </section>
 
@@ -142,12 +146,11 @@
             <h2 class="section-title">2. Điều kiện, Khu vực & Ngành nghề áp dụng</h2>
             <h3 class="subsection-title">A. Điều kiện & Đối tượng:</h3>
             <ul class="info-list">
-              <li>Chủ hộ kinh doanh, cá nhân kinh doanh hoặc thành viên góp vốn tối thiểu 30% VCSH doanh nghiệp.</li>
-              <li>Thu nhập từ 50 triệu/tháng; Độ tuổi từ 22–65 tuổi.</li>
-              <li>Có sở hữu BĐS (dùng làm cơ sở xác minh năng lực tài chính).</li>
+              <li>Đối tượng và tiêu chí xét duyệt do đơn vị cấp vốn công bố tại thời điểm tiếp nhận hồ sơ.</li>
+              <li>Chuẩn bị thông tin pháp lý, hoạt động kinh doanh và dòng tiền để được đánh giá.</li>
             </ul>
             <h3 class="subsection-title">B. Phạm vi & Khu vực:</h3>
-            <p>Hỗ trợ phê duyệt toàn quốc, đặc biệt ưu tiên các thành phố lớn và vùng kinh tế trọng điểm.</p>
+            <p>Phạm vi tiếp nhận hồ sơ cần được xác nhận với đơn vị cung cấp sản phẩm.</p>
           </section>
 
           <hr class="section-divider">
@@ -169,7 +172,7 @@
               <li><strong>Bước 1:</strong> Đăng ký thông tin nhu cầu vay vốn.</li>
               <li><strong>Bước 2:</strong> Thẩm định dòng tiền thực tế & kiểm tra CIC.</li>
               <li><strong>Bước 3:</strong> Ra thông báo phê duyệt hạn mức.</li>
-              <li><strong>Bước 4:</strong> Ký hợp đồng và giải ngân nhanh trong 48h.</li>
+              <li><strong>Bước 4:</strong> Nếu hồ sơ được chấp thuận, đọc kỹ hợp đồng và lịch giải ngân trước khi ký.</li>
             </ol>
           </section>
         </div>
@@ -189,8 +192,9 @@
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand"><img class="footer-logo" src="../LOGO.png" alt="Logo"><span>FIN BIZ</span></div>
-      <div><a href="../index.html">Trang chủ</a> | <a href="../san-pham.html">Sản phẩm</a></div>
+      <div><a href="../index.html">Trang chủ</a> | <a href="../doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a> | <a href="../san-pham.html">Sản phẩm</a> | <a href="../kien-thuc.html">Kiến thức</a> | <a href="../dang-ky-vay.html">Đăng ký vay</a></div>
     </div>
   </footer>
+  <script src="../assets/finbiz-site.js"></script>
 </body>
 </html>

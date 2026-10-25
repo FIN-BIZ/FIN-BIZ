@@ -50,10 +50,11 @@
     .footer-logo { width: 38px; height: 38px; }
     @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } .product-spec-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="../assets/finbiz-visual-refresh.css">
 </head>
 <body>
   <div class="topbar"><div class="wrap topbar-inner"><span>Giải pháp tài chính & cấp vốn tín chấp doanh nghiệp</span><div>0358 608 830</div></div></div>
-  <nav class="nav"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span></span></a><div class="nav-links"><a href="../index.html">Trang chủ</a><a href="../san-pham.html" class="active">Sản phẩm</a><a class="nav-cta" href="../dang-ky-vay.html">Kiểm tra điều kiện vay ↗</a></div></nav>
+  <nav class="nav" aria-label="Điều hướng chính"><a class="brand" href="../index.html"><img class="brand-logo" src="../LOGO.png" alt="Logo"><span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button><div class="nav-links" id="main-menu"><a href="../index.html">Trang chủ</a><a href="../doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a><a href="../san-pham.html" class="active">Sản phẩm</a><a href="../kien-thuc.html">Kiến thức</a><a class="nav-cta" href="../dang-ky-vay.html">Đăng ký vay ↗</a></div></nav>
 
   <header class="product-detail-header">
     <div class="wrap">
@@ -63,6 +64,7 @@
     </div>
   </header>
 
+  <p class="content-disclaimer product-disclaimer">Tên sản phẩm và thông tin dưới đây chỉ để tham khảo. Vui lòng xác nhận tình trạng cung cấp, hạn mức, lãi suất, phí, hồ sơ và thời gian xử lý với đơn vị tài trợ trước khi quyết định.</p>
   <main class="detail-container">
     <div class="wrap detail-grid">
       <div class="main-detail-content">
@@ -105,7 +107,7 @@
             <ol class="step-list">
               <li><strong>Bước 1:</strong> Đánh giá năng lực hạ tầng công nghệ.</li>
               <li><strong>Bước 2:</strong> Phê duyệt hạn mức vốn vận hành.</li>
-              <li><strong>Bước 3:</strong> Giải ngân tài trợ tức thì.</li>
+              <li><strong>Bước 3:</strong> Đơn vị tài trợ thông báo kết quả và lịch giải ngân (nếu được chấp thuận).</li>
             </ol>
           </section>
         </div>
@@ -125,8 +127,9 @@
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand"><img class="footer-logo" src="../LOGO.png" alt="Logo"><span>FIN BIZ</span></div>
-      <div><a href="../index.html">Trang chủ</a> | <a href="../san-pham.html">Sản phẩm</a></div>
+      <div><a href="../index.html">Trang chủ</a> | <a href="../doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a> | <a href="../san-pham.html">Sản phẩm</a> | <a href="../kien-thuc.html">Kiến thức</a> | <a href="../dang-ky-vay.html">Đăng ký vay</a></div>
     </div>
   </footer>
+  <script src="../assets/finbiz-site.js"></script>
 </body>
 </html>

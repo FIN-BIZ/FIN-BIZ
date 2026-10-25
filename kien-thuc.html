@@ -142,6 +142,7 @@
       .modal-body { padding: 24px; }
     }
   </style>
+  <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
 </head>
 <body>
 
@@ -162,7 +163,7 @@
       <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
       <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button>
     <div class="nav-links" id="main-menu">
   <a href="index.html">Trang chủ</a>
   <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
@@ -181,7 +182,8 @@
     <div class="wrap">
       <p class="eyebrow">Góc nhìn & Kinh nghiệm</p>
       <h1>Kiến Thức Tài Chính Vay Vốn</h1>
-      <p>Tổng hợp các bài viết hướng dẫn chuyên sâu về quản trị dòng tiền, kinh nghiệm thẩm định tín dụng, cơ cấu nợ và giải pháp tối ưu vốn vay cho Doanh nghiệp & Hộ kinh doanh.</p>
+      <p>Hướng dẫn thực hành về dòng tiền, hồ sơ tín dụng và tài trợ thương mại dành cho doanh nghiệp và hộ kinh doanh.</p>
+      <p class="content-disclaimer">Nội dung chỉ nhằm cung cấp thông tin chung; điều kiện vay, chi phí và quyết định cấp vốn do từng tổ chức tài chính xem xét.</p>
     </div>
   </section>
 
@@ -224,6 +226,7 @@
       </div>
       <div class="footer-links">
         <a href="index.html">Trang chủ</a>
+        <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
         <a href="san-pham.html">Sản phẩm</a>
         <a href="kien-thuc.html">Kiến thức</a>
         <a href="dang-ky-vay.html">Đăng ký vay</a>
@@ -260,11 +263,11 @@
     let currentPage = 1;
     let totalPages = 1;
 
-    // Lấy dữ liệu từ file JSON cào được
+    // Nạp nội dung do FIN BIZ biên soạn trong dự án.
     async function loadArticlesData() {
       const container = document.getElementById('blog-container');
       try {
-        const response = await fetch('data_articles_bizloan.json');
+        const response = await fetch('data_articles_finbiz.json');
         if (!response.ok) {
           throw new Error('Không thể tải file dữ liệu JSON');
         }
@@ -280,7 +283,7 @@
 
           return {
             id: item.id || (index + 1),
-            category: "KIẾN THỨC VAY VỐN",
+            category: item.category || "KIẾN THỨC TÀI CHÍNH",
             title: item.title || "Bài viết kiến thức tài chính",
             description: desc || "Thông tin hướng dẫn chi tiết về quy trình thẩm định và vốn vay cho doanh nghiệp.",
             image: item.image || defaultImages[index % defaultImages.length],
@@ -296,8 +299,8 @@
         console.error('Lỗi tải dữ liệu:', error);
         container.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #fff; border-radius: 8px;">
-            <p style="color: #d9534f; font-weight: bold;">Chưa tìm thấy file 'data_articles_bizloan.json' trong thư mục web!</p>
-            <p style="color: #666; font-size: 14px;">Vui lòng upload file JSON chứa dữ liệu cào được lên cùng thư mục với file <strong>kien-thuc.html</strong> trên GitHub Repository.</p>
+            <p style="color: #d9534f; font-weight: bold;">Không thể tải danh sách bài viết lúc này.</p>
+            <p style="color: #666; font-size: 14px;">Vui lòng tải lại trang sau hoặc liên hệ FIN BIZ để được hỗ trợ.</p>
           </div>
         `;
       }
@@ -319,7 +322,16 @@
       pageArticles.forEach(item => {
         const card = document.createElement('article');
         card.className = 'blog-card';
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `Đọc bài viết: ${item.title}`);
         card.onclick = () => openArticleModal(item.id);
+        card.onkeydown = event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openArticleModal(item.id);
+          }
+        };
         card.innerHTML = `
           <div class="blog-thumb-wrap">
             <img class="blog-thumb" src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='${defaultImages[0]}'">
@@ -393,8 +405,15 @@
       }
     }
 
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && document.getElementById('articleModal').classList.contains('active')) {
+        closeArticleModal();
+      }
+    });
+
     // Khởi chạy khi trang tải xong
     document.addEventListener('DOMContentLoaded', loadArticlesData);
   </script>
+  <script src="assets/finbiz-site.js"></script>
 </body>
 </html>

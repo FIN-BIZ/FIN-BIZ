@@ -155,6 +155,7 @@
       .products-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
 </head>
 <body>
 
@@ -175,7 +176,7 @@
       <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
       <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
     </a>
-    <button class="menu-toggle" type="button" aria-label="Mở menu" onclick="toggleMobileMenu()"><span class="menu-glyph"></span></button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button>
     <div class="nav-links" id="main-menu">
   <a href="index.html">Trang chủ</a>
   <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
@@ -205,6 +206,7 @@
   <!-- PRODUCTS GRID -->
   <section class="products-section">
     <div class="wrap">
+      <p class="content-disclaimer">Danh mục dưới đây mô tả nhóm nhu cầu tham khảo, không phải chào mời hay cam kết cấp vốn. Hạn mức, lãi suất, thời hạn, tài sản bảo đảm và khả năng cung cấp cần được xác nhận với tổ chức tài chính tại thời điểm nộp hồ sơ.</p>
       <div class="products-grid">
 
         <!-- 1. Upper HHB -->
@@ -217,9 +219,9 @@
             <h2 class="product-title">Vay Tín Chấp Doanh Nghiệp & HKD Lớn (Upper HHB)</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">💰 Đến 5 tỷ</span>
-              <span class="badge-pill">⏱️ 12 - 36 tháng</span>
-              <span class="badge-pill">🛡️ Không TSĐB</span>
+              <span class="badge-pill highlight">Vốn kinh doanh</span>
+              <span class="badge-pill">SME &amp; hộ kinh doanh</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
             <p class="product-desc">Gói vay tín chấp dành riêng cho Chủ hộ kinh doanh và Doanh nghiệp lớn có dòng tiền thực tế tốt và kê khai thuế minh bạch.</p>
@@ -241,9 +243,9 @@
             <h2 class="product-title">Vay Tín Chấp Bổ Sung Vốn Lưu Động SME</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">💰 Đến 3 tỷ</span>
-              <span class="badge-pill">📈 Lãi từ 1.2%/tháng</span>
-              <span class="badge-pill">🛡️ Tín chấp 100%</span>
+              <span class="badge-pill highlight">Vốn lưu động</span>
+              <span class="badge-pill">Doanh nghiệp SME</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
             <p class="product-desc">Giải pháp tài trợ vốn lưu động ngắn hạn dành cho các Doanh nghiệp vừa và nhỏ (SME) có lịch sử tín dụng tốt và doanh thu ổn định.</p>
@@ -265,12 +267,12 @@
             <h2 class="product-title">Tài Trợ Theo Hóa Đơn Bán Hàng (Fimex AR Flex)</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">📑 80% giá trị HĐ</span>
-              <span class="badge-pill">⚡ Giải ngân 24h</span>
-              <span class="badge-pill">🛡️ Linh hoạt</span>
+              <span class="badge-pill highlight">Khoản phải thu</span>
+              <span class="badge-pill">Hợp đồng B2B</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
-            <p class="product-desc">Giải pháp ứng vốn nhanh dựa trên hóa đơn và công nợ bán hàng B2B, giải phóng tức thì dòng tiền bị đọng.</p>
+            <p class="product-desc">Tham khảo phương án vốn dựa trên hóa đơn và khoản phải thu bán hàng B2B.</p>
             
             <div class="card-actions">
               <a href="san-pham/fimex-ar-flex.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
@@ -289,9 +291,9 @@
             <h2 class="product-title">Quỹ Đầu Tư & Cấp Vốn Doanh Nghiệp JF (Jenfi)</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">💰 Đến 10 tỷ</span>
+              <span class="badge-pill highlight">Vốn tăng trưởng</span>
               <span class="badge-pill">🚀 Doanh nghiệp tăng trưởng</span>
-              <span class="badge-pill">🛡️ Tín chấp</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
             <p class="product-desc">Nguồn vốn quỹ Jenfi dành cho doanh nghiệp tăng trưởng, áp dụng phạm vi bán kính địa lý và danh mục ngành nghề thẩm định khắt khe.</p>
@@ -313,9 +315,9 @@
             <h2 class="product-title">Quỹ Cấp Vốn Vận Hành PT (Protus)</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">💰 Đến 2 tỷ</span>
+              <span class="badge-pill highlight">Vốn vận hành</span>
               <span class="badge-pill">💻 Ngành E-com / Tech</span>
-              <span class="badge-pill">🛡️ Hồ sơ đơn giản</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
             <p class="product-desc">Giải pháp tài tài hạ tầng máy chủ, thiết bị và vốn lưu động cho doanh nghiệp công nghệ, thương mại điện tử và dịch vụ số.</p>
@@ -338,8 +340,8 @@
             
             <div class="product-badges">
               <span class="badge-pill highlight">👥 Vốn Payroll / Lương</span>
-              <span class="badge-pill">⏱️ Ngắn hạn 3-6 tháng</span>
-              <span class="badge-pill">🛡️ Tín chấp</span>
+              <span class="badge-pill">Nhu cầu nhân sự</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
             <p class="product-desc">Giải pháp ứng vốn chi trả lương (Payroll Financing) và ứng vốn ngắn hạn cho doanh nghiệp ổn định dòng tiền nhân sự.</p>
@@ -362,7 +364,7 @@
             
             <div class="product-badges">
               <span class="badge-pill highlight">🏭 Chuỗi đại lý / NPP</span>
-              <span class="badge-pill">💰 Đến 5 tỷ</span>
+              <span class="badge-pill">Theo hồ sơ</span>
               <span class="badge-pill">🛡️️ Bảo lãnh chuỗi</span>
             </div>
 
@@ -385,9 +387,9 @@
             <h2 class="product-title">Quỹ Cấp Vốn Vận Hành FS (Funding Societies VN)</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">💳 Vốn thấu chi / Xoay vòng</span>
-              <span class="badge-pill">💰 Đến 2 tỷ</span>
-              <span class="badge-pill">🛡️ Duyệt Online</span>
+              <span class="badge-pill highlight">Vốn xoay vòng</span>
+              <span class="badge-pill">Sản phẩm tài chính</span>
+              <span class="badge-pill">Theo hồ sơ</span>
             </div>
 
             <p class="product-desc">Nguồn vốn thấu chi và vay tín chấp kinh doanh ngắn hạn thông qua nền tảng công nghệ tài chính P2P uy tín khu vực.</p>
@@ -410,7 +412,7 @@
             
             <div class="product-badges">
               <span class="badge-pill highlight">🚜 Thuê tài chính / Máy móc</span>
-              <span class="badge-pill">📈 Lãi cạnh tranh</span>
+              <span class="badge-pill">Máy móc, thiết bị</span>
               <span class="badge-pill">🛡️ Tín chấp kèm</span>
             </div>
 
@@ -433,12 +435,12 @@
             <h2 class="product-title">Quỹ Chiết Khấu T/T Trả Sau Cho DN Xuất Khẩu (MF)</h2>
             
             <div class="product-badges">
-              <span class="badge-pill highlight">🚢 Chiết khấu 90% L/C, T/T</span>
+              <span class="badge-pill highlight">Tài trợ thương mại</span>
               <span class="badge-pill">🌐 Doanh nghiệp XNK</span>
               <span class="badge-pill">🛡️ Tín dụng XNK</span>
             </div>
 
-            <p class="product-desc">Giải pháp chiết khấu T/T trả sau nâng cao năng lực cạnh tranh cho Doanh nghiệp Xuất khẩu, tài trợ lên tới 90% giá trị hóa đơn.</p>
+            <p class="product-desc">Tham khảo phương án vốn theo hợp đồng xuất khẩu, hóa đơn và bộ chứng từ; điều kiện tùy hồ sơ và tổ chức tài trợ.</p>
             
             <div class="card-actions">
               <a href="san-pham/quy-mf.html" class="btn-card-check">Kiểm tra điều kiện vay gói này ↗</a>
@@ -460,6 +462,7 @@
       </div>
       <div class="footer-links">
         <a href="index.html">Trang chủ</a>
+        <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
         <a href="san-pham.html">Sản phẩm</a>
         <a href="kien-thuc.html">Kiến thức</a>
         <a href="dang-ky-vay.html">Kiểm tra điều kiện vay</a>
@@ -481,5 +484,6 @@
       menu.classList.toggle('mobile-open');
     }
   </script>
+  <script src="assets/finbiz-site.js"></script>
 </body>
 </html>

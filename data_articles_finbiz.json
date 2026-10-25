@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "category": "Quản trị dòng tiền",
+    "title": "Lập dự báo dòng tiền 13 tuần cho doanh nghiệp nhỏ",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+    "content_text": "Dự báo dòng tiền ngắn hạn giúp doanh nghiệp nhìn trước thời điểm thiếu hụt tiền mặt và chủ động trao đổi với khách hàng, nhà cung cấp hoặc bên cấp vốn.",
+    "content_html": "<p>Dự báo dòng tiền không cần bắt đầu bằng một mô hình phức tạp. Một bảng cập nhật theo tuần có thể giúp chủ doanh nghiệp nhìn rõ các khoản thu dự kiến, chi phí bắt buộc và những thời điểm cần ra quyết định.</p><h3>Ghi nhận dòng tiền theo ngày dự kiến</h3><p>Tách số dư đầu kỳ, khoản thu có căn cứ và khoản chi dự kiến. Gắn ngày thu với điều khoản hợp đồng hoặc lịch sử thanh toán, thay vì ghi toàn bộ hóa đơn là tiền chắc chắn sẽ về.</p><h3>Phân loại mức độ chắc chắn</h3><p>Đánh dấu riêng các khoản đã xác nhận, đang chờ đối tác và mới là dự kiến. Cập nhật khi phát sinh thay đổi để không dựa vào một khoản thu chưa chắc chắn cho chi phí sắp đến hạn.</p><h3>So sánh dự báo với thực tế</h3><p>Mỗi tuần, ghi nhận chênh lệch và nguyên nhân. Bản dự báo là công cụ quản trị nội bộ, không thay thế báo cáo kế toán hay cam kết về khả năng được cấp tín dụng.</p>"
+  },
+  {
+    "id": 2,
+    "category": "Chuẩn bị hồ sơ",
+    "title": "Bộ hồ sơ tài chính nên chuẩn bị trước khi trao đổi với bên cho vay",
+    "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+    "content_text": "Tổ chức hồ sơ theo pháp lý, tài chính, hoạt động kinh doanh và mục đích vay giúp doanh nghiệp giải thích nhu cầu vốn nhất quán hơn.",
+    "content_html": "<p>Yêu cầu hồ sơ khác nhau theo sản phẩm và tổ chức tài chính. Chuẩn bị tài liệu có cấu trúc giúp doanh nghiệp tiết kiệm thời gian và phát hiện sớm thông tin còn thiếu.</p><h3>Thông tin pháp lý và người đại diện</h3><p>Chuẩn bị giấy tờ đăng ký doanh nghiệp hoặc hộ kinh doanh, thông tin người đại diện và các tài liệu liên quan theo yêu cầu cụ thể. Chỉ gửi bản sao qua kênh chính thức và kiểm tra người nhận.</p><h3>Tình hình tài chính và giao dịch</h3><p>Tập hợp báo cáo tài chính, tờ khai thuế, sao kê và bảng tổng hợp công nợ trong cùng một giai đoạn. Giải thích trước các khoản biến động lớn hoặc chênh lệch giữa sổ sách và dòng tiền.</p><h3>Mục đích và kế hoạch trả nợ</h3><p>Nêu rõ số tiền cần dùng, thời điểm cần vốn, kế hoạch sử dụng và nguồn trả nợ dự kiến. Không xem ví dụ trong bài viết là cam kết hồ sơ sẽ được duyệt.</p>"
+  },
+  {
+    "id": 3,
+    "category": "Tài trợ thương mại",
+    "title": "Kiểm tra rủi ro thanh toán trong hợp đồng xuất khẩu",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    "content_text": "Trước khi giao hàng, hãy đối chiếu điều khoản thanh toán, thời điểm xuất trình chứng từ và trách nhiệm khi phát sinh sai biệt.",
+    "content_html": "<p>Hợp đồng xuất khẩu ảnh hưởng trực tiếp tới lịch thu tiền và nhu cầu vốn lưu động. Việc rà soát sớm giúp các bộ phận kinh doanh, vận hành và tài chính cùng nắm một kế hoạch.</p><h3>Làm rõ hình thức và thời điểm thanh toán</h3><p>Đối chiếu đồng tiền, thời hạn thanh toán, điều kiện trả trước hoặc trả sau và sự kiện làm phát sinh nghĩa vụ thanh toán. Những điều khoản quan trọng nên được xác nhận bằng văn bản với đối tác.</p><h3>Kiểm tra chứng từ và thời hạn</h3><p>Liệt kê chứng từ cần cung cấp, bên phát hành, thời hạn nộp và cách xử lý sai biệt. Với thư tín dụng, doanh nghiệp cần đọc kỹ điều khoản và trao đổi với ngân hàng phục vụ trước khi giao hàng.</p><h3>Tính đến rủi ro phát sinh</h3><p>Đánh giá biến động tỷ giá, chậm giao hàng, tranh chấp chất lượng và khả năng thanh toán của người mua. Nhu cầu tài trợ, nếu có, sẽ được bên cấp vốn xem xét trên hồ sơ thực tế.</p>"
+  },
+  {
+    "id": 4,
+    "category": "Quản trị khoản vay",
+    "title": "Đối chiếu kỳ hạn vay với vòng quay vốn kinh doanh",
+    "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
+    "content_text": "Kỳ hạn vốn nên được cân nhắc cùng chu kỳ thu tiền, lịch trả nợ và những biến động mùa vụ của doanh nghiệp.",
+    "content_html": "<p>Khoản vay tạo thêm nghĩa vụ thanh toán định kỳ. Trước khi lựa chọn kỳ hạn, doanh nghiệp nên lập lịch dòng tiền theo các mốc thu và chi thực tế thay vì chỉ dựa trên số tiền giải ngân.</p><h3>Phân biệt vốn ngắn hạn và nhu cầu dài hạn</h3><p>Vốn nhập hàng, trả nhà cung cấp và khoản đầu tư tài sản có chu kỳ thu hồi khác nhau. Ghi rõ thời điểm vốn được sử dụng và thời điểm dự kiến tạo dòng tiền để lựa chọn phương án phù hợp.</p><h3>Đưa lịch trả nợ vào dự báo</h3><p>Đối chiếu gốc, lãi, phí và các nghĩa vụ vay hiện hữu với dòng tiền ở kịch bản thận trọng. Kiểm tra khả năng thanh toán nếu khách hàng trả chậm hoặc doanh thu giảm.</p><h3>Đọc toàn bộ điều khoản</h3><p>Trước khi ký, kiểm tra lãi suất, cách điều chỉnh, phí, điều kiện trả trước và biện pháp bảo đảm. Trao đổi với chuyên gia độc lập nếu có điều khoản chưa rõ.</p>"
+  },
+  {
+    "id": 5,
+    "category": "Hộ kinh doanh",
+    "title": "Tách bạch tiền cá nhân và tiền hoạt động kinh doanh",
+    "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80",
+    "content_text": "Ghi chép riêng doanh thu, chi phí và khoản rút dùng cá nhân giúp chủ hộ hiểu rõ hiệu quả hoạt động và chuẩn bị hồ sơ minh bạch.",
+    "content_html": "<p>Với hộ kinh doanh, tiền bán hàng và chi tiêu cá nhân đôi khi dùng chung một tài khoản. Việc tách bạch dần các khoản thu chi giúp theo dõi hoạt động tốt hơn và giảm nhầm lẫn khi đối chiếu chứng từ.</p><h3>Dùng tài khoản hoặc sổ theo dõi riêng</h3><p>Ghi ngày, nội dung, số tiền và chứng từ liên quan cho từng khoản thu chi. Nếu chưa thể mở tài khoản riêng, hãy duy trì sổ theo dõi nhất quán và đánh dấu các khoản chi cá nhân.</p><h3>Lưu chứng từ có thể đối chiếu</h3><p>Lưu hóa đơn, hợp đồng, sao kê, chứng từ nhập hàng và dữ liệu bán hàng theo tháng. Tuân thủ quy định kế toán, thuế và bảo vệ dữ liệu áp dụng cho mô hình kinh doanh của mình.</p><h3>Không đồng nhất doanh thu với tiền sẵn có</h3><p>Doanh thu chưa thu, hàng tồn kho, khoản phải trả và chi phí sắp đến hạn đều ảnh hưởng đến tiền mặt thực tế. Đánh giá nhu cầu vốn trên bức tranh đầy đủ này.</p>"
+  },
+  {
+    "id": 6,
+    "category": "Chi phí vốn",
+    "title": "Cách so sánh đề xuất cấp vốn ngoài lãi suất",
+    "image": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
+    "content_text": "So sánh tổng chi phí, lịch trả nợ, tài sản bảo đảm và điều khoản hợp đồng thay vì chỉ nhìn vào mức lãi suất quảng cáo.",
+    "content_html": "<p>Các đề xuất tài chính có thể khác nhau về cách tính lãi, loại phí và lịch trả nợ. Hãy so sánh trên cùng số tiền, thời gian sử dụng vốn và giả định trả nợ.</p><h3>Tính tổng dòng tiền phải trả</h3><p>Yêu cầu bảng minh họa gốc, lãi, phí hồ sơ, phí quản lý, phí trả trước và các chi phí bắt buộc khác. Kiểm tra cách tính theo dư nợ và thời điểm thu phí.</p><h3>Kiểm tra điều kiện và rủi ro</h3><p>Đọc điều khoản lãi suất thay đổi, nghĩa vụ bảo đảm, sự kiện vi phạm và quyền xử lý tài sản. Xác nhận đơn vị cho vay, người thụ hưởng và thông tin liên hệ qua nguồn chính thức.</p><h3>Đánh giá khả năng chi trả</h3><p>Ước tính dòng tiền trả nợ trong kịch bản doanh thu thấp hơn dự kiến. Nếu điều khoản chưa rõ, chưa ký hoặc chuyển tiền cho đến khi nhận được giải thích bằng văn bản.</p>"
+  }
+]
