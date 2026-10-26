@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINBIZ - Nền tảng Quản lý Tín dụng & Quản trị Tài chính Doanh nghiệp</title>
+    <title>FINBIZ - Nền tảng Tài chính Doanh nghiệp & Quản lý Tín dụng</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,8 +21,6 @@
                             hover: '#1d4ed8',
                             light: '#eff6ff',
                             emerald: '#10b981',
-                            amber: '#f59e0b',
-                            rose: '#ef4444'
                         }
                     }
                 }
@@ -36,1142 +34,453 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex h-screen overflow-hidden">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col h-screen overflow-hidden">
 
-    <!-- SIDEBAR FINBIZ -->
-    <aside class="w-64 bg-navy-900 text-slate-300 flex flex-col justify-between shrink-0 shadow-xl z-20">
-        <div>
-            <!-- Logo Header -->
-            <div class="h-16 flex items-center px-6 bg-navy-950 border-b border-slate-800 gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-teal-400 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-blue-500/30">
-                    F
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-white text-lg tracking-wider">FINBIZ</h1>
-                    <p class="text-[10px] text-blue-400 font-medium uppercase tracking-widest">CREDIT PLATFORM</p>
-                </div>
+    <!-- TOP NAVIGATION BAR (Dùng chung cho cả Website & CRM) -->
+    <header class="h-16 bg-navy-900 text-white px-6 flex items-center justify-between shrink-0 shadow-md z-30">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="switchMainView('home')">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-teal-400 flex items-center justify-center font-bold text-white text-lg shadow-md">
+                F
             </div>
-
-            <!-- Navigation Menu -->
-            <nav class="p-4 space-y-1">
-                <p class="px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Phân hệ Quản trị</p>
-
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white">
-                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Tổng quan
-                </button>
-
-                <button onclick="switchTab('loans')" id="nav-loans" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="file-text" class="w-5 h-5"></i> Hồ sơ Vay
-                    </div>
-                    <span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full font-bold">12</span>
-                </button>
-
-                <button onclick="switchTab('customers')" id="nav-customers" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <i data-lucide="users" class="w-5 h-5"></i> Khách hàng (CRM)
-                </button>
-
-                <button onclick="switchTab('underwriting')" id="nav-underwriting" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="shield-check" class="w-5 h-5"></i> Thẩm định & Duyệt
-                    </div>
-                    <span class="bg-amber-500/20 text-amber-400 text-xs px-2 py-0.5 rounded-full font-bold">4</span>
-                </button>
-
-                <button onclick="switchTab('contracts')" id="nav-contracts" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <i data-lucide="file-check-2" class="w-5 h-5"></i> Hợp đồng & Giải ngân
-                </button>
-
-                <button onclick="switchTab('collections')" id="nav-collections" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <i data-lucide="calculator" class="w-5 h-5"></i> Quản lý Thu hồi nợ
-                </button>
-
-                <p class="px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2">Báo cáo & Cấu hình</p>
-
-                <button onclick="switchTab('reports')" id="nav-reports" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <i data-lucide="pie-chart" class="w-5 h-5"></i> Báo cáo & Phân tích
-                </button>
-
-                <button onclick="switchTab('settings')" id="nav-settings" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                    <i data-lucide="settings" class="w-5 h-5"></i> Cấu hình Hệ thống
-                </button>
-            </nav>
+            <div>
+                <h1 class="font-extrabold text-white text-base tracking-wider">FINBIZ</h1>
+                <p class="text-[9px] text-blue-400 font-medium uppercase tracking-widest">Financial Platform</p>
+            </div>
         </div>
 
-        <!-- System User Footer -->
-        <div class="p-4 border-t border-slate-800 bg-navy-950 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
-                    NV
-                </div>
-                <div class="truncate">
-                    <p class="text-xs font-semibold text-white truncate">Nguyễn Văn Tùng</p>
-                    <p class="text-[10px] text-slate-400">Giám đốc Thẩm định</p>
-                </div>
-            </div>
-            <button class="text-slate-400 hover:text-white" title="Đăng xuất">
-                <i data-lucide="log-out" class="w-4 h-4"></i>
+        <!-- Public Website Navigation Menu -->
+        <nav class="hidden md:flex items-center gap-6 text-xs font-medium">
+            <button onclick="switchMainView('home')" id="pub-nav-home" class="text-blue-400 font-semibold hover:text-white transition-colors">1. Trang chủ</button>
+            <button onclick="switchMainView('products')" id="pub-nav-products" class="text-slate-300 hover:text-white transition-colors">2. Sản phẩm</button>
+            <button onclick="switchMainView('knowledge')" id="pub-nav-knowledge" class="text-slate-300 hover:text-white transition-colors">3. Kiến thức</button>
+            <button onclick="switchMainView('about')" id="pub-nav-about" class="text-slate-300 hover:text-white transition-colors">4. Về chúng tôi</button>
+        </nav>
+
+        <!-- Switch to CRM Portal Button -->
+        <div class="flex items-center gap-3">
+            <button onclick="switchMainView('crm')" id="btn-toggle-crm" class="flex items-center gap-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors">
+                <i data-lucide="shield-check" class="w-4 h-4"></i> Truy cập Hệ thống CRM Tín dụng
             </button>
         </div>
-    </aside>
+    </header>
 
-    <!-- MAIN CONTENT WRAPPER -->
-    <div class="flex-1 flex flex-col h-screen overflow-hidden bg-slate-100">
+    <!-- MAIN CONTAINER -->
+    <div class="flex-1 flex overflow-hidden relative">
 
-        <!-- TOP HEADER BAR -->
-        <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shrink-0 z-10">
-            <!-- Global Search -->
-            <div class="flex items-center gap-4 w-96">
-                <div class="relative w-full">
-                    <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" placeholder="Tìm theo Mã hồ sơ, Mã MST doanh nghiệp, Tên khách hàng..." 
-                        class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700">
+        <!-- ================= PUBLIC WEBSITE VIEWS ================= -->
+        <div id="public-website-container" class="flex-1 overflow-y-auto bg-white flex flex-col">
+            
+            <!-- VIEW 1: TRANG CHỦ (HOME) -->
+            <div id="view-home" class="public-view space-y-12 pb-16">
+                <!-- Hero Section -->
+                <div class="bg-gradient-to-r from-navy-900 to-navy-800 text-white py-20 px-6 text-center space-y-6">
+                    <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Nền tảng Tài chính Số 2026</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold max-w-3xl mx-auto leading-tight">Giải pháp Tín dụng & Vốn lưu động Tối ưu cho Doanh nghiệp SME</h2>
+                    <p class="text-slate-300 text-sm max-w-xl mx-auto">Kết nối trực tiếp nguồn vốn minh bạch, giải ngân nhanh chóng với công nghệ thẩm định tự động thông minh.</p>
+                    <div class="flex justify-center gap-4 pt-4">
+                        <button onclick="switchMainView('products')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 font-semibold rounded-xl text-sm shadow-lg transition-all">Khám phá Sản phẩm</button>
+                        <button onclick="switchMainView('crm')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold rounded-xl text-sm transition-all">Trải nghiệm CRM Quản trị</button>
+                    </div>
+                </div>
+
+                <!-- Features / Highlights -->
+                <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-slate-900 text-base">Giải ngân Siêu tốc</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Quy trình duyệt hồ sơ tự động hóa qua hệ thống AI Scoring giúp giảm thiểu thời gian chờ đợi xuống dưới 24 giờ.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-slate-900 text-base">Minh bạch & An toàn</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Cam kết không phát sinh phí ẩn, lãi suất cạnh tranh theo chuẩn quy định của Ngân hàng Nhà nước.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold"><i data-lucide="headphones" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-slate-900 text-base">Hỗ trợ Chuyên sâu 24/7</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Đội ngũ chuyên viên tư vấn tài chính nhiều năm kinh nghiệm từ các ngân hàng lớn trực tiếp đồng hành.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Quick Actions & Notifications -->
-            <div class="flex items-center gap-3">
-                <!-- Quick Loan Estimator Button -->
-                <button onclick="openEstimatorModal()" class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-lg transition-colors border border-slate-200">
-                    <i data-lucide="calculator" class="w-4 h-4 text-blue-600"></i> Tính hạn mức tự động
-                </button>
+            <!-- VIEW 2: SẢN PHẨM (PRODUCTS) -->
+            <div id="view-products" class="public-view space-y-10 py-12 px-6 max-w-6xl mx-auto hidden w-full">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900">Danh mục Sản phẩm Tín dụng FINBIZ</h2>
+                    <p class="text-xs text-slate-500 mt-1">Lựa chọn giải pháp tài chính phù hợp nhất với quy mô và nhu cầu của doanh nghiệp bạn.</p>
+                </div>
 
-                <!-- New Loan Application Button -->
-                <button onclick="openCreateLoanModal()" class="flex items-center gap-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors">
-                    <i data-lucide="plus-circle" class="w-4 h-4"></i> Tạo Hồ Sơ Vay Mới
-                </button>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Doanh nghiệp SME</span>
+                            <h3 class="font-bold text-slate-900 text-lg">Vay Tín chấp SME</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Hỗ trợ bổ sung vốn lưu động nhanh chóng không cần tài sản bảo đảm dành cho doanh nghiệp hoạt động trên 2 năm.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 pt-2 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Hạn mức lên đến 15 Tỷ VNĐ</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Lãi suất từ 8.5%/năm</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Thời hạn linh hoạt đến 36 tháng</li>
+                            </ul>
+                        </div>
+                        <button onclick="switchMainView('crm')" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký Tư vấn</button>
+                    </div>
 
-                <div class="h-6 w-px bg-slate-200 mx-1"></div>
+                    <!-- Product Card 2 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-teal-50 text-teal-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Xuất Nhập Khẩu</span>
+                            <h3 class="font-bold text-slate-900 text-lg">Tài trợ XNK Toàn diện</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Giải pháp phát hành L/C, chiết khấu bộ chứng từ và tài trợ trước/sau giao hàng với tỷ lệ tài trợ cao.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 pt-2 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Phí phát hành L/C ưu đãi</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Tài trợ đến 90% giá trị bộ chứng từ</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Ngoại tệ đa dạng (USD, EUR, JPY)</li>
+                            </ul>
+                        </div>
+                        <button onclick="switchMainView('crm')" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký Tư vấn</button>
+                    </div>
 
-                <!-- Notifications Dropdown -->
-                <button class="p-2 text-slate-500 hover:bg-slate-100 rounded-lg relative" title="Thông báo">
-                    <i data-lucide="bell" class="w-5 h-5"></i>
-                    <span class="w-2 h-2 rounded-full bg-rose-500 absolute top-2 right-2 border-2 border-white"></span>
-                </button>
+                    <!-- Product Card 3 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-amber-50 text-amber-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Tài sản đảm bảo</span>
+                            <h3 class="font-bold text-slate-900 text-lg">Vay Thế chấp TSCĐ</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Giải ngân hạn mức lớn dựa trên tài sản bảo đảm là bất động sản, nhà xưởng hoặc máy móc thiết bị nhà xưởng.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 pt-2 border-t border-slate-100">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Hạn mức tối đa 80% định giá tài sản</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Thời hạn vay dài hạn đến 7 năm</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i> Ân hạn trả gốc linh hoạt</li>
+                            </ul>
+                        </div>
+                        <button onclick="switchMainView('crm')" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký Tư vấn</button>
+                    </div>
+                </div>
             </div>
-        </header>
 
-        <!-- CONTENT VIEW CONTAINER -->
-        <main class="flex-1 overflow-y-auto custom-scrollbar p-6">
-
-            <!-- TAB 1: DASHBOARD -->
-            <div id="tab-dashboard" class="tab-content space-y-6">
-                <!-- Page Title -->
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Tổng quan Hoạt động Tín dụng FINBIZ</h2>
-                        <p class="text-xs text-slate-500">Cập nhật dữ liệu thời gian thực - Tháng 10/2026</p>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-medium text-slate-600 shadow-sm">
-                        <i data-lucide="calendar" class="w-4 h-4 text-slate-400"></i> 01/10/2026 - 31/10/2026
-                    </div>
+            <!-- VIEW 3: KIẾN THỨC TÀI CHÍNH (KNOWLEDGE) -->
+            <div id="view-knowledge" class="public-view space-y-8 py-12 px-6 max-w-4xl mx-auto hidden w-full">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900">Kiến thức & Cẩm nang Tài chính Doanh nghiệp</h2>
+                    <p class="text-xs text-slate-500 mt-1">Cập nhật các xu hướng tín dụng, chính sách thuế và kinh nghiệm quản trị dòng tiền hiệu quả.</p>
                 </div>
 
-                <!-- KPI Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                    <!-- KPI 1 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-500 uppercase">Tổng dư nợ hiện tại</span>
-                            <div class="p-2 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="coins" class="w-5 h-5"></i></div>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-slate-900">148.5 tỷ VNĐ</p>
-                            <p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-1">
-                                <i data-lucide="trending-up" class="w-3.5 h-3.5"></i> +12.4% so với tháng trước
-                            </p>
-                        </div>
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                        <span class="text-[10px] text-blue-600 font-bold uppercase">Cẩm nang tín dụng • 24/10/2026</span>
+                        <h3 class="font-bold text-slate-900 text-base">Bí quyết tối ưu hóa dòng tiền và quản trị tỷ lệ DSCR cho doanh nghiệp SME</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Hệ số khả năng trả nợ (DSCR) đóng vai trò quyết định trong việc ngân hàng phê duyệt hạn mức tín dụng lớn...</p>
                     </div>
-
-                    <!-- KPI 2 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-500 uppercase">Hồ sơ đang xử lý</span>
-                            <div class="p-2 bg-amber-50 text-amber-600 rounded-lg"><i data-lucide="clock" class="w-5 h-5"></i></div>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-slate-900">16 Hồ sơ</p>
-                            <p class="text-xs text-slate-500 font-medium flex items-center gap-1 mt-1">
-                                Tổng giá trị đề xuất: 38.2 tỷ VNĐ
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- KPI 3 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-500 uppercase">Giải ngân tháng này</span>
-                            <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></div>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-slate-900">24.8 tỷ VNĐ</p>
-                            <p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-1">
-                                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> 95% đạt chỉ tiêu kế hoạch
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- KPI 4 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-500 uppercase">Tỷ lệ Nợ xấu (NPL)</span>
-                            <div class="p-2 bg-rose-50 text-rose-600 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-rose-600">0.85%</p>
-                            <p class="text-xs text-emerald-600 font-medium flex items-center gap-1 mt-1">
-                                <i data-lucide="shield" class="w-3.5 h-3.5"></i> Trong ngưỡng an toàn (&lt; 2%)
-                            </p>
-                        </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+                        <span class="text-[10px] text-blue-600 font-bold uppercase">Chính sách mới • 20/10/2026</span>
+                        <h3 class="font-bold text-slate-900 text-base">Tổng hợp các gói vay ưu đãi lãi suất dành riêng cho doanh nghiệp xuất nhập khẩu</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Ngân hàng Nhà nước vừa ban hành thông tư mới hỗ trợ lãi suất ngoại tệ nhằm thúc đẩy kim ngạch xuất khẩu cuối năm...</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Charts Section -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Main Growth Chart -->
-                    <div class="lg:col-span-2 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-slate-800 text-sm">Tăng trưởng Dư nợ & Giải ngân năm 2026</h3>
-                            <span class="text-xs text-slate-400">Đơn vị: Tỷ VNĐ</span>
-                        </div>
-                        <div class="h-64 relative">
-                            <canvas id="disbursementChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Loan Portfolio Distribution -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="font-bold text-slate-800 text-sm">Cơ cấu Sản phẩm Tín dụng</h3>
-                        <div class="h-56 relative flex items-center justify-center">
-                            <canvas id="portfolioPieChart"></canvas>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 border-t border-slate-100 pt-3">
-                            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-blue-600 inline-block"></span> Vay Tín chấp SME</div>
-                            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-teal-500 inline-block"></span> Tài trợ XNK</div>
-                            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-amber-500 inline-block"></span> Vay Thế chấp TSCĐ</div>
-                            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-purple-500 inline-block"></span> Tín dụng Cá nhân</div>
-                        </div>
-                    </div>
+            <!-- VIEW 4: VỀ CHÚNG TÔI (ABOUT) -->
+            <div id="view-about" class="public-view space-y-6 py-12 px-6 max-w-4xl mx-auto hidden w-full">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-slate-900">Về chúng tôi - FINBIZ Financial Platform</h2>
+                    <p class="text-xs text-slate-500 mt-1">Đơn vị tiên phong ứng dụng công nghệ tài chính (Fintech) trong việc số hóa quy trình cấp tín dụng.</p>
                 </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 text-xs text-slate-700 leading-relaxed">
+                    <p><strong>FINBIZ</strong> được thành lập với sứ mệnh giải quyết bài toán tiếp cận nguồn vốn ngân hàng cho hàng trăm ngàn doanh nghiệp vừa và nhỏ (SME) tại Việt Nam.</p>
+                    <p>Chúng tôi kết hợp hệ thống chấm điểm tín dụng thông minh (AI Credit Scoring) với mạng lưới đối tác ngân hàng uy tín hàng đầu nhằm rút ngắn thời gian xử lý hồ sơ từ vài tuần xuống chỉ còn trong vòng 24 giờ làm việc.</p>
+                </div>
+            </div>
 
-                <!-- Recent Activities & Urgent Loans Table -->
-                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-slate-800 text-sm">Hồ sơ Tín dụng Cần xử lý Gấp</h3>
-                        <button onclick="switchTab('loans')" class="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                            Xem tất cả hồ sơ <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <!-- Footer Website chung -->
+            <footer class="mt-auto bg-slate-900 text-slate-400 py-8 px-6 text-center text-xs space-y-2">
+                <p>&copy; 2026 FINBIZ Financial & SME Credit Platform. Bảo lưu mọi quyền.</p>
+                <p class="text-[10px] text-slate-500">Trụ sở chính: Tòa nhà Fintech Tower, Quận Cầu Giấy, Hà Nội.</p>
+            </footer>
+        </div>
+
+
+        <!-- ================= CRM PORTAL VIEW (Ẩn mặc định, bật khi bấm nút CRM) ================= -->
+        <div id="crm-system-container" class="flex-1 flex h-full overflow-hidden hidden bg-slate-100">
+            
+            <!-- CRM SIDEBAR -->
+            <aside class="w-64 bg-navy-900 text-slate-300 flex flex-col justify-between shrink-0 shadow-xl z-20">
+                <div>
+                    <div class="h-16 flex items-center px-6 bg-navy-950 border-b border-slate-800 gap-3">
+                        <span class="bg-blue-600 text-white text-xs font-extrabold px-2 py-1 rounded">CRM PANEL</span>
+                        <span class="text-xs font-bold text-white">Quản trị Tín dụng</span>
+                    </div>
+
+                    <nav class="p-4 space-y-1">
+                        <button onclick="switchCrmTab('dashboard')" id="nav-dashboard" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white">
+                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Tổng quan CRM
                         </button>
-                    </div>
 
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
-                                    <th class="py-3 px-4">Mã Hồ sơ</th>
-                                    <th class="py-3 px-4">Khách hàng Doanh nghiệp</th>
-                                    <th class="py-3 px-4">Gói sản phẩm</th>
-                                    <th class="py-3 px-4">Số tiền đề xuất</th>
-                                    <th class="py-3 px-4">Đánh giá CIC</th>
-                                    <th class="py-3 px-4">Trạng thái</th>
-                                    <th class="py-3 px-4 text-right">Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 text-xs text-slate-700" id="dashboard-urgent-table">
-                                <!-- Dynamic Render from JS -->
-                            </tbody>
-                        </table>
-                    </div>
+                        <button onclick="switchCrmTab('loans')" id="nav-loans" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
+                            <div class="flex items-center gap-3"><i data-lucide="file-text" class="w-5 h-5"></i> Hồ sơ Vay</div>
+                            <span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full font-bold">12</span>
+                        </button>
+
+                        <button onclick="switchCrmTab('customers')" id="nav-customers" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
+                            <i data-lucide="users" class="w-5 h-5"></i> Khách hàng
+                        </button>
+
+                        <button onclick="switchCrmTab('underwriting')" id="nav-underwriting" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i> Thẩm định & Duyệt
+                        </button>
+
+                        <button onclick="switchCrmTab('contracts')" id="nav-contracts" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
+                            <i data-lucide="file-check-2" class="w-5 h-5"></i> Hợp đồng & Giải ngân
+                        </button>
+                    </nav>
                 </div>
-            </div>
 
-            <!-- TAB 2: LOANS MANAGEMENT (Table & Kanban View) -->
-            <div id="tab-loans" class="tab-content space-y-6 hidden">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Quản lý Hồ sơ Tín dụng</h2>
-                        <p class="text-xs text-slate-500">Theo dõi, điều phối và chuyển trạng thái luồng hồ sơ vay</p>
+                <div class="p-4 border-t border-slate-800 bg-navy-950 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">NV</div>
+                        <div class="truncate">
+                            <p class="text-xs font-semibold text-white truncate">Nguyễn Văn Tùng</p>
+                            <p class="text-[10px] text-slate-400">Giám đốc Thẩm định</p>
+                        </div>
+                    </div>
+                    <button onclick="switchMainView('home')" class="text-slate-400 hover:text-white" title="Quay về Website chính">
+                        <i data-lucide="log-out" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- CRM MAIN CONTENT -->
+            <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100">
+                <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shrink-0">
+                    <div class="text-xs font-semibold text-slate-600 flex items-center gap-2">
+                        <button onclick="switchMainView('home')" class="text-blue-600 hover:underline flex items-center gap-1"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Quay lại Trang chủ Website</button>
+                        <span class="text-slate-300">|</span>
+                        <span>Hệ thống Quản lý Quan hệ Khách hàng & Thẩm định Tín dụng FINBIZ</span>
                     </div>
 
                     <div class="flex items-center gap-3">
-                        <!-- Switch View Mode Buttons -->
-                        <div class="bg-slate-200 p-1 rounded-lg flex items-center gap-1">
-                            <button id="view-btn-table" onclick="toggleLoanView('table')" class="px-3 py-1 rounded-md text-xs font-semibold bg-white text-slate-800 shadow-sm">
-                                <i data-lucide="list" class="w-3.5 h-3.5 inline mr-1"></i> Bảng
-                            </button>
-                            <button id="view-btn-kanban" onclick="toggleLoanView('kanban')" class="px-3 py-1 rounded-md text-xs font-semibold text-slate-600 hover:text-slate-900">
-                                <i data-lucide="kanban" class="w-3.5 h-3.5 inline mr-1"></i> Kanban
-                            </button>
-                        </div>
-
-                        <button onclick="openCreateLoanModal()" class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm flex items-center gap-1.5">
-                            <i data-lucide="plus-circle" class="w-4 h-4"></i> Tạo Hồ sơ Mới
+                        <button onclick="openCreateLoanModal()" class="flex items-center gap-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm">
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i> Tạo Hồ sơ Vay Mới
                         </button>
                     </div>
-                </div>
+                </header>
 
-                <!-- Filter Bar -->
-                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex flex-wrap items-center gap-3">
-                        <select id="filter-product" onchange="renderLoans()" class="bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="ALL">Tất cả Sản phẩm Vay</option>
-                            <option value="Tín chấp SME">Vay Tín chấp SME</option>
-                            <option value="Tài trợ XNK">Tài trợ Xuất Nhập khẩu</option>
-                            <option value="Thế chấp TSCĐ">Vay Thế chấp TSCĐ</option>
-                        </select>
+                <main class="flex-1 overflow-y-auto p-6">
+                    <!-- CRM TAB 1: DASHBOARD -->
+                    <div id="crm-tab-dashboard" class="crm-tab space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Tổng dư nợ hiện tại</span>
+                                <p class="text-2xl font-bold text-slate-900">148.5 tỷ VNĐ</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Hồ sơ đang xử lý</span>
+                                <p class="text-2xl font-bold text-slate-900">16 Hồ sơ</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Giải ngân tháng này</span>
+                                <p class="text-2xl font-bold text-emerald-600">24.8 tỷ VNĐ</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-xs font-semibold text-slate-500 uppercase">Tỷ lệ Nợ xấu (NPL)</span>
+                                <p class="text-2xl font-bold text-rose-600">0.85%</p>
+                            </div>
+                        </div>
 
-                        <select id="filter-status" onchange="renderLoans()" class="bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="ALL">Tất cả Trạng thái</option>
-                            <option value="Tiếp nhận">1. Tiếp nhận hồ sơ</option>
-                            <option value="Thẩm định">2. Đang thẩm định</option>
-                            <option value="Chờ duyệt">3. Chờ phê duyệt</option>
-                            <option value="Đã duyệt">4. Đã phê duyệt</option>
-                            <option value="Giải ngân">5. Đã giải ngân</option>
-                        </select>
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
+                            <h3 class="font-bold text-slate-800 text-sm">Hồ sơ Tín dụng Cần xử lý Gấp</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
+                                            <th class="py-3 px-4">Mã Hồ sơ</th>
+                                            <th class="py-3 px-4">Khách hàng Doanh nghiệp</th>
+                                            <th class="py-3 px-4">Sản phẩm</th>
+                                            <th class="py-3 px-4">Số tiền</th>
+                                            <th class="py-3 px-4">Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="crm-urgent-table" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="text-xs text-slate-500">
-                        Hiển thị <span id="loans-count" class="font-bold text-slate-800">0</span> hồ sơ tín dụng
-                    </div>
-                </div>
-
-                <!-- TABLE VIEW MODE -->
-                <div id="loans-table-view" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
-                                <th class="py-3 px-4">Mã HS</th>
-                                <th class="py-3 px-4">Tên Khách hàng / Doanh nghiệp</th>
-                                <th class="py-3 px-4">Gói sản phẩm</th>
-                                <th class="py-3 px-4">Hạn mức đề xuất</th>
-                                <th class="py-3 px-4">Điểm CIC</th>
-                                <th class="py-3 px-4">Trạng thái</th>
-                                <th class="py-3 px-4">Cán bộ thụ lý</th>
-                                <th class="py-3 px-4 text-right">Chi tiết</th>
-                            </tr>
-                        </thead>
-                        <tbody id="loans-table-body" class="divide-y divide-slate-100 text-xs text-slate-700">
-                            <!-- Dynamic Content -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- KANBAN VIEW MODE (Hidden by default) -->
-                <div id="loans-kanban-view" class="hidden grid grid-cols-1 md:grid-cols-5 gap-4 overflow-x-auto pb-4">
-                    <!-- Column 1: Tiếp nhận -->
-                    <div class="bg-slate-200/60 p-3 rounded-xl space-y-3 min-w-[250px]">
+                    <!-- CRM TAB 2: LOANS -->
+                    <div id="crm-tab-loans" class="crm-tab space-y-6 hidden">
                         <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-700">1. TIẾP NHẬN HỒ SƠ</span>
-                            <span class="bg-slate-300 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full" id="count-kanban-tiepnhan">0</span>
+                            <h2 class="text-xl font-bold text-slate-900">Quản lý Hồ sơ Tín dụng</h2>
+                            <button onclick="openCreateLoanModal()" class="px-3 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg">Tạo Hồ sơ</button>
                         </div>
-                        <div class="space-y-3" id="kanban-col-tiepnhan"></div>
+                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
+                                        <th class="py-3 px-4">Mã HS</th>
+                                        <th class="py-3 px-4">Tên Khách hàng</th>
+                                        <th class="py-3 px-4">Sản phẩm</th>
+                                        <th class="py-3 px-4">Hạn mức đề xuất</th>
+                                        <th class="py-3 px-4">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="crm-loans-body" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                            </table>
+                        </div>
                     </div>
 
-                    <!-- Column 2: Đang Thẩm định -->
-                    <div class="bg-slate-200/60 p-3 rounded-xl space-y-3 min-w-[250px]">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-700">2. ĐANG THẨM ĐỊNH</span>
-                            <span class="bg-amber-200 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full" id="count-kanban-thamdinh">0</span>
+                    <!-- CRM TAB 3: CUSTOMERS -->
+                    <div id="crm-tab-customers" class="crm-tab space-y-6 hidden">
+                        <h2 class="text-xl font-bold text-slate-900">Danh bạ Khách hàng Doanh nghiệp</h2>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-xs">
+                            <p class="font-semibold text-slate-800">Công ty Cổ phần Công nghệ An Phát (MST: 0314889921) - Xếp hạng: AAA</p>
+                            <p class="text-slate-500 mt-1">Tổng hạn mức đã cấp: 15.0 tỷ VNĐ</p>
                         </div>
-                        <div class="space-y-3" id="kanban-col-thamdinh"></div>
                     </div>
 
-                    <!-- Column 3: Chờ duyệt -->
-                    <div class="bg-slate-200/60 p-3 rounded-xl space-y-3 min-w-[250px]">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-700">3. CHỜ PHÊ DUYỆT</span>
-                            <span class="bg-blue-200 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-full" id="count-kanban-choduyet">0</span>
+                    <!-- CRM TAB 4: UNDERWRITING -->
+                    <div id="crm-tab-underwriting" class="crm-tab space-y-6 hidden">
+                        <h2 class="text-xl font-bold text-slate-900">Thẩm định & Phê duyệt Tín dụng 3 cấp</h2>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-xs space-y-2">
+                            <p class="font-bold text-slate-800">Hồ sơ FB-2026-092 đang chờ Hội đồng Tín dụng phê duyệt.</p>
+                            <button onclick="alert('Đã phê duyệt thành công!')" class="px-3 py-1.5 bg-emerald-600 text-white rounded font-semibold">Chấp thuận Phê duyệt</button>
                         </div>
-                        <div class="space-y-3" id="kanban-col-choduyet"></div>
                     </div>
 
-                    <!-- Column 4: Đã duyệt -->
-                    <div class="bg-slate-200/60 p-3 rounded-xl space-y-3 min-w-[250px]">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-700">4. ĐÃ PHÊ DUYỆT</span>
-                            <span class="bg-indigo-200 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded-full" id="count-kanban-daduyet">0</span>
+                    <!-- CRM TAB 5: CONTRACTS -->
+                    <div id="crm-tab-contracts" class="crm-tab space-y-6 hidden">
+                        <h2 class="text-xl font-bold text-slate-900">Hợp đồng & Giải ngân</h2>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-xs">
+                            <p class="font-bold text-slate-800">Hợp đồng HD-2026/FIN-088 sẵn sàng phát lệnh giải ngân qua VPBank.</p>
                         </div>
-                        <div class="space-y-3" id="kanban-col-daduyet"></div>
                     </div>
-
-                    <!-- Column 5: Đã Giải ngân -->
-                    <div class="bg-slate-200/60 p-3 rounded-xl space-y-3 min-w-[250px]">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-700">5. ĐÃ GIẢI NGÂN</span>
-                            <span class="bg-emerald-200 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full" id="count-kanban-giaingan">0</span>
-                        </div>
-                        <div class="space-y-3" id="kanban-col-giaingan"></div>
-                    </div>
-                </div>
+                </main>
             </div>
+        </div>
 
-            <!-- TAB 3: CUSTOMERS (CRM) -->
-            <div id="tab-customers" class="tab-content space-y-6 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Danh bạ Khách hàng & Cơ sở Tín dụng</h2>
-                        <p class="text-xs text-slate-500">Quản lý cơ sở dữ liệu doanh nghiệp SME và cá nhân đã định danh</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
-                                <th class="py-3 px-4">Mã KH / MST</th>
-                                <th class="py-3 px-4">Tên Doanh nghiệp / Khách hàng</th>
-                                <th class="py-3 px-4">Người đại diện</th>
-                                <th class="py-3 px-4">Ngành nghề</th>
-                                <th class="py-3 px-4">Xếp hạng Tín nhiệm</th>
-                                <th class="py-3 px-4">Tổng hạn mức đã cấp</th>
-                                <th class="py-3 px-4 text-right">Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 text-xs text-slate-700">
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3 px-4 font-mono font-semibold text-blue-600">0314889921</td>
-                                <td class="py-3 px-4 font-semibold text-slate-900">Công ty Cổ phần Công nghệ An Phát</td>
-                                <td class="py-3 px-4">Trần Minh Hoàng</td>
-                                <td class="py-3 px-4"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded">Công nghệ & Phần mềm</span></td>
-                                <td class="py-3 px-4"><span class="text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded">AAA (Rất Tốt)</span></td>
-                                <td class="py-3 px-4 font-semibold">15.0 tỷ VNĐ</td>
-                                <td class="py-3 px-4 text-right">
-                                    <button class="text-blue-600 hover:text-blue-800 font-medium">Chi tiết</button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3 px-4 font-mono font-semibold text-blue-600">0109823412</td>
-                                <td class="py-3 px-4 font-semibold text-slate-900">Tập đoàn Logistics Toàn Cầu</td>
-                                <td class="py-3 px-4">Lê Hoàng Nam</td>
-                                <td class="py-3 px-4"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded">Vận tải & Khai thác kho</span></td>
-                                <td class="py-3 px-4"><span class="text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded">AA (Tốt)</span></td>
-                                <td class="py-3 px-4 font-semibold">25.0 tỷ VNĐ</td>
-                                <td class="py-3 px-4 text-right">
-                                    <button class="text-blue-600 hover:text-blue-800 font-medium">Chi tiết</button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="py-3 px-4 font-mono font-semibold text-blue-600">0108772391</td>
-                                <td class="py-3 px-4 font-semibold text-slate-900">Công ty TNHH Sản xuất Dệt may Việt Á</td>
-                                <td class="py-3 px-4">Phạm Thị Mai</td>
-                                <td class="py-3 px-4"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded">Sản xuất Dệt may</span></td>
-                                <td class="py-3 px-4"><span class="text-amber-600 font-bold bg-amber-50 px-2 py-0.5 rounded">A (Trung bình)</span></td>
-                                <td class="py-3 px-4 font-semibold">8.0 tỷ VNĐ</td>
-                                <td class="py-3 px-4 text-right">
-                                    <button class="text-blue-600 hover:text-blue-800 font-medium">Chi tiết</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- TAB 4: UNDERWRITING & APPROVAL -->
-            <div id="tab-underwriting" class="tab-content space-y-6 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Thẩm định & Phê duyệt Tín dụng</h2>
-                        <p class="text-xs text-slate-500">Quy trình thẩm định rủi ro 3 cấp (Chuyên viên - Trưởng phòng - Hội đồng Tín dụng)</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Underwriting Checklist -->
-                    <div class="lg:col-span-2 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="font-bold text-slate-800 text-sm border-b pb-2">Hồ sơ chờ Hội đồng Tín dụng Phê duyệt (FB-2026-092)</h3>
-
-                        <div class="grid grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-lg">
-                            <div><span class="text-slate-500">Doanh nghiệp:</span> <strong class="text-slate-800">Công ty Cổ phần Công nghệ An Phát</strong></div>
-                            <div><span class="text-slate-500">Số tiền đề xuất:</span> <strong class="text-blue-600">10.0 Tỷ VNĐ</strong></div>
-                            <div><span class="text-slate-500">Sản phẩm:</span> <strong>Tín chấp SME</strong></div>
-                            <div><span class="text-slate-500">Lãi suất đề xuất:</span> <strong>8.5%/năm</strong></div>
-                        </div>
-
-                        <div class="space-y-3 pt-2">
-                            <h4 class="text-xs font-bold text-slate-700 uppercase">Hạng mục Thẩm định Pháp lý & Tài chính:</h4>
-
-                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs">
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
-                                    <span>Tra cứu lịch sử dư nợ CIC (Không có nợ xấu 3 năm gần nhất)</span>
-                                </div>
-                                <span class="text-emerald-600 font-semibold">ĐẠT</span>
-                            </div>
-
-                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs">
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500"></i>
-                                    <span>Khả năng trả nợ DSCR (Đạt 1.45x > 1.25x quy định)</span>
-                                </div>
-                                <span class="text-emerald-600 font-semibold">ĐẠT</span>
-                            </div>
-
-                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200 text-xs">
-                                <div class="flex items-center gap-2">
-                                    <i data-lucide="alert-circle" class="w-4 h-4 text-amber-500"></i>
-                                    <span>Định giá Tài sản Bảo đảm (Bất động sản Q. Cầu Giấy)</span>
-                                </div>
-                                <span class="text-amber-600 font-semibold">ĐANG XÁC MINH</span>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
-                            <button class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-semibold rounded-lg">Từ chối Hồ sơ</button>
-                            <button class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg">Yêu cầu Bổ sung</button>
-                            <button class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm">Chấp thuận Phê duyệt</button>
-                        </div>
-                    </div>
-
-                    <!-- Approval History Audit Trail -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="font-bold text-slate-800 text-sm border-b pb-2">Nhật ký Phê duyệt (Audit Trail)</h3>
-
-                        <div class="space-y-4 text-xs relative before:absolute before:inset-0 before:left-2 before:w-0.5 before:bg-slate-200">
-                            <div class="relative pl-6">
-                                <div class="w-4 h-4 rounded-full bg-emerald-500 absolute left-0 top-0 ring-4 ring-white"></div>
-                                <p class="font-semibold text-slate-800">Trưởng phòng Tín dụng phê duyệt</p>
-                                <p class="text-slate-500 text-[10px]">Lê Văn Thắng - 25/10/2026 14:30</p>
-                                <p class="text-slate-600 italic mt-1 bg-slate-50 p-2 rounded">"Hồ sơ tài chính sạch, dòng tiền đều. Đồng ý chuyển Hội đồng."</p>
-                            </div>
-
-                            <div class="relative pl-6">
-                                <div class="w-4 h-4 rounded-full bg-emerald-500 absolute left-0 top-0 ring-4 ring-white"></div>
-                                <p class="font-semibold text-slate-800">Chuyên viên Thẩm định hoàn thành báo cáo</p>
-                                <p class="text-slate-500 text-[10px]">Trần Thu Hà - 24/10/2026 09:15</p>
-                            </div>
-
-                            <div class="relative pl-6">
-                                <div class="w-4 h-4 rounded-full bg-slate-300 absolute left-0 top-0 ring-4 ring-white"></div>
-                                <p class="font-semibold text-slate-800">Khởi tạo hồ sơ trên hệ thống</p>
-                                <p class="text-slate-500 text-[10px]">Tự động đăng ký qua FINBIZ Portal - 23/10/2026</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 5: CONTRACTS & DISBURSEMENT -->
-            <div id="tab-contracts" class="tab-content space-y-6 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Quản lý Hợp đồng & Giải ngân</h2>
-                        <p class="text-xs text-slate-500">Ký kết hợp đồng tín dụng điện tử và phát lệnh giải ngân qua ngân hàng liên kết</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
-                    <h3 class="font-bold text-slate-800 text-sm">Danh sách Hợp đồng Tín dụng Đã duyệt chờ Giải ngân</h3>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
-                                    <th class="py-3 px-4">Số Hợp đồng</th>
-                                    <th class="py-3 px-4">Bên vay</th>
-                                    <th class="py-3 px-4">Số tiền giải ngân</th>
-                                    <th class="py-3 px-4">Tài khoản nhận</th>
-                                    <th class="py-3 px-4">Trạng thái Ký hợp đồng</th>
-                                    <th class="py-3 px-4 text-right">Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 text-xs text-slate-700">
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-mono font-bold">HD-2026/FIN-088</td>
-                                    <td class="py-3 px-4 font-semibold">Tập đoàn Logistics Toàn Cầu</td>
-                                    <td class="py-3 px-4 font-bold text-emerald-600">15.0 tỷ VNĐ</td>
-                                    <td class="py-3 px-4 font-mono">VPBank - 19283748291</td>
-                                    <td class="py-3 px-4"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Đã ký số (CA)</span></td>
-                                    <td class="py-3 px-4 text-right">
-                                        <button onclick="alert('Đã phát lệnh giải ngân thành công qua ngân hàng kết nối VPBank!')" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-semibold text-xs">
-                                            Phát lệnh Giải ngân
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 6: COLLECTIONS -->
-            <div id="tab-collections" class="tab-content space-y-6 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Quản lý Thu hồi Nợ & Lịch thanh toán</h2>
-                        <p class="text-xs text-slate-500">Theo dõi nợ gốc, nợ lãi đến hạn và cảnh báo nợ quá hạn</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                        <p class="text-xs text-slate-500 font-semibold uppercase">Đến hạn thu trong 7 ngày</p>
-                        <p class="text-2xl font-bold text-slate-900 mt-2">4.2 tỷ VNĐ</p>
-                        <p class="text-xs text-slate-400 mt-1">Gồm 5 khoản vay doanh nghiệp</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                        <p class="text-xs text-slate-500 font-semibold uppercase">Nợ quá hạn (1-30 ngày)</p>
-                        <p class="text-2xl font-bold text-amber-600 mt-2">1.1 tỷ VNĐ</p>
-                        <p class="text-xs text-amber-600/80 mt-1">Cần nhắc nợ qua Zalo/SMS</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                        <p class="text-xs text-slate-500 font-semibold uppercase">Nợ xấu nghi ngờ (&gt;90 ngày)</p>
-                        <p class="text-2xl font-bold text-rose-600 mt-2">0.0 tỷ VNĐ</p>
-                        <p class="text-xs text-emerald-600 mt-1">Không phát sinh nợ xấu nhóm 3-5</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 7: REPORTS -->
-            <div id="tab-reports" class="tab-content space-y-6 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Báo cáo & Phân tích Tín dụng</h2>
-                        <p class="text-xs text-slate-500">Báo cáo chuẩn Ngân hàng Nhà nước và ban quản trị FINBIZ</p>
-                    </div>
-                    <button class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5">
-                        <i data-lucide="download" class="w-4 h-4"></i> Xuất Báo cáo Excel
-                    </button>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center py-12">
-                    <i data-lucide="bar-chart-3" class="w-12 h-12 text-blue-500 mx-auto mb-3"></i>
-                    <h3 class="font-bold text-slate-800 text-lg">Hệ thống Báo cáo Tín dụng Chi tiết</h3>
-                    <p class="text-xs text-slate-500 max-w-md mx-auto mt-1">Bao gồm phân tích tỷ lệ nợ xấu, dự phòng rủi ro tín dụng và doanh thu lãi vay theo thời gian thực.</p>
-                </div>
-            </div>
-
-            <!-- TAB 8: SETTINGS -->
-            <div id="tab-settings" class="tab-content space-y-6 hidden">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Cấu hình Hệ thống FINBIZ</h2>
-                        <p class="text-xs text-slate-500">Thiết lập tham số chấm điểm tín dụng và kết nối API</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-6 max-w-3xl">
-                    <div class="space-y-4">
-                        <h3 class="font-bold text-slate-800 text-sm border-b pb-2">Cấu hình Chấm điểm Tự động (AI Credit Scoring)</h3>
-
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-xs font-semibold text-slate-800">Tự động duyệt hồ sơ có điểm CIC AAA</p>
-                                <p class="text-[11px] text-slate-500">Hồ sơ dưới 3 tỷ có điểm tín nhiệm tối đa sẽ được duyệt tự động</p>
-                            </div>
-                            <input type="checkbox" checked class="w-4 h-4 text-blue-600 rounded">
-                        </div>
-
-                        <div class="flex items-center justify-between border-t pt-3">
-                            <div>
-                                <p class="text-xs font-semibold text-slate-800">Kết nối API Trung tâm Thông tin Tín dụng CIC</p>
-                                <p class="text-[11px] text-slate-500">Tra cứu tự động khi nhập Mã số thuế/CCCD</p>
-                            </div>
-                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded">Đang hoạt động</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
     </div>
 
-    <!-- MODAL 1: CREATE LOAN APPLICATION -->
+    <!-- MODAL TẠO HỒ SƠ VAY MỚI -->
     <div id="modal-create-loan" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden border border-slate-100 animate-in fade-in duration-200">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden border border-slate-100">
             <div class="px-6 py-4 bg-navy-900 text-white flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="file-plus" class="w-5 h-5 text-blue-400"></i>
-                    <h3 class="font-bold text-sm">Khởi tạo Hồ sơ Vay Tín dụng Mới - FINBIZ</h3>
-                </div>
+                <h3 class="font-bold text-sm">Khởi tạo Hồ sơ Vay Tín dụng Mới</h3>
                 <button onclick="closeCreateLoanModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-
-            <form id="form-create-loan" onsubmit="handleCreateLoan(event)" class="p-6 space-y-4">
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Mã số thuế / Số CCCD (*)</label>
-                        <input type="text" id="input-mst" required placeholder="Nhập MST Doanh nghiệp" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Tên Doanh nghiệp / Khách hàng (*)</label>
-                        <input type="text" id="input-customer" required placeholder="Tên Doanh nghiệp đăng ký vay" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                    </div>
+            <form onsubmit="handleCreateLoan(event)" class="p-6 space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Tên Doanh nghiệp (*)</label>
+                    <input type="text" id="input-customer" required placeholder="Nhập tên doanh nghiệp vay" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
                 </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Sản phẩm Vay (*)</label>
-                        <select id="input-product" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                            <option value="Tín chấp SME">Vay Tín chấp SME</option>
-                            <option value="Tài trợ XNK">Tài trợ Xuất Nhập khẩu</option>
-                            <option value="Thế chấp TSCĐ">Vay Thế chấp TSCĐ</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Số tiền đề xuất (VNĐ) (*)</label>
-                        <input type="number" id="input-amount" required placeholder="Ví dụ: 5000000000" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                    </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Sản phẩm Vay (*)</label>
+                    <select id="input-product" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                        <option value="Vay Tín chấp SME">Vay Tín chấp SME</option>
+                        <option value="Tài trợ XNK">Tài trợ Xuất Nhập khẩu</option>
+                        <option value="Thế chấp TSCĐ">Vay Thế chấp TSCĐ</option>
+                    </select>
                 </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Xếp hạng CIC tự động</label>
-                        <select id="input-cic" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
-                            <option value="Nhóm 1 - Tốt (AAA)">Nhóm 1 - Tốt (AAA)</option>
-                            <option value="Nhóm 1 - Khá (AA)">Nhóm 1 - Khá (AA)</option>
-                            <option value="Nhóm 2 - Theo dõi (B)">Nhóm 2 - Theo dõi (B)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">Cán bộ phụ trách thụ lý</label>
-                        <input type="text" id="input-officer" value="Nguyễn Văn Tùng" class="w-full bg-slate-100 border border-slate-200 text-xs rounded-lg px-3 py-2 text-slate-600">
-                    </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Số tiền đề xuất (VNĐ) (*)</label>
+                    <input type="number" id="input-amount" required placeholder="Ví dụ: 5000000000" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
                 </div>
-
-                <div class="pt-4 flex items-center justify-end gap-3 border-t">
-                    <button type="button" onclick="closeCreateLoanModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg">Hủy bỏ</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm">Khởi tạo Hồ sơ</button>
+                <div class="pt-2 flex justify-end gap-2">
+                    <button type="button" onclick="closeCreateLoanModal()" class="px-4 py-2 bg-slate-200 rounded-lg font-semibold">Hủy</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold">Khởi tạo</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 2: AUTOMATED ESTIMATOR -->
-    <div id="modal-estimator" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl overflow-hidden border border-slate-100">
-            <div class="px-6 py-4 bg-navy-900 text-white flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="calculator" class="w-5 h-5 text-teal-400"></i>
-                    <h3 class="font-bold text-sm">Công cụ Tính Hạn mức Tín dụng Tự động (FINBIZ Score)</h3>
-                </div>
-                <button onclick="closeEstimatorModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-
-            <div class="p-6 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Doanh thu trung bình 12 tháng gần nhất (VNĐ)</label>
-                    <input type="number" id="est-revenue" value="20000000000" oninput="calculateEstimate()" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Giá trị Tài sản bảo đảm định giá (VNĐ)</label>
-                    <input type="number" id="est-collateral" value="8000000000" oninput="calculateEstimate()" class="w-full bg-slate-50 border border-slate-200 text-xs rounded-lg px-3 py-2">
-                </div>
-
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2 mt-4">
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-500">Hạn mức Tín chấp ước tính (25% Doanh thu):</span>
-                        <strong id="est-unsecured-result" class="text-slate-800">5.0 Tỷ VNĐ</strong>
-                    </div>
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-500">Hạn mức Thế chấp ước tính (70% Tài sản):</span>
-                        <strong id="est-secured-result" class="text-slate-800">5.6 Tỷ VNĐ</strong>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-slate-200 pt-2 text-sm">
-                        <span class="font-bold text-slate-900">TỔNG HẠN MỨC FINBIZ CẤP:</span>
-                        <strong id="est-total-result" class="text-blue-600 font-extrabold text-base">10.6 Tỷ VNĐ</strong>
-                    </div>
-                </div>
-
-                <div class="pt-2 flex justify-end">
-                    <button onclick="closeEstimatorModal()" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold">Đóng công cụ</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DRAWER: DETAIL VIEW FOR LOAN -->
-    <div id="drawer-loan-detail" class="fixed inset-y-0 right-0 w-full max-w-xl bg-white shadow-2xl border-l border-slate-200 z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="p-6 bg-navy-900 text-white flex items-center justify-between">
-            <div>
-                <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">CHI TIẾT HỒ SƠ TÍN DỤNG</span>
-                <h3 class="font-bold text-lg" id="drawer-loan-id">FB-2026-001</h3>
-            </div>
-            <button onclick="closeLoanDrawer()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-        </div>
-
-        <div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar" id="drawer-loan-content">
-            <!-- Dynamic Injection -->
-        </div>
-
-        <div class="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
-            <button onclick="closeLoanDrawer()" class="px-4 py-2 bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg">Đóng</button>
-            <div class="flex items-center gap-2">
-                <button onclick="updateStatusFromDrawer('Từ chối')" class="px-3 py-2 bg-rose-100 text-rose-700 text-xs font-semibold rounded-lg hover:bg-rose-200">Từ chối</button>
-                <button onclick="updateStatusFromDrawer('Đã duyệt')" class="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-lg hover:bg-blue-700 shadow-sm">Phê duyệt ngay</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC & STATE MANAGEMENT -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // GLOBAL DATA STORE FOR FINBIZ
         let loansData = [
-            {
-                id: 'FB-2026-092',
-                customer: 'Công ty Cổ phần Công nghệ An Phát',
-                mst: '0314889921',
-                product: 'Tín chấp SME',
-                amount: 10000000000,
-                cic: 'Nhóm 1 - Tốt (AAA)',
-                status: 'Chờ duyệt',
-                officer: 'Nguyễn Văn Tùng',
-                date: '2026-10-24'
-            },
-            {
-                id: 'FB-2026-088',
-                customer: 'Tập đoàn Logistics Toàn Cầu',
-                mst: '0109823412',
-                product: 'Tài trợ XNK',
-                amount: 15000000000,
-                cic: 'Nhóm 1 - Khá (AA)',
-                status: 'Đã duyệt',
-                officer: 'Lê Văn Thắng',
-                date: '2026-10-22'
-            },
-            {
-                id: 'FB-2026-075',
-                customer: 'Công ty TNHH Sản xuất Dệt may Việt Á',
-                mst: '0108772391',
-                product: 'Thế chấp TSCĐ',
-                amount: 8000000000,
-                cic: 'Nhóm 1 - Khá (AA)',
-                status: 'Thẩm định',
-                officer: 'Trần Thu Hà',
-                date: '2026-10-20'
-            },
-            {
-                id: 'FB-2026-061',
-                customer: 'Công ty Thương mại Dịch vụ Nam Sơn',
-                mst: '0309128374',
-                product: 'Tín chấp SME',
-                amount: 3500000000,
-                cic: 'Nhóm 1 - Tốt (AAA)',
-                status: 'Giải ngân',
-                officer: 'Nguyễn Văn Tùng',
-                date: '2026-10-18'
-            },
-            {
-                id: 'FB-2026-050',
-                customer: 'Công ty Cổ phần Xây dựng Hạ tầng Việt Nhật',
-                mst: '0107728192',
-                product: 'Thế chấp TSCĐ',
-                amount: 12000000000,
-                cic: 'Nhóm 2 - Theo dõi (B)',
-                status: 'Tiếp nhận',
-                officer: 'Phạm Minh Chính',
-                date: '2026-10-25'
-            }
+            { id: 'FB-2026-092', customer: 'Công ty Cổ phần Công nghệ An Phát', product: 'Vay Tín chấp SME', amount: 10000000000, status: 'Chờ duyệt' },
+            { id: 'FB-2026-088', customer: 'Tập đoàn Logistics Toàn Cầu', product: 'Tài trợ XNK', amount: 15000000000, status: 'Đã duyệt' },
+            { id: 'FB-2026-075', customer: 'Công ty TNHH Sản xuất Dệt may Việt Á', product: 'Thế chấp TSCĐ', amount: 8000000000, status: 'Thẩm định' }
         ];
 
-        let selectedLoanId = null;
-
-        // INITIALIZATION
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
-            initCharts();
-            renderDashboardUrgentTable();
-            renderLoans();
+            renderCrmTables();
         });
 
-        // TAB SWITCHING
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+        // Chuyển đổi giữa Website chính và Hệ thống CRM
+        function switchMainView(view) {
+            const pubWeb = document.getElementById('public-website-container');
+            const crmSys = document.getElementById('crm-system-container');
+
+            // Cập nhật menu sáng/tối
+            ['home', 'products', 'knowledge', 'about'].forEach(v => {
+                const btn = document.getElementById(`pub-nav-${v}`);
+                if(btn) btn.className = (v === view) ? "text-blue-400 font-semibold hover:text-white transition-colors" : "text-slate-300 hover:text-white transition-colors";
+            });
+
+            if (view === 'crm') {
+                pubWeb.classList.add('hidden');
+                crmSys.classList.remove('hidden');
+            } else {
+                crmSys.classList.add('hidden');
+                pubWeb.classList.remove('hidden');
+                document.querySelectorAll('.public-view').forEach(el => el.classList.add('hidden'));
+                document.getElementById(`view-${view}`).classList.remove('hidden');
+            }
+        }
+
+        // Chuyển tab trong CRM
+        function switchCrmTab(tabId) {
+            document.querySelectorAll('.crm-tab').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`crm-tab-${tabId}`).classList.remove('hidden');
 
             document.querySelectorAll('.nav-item').forEach(el => {
                 el.classList.remove('bg-blue-600', 'text-white');
                 el.classList.add('text-slate-300', 'hover:bg-slate-800');
             });
-
-            const activeNav = document.getElementById(`nav-${tabId}`);
-            if (activeNav) {
-                activeNav.classList.add('bg-blue-600', 'text-white');
-                activeNav.classList.remove('text-slate-300', 'hover:bg-slate-800');
-            }
+            document.getElementById(`nav-${tabId}`).classList.add('bg-blue-600', 'text-white');
         }
 
-        // VIEW MODE TOGGLE (TABLE vs KANBAN)
-        function toggleLoanView(mode) {
-            const tableView = document.getElementById('loans-table-view');
-            const kanbanView = document.getElementById('loans-kanban-view');
-            const btnTable = document.getElementById('view-btn-table');
-            const btnKanban = document.getElementById('view-btn-kanban');
-
-            if (mode === 'table') {
-                tableView.classList.remove('hidden');
-                kanbanView.classList.add('hidden');
-                btnTable.className = "px-3 py-1 rounded-md text-xs font-semibold bg-white text-slate-800 shadow-sm";
-                btnKanban.className = "px-3 py-1 rounded-md text-xs font-semibold text-slate-600 hover:text-slate-900";
-            } else {
-                tableView.classList.add('hidden');
-                kanbanView.classList.remove('hidden');
-                btnKanban.className = "px-3 py-1 rounded-md text-xs font-semibold bg-white text-slate-800 shadow-sm";
-                btnTable.className = "px-3 py-1 rounded-md text-xs font-semibold text-slate-600 hover:text-slate-900";
-            }
-        }
-
-        // RENDER LOANS (TABLE & KANBAN)
-        function renderLoans() {
-            const productFilter = document.getElementById('filter-product').value;
-            const statusFilter = document.getElementById('filter-status').value;
-
-            const filtered = loansData.filter(item => {
-                const matchProduct = (productFilter === 'ALL') || (item.product === productFilter);
-                const matchStatus = (statusFilter === 'ALL') || (item.status === statusFilter);
-                return matchProduct && matchStatus;
-            });
-
-            document.getElementById('loans-count').innerText = filtered.length;
-
-            // Render Table
-            const tableBody = document.getElementById('loans-table-body');
-            tableBody.innerHTML = filtered.map(item => `
-                <tr class="hover:bg-slate-50 border-b border-slate-100">
+        function renderCrmTables() {
+            // Urgent table
+            const urgentBody = document.getElementById('crm-urgent-table');
+            urgentBody.innerHTML = loansData.slice(0, 3).map(item => `
+                <tr>
                     <td class="py-3 px-4 font-mono font-bold text-blue-600">${item.id}</td>
-                    <td class="py-3 px-4 font-semibold text-slate-900">${item.customer}</td>
-                    <td class="py-3 px-4"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[11px]">${item.product}</span></td>
-                    <td class="py-3 px-4 font-bold">${formatMoney(item.amount)} VNĐ</td>
-                    <td class="py-3 px-4">${getCicBadge(item.cic)}</td>
-                    <td class="py-3 px-4">${getStatusBadge(item.status)}</td>
-                    <td class="py-3 px-4 text-slate-600">${item.officer}</td>
-                    <td class="py-3 px-4 text-right">
-                        <button onclick="openLoanDrawer('${item.id}')" class="text-blue-600 hover:text-blue-800 font-semibold">Xem</button>
-                    </td>
-                </tr>
-            `).join('');
-
-            // Render Kanban Columns
-            const cols = {
-                'Tiếp nhận': document.getElementById('kanban-col-tiepnhan'),
-                'Thẩm định': document.getElementById('kanban-col-thamdinh'),
-                'Chờ duyệt': document.getElementById('kanban-col-choduyet'),
-                'Đã duyệt': document.getElementById('kanban-col-daduyet'),
-                'Giải ngân': document.getElementById('kanban-col-giaingan')
-            };
-
-            Object.keys(cols).forEach(k => cols[k].innerHTML = '');
-
-            let counts = { 'Tiếp nhận': 0, 'Thẩm định': 0, 'Chờ duyệt': 0, 'Đã duyệt': 0, 'Giải ngân': 0 };
-
-            filtered.forEach(item => {
-                if (cols[item.status]) {
-                    counts[item.status]++;
-                    cols[item.status].innerHTML += `
-                        <div onclick="openLoanDrawer('${item.id}')" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md cursor-pointer space-y-2 transition-all">
-                            <div class="flex items-center justify-between">
-                                <span class="font-mono text-[11px] font-bold text-blue-600">${item.id}</span>
-                                ${getCicBadge(item.cic)}
-                            </div>
-                            <p class="font-bold text-slate-800 text-xs line-clamp-1">${item.customer}</p>
-                            <p class="text-xs font-extrabold text-slate-900">${formatMoney(item.amount)} VNĐ</p>
-                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10px] text-slate-500">
-                                <span>${item.product}</span>
-                                <span>${item.officer}</span>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-
-            document.getElementById('count-kanban-tiepnhan').innerText = counts['Tiếp nhận'];
-            document.getElementById('count-kanban-thamdinh').innerText = counts['Thẩm định'];
-            document.getElementById('count-kanban-choduyet').innerText = counts['Chờ duyệt'];
-            document.getElementById('count-kanban-daduyet').innerText = counts['Đã duyệt'];
-            document.getElementById('count-kanban-giaingan').innerText = counts['Giải ngân'];
-        }
-
-        // DASHBOARD URGENT TABLE
-        function renderDashboardUrgentTable() {
-            const tbody = document.getElementById('dashboard-urgent-table');
-            const urgentLoans = loansData.slice(0, 3);
-            tbody.innerHTML = urgentLoans.map(item => `
-                <tr class="hover:bg-slate-50">
-                    <td class="py-3 px-4 font-mono font-bold text-blue-600">${item.id}</td>
-                    <td class="py-3 px-4 font-semibold text-slate-900">${item.customer}</td>
+                    <td class="py-3 px-4 font-semibold">${item.customer}</td>
                     <td class="py-3 px-4">${item.product}</td>
-                    <td class="py-3 px-4 font-bold text-slate-900">${formatMoney(item.amount)} VNĐ</td>
-                    <td class="py-3 px-4">${getCicBadge(item.cic)}</td>
-                    <td class="py-3 px-4">${getStatusBadge(item.status)}</td>
-                    <td class="py-3 px-4 text-right">
-                        <button onclick="openLoanDrawer('${item.id}')" class="px-2.5 py-1 bg-blue-50 text-blue-600 rounded font-semibold text-xs hover:bg-blue-100">Xử lý ngay</button>
-                    </td>
+                    <td class="py-3 px-4 font-bold">${(item.amount/1e9).toFixed(1)} tỷ</td>
+                    <td class="py-3 px-4"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-semibold">${item.status}</span></td>
+                </tr>
+            `).join('');
+
+            // Loans body
+            const loansBody = document.getElementById('crm-loans-body');
+            loansBody.innerHTML = loansData.map(item => `
+                <tr>
+                    <td class="py-3 px-4 font-mono font-bold text-blue-600">${item.id}</td>
+                    <td class="py-3 px-4 font-semibold">${item.customer}</td>
+                    <td class="py-3 px-4">${item.product}</td>
+                    <td class="py-3 px-4 font-bold">${(item.amount/1e9).toFixed(1)} tỷ</td>
+                    <td class="py-3 px-4"><span class="bg-slate-100 text-slate-800 px-2 py-0.5 rounded-full font-semibold">${item.status}</span></td>
                 </tr>
             `).join('');
         }
 
-        // HELPERS
-        function formatMoney(num) {
-            return (num / 1000000000).toFixed(1) + ' tỷ';
-        }
-
-        function getStatusBadge(status) {
-            switch (status) {
-                case 'Tiếp nhận': return '<span class="bg-slate-100 text-slate-700 text-[11px] px-2 py-0.5 rounded-full font-semibold">Tiếp nhận</span>';
-                case 'Thẩm định': return '<span class="bg-amber-100 text-amber-800 text-[11px] px-2 py-0.5 rounded-full font-semibold">Đang thẩm định</span>';
-                case 'Chờ duyệt': return '<span class="bg-blue-100 text-blue-800 text-[11px] px-2 py-0.5 rounded-full font-semibold">Chờ duyệt</span>';
-                case 'Đã duyệt': return '<span class="bg-indigo-100 text-indigo-800 text-[11px] px-2 py-0.5 rounded-full font-semibold">Đã duyệt</span>';
-                case 'Giải ngân': return '<span class="bg-emerald-100 text-emerald-800 text-[11px] px-2 py-0.5 rounded-full font-semibold">Đã giải ngân</span>';
-                default: return status;
-            }
-        }
-
-        function getCicBadge(cic) {
-            if (cic.includes('AAA')) return '<span class="text-emerald-600 bg-emerald-50 text-[10px] px-2 py-0.5 rounded font-bold">CIC AAA</span>';
-            if (cic.includes('AA')) return '<span class="text-blue-600 bg-blue-50 text-[10px] px-2 py-0.5 rounded font-bold">CIC AA</span>';
-            return '<span class="text-amber-600 bg-amber-50 text-[10px] px-2 py-0.5 rounded font-bold">CIC B</span>';
-        }
-
-        // MODAL HANDLERS
         function openCreateLoanModal() { document.getElementById('modal-create-loan').classList.remove('hidden'); }
         function closeCreateLoanModal() { document.getElementById('modal-create-loan').classList.add('hidden'); }
-
-        function openEstimatorModal() { document.getElementById('modal-estimator').classList.remove('hidden'); }
-        function closeEstimatorModal() { document.getElementById('modal-estimator').classList.add('hidden'); }
-
-        function calculateEstimate() {
-            const rev = parseFloat(document.getElementById('est-revenue').value) || 0;
-            const col = parseFloat(document.getElementById('est-collateral').value) || 0;
-
-            const unsec = rev * 0.25;
-            const sec = col * 0.70;
-            const total = unsec + sec;
-
-            document.getElementById('est-unsecured-result').innerText = formatMoney(unsec) + ' VNĐ';
-            document.getElementById('est-secured-result').innerText = formatMoney(sec) + ' VNĐ';
-            document.getElementById('est-total-result').innerText = formatMoney(total) + ' VNĐ';
-        }
 
         function handleCreateLoan(e) {
             e.preventDefault();
             const newLoan = {
                 id: 'FB-2026-' + Math.floor(100 + Math.random() * 900),
                 customer: document.getElementById('input-customer').value,
-                mst: document.getElementById('input-mst').value,
                 product: document.getElementById('input-product').value,
                 amount: parseFloat(document.getElementById('input-amount').value),
-                cic: document.getElementById('input-cic').value,
-                status: 'Tiếp nhận',
-                officer: document.getElementById('input-officer').value,
-                date: new Date().toISOString().split('T')[0]
+                status: 'Tiếp nhận'
             };
-
             loansData.unshift(newLoan);
-            renderLoans();
-            renderDashboardUrgentTable();
+            renderCrmTables();
             closeCreateLoanModal();
-            alert('Đã khởi tạo hồ sơ vay thành công trên hệ thống FINBIZ!');
-        }
-
-        // DRAWER LOGIC
-        function openLoanDrawer(id) {
-            selectedLoanId = id;
-            const loan = loansData.find(item => item.id === id);
-            if (!loan) return;
-
-            document.getElementById('drawer-loan-id').innerText = loan.id;
-            document.getElementById('drawer-loan-content').innerHTML = `
-                <div class="space-y-4 text-xs">
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-                        <div class="flex justify-between"><span class="text-slate-500">Doanh nghiệp:</span> <strong class="text-slate-900">${loan.customer}</strong></div>
-                        <div class="flex justify-between"><span class="text-slate-500">Mã số thuế:</span> <strong class="font-mono">${loan.mst}</strong></div>
-                        <div class="flex justify-between"><span class="text-slate-500">Sản phẩm Vay:</span> <strong>${loan.product}</strong></div>
-                        <div class="flex justify-between"><span class="text-slate-500">Số tiền đề xuất:</span> <strong class="text-blue-600 font-bold text-sm">${formatMoney(loan.amount)} VNĐ</strong></div>
-                        <div class="flex justify-between"><span class="text-slate-500">Trạng thái hiện tại:</span> <span>${getStatusBadge(loan.status)}</span></div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-slate-800 uppercase text-[11px]">Báo cáo Phân tích Tài chính nhanh</h4>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-100">
-                                <span class="text-slate-500 block text-[10px]">Hệ số Khả năng Trả nợ (DSCR)</span>
-                                <strong class="text-blue-700 text-sm">1.42x</strong>
-                            </div>
-                            <div class="bg-teal-50/50 p-3 rounded-lg border border-teal-100">
-                                <span class="text-slate-500 block text-[10px]">Tỉ lệ Dòng tiền / Nợ ngắn hạn</span>
-                                <strong class="text-teal-700 text-sm">1.85x</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('drawer-loan-detail').classList.remove('translate-x-full');
-        }
-
-        function closeLoanDrawer() {
-            document.getElementById('drawer-loan-detail').classList.add('translate-x-full');
-        }
-
-        function updateStatusFromDrawer(newStatus) {
-            if (!selectedLoanId) return;
-            const loan = loansData.find(item => item.id === selectedLoanId);
-            if (loan) {
-                loan.status = newStatus;
-                renderLoans();
-                renderDashboardUrgentTable();
-                closeLoanDrawer();
-                alert(`Đã chuyển trạng thái hồ sơ ${selectedLoanId} sang: ${newStatus}`);
-            }
-        }
-
-        // CHART.JS INITIALIZATION
-        function initCharts() {
-            // Disbursement Chart
-            const ctx1 = document.getElementById('disbursementChart').getContext('2d');
-            new Chart(ctx1, {
-                type: 'line',
-                data: {
-                    labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10'],
-                    datasets: [
-                        {
-                            label: 'Giải ngân (Tỷ VNĐ)',
-                            data: [12, 15, 18, 14, 22, 25, 20, 28, 30, 24.8],
-                            borderColor: '#2563eb',
-                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                            fill: true,
-                            tension: 0.3
-                        },
-                        {
-                            label: 'Dư nợ Tích lũy (Tỷ VNĐ)',
-                            data: [80, 92, 105, 112, 125, 134, 138, 142, 145, 148.5],
-                            borderColor: '#10b981',
-                            borderDash: [5, 5],
-                            fill: false,
-                            tension: 0.3
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } }
-                }
-            });
-
-            // Portfolio Pie Chart
-            const ctx2 = document.getElementById('portfolioPieChart').getContext('2d');
-            new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Tín chấp SME', 'Tài trợ XNK', 'Thế chấp TSCĐ', 'Cá nhân'],
-                    datasets: [{
-                        data: [45, 25, 20, 10],
-                        backgroundColor: ['#2563eb', '#14b8a6', '#f59e0b', '#a855f7']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } }
-                }
-            });
+            alert('Khởi tạo hồ sơ vay thành công!');
         }
     </script>
 </body>
