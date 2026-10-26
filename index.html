@@ -36,9 +36,9 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased flex flex-col h-screen overflow-hidden">
 
-    <!-- TOP NAVIGATION BAR -->
+    <!-- TOP NAVIGATION BAR (Liên kết toàn bộ 5 phần chính) -->
     <header class="h-16 bg-navy-900 text-white px-6 flex items-center justify-between shrink-0 shadow-md z-30">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="switchMainView('home')">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="switchSection('home')">
             <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-teal-400 flex items-center justify-center font-bold text-white text-lg shadow-md">
                 F
             </div>
@@ -48,38 +48,32 @@
             </div>
         </div>
 
-        <!-- 5 Phần chính của Website -->
         <nav class="hidden md:flex items-center gap-6 text-xs font-medium">
-            <button onclick="switchMainView('home')" id="pub-nav-home" class="text-blue-400 font-semibold hover:text-white transition-colors">1. Trang chủ</button>
-            <button onclick="switchMainView('products')" id="pub-nav-products" class="text-slate-300 hover:text-white transition-colors">2. Sản phẩm (10 Gói)</button>
-            <button onclick="switchMainView('register-loan')" id="pub-nav-register-loan" class="text-slate-300 hover:text-white transition-colors">3. Đăng ký vay</button>
-            <button onclick="switchMainView('knowledge')" id="pub-nav-knowledge" class="text-slate-300 hover:text-white transition-colors">4. Kiến thức</button>
-            <button onclick="switchMainView('about')" id="pub-nav-about" class="text-slate-300 hover:text-white transition-colors">5. Về chúng tôi</button>
-        </nav>
-
-        <!-- Switch to CRM Portal Button -->
-        <div class="flex items-center gap-3">
-            <button onclick="switchMainView('crm')" class="flex items-center gap-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-colors">
-                <i data-lucide="shield-check" class="w-4 h-4"></i> Truy cập Hệ thống CRM Tín dụng
+            <button onclick="switchSection('home')" id="nav-btn-home" class="text-blue-400 font-semibold hover:text-white transition-colors">1. Trang chủ</button>
+            <button onclick="switchSection('products')" id="nav-btn-products" class="text-slate-300 hover:text-white transition-colors">2. Sản phẩm</button>
+            <button onclick="switchSection('knowledge')" id="nav-btn-knowledge" class="text-slate-300 hover:text-white transition-colors">3. Kiến thức</button>
+            <button onclick="switchSection('register')" id="nav-btn-register" class="text-slate-300 hover:text-white transition-colors">4. Đăng ký vay</button>
+            <button onclick="openCrmAuthModal()" id="nav-btn-crm" class="text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 bg-blue-600/30 px-3 py-1.5 rounded-lg border border-blue-500/30 text-blue-300">
+                <i data-lucide="lock" class="w-3.5 h-3.5"></i> 5. Đăng nhập/Đăng ký CRM
             </button>
-        </div>
+        </nav>
     </header>
 
-    <!-- MAIN CONTAINER -->
+    <!-- MAIN APP WRAPPER -->
     <div class="flex-1 flex overflow-hidden relative">
 
-        <!-- ================= PUBLIC WEBSITE VIEWS ================= -->
+        <!-- ================= PUBLIC WEBSITE VIEWS (Phần 1, 2, 3, 4) ================= -->
         <div id="public-website-container" class="flex-1 overflow-y-auto bg-white flex flex-col">
             
             <!-- 1. TRANG CHỦ -->
-            <div id="view-home" class="public-view space-y-12 pb-16">
+            <div id="section-home" class="website-section space-y-12 pb-16">
                 <div class="bg-gradient-to-r from-navy-900 to-navy-800 text-white py-20 px-6 text-center space-y-6">
                     <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Nền tảng Tài chính Số 2026</span>
                     <h2 class="text-4xl md:text-5xl font-extrabold max-w-3xl mx-auto leading-tight">Giải pháp Tín dụng & Vốn lưu động Tối ưu cho Doanh nghiệp SME</h2>
-                    <p class="text-slate-300 text-sm max-w-xl mx-auto">Cung cấp hệ sinh thái 10 sản phẩm tài chính toàn diện, minh bạch, giải ngân nhanh chóng với công nghệ thẩm định AI.</p>
+                    <p class="text-slate-300 text-sm max-w-xl mx-auto">Kết nối trực tiếp nguồn vốn minh bạch, giải ngân nhanh chóng với công nghệ thẩm định tự động thông minh.</p>
                     <div class="flex justify-center gap-4 pt-4">
-                        <button onclick="switchMainView('register-loan')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 font-semibold rounded-xl text-sm shadow-lg transition-all">Đăng ký Vay ngay</button>
-                        <button onclick="switchMainView('products')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold rounded-xl text-sm transition-all">Xem 10 Sản phẩm</button>
+                        <button onclick="switchSection('register')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 font-semibold rounded-xl text-sm shadow-lg transition-all">Đăng ký Vay ngay</button>
+                        <button onclick="switchSection('products')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold rounded-xl text-sm transition-all">Khám phá Sản phẩm</button>
                     </div>
                 </div>
 
@@ -102,12 +96,12 @@
                 </div>
             </div>
 
-            <!-- 2. SẢN PHẨM (MỞ RỘNG ĐẦY ĐỦ 10 SẢN PHẨM) -->
-            <div id="view-products" class="public-view space-y-10 py-12 px-6 max-w-6xl mx-auto hidden w-full">
+            <!-- 2. SẢN PHẨM (/workspaces/FIN-BIZ/san-pham) -->
+            <div id="section-products" class="website-section space-y-10 py-12 px-6 max-w-6xl mx-auto hidden w-full">
                 <div>
-                    <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Danh mục Tín dụng Đa dạng</span>
-                    <h2 class="text-2xl font-extrabold text-slate-900 mt-2">10 Sản phẩm Tài chính & Vốn lưu động FINBIZ</h2>
-                    <p class="text-xs text-slate-500 mt-1">Lựa chọn gói giải pháp tối ưu theo đặc thù kinh doanh và nhu cầu dòng tiền của doanh nghiệp bạn.</p>
+                    <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Hệ sinh thái Tín dụng</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Danh mục Sản phẩm Tài chính FINBIZ</h2>
+                    <p class="text-xs text-slate-500 mt-1">Lựa chọn gói giải pháp tối ưu phù hợp với nhu cầu vốn và dòng tiền của doanh nghiệp.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -115,121 +109,73 @@
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Doanh nghiệp SME</span>
-                            <h3 class="font-bold text-slate-900 text-base">1. Vay Tín chấp SME Hạn mức Cao</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Bổ sung vốn lưu động nhanh chóng không cần tài sản bảo đảm, hạn mức cấp linh hoạt từ 500 triệu đến 5 tỷ VNĐ[cite: 2.2].</p>
+                            <h3 class="font-bold text-slate-900 text-base">Vay Tín chấp SME Hạn mức Cao</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Hỗ trợ bổ sung vốn lưu động nhanh chóng không cần tài sản bảo đảm, hạn mức cấp đến 5 tỷ VNĐ[cite: 1].</p>
                         </div>
-                        <button onclick="selectProductAndRegister('Vay Tín chấp SME Hạn mức Cao')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                        <button onclick="selectProductAndGo('Vay Tín chấp SME Hạn mức Cao')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký vay ngay</button>
                     </div>
 
                     <!-- Sản phẩm 2 -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="bg-teal-50 text-teal-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Xuất Nhập Khẩu</span>
-                            <h3 class="font-bold text-slate-900 text-base">2. Tài trợ Xuất Nhập Khẩu Toàn diện</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Phát hành L/C, chiết khấu bộ chứng từ xuất khẩu và tài trợ trước/sau giao hàng với tỷ lệ tài trợ ngoại tệ lên tới 90%.</p>
+                            <h3 class="font-bold text-slate-900 text-base">Tài trợ Xuất Nhập Khẩu Toàn diện</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Phát hành L/C, chiết khấu bộ chứng từ xuất khẩu và tài trợ trước/sau giao hàng với tỷ lệ ưu đãi[cite: 1].</p>
                         </div>
-                        <button onclick="selectProductAndRegister('Tài trợ Xuất Nhập Khẩu Toàn diện')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                        <button onclick="selectProductAndGo('Tài trợ Xuất Nhập Khẩu Toàn diện')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký vay ngay</button>
                     </div>
 
                     <!-- Sản phẩm 3 -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="bg-amber-50 text-amber-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Tài sản đảm bảo</span>
-                            <h3 class="font-bold text-slate-900 text-base">3. Vay Thế chấp Tài sản Cố định (BĐS/Nhà xưởng)</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Giải ngân hạn mức lớn dựa trên tài sản bảo đảm là bất động sản hoặc nhà xưởng, thời hạn vay dài hạn đến 7 năm.</p>
+                            <h3 class="font-bold text-slate-900 text-base">Vay Thế chấp Tài sản Cố định</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Giải ngân hạn mức lớn dựa trên tài sản bảo đảm là bất động sản hoặc nhà xưởng, thời hạn đến 7 năm[cite: 1].</p>
                         </div>
-                        <button onclick="selectProductAndRegister('Vay Thế chấp Tài sản Cố định')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 4 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-purple-50 text-purple-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Hộ kinh doanh</span>
-                            <h3 class="font-bold text-slate-900 text-base">4. Tài trợ Thế chấp Quyền đòi nợ (AR Flex)</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Giải pháp cấp vốn linh hoạt dựa trên các khoản phải thu từ hợp đồng thương mại và hóa đơn GTGT của doanh nghiệp.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Tài trợ Thế chấp Quyền đòi nợ (AR Flex)')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 5 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Thấu chi</span>
-                            <h3 class="font-bold text-slate-900 text-base">5. Thấu chi Tài khoản Doanh nghiệp 24/7</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Sẵn sàng nguồn tiền mặt dự phòng ngay trong tài khoản thanh toán để chi trả lương, nhà cung cấp khẩn cấp.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Thấu chi Tài khoản Doanh nghiệp 24/7')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 6 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-rose-50 text-rose-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Dự án đầu tư</span>
-                            <h3 class="font-bold text-slate-900 text-base">6. Cho vay Đầu tư Dự án & Mua sắm Máy móc</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Tài trợ vốn trung và dài hạn giúp doanh nghiệp mở rộng dây chuyền sản xuất, nâng cấp công nghệ tự động hóa.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Cho vay Đầu tư Dự án & Mua sắm Máy móc')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 7 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-indigo-50 text-indigo-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Chuỗi cung ứng</span>
-                            <h3 class="font-bold text-slate-900 text-base">7. Tài trợ Chuỗi Cung ứng (Supply Chain Financing)</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Kết nối nhà phân phối, đại lý và nhà cung cấp chính hãng trong hệ sinh thái để tối ưu hóa vòng quay vốn lưu động.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Tài trợ Chuỗi Cung ứng')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 8 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-cyan-50 text-cyan-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Bảo lãnh ngân hàng</span>
-                            <h3 class="font-bold text-slate-900 text-base">8. Dịch vụ Bảo lãnh Doanh nghiệp</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Phát hành nhanh chóng các loại bảo lãnh dự thầu, bảo lãnh thực hiện hợp đồng, bảo lãnh thanh toán và bảo hành.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Dịch vụ Bảo lãnh Doanh nghiệp')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 9 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-orange-50 text-orange-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Start-up & Công nghệ</span>
-                            <h3 class="font-bold text-slate-900 text-base">9. Gói Tín dụng Đổi mới Sáng tạo & Start-up</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Dành riêng cho các doanh nghiệp công nghệ, thương mại điện tử có tiềm năng tăng trưởng cao nhưng thiếu tài sản thế chấp truyền thống.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Gói Tín dụng Đổi mới Sáng tạo & Start-up')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
-                    </div>
-
-                    <!-- Sản phẩm 10 -->
-                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                        <div class="space-y-3">
-                            <span class="bg-lime-50 text-lime-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Tái cấu trúc</span>
-                            <h3 class="font-bold text-slate-900 text-base">10. Gói Tái cấu trúc Tài chính & Khoản vay Doanh nghiệp</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Hỗ trợ doanh nghiệp cơ cấu lại các khoản vay hiện tại, kéo dài thời gian trả nợ và giảm áp lực dòng tiền ngắn hạn.</p>
-                        </div>
-                        <button onclick="selectProductAndRegister('Gói Tái cấu trúc Tài chính & Khoản vay')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                        <button onclick="selectProductAndGo('Vay Thế chấp Tài sản Cố định')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký vay ngay</button>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. ĐĂNG KÝ VAY (dang-ky-vay.html) -->
-            <div id="view-register-loan" class="public-view space-y-8 py-12 px-6 max-w-3xl mx-auto hidden w-full">
+            <!-- 3. KIẾN THỨC (/workspaces/FIN-BIZ/kien-thuc.html) -->
+            <div id="section-knowledge" class="website-section space-y-8 py-12 px-6 max-w-4xl mx-auto hidden w-full">
+                <div>
+                    <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Trung tâm Kiến thức FINBIZ</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Cẩm nang & Tin tức Tài chính Doanh nghiệp</h2>
+                    <p class="text-xs text-slate-500 mt-1">Cập nhật xu hướng tín dụng, cẩm nang quản trị dòng tiền và phân tích chuyên sâu[cite: 1].</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="text-[10px] text-blue-600 font-bold uppercase">Cẩm nang tín dụng • 24/10/2026</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Bí quyết tối ưu hóa dòng tiền và quản trị tỷ lệ DSCR cho doanh nghiệp SME</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Hệ số khả năng trả nợ (DSCR) đóng vai trò quyết định trong việc ngân hàng phê duyệt hạn mức tín dụng lớn. Khám phá cách chuẩn bị báo cáo tài chính đạt điểm tín nhiệm cao[cite: 1].</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="text-[10px] text-teal-600 font-bold uppercase">Chính sách Ngân hàng • 20/10/2026</span>
+                        <h3 class="font-bold text-slate-900 text-lg">Tổng hợp các gói vay ưu đãi lãi suất dành cho doanh nghiệp xuất nhập khẩu</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Ngân hàng Nhà nước ban hành thông tư hỗ trợ lãi suất ngoại tệ nhằm thúc đẩy kim ngạch xuất khẩu cuối năm[cite: 1].</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. ĐĂNG KÝ VAY (/workspaces/FIN-BIZ/dang-ky-vay.html) -->
+            <div id="section-register" class="website-section space-y-8 py-12 px-6 max-w-3xl mx-auto hidden w-full">
                 <div class="text-center space-y-2">
                     <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Cổng Tiếp nhận Trực tuyến</span>
                     <h2 class="text-2xl font-extrabold text-slate-900">Đăng ký Hạn mức Vay Tín dụng FINBIZ</h2>
-                    <p class="text-xs text-slate-500">Điền thông tin doanh nghiệp để hệ thống AI tự động ghi nhận và chuyển bộ phận thẩm định liên hệ trong 2 giờ.</p>
+                    <p class="text-xs text-slate-500">Điền thông tin để hệ thống AI ghi nhận và chuyển bộ phận thẩm định liên hệ trong 2 giờ[cite: 1].</p>
                 </div>
 
                 <form id="public-loan-form" onsubmit="handlePublicLoanSubmit(event)" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-5 text-xs">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Tên Doanh nghiệp / Khách hàng (*)</label>
-                            <input type="text" id="pub-customer" required placeholder="Ví dụ: Công ty Cổ phần Công nghệ ABC" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="pub-customer" required placeholder="Ví dụ: Công ty CP Công nghệ ABC" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
                         </div>
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Mã số thuế / Số CCCD (*)</label>
-                            <input type="text" id="pub-mst" required placeholder="Nhập 10 hoặc 13 chữ số MST" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="pub-mst" required placeholder="Nhập MST hoặc CCCD" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
                         </div>
                     </div>
 
@@ -237,16 +183,9 @@
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Gói sản phẩm Vay (*)</label>
                             <select id="pub-product" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
-                                <option value="Vay Tín chấp SME Hạn mức Cao">1. Vay Tín chấp SME Hạn mức Cao</option>
-                                <option value="Tài trợ Xuất Nhập Khẩu Toàn diện">2. Tài trợ Xuất Nhập Khẩu Toàn diện</option>
-                                <option value="Vay Thế chấp Tài sản Cố định">3. Vay Thế chấp Tài sản Cố định</option>
-                                <option value="Tài trợ Thế chấp Quyền đòi nợ (AR Flex)">4. Tài trợ Thế chấp Quyền đòi nợ (AR Flex)</option>
-                                <option value="Thấu chi Tài khoản Doanh nghiệp 24/7">5. Thấu chi Tài khoản Doanh nghiệp 24/7</option>
-                                <option value="Cho vay Đầu tư Dự án & Mua sắm Máy móc">6. Cho vay Đầu tư Dự án & Máy móc</option>
-                                <option value="Tài trợ Chuỗi Cung ứng">7. Tài trợ Chuỗi Cung ứng</option>
-                                <option value="Dịch vụ Bảo lãnh Doanh nghiệp">8. Dịch vụ Bảo lãnh Doanh nghiệp</option>
-                                <option value="Gói Tín dụng Đổi mới Sáng tạo & Start-up">9. Tín dụng Đổi mới Sáng tạo & Start-up</option>
-                                <option value="Gói Tái cấu trúc Tài chính & Khoản vay">10. Tái cấu trúc Tài chính & Khoản vay</option>
+                                <option value="Vay Tín chấp SME Hạn mức Cao">Vay Tín chấp SME Hạn mức Cao</option>
+                                <option value="Tài trợ Xuất Nhập Khẩu Toàn diện">Tài trợ Xuất Nhập Khẩu Toàn diện</option>
+                                <option value="Vay Thế chấp Tài sản Cố định">Vay Thế chấp Tài sản Cố định</option>
                             </select>
                         </div>
                         <div>
@@ -267,38 +206,10 @@
                     </div>
 
                     <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <p class="text-[11px] text-slate-400">Thông tin được bảo mật tuyệt đối theo tiêu chuẩn ngân hàng.</p>
-                        <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md transition-all">Gửi Đăng ký Vay</button>
+                        <p class="text-[11px] text-slate-400">Bảo mật thông tin tuyệt đối theo tiêu chuẩn ngân hàng[cite: 1].</p>
+                        <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-md transition-all">Gửi Đăng ký Vay (Đồng bộ vào CRM)</button>
                     </div>
                 </form>
-            </div>
-
-            <!-- 4. KIẾN THỨC TÀI CHÍNH -->
-            <div id="view-knowledge" class="public-view space-y-8 py-12 px-6 max-w-4xl mx-auto hidden w-full">
-                <div>
-                    <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Trung tâm Kiến thức FINBIZ</span>
-                    <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Cẩm nang & Tin tức Tài chính Doanh nghiệp</h2>
-                    <p class="text-xs text-slate-500 mt-1">Cập nhật xu hướng tín dụng, cẩm nang quản trị dòng tiền và phân tích chuyên sâu từ các chuyên gia.</p>
-                </div>
-
-                <div class="grid grid-cols-1 gap-6">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
-                        <span class="text-[10px] text-blue-600 font-bold uppercase">Cẩm nang tín dụng • 24/10/2026</span>
-                        <h3 class="font-bold text-slate-900 text-lg">Bí quyết tối ưu hóa dòng tiền và quản trị tỷ lệ DSCR cho doanh nghiệp SME</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Hệ số khả năng trả nợ (DSCR) đóng vai trò quyết định trong việc ngân hàng phê duyệt hạn mức tín dụng lớn...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. VỀ CHÚNG TÔI -->
-            <div id="view-about" class="public-view space-y-6 py-12 px-6 max-w-4xl mx-auto hidden w-full">
-                <div>
-                    <h2 class="text-2xl font-extrabold text-slate-900">Về chúng tôi - FINBIZ Financial Platform</h2>
-                    <p class="text-xs text-slate-500 mt-1">Đơn vị tiên phong ứng dụng công nghệ tài chính (Fintech) trong việc số hóa quy trình cấp tín dụng.</p>
-                </div>
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 text-xs text-slate-700 leading-relaxed">
-                    <p><strong>FINBIZ</strong> được thành lập với sứ mệnh giải quyết bài toán tiếp cận nguồn vốn ngân hàng cho hàng trăm ngàn doanh nghiệp vừa và nhỏ (SME) tại Việt Nam.</p>
-                </div>
             </div>
 
             <footer class="mt-auto bg-slate-900 text-slate-400 py-8 px-6 text-center text-xs space-y-2">
@@ -307,63 +218,140 @@
         </div>
 
 
-        <!-- ================= CRM SYSTEM CONTAINER ================= -->
-        <div id="crm-system-container" class="flex-1 flex h-full overflow-hidden hidden bg-slate-100">
-            <aside class="w-64 bg-navy-900 text-slate-300 flex flex-col justify-between shrink-0 shadow-xl z-20">
+        <!-- ================= 5. ĐĂNG NHẬP / ĐĂNG KÝ CRM (Chuẩn 100% Fundlok Dashboard) ================= -->
+        
+        <!-- Modal Đăng nhập / Đăng ký CRM -->
+        <div id="crm-auth-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-100 p-8 space-y-6">
+                <div class="text-center space-y-2">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white font-bold flex items-center justify-center mx-auto text-xl shadow-lg">F</div>
+                    <h3 class="font-extrabold text-slate-900 text-xl">Đăng nhập CRM FINBIZ</h3>
+                    <p class="text-xs text-slate-500">Hệ thống quản trị tín dụng và khách hàng chuẩn Fundlok</p>
+                </div>
+
+                <form onsubmit="handleCrmLogin(event)" class="space-y-4 text-xs">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Email / Tên đăng nhập hệ thống</label>
+                        <input type="email" id="crm-email" required value="tung.nguyen@finbiz.vn" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Mật khẩu bảo mật</label>
+                        <input type="password" id="crm-pass" required value="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all text-sm">
+                        Truy cập Dashboard CRM
+                    </button>
+                </form>
+
+                <div class="text-center pt-2">
+                    <button onclick="closeCrmAuthModal()" class="text-xs text-slate-400 hover:text-slate-600">← Quay lại website công khai</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard CRM Giao diện chuẩn Fundlok (Hiển thị sau khi đăng nhập thành công) -->
+        <div id="crm-dashboard-container" class="flex-1 flex h-full overflow-hidden hidden bg-slate-100">
+            <!-- Sidebar Fundlok Style -->
+            <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between shrink-0 shadow-xl z-20">
                 <div>
-                    <div class="h-16 flex items-center px-6 bg-navy-950 border-b border-slate-800 gap-3">
-                        <span class="bg-blue-600 text-white text-xs font-extrabold px-2 py-1 rounded">CRM PANEL</span>
-                        <span class="text-xs font-bold text-white">Quản trị Tín dụng</span>
+                    <div class="h-16 flex items-center px-6 bg-slate-950 border-b border-slate-800 gap-3">
+                        <div class="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs">F</div>
+                        <span class="text-xs font-extrabold text-white tracking-wider">FUNDLOK / FINBIZ CRM</span>
                     </div>
 
-                    <nav class="p-4 space-y-1">
-                        <button onclick="switchCrmTab('dashboard')" id="nav-dashboard" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white">
-                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Tổng quan CRM
+                    <nav class="p-4 space-y-1.5">
+                        <button onclick="switchCrmTab('dashboard')" id="crm-nav-dashboard" class="crm-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 text-white">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Tổng quan (Dashboard)
                         </button>
-                        <button onclick="switchCrmTab('loans')" id="nav-loans" class="nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                            <div class="flex items-center gap-3"><i data-lucide="file-text" class="w-5 h-5"></i> Hồ sơ Vay</div>
-                            <span id="crm-loan-badge" class="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full font-bold">3</span>
+                        <button onclick="switchCrmTab('loans')" id="crm-nav-loans" class="crm-nav-item w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold hover:bg-slate-800 text-slate-300">
+                            <div class="flex items-center gap-3"><i data-lucide="file-text" class="w-4 h-4"></i> Hồ sơ Tín dụng</div>
+                            <span id="crm-loan-badge" class="bg-blue-500/20 text-blue-400 text-[10px] px-2 py-0.5 rounded-full font-bold">3</span>
+                        </button>
+                        <button onclick="switchCrmTab('customers')" id="crm-nav-customers" class="crm-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold hover:bg-slate-800 text-slate-300">
+                            <i data-lucide="users" class="w-4 h-4"></i> Khách hàng & Leads
                         </button>
                     </nav>
                 </div>
 
-                <div class="p-4 border-t border-slate-800 bg-navy-950 flex items-center justify-between">
+                <div class="p-4 border-t border-slate-800 bg-slate-950 flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">NV</div>
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">TÙNG</div>
                         <div class="truncate">
-                            <p class="text-xs font-semibold text-white truncate">Nguyễn Văn Tùng</p>
-                            <p class="text-[10px] text-slate-400">Giám đốc Thẩm định</p>
+                            <p class="text-xs font-semibold text-white truncate">Nguyễn Thanh Tùng</p>
+                            <p class="text-[10px] text-slate-400">Quản trị viên CRM</p>
                         </div>
                     </div>
-                    <button onclick="switchMainView('home')" class="text-slate-400 hover:text-white" title="Quay về Website">
+                    <button onclick="handleCrmLogout()" class="text-slate-400 hover:text-white" title="Đăng xuất">
                         <i data-lucide="log-out" class="w-4 h-4"></i>
                     </button>
                 </div>
             </aside>
 
+            <!-- Main CRM Content Fundlok Dashboard -->
             <div class="flex-1 flex flex-col h-full overflow-hidden bg-slate-100">
-                <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shrink-0">
-                    <div class="text-xs font-semibold text-slate-600 flex items-center gap-2">
-                        <button onclick="switchMainView('home')" class="text-blue-600 hover:underline flex items-center gap-1"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Quay lại Website chính</button>
+                <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shadow-sm shrink-0">
+                    <div class="text-xs font-bold text-slate-800">
+                        FUNDLOK DASHBOARD - QUẢN TRỊ TÍN DỤNG & KHÁCH HÀNG
                     </div>
+                    <button onclick="switchSection('home')" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                        <i data-lucide="globe" class="w-3.5 h-3.5"></i> Quay về Website chính
+                    </button>
                 </header>
 
-                <main class="flex-1 overflow-y-auto p-6">
-                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
-                        <h3 class="font-bold text-slate-800 text-sm">Danh sách Hồ sơ Vay Đồng bộ từ Web Form</h3>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse">
-                               <thead>
-                                    <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
-                                        <th class="py-3 px-4">Mã HS</th>
-                                        <th class="py-3 px-4">Doanh nghiệp / Khách hàng</th>
-                                        <th class="py-3 px-4">Sản phẩm Vay</th>
-                                        <th class="py-3 px-4">Số tiền</th>
-                                        <th class="py-3 px-4">Trạng thái</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="crm-loans-table-body" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
-                            </table>
+                <main class="flex-1 overflow-y-auto p-6 space-y-6">
+                    <!-- CRM TAB: DASHBOARD -->
+                    <div id="crm-pane-dashboard" class="crm-pane space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase">Tổng dư nợ hệ thống</span>
+                                <p class="text-2xl font-extrabold text-slate-900">148.5 Tỷ VNĐ</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase">Hồ sơ từ Web Form (Realtime)</span>
+                                <p id="crm-stat-count" class="text-2xl font-extrabold text-blue-600">3 Hồ sơ</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase">Giải ngân tháng này</span>
+                                <p class="text-2xl font-extrabold text-emerald-600">24.8 Tỷ VNĐ</p>
+                            </div>
+                            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="text-[11px] font-bold text-slate-400 uppercase">Tỷ lệ Nợ xấu (NPL)</span>
+                                <p class="text-2xl font-extrabold text-rose-600">0.85%</p>
+                            </div>
+                        </div>
+
+                        <!-- Data Table Đồng bộ từ Web form Đăng ký vay -->
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
+                            <h3 class="font-extrabold text-slate-900 text-sm">Danh sách Hồ sơ Vay Tín dụng Đăng ký Trực tuyến</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-bold text-slate-500 uppercase">
+                                            <th class="py-3 px-4">Mã HS</th>
+                                            <th class="py-3 px-4">Doanh nghiệp / Khách hàng</th>
+                                            <th class="py-3 px-4">Sản phẩm Vay</th>
+                                            <th class="py-3 px-4">Số tiền đề xuất</th>
+                                            <th class="py-3 px-4">Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="crm-loans-table-body" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CRM TAB: LOANS -->
+                    <div id="crm-pane-loans" class="crm-pane space-y-6 hidden">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="font-extrabold text-slate-900 text-sm">Quản lý Toàn bộ Hồ sơ Tín dụng (Fundlok Core)</h3>
+                            <p class="text-xs text-slate-500">Mọi thông tin khách hàng nộp qua mục Đăng ký Vay sẽ tự động đồng bộ vào bảng quản trị này.</p>
+                        </div>
+                    </div>
+
+                    <!-- CRM TAB: CUSTOMERS -->
+                    <div id="crm-pane-customers" class="crm-pane space-y-6 hidden">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="font-extrabold text-slate-900 text-sm">Cơ sở Dữ liệu Khách hàng & Leads</h3>
                         </div>
                     </div>
                 </main>
@@ -372,7 +360,7 @@
 
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC LIÊN KẾT LIỀN MẠCH -->
     <script>
         let loansData = [
             { id: 'FB-2026-092', customer: 'Công ty Cổ phần Công nghệ An Phát', product: 'Vay Tín chấp SME Hạn mức Cao', amount: 10000000000, status: 'Chờ duyệt' },
@@ -385,37 +373,46 @@
             renderCrmTables();
         });
 
-        function switchMainView(view) {
+        // 1. Điều hướng 4 phần chính của website công khai
+        function switchSection(sectionId) {
             const pubWeb = document.getElementById('public-website-container');
-            const crmSys = document.getElementById('crm-system-container');
+            const crmDash = document.getElementById('crm-dashboard-container');
+            const authModal = document.getElementById('crm-auth-modal');
 
-            ['home', 'products', 'register-loan', 'knowledge', 'about'].forEach(v => {
-                const btn = document.getElementById(`pub-nav-${v}`);
-                if(btn) btn.className = (v === view) ? "text-blue-400 font-semibold hover:text-white transition-colors" : "text-slate-300 hover:text-white transition-colors";
+            crmDash.classList.add('hidden');
+            authModal.classList.add('hidden');
+            pubWeb.classList.remove('hidden');
+
+            ['home', 'products', 'knowledge', 'register'].forEach(sec => {
+                const btn = document.getElementById(`nav-btn-${sec}`);
+                if (btn) {
+                    btn.className = (sec === sectionId) ? "text-blue-400 font-semibold hover:text-white transition-colors" : "text-slate-300 hover:text-white transition-colors";
+                }
+                const pane = document.getElementById(`section-${sec}`);
+                if (pane) {
+                    pane.classList.add('hidden');
+                }
             });
 
-            if (view === 'crm') {
-                pubWeb.classList.add('hidden');
-                crmSys.classList.remove('hidden');
-            } else {
-                crmSys.classList.add('hidden');
-                pubWeb.classList.remove('hidden');
-                document.querySelectorAll('.public-view').forEach(el => el.classList.add('hidden'));
-                document.getElementById(`view-${view}`).classList.remove('hidden');
+            const targetPane = document.getElementById(`section-${sectionId}`);
+            if (targetPane) {
+                targetPane.classList.remove('hidden');
             }
         }
 
-        function selectProductAndRegister(productName) {
-            switchMainView('register-loan');
+        // 2. Chuyển từ Sản phẩm sang trang Đăng ký vay có chọn sẵn sản phẩm
+        function selectProductAndGo(productName) {
+            switchSection('register');
             const selectEl = document.getElementById('pub-product');
-            for(let i=0; i<selectEl.options.length; i++) {
-                if(selectEl.options[i].value === productName || selectEl.options[i].text.includes(productName)) {
+            for (let i = 0; i < selectEl.options.length; i++) {
+                if (selectEl.options[i].value === productName || selectEl.options[i].text.includes(productName)) {
                     selectEl.selectedIndex = i;
                     break;
                 }
             }
         }
 
+        // 3. Xử lý gửi form đăng ký vay và đồng bộ tự động vào CRM
         function handlePublicLoanSubmit(e) {
             e.preventDefault();
             const newLoan = {
@@ -429,8 +426,42 @@
             loansData.unshift(newLoan);
             renderCrmTables();
             document.getElementById('public-loan-form').reset();
-            alert('Đăng ký vay thành công! Hệ thống FINBIZ đã ghi nhận hồ sơ và chuyển vào hệ thống quản trị CRM.');
-            switchMainView('crm');
+            alert('Đăng ký vay thành công! Hệ thống FINBIZ đã ghi nhận và chuyển dữ liệu trực tiếp vào Dashboard CRM.');
+            openCrmAuthModal();
+        }
+
+        // 4. Quản lý Đăng nhập / Đăng ký CRM (Phần 5)
+        function openCrmAuthModal() {
+            document.getElementById('crm-auth-modal').classList.remove('hidden');
+        }
+
+        function closeCrmAuthModal() {
+            document.getElementById('crm-auth-modal').classList.add('hidden');
+        }
+
+        function handleCrmLogin(e) {
+            e.preventDefault();
+            document.getElementById('crm-auth-modal').classList.add('hidden');
+            document.getElementById('public-website-container').classList.add('hidden');
+            document.getElementById('crm-dashboard-container').classList.remove('hidden');
+        }
+
+        function handleCrmLogout() {
+            document.getElementById('crm-dashboard-container').classList.add('hidden');
+            switchSection('home');
+            openCrmAuthModal();
+        }
+
+        // 5. Điều hướng các tab trong Fundlok Dashboard CRM
+        function switchCrmTab(tabId) {
+            document.querySelectorAll('.crm-pane').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`crm-pane-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.crm-nav-item').forEach(el => {
+                el.classList.remove('bg-blue-600', 'text-white');
+                el.classList.add('hover:bg-slate-800', 'text-slate-300');
+            });
+            document.getElementById(`crm-nav-${tabId}`).classList.add('bg-blue-600', 'text-white');
         }
 
         function renderCrmTables() {
@@ -445,6 +476,7 @@
                 </tr>
             `).join('');
             document.getElementById('crm-loan-badge').innerText = loansData.length;
+            document.getElementById('crm-stat-count').innerText = loansData.length + ' Hồ sơ';
         }
     </script>
 </body>
