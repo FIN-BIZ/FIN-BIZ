@@ -51,7 +51,7 @@
         <!-- 5 Phần chính của Website -->
         <nav class="hidden md:flex items-center gap-6 text-xs font-medium">
             <button onclick="switchMainView('home')" id="pub-nav-home" class="text-blue-400 font-semibold hover:text-white transition-colors">1. Trang chủ</button>
-            <button onclick="switchMainView('products')" id="pub-nav-products" class="text-slate-300 hover:text-white transition-colors">2. Sản phẩm</button>
+            <button onclick="switchMainView('products')" id="pub-nav-products" class="text-slate-300 hover:text-white transition-colors">2. Sản phẩm (10 Gói)</button>
             <button onclick="switchMainView('register-loan')" id="pub-nav-register-loan" class="text-slate-300 hover:text-white transition-colors">3. Đăng ký vay</button>
             <button onclick="switchMainView('knowledge')" id="pub-nav-knowledge" class="text-slate-300 hover:text-white transition-colors">4. Kiến thức</button>
             <button onclick="switchMainView('about')" id="pub-nav-about" class="text-slate-300 hover:text-white transition-colors">5. Về chúng tôi</button>
@@ -76,10 +76,10 @@
                 <div class="bg-gradient-to-r from-navy-900 to-navy-800 text-white py-20 px-6 text-center space-y-6">
                     <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Nền tảng Tài chính Số 2026</span>
                     <h2 class="text-4xl md:text-5xl font-extrabold max-w-3xl mx-auto leading-tight">Giải pháp Tín dụng & Vốn lưu động Tối ưu cho Doanh nghiệp SME</h2>
-                    <p class="text-slate-300 text-sm max-w-xl mx-auto">Kết nối trực tiếp nguồn vốn minh bạch, giải ngân nhanh chóng với công nghệ thẩm định tự động thông minh.</p>
+                    <p class="text-slate-300 text-sm max-w-xl mx-auto">Cung cấp hệ sinh thái 10 sản phẩm tài chính toàn diện, minh bạch, giải ngân nhanh chóng với công nghệ thẩm định AI.</p>
                     <div class="flex justify-center gap-4 pt-4">
                         <button onclick="switchMainView('register-loan')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 font-semibold rounded-xl text-sm shadow-lg transition-all">Đăng ký Vay ngay</button>
-                        <button onclick="switchMainView('products')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold rounded-xl text-sm transition-all">Khám phá Sản phẩm</button>
+                        <button onclick="switchMainView('products')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold rounded-xl text-sm transition-all">Xem 10 Sản phẩm</button>
                     </div>
                 </div>
 
@@ -102,39 +102,113 @@
                 </div>
             </div>
 
-            <!-- 2. SẢN PHẨM -->
+            <!-- 2. SẢN PHẨM (MỞ RỘNG ĐẦY ĐỦ 10 SẢN PHẨM) -->
             <div id="view-products" class="public-view space-y-10 py-12 px-6 max-w-6xl mx-auto hidden w-full">
                 <div>
-                    <h2 class="text-2xl font-extrabold text-slate-900">Danh mục Sản phẩm Tín dụng FINBIZ</h2>
-                    <p class="text-xs text-slate-500 mt-1">Lựa chọn giải pháp tài chính phù hợp nhất với quy mô và nhu cầu của doanh nghiệp bạn.</p>
+                    <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Danh mục Tín dụng Đa dạng</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mt-2">10 Sản phẩm Tài chính & Vốn lưu động FINBIZ</h2>
+                    <p class="text-xs text-slate-500 mt-1">Lựa chọn gói giải pháp tối ưu theo đặc thù kinh doanh và nhu cầu dòng tiền của doanh nghiệp bạn.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Sản phẩm 1 -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Doanh nghiệp SME</span>
-                            <h3 class="font-bold text-slate-900 text-lg">Vay Tín chấp SME</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Hỗ trợ bổ sung vốn lưu động nhanh chóng không cần tài sản bảo đảm dành cho doanh nghiệp hoạt động trên 2 năm.</p>
+                            <h3 class="font-bold text-slate-900 text-base">1. Vay Tín chấp SME Hạn mức Cao</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Bổ sung vốn lưu động nhanh chóng không cần tài sản bảo đảm, hạn mức cấp linh hoạt từ 500 triệu đến 5 tỷ VNĐ[cite: 2.2].</p>
                         </div>
-                        <button onclick="switchMainView('register-loan')" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký Ngay</button>
+                        <button onclick="selectProductAndRegister('Vay Tín chấp SME Hạn mức Cao')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
                     </div>
 
+                    <!-- Sản phẩm 2 -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="bg-teal-50 text-teal-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Xuất Nhập Khẩu</span>
-                            <h3 class="font-bold text-slate-900 text-lg">Tài trợ XNK Toàn diện</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Giải pháp phát hành L/C, chiết khấu bộ chứng từ và tài trợ trước/sau giao hàng với tỷ lệ tài trợ cao.</p>
+                            <h3 class="font-bold text-slate-900 text-base">2. Tài trợ Xuất Nhập Khẩu Toàn diện</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Phát hành L/C, chiết khấu bộ chứng từ xuất khẩu và tài trợ trước/sau giao hàng với tỷ lệ tài trợ ngoại tệ lên tới 90%.</p>
                         </div>
-                        <button onclick="switchMainView('register-loan')" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký Ngay</button>
+                        <button onclick="selectProductAndRegister('Tài trợ Xuất Nhập Khẩu Toàn diện')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
                     </div>
 
+                    <!-- Sản phẩm 3 -->
                     <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="bg-amber-50 text-amber-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Tài sản đảm bảo</span>
-                            <h3 class="font-bold text-slate-900 text-lg">Vay Thế chấp TSCĐ</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed">Giải ngân hạn mức lớn dựa trên tài sản bảo đảm là bất động sản, nhà xưởng hoặc máy móc thiết bị.</p>
+                            <h3 class="font-bold text-slate-900 text-base">3. Vay Thế chấp Tài sản Cố định (BĐS/Nhà xưởng)</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Giải ngân hạn mức lớn dựa trên tài sản bảo đảm là bất động sản hoặc nhà xưởng, thời hạn vay dài hạn đến 7 năm.</p>
                         </div>
-                        <button onclick="switchMainView('register-loan')" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký Ngay</button>
+                        <button onclick="selectProductAndRegister('Vay Thế chấp Tài sản Cố định')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 4 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-purple-50 text-purple-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Hộ kinh doanh</span>
+                            <h3 class="font-bold text-slate-900 text-base">4. Tài trợ Thế chấp Quyền đòi nợ (AR Flex)</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Giải pháp cấp vốn linh hoạt dựa trên các khoản phải thu từ hợp đồng thương mại và hóa đơn GTGT của doanh nghiệp.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Tài trợ Thế chấp Quyền đòi nợ (AR Flex)')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 5 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Thấu chi</span>
+                            <h3 class="font-bold text-slate-900 text-base">5. Thấu chi Tài khoản Doanh nghiệp 24/7</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Sẵn sàng nguồn tiền mặt dự phòng ngay trong tài khoản thanh toán để chi trả lương, nhà cung cấp khẩn cấp.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Thấu chi Tài khoản Doanh nghiệp 24/7')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 6 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-rose-50 text-rose-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Dự án đầu tư</span>
+                            <h3 class="font-bold text-slate-900 text-base">6. Cho vay Đầu tư Dự án & Mua sắm Máy móc</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Tài trợ vốn trung và dài hạn giúp doanh nghiệp mở rộng dây chuyền sản xuất, nâng cấp công nghệ tự động hóa.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Cho vay Đầu tư Dự án & Mua sắm Máy móc')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 7 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-indigo-50 text-indigo-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Chuỗi cung ứng</span>
+                            <h3 class="font-bold text-slate-900 text-base">7. Tài trợ Chuỗi Cung ứng (Supply Chain Financing)</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Kết nối nhà phân phối, đại lý và nhà cung cấp chính hãng trong hệ sinh thái để tối ưu hóa vòng quay vốn lưu động.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Tài trợ Chuỗi Cung ứng')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 8 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-cyan-50 text-cyan-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Bảo lãnh ngân hàng</span>
+                            <h3 class="font-bold text-slate-900 text-base">8. Dịch vụ Bảo lãnh Doanh nghiệp</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Phát hành nhanh chóng các loại bảo lãnh dự thầu, bảo lãnh thực hiện hợp đồng, bảo lãnh thanh toán và bảo hành.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Dịch vụ Bảo lãnh Doanh nghiệp')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 9 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-orange-50 text-orange-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Start-up & Công nghệ</span>
+                            <h3 class="font-bold text-slate-900 text-base">9. Gói Tín dụng Đổi mới Sáng tạo & Start-up</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Dành riêng cho các doanh nghiệp công nghệ, thương mại điện tử có tiềm năng tăng trưởng cao nhưng thiếu tài sản thế chấp truyền thống.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Gói Tín dụng Đổi mới Sáng tạo & Start-up')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
+                    </div>
+
+                    <!-- Sản phẩm 10 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="bg-lime-50 text-lime-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Tái cấu trúc</span>
+                            <h3 class="font-bold text-slate-900 text-base">10. Gói Tái cấu trúc Tài chính & Khoản vay Doanh nghiệp</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">Hỗ trợ doanh nghiệp cơ cấu lại các khoản vay hiện tại, kéo dài thời gian trả nợ và giảm áp lực dòng tiền ngắn hạn.</p>
+                        </div>
+                        <button onclick="selectProductAndRegister('Gói Tái cấu trúc Tài chính & Khoản vay')" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm">Đăng ký ngay</button>
                     </div>
                 </div>
             </div>
@@ -163,9 +237,16 @@
                         <div>
                             <label class="block font-semibold text-slate-700 mb-1">Gói sản phẩm Vay (*)</label>
                             <select id="pub-product" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
-                                <option value="Vay Tín chấp SME">Vay Tín chấp SME</option>
-                                <option value="Tài trợ XNK">Tài trợ Xuất Nhập khẩu</option>
-                                <option value="Thế chấp TSCĐ">Vay Thế chấp TSCĐ</option>
+                                <option value="Vay Tín chấp SME Hạn mức Cao">1. Vay Tín chấp SME Hạn mức Cao</option>
+                                <option value="Tài trợ Xuất Nhập Khẩu Toàn diện">2. Tài trợ Xuất Nhập Khẩu Toàn diện</option>
+                                <option value="Vay Thế chấp Tài sản Cố định">3. Vay Thế chấp Tài sản Cố định</option>
+                                <option value="Tài trợ Thế chấp Quyền đòi nợ (AR Flex)">4. Tài trợ Thế chấp Quyền đòi nợ (AR Flex)</option>
+                                <option value="Thấu chi Tài khoản Doanh nghiệp 24/7">5. Thấu chi Tài khoản Doanh nghiệp 24/7</option>
+                                <option value="Cho vay Đầu tư Dự án & Mua sắm Máy móc">6. Cho vay Đầu tư Dự án & Máy móc</option>
+                                <option value="Tài trợ Chuỗi Cung ứng">7. Tài trợ Chuỗi Cung ứng</option>
+                                <option value="Dịch vụ Bảo lãnh Doanh nghiệp">8. Dịch vụ Bảo lãnh Doanh nghiệp</option>
+                                <option value="Gói Tín dụng Đổi mới Sáng tạo & Start-up">9. Tín dụng Đổi mới Sáng tạo & Start-up</option>
+                                <option value="Gói Tái cấu trúc Tài chính & Khoản vay">10. Tái cấu trúc Tài chính & Khoản vay</option>
                             </select>
                         </div>
                         <div>
@@ -192,7 +273,7 @@
                 </form>
             </div>
 
-            <!-- 4. KIẾN THỨC TÀI CHÍNH (kien-thuc.html integrated) -->
+            <!-- 4. KIẾN THỨC TÀI CHÍNH -->
             <div id="view-knowledge" class="public-view space-y-8 py-12 px-6 max-w-4xl mx-auto hidden w-full">
                 <div>
                     <span class="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Trung tâm Kiến thức FINBIZ</span>
@@ -201,37 +282,10 @@
                 </div>
 
                 <div class="grid grid-cols-1 gap-6">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-2 text-[11px] text-slate-400">
-                            <span class="text-blue-600 font-bold uppercase">Cẩm nang tín dụng</span>
-                            <span>•</span>
-                            <span>24/10/2026</span>
-                        </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
+                        <span class="text-[10px] text-blue-600 font-bold uppercase">Cẩm nang tín dụng • 24/10/2026</span>
                         <h3 class="font-bold text-slate-900 text-lg">Bí quyết tối ưu hóa dòng tiền và quản trị tỷ lệ DSCR cho doanh nghiệp SME</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Hệ số khả năng trả nợ (DSCR) đóng vai trò quyết định trong việc ngân hàng phê duyệt hạn mức tín dụng lớn. Khám phá cách doanh nghiệp chuẩn bị báo cáo tài chính để đạt điểm tín nhiệm cao nhất...</p>
-                        <button class="text-xs text-blue-600 font-semibold hover:underline flex items-center gap-1">Đọc chi tiết <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
-                    </div>
-
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-2 text-[11px] text-slate-400">
-                            <span class="text-teal-600 font-bold uppercase">Chính sách Ngân hàng</span>
-                            <span>•</span>
-                            <span>20/10/2026</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg">Tổng hợp các gói vay ưu đãi lãi suất dành riêng cho doanh nghiệp xuất nhập khẩu cuối năm</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Ngân hàng Nhà nước vừa ban hành thông tư hỗ trợ lãi suất ngoại tệ nhằm thúc đẩy kim ngạch xuất khẩu. Tìm hiểu các điều kiện tiếp cận nguồn vốn ưu đãi này...</p>
-                        <button class="text-xs text-blue-600 font-semibold hover:underline flex items-center gap-1">Đọc chi tiết <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
-                    </div>
-
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3 hover:shadow-md transition-shadow">
-                        <div class="flex items-center gap-2 text-[11px] text-slate-400">
-                            <span class="text-amber-600 font-bold uppercase">Quản trị Tài chính</span>
-                            <span>•</span>
-                            <span>15/10/2026</span>
-                        </div>
-                        <h3 class="font-bold text-slate-900 text-lg">So sánh hình thức Vay Tín chấp SME và Vay Thế chấp Tài sản: Doanh nghiệp nên chọn gì?</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed">Phân tích ưu nhược điểm, hạn mức và thời gian giải ngân của hai hình thức vay phổ biến nhất để đưa ra quyết định tài chính chiến lược phù hợp với từng giai đoạn phát triển...</p>
-                        <button class="text-xs text-blue-600 font-semibold hover:underline flex items-center gap-1">Đọc chi tiết <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+                        <p class="text-xs text-slate-600 leading-relaxed">Hệ số khả năng trả nợ (DSCR) đóng vai trò quyết định trong việc ngân hàng phê duyệt hạn mức tín dụng lớn...</p>
                     </div>
                 </div>
             </div>
@@ -244,7 +298,6 @@
                 </div>
                 <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 text-xs text-slate-700 leading-relaxed">
                     <p><strong>FINBIZ</strong> được thành lập với sứ mệnh giải quyết bài toán tiếp cận nguồn vốn ngân hàng cho hàng trăm ngàn doanh nghiệp vừa và nhỏ (SME) tại Việt Nam.</p>
-                    <p>Chúng tôi kết hợp hệ thống chấm điểm tín dụng thông minh (AI Credit Scoring) với mạng lưới đối tác ngân hàng uy tín hàng đầu nhằm rút ngắn thời gian xử lý hồ sơ từ vài tuần xuống chỉ còn trong vòng 24 giờ làm việc.</p>
                 </div>
             </div>
 
@@ -271,9 +324,6 @@
                             <div class="flex items-center gap-3"><i data-lucide="file-text" class="w-5 h-5"></i> Hồ sơ Vay</div>
                             <span id="crm-loan-badge" class="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full font-bold">3</span>
                         </button>
-                        <button onclick="switchCrmTab('underwriting')" id="nav-underwriting" class="nav-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors hover:bg-slate-800 text-slate-300">
-                            <i data-lucide="shield-check" class="w-5 h-5"></i> Thẩm định & Duyệt
-                        </button>
                     </nav>
                 </div>
 
@@ -299,49 +349,22 @@
                 </header>
 
                 <main class="flex-1 overflow-y-auto p-6">
-                    <!-- CRM TAB 1: DASHBOARD -->
-                    <div id="crm-tab-dashboard" class="crm-tab space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
-                                <span class="text-xs font-semibold text-slate-500 uppercase">Tổng dư nợ</span>
-                                <p class="text-2xl font-bold text-slate-900">148.5 tỷ VNĐ</p>
-                            </div>
-                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
-                                <span class="text-xs font-semibold text-slate-500 uppercase">Hồ sơ từ Web Form</span>
-                                <p id="crm-stat-count" class="text-2xl font-bold text-blue-600">3 Hồ sơ</p>
-                            </div>
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
+                        <h3 class="font-bold text-slate-800 text-sm">Danh sách Hồ sơ Vay Đồng bộ từ Web Form</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                               <thead>
+                                    <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
+                                        <th class="py-3 px-4">Mã HS</th>
+                                        <th class="py-3 px-4">Doanh nghiệp / Khách hàng</th>
+                                        <th class="py-3 px-4">Sản phẩm Vay</th>
+                                        <th class="py-3 px-4">Số tiền</th>
+                                        <th class="py-3 px-4">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="crm-loans-table-body" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
+                            </table>
                         </div>
-
-                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-5 space-y-4">
-                            <h3 class="font-bold text-slate-800 text-sm">Danh sách Hồ sơ Vay Mới Nhận (Đồng bộ từ dang-ky-vay.html)</h3>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="bg-slate-50 border-y border-slate-200 text-[11px] font-semibold text-slate-500 uppercase">
-                                            <th class="py-3 px-4">Mã HS</th>
-                                            <th class="py-3 px-4">Doanh nghiệp / Khách hàng</th>
-                                            <th class="py-3 px-4">Sản phẩm Vay</th>
-                                            <th class="py-3 px-4">Số tiền</th>
-                                            <th class="py-3 px-4">Trạng thái</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="crm-loans-table-body" class="divide-y divide-slate-100 text-xs text-slate-700"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CRM TAB 2: LOANS -->
-                    <div id="crm-tab-loans" class="crm-tab space-y-6 hidden">
-                        <h2 class="text-xl font-bold text-slate-900">Quản lý Tất cả Hồ sơ Tín dụng</h2>
-                        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-4">
-                            <p class="text-xs text-slate-500">Tất cả hồ sơ đăng ký qua trang `dang-ky-vay.html` đều được đồng bộ tại đây.</p>
-                        </div>
-                    </div>
-
-                    <!-- CRM TAB 3: UNDERWRITING -->
-                    <div id="crm-tab-underwriting" class="crm-tab space-y-6 hidden">
-                        <h2 class="text-xl font-bold text-slate-900">Thẩm định Tín dụng</h2>
                     </div>
                 </main>
             </div>
@@ -352,9 +375,9 @@
     <!-- JAVASCRIPT LOGIC -->
     <script>
         let loansData = [
-            { id: 'FB-2026-092', customer: 'Công ty Cổ phần Công nghệ An Phát', product: 'Vay Tín chấp SME', amount: 10000000000, status: 'Chờ duyệt' },
-            { id: 'FB-2026-088', customer: 'Tập đoàn Logistics Toàn Cầu', product: 'Tài trợ XNK', amount: 15000000000, status: 'Đã duyệt' },
-            { id: 'FB-2026-075', customer: 'Công ty TNHH Sản xuất Dệt may Việt Á', product: 'Thế chấp TSCĐ', amount: 8000000000, status: 'Thẩm định' }
+            { id: 'FB-2026-092', customer: 'Công ty Cổ phần Công nghệ An Phát', product: 'Vay Tín chấp SME Hạn mức Cao', amount: 10000000000, status: 'Chờ duyệt' },
+            { id: 'FB-2026-088', customer: 'Tập đoàn Logistics Toàn Cầu', product: 'Tài trợ Xuất Nhập Khẩu Toàn diện', amount: 15000000000, status: 'Đã duyệt' },
+            { id: 'FB-2026-075', customer: 'Công ty TNHH Sản xuất Dệt may Việt Á', product: 'Vay Thế chấp Tài sản Cố định', amount: 8000000000, status: 'Thẩm định' }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -362,7 +385,6 @@
             renderCrmTables();
         });
 
-        // Chuyển đổi tab website chính gồm 5 phần
         function switchMainView(view) {
             const pubWeb = document.getElementById('public-website-container');
             const crmSys = document.getElementById('crm-system-container');
@@ -383,19 +405,17 @@
             }
         }
 
-        // Chuyển tab trong CRM
-        function switchCrmTab(tabId) {
-            document.querySelectorAll('.crm-tab').forEach(el => el.classList.add('hidden'));
-            document.getElementById(`crm-tab-${tabId}`).classList.remove('hidden');
-
-            document.querySelectorAll('.nav-item').forEach(el => {
-                el.classList.remove('bg-blue-600', 'text-white');
-                el.classList.add('text-slate-300', 'hover:bg-slate-800');
-            });
-            document.getElementById(`nav-${tabId}`).classList.add('bg-blue-600', 'text-white');
+        function selectProductAndRegister(productName) {
+            switchMainView('register-loan');
+            const selectEl = document.getElementById('pub-product');
+            for(let i=0; i<selectEl.options.length; i++) {
+                if(selectEl.options[i].value === productName || selectEl.options[i].text.includes(productName)) {
+                    selectEl.selectedIndex = i;
+                    break;
+                }
+            }
         }
 
-        // Xử lý gửi biểu mẫu từ trang Đăng ký vay và đẩy vào CRM
         function handlePublicLoanSubmit(e) {
             e.preventDefault();
             const newLoan = {
@@ -425,7 +445,6 @@
                 </tr>
             `).join('');
             document.getElementById('crm-loan-badge').innerText = loansData.length;
-            document.getElementById('crm-stat-count').innerText = loansData.length + ' Hồ sơ';
         }
     </script>
 </body>
