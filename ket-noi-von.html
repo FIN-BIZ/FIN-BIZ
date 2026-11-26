@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#174c3b">
+  <meta name="description" content="Gửi nhu cầu kết nối vốn doanh nghiệp đến FINBIZ. Chuyên viên sẽ liên hệ để trao đổi phương án và hướng dẫn hồ sơ phù hợp.">
+  <title>Kết Nối Vốn Doanh Nghiệp | FINBIZ</title>
+  <link rel="icon" type="image/png" href="LOGO.png">
+  <link rel="apple-touch-icon" href="LOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/finbiz-visual-refresh.css">
+  <link rel="stylesheet" href="assets/finbiz-capital-portal.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span class="topbar-note">Giải pháp tài chính cho doanh nghiệp</span>
+      <div class="topbar-meta">
+        <a href="tel:+84358608830">0358 608 830</a>
+        <a href="mailto:nguyentung1809@outlook.com">nguyentung1809@outlook.com</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Điều hướng chính">
+    <a class="brand" href="index.html" aria-label="FIN BIZ">
+      <img class="brand-logo" src="LOGO.png" alt="Logo FIN BIZ" width="52" height="52">
+      <span><span class="brand-name">FIN BIZ</span><span class="brand-caption">Tư vấn &amp; giải pháp</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Mở menu" onclick="toggleFinbizMenu(this)"><span class="menu-glyph"></span></button>
+    <div class="nav-links" id="main-menu">
+      <a href="index.html">Trang chủ</a>
+      <a href="doanh-nghiep-xuat-khau.html">Doanh nghiệp xuất khẩu</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <a href="kien-thuc.html">Kiến thức</a>
+      <a class="active" href="ket-noi-von.html" aria-current="page" data-capital-portal-link>Kết nối vốn</a>
+      <a class="nav-cta" href="dang-ky-vay.html">Đăng ký vay ↗</a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="capital-hero">
+      <div class="wrap capital-hero-inner">
+        <div class="capital-hero-copy">
+          <p class="eyebrow">FINBIZ · Kết nối nguồn vốn</p>
+          <h1>Đưa nhu cầu vốn của doanh nghiệp đến đúng hướng</h1>
+          <p>Chia sẻ thông tin ban đầu để đội ngũ FINBIZ tìm hiểu nhu cầu, trao đổi giải pháp phù hợp và hướng dẫn các bước chuẩn bị tiếp theo.</p>
+          <a class="capital-button" href="#gui-nhu-cau">Bắt đầu kết nối <span aria-hidden="true">↗</span></a>
+          <div class="capital-trust-line"><span aria-hidden="true">●</span> Trao đổi trực tiếp · Rõ bước tiếp theo · Không cam kết cấp vốn</div>
+        </div>
+        <aside class="capital-hero-card" aria-label="Các bước kết nối">
+          <span class="capital-card-kicker">HÀNH TRÌNH KẾT NỐI</span>
+          <ol class="capital-steps">
+            <li><span>01</span><div><strong>Gửi nhu cầu</strong><small>Thông tin cơ bản về doanh nghiệp và mục đích sử dụng vốn.</small></div></li>
+            <li><span>02</span><div><strong>Trao đổi cùng chuyên viên</strong><small>Rà soát sơ bộ và làm rõ phương án phù hợp.</small></div></li>
+            <li><span>03</span><div><strong>Chuẩn bị hồ sơ</strong><small>Nhận danh mục chứng từ và hướng dẫn kênh gửi an toàn.</small></div></li>
+          </ol>
+        </aside>
+      </div>
+    </header>
+
+    <section class="capital-main wrap" id="gui-nhu-cau">
+      <div class="capital-section-heading">
+        <div>
+          <p class="eyebrow">BƯỚC 01 · THÔNG TIN BAN ĐẦU</p>
+          <h2>Cho chúng tôi biết doanh nghiệp đang cần gì</h2>
+        </div>
+        <p>Thông tin có dấu <span aria-hidden="true">*</span> là bắt buộc.</p>
+      </div>
+
+      <div class="capital-form-layout">
+        <form class="capital-form-card" id="capitalLeadForm" data-lead-form onsubmit="submitFinbizLead(event)">
+          <div class="capital-form-section">
+            <h3><span>1</span> Nhu cầu kết nối</h3>
+            <div class="capital-fields">
+              <div class="capital-field">
+                <label for="businessType">Mô hình kinh doanh <span>*</span></label>
+                <select id="businessType" name="businessType" required>
+                  <option value="Doanh nghiệp SMEs">Doanh nghiệp SMEs</option>
+                  <option value="Hộ kinh doanh cá thể">Hộ kinh doanh</option>
+                  <option value="Doanh nghiệp xuất khẩu">Doanh nghiệp xuất khẩu</option>
+                </select>
+              </div>
+              <div class="capital-field">
+                <label for="loanProduct">Nhu cầu vốn chính <span>*</span></label>
+                <select id="loanProduct" name="loanProduct" required>
+                  <option value="Vốn lưu động / bổ sung vốn kinh doanh">Vốn lưu động / bổ sung vốn kinh doanh</option>
+                  <option value="Tài trợ theo đơn hàng và hợp đồng">Tài trợ theo đơn hàng và hợp đồng</option>
+                  <option value="Tài trợ theo khoản phải thu / hóa đơn">Tài trợ theo khoản phải thu / hóa đơn</option>
+                  <option value="Đầu tư tài sản và mở rộng sản xuất">Đầu tư tài sản và mở rộng sản xuất</option>
+                  <option value="Cơ cấu hoặc chuyển đổi khoản vay">Cơ cấu hoặc chuyển đổi khoản vay</option>
+                  <option value="Khác">Khác</option>
+                </select>
+              </div>
+              <div class="capital-field">
+                <label for="loanAmount">Số vốn dự kiến cần <span>*</span></label>
+                <input id="loanAmount" name="loanAmount" type="text" inputmode="numeric" placeholder="Ví dụ: 2.000.000.000 VNĐ" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="capital-form-section">
+            <h3><span>2</span> Thông tin liên hệ</h3>
+            <div class="capital-fields">
+              <div class="capital-field">
+                <label for="company">Tên doanh nghiệp / hộ kinh doanh <span>*</span></label>
+                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Tên đơn vị" required>
+              </div>
+              <div class="capital-field">
+                <label for="fullname">Người đại diện liên hệ <span>*</span></label>
+                <input id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Họ và tên" required>
+              </div>
+              <div class="capital-field">
+                <label for="phone">Số điện thoại <span>*</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="09xx xxx xxx" required>
+              </div>
+              <div class="capital-field capital-field-wide">
+                <label for="note">Thông tin bổ sung</label>
+                <textarea id="note" name="note" rows="4" placeholder="Ngành nghề, thời điểm cần vốn, nguồn trả nợ dự kiến hoặc câu hỏi của doanh nghiệp"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="capital-privacy-note">
+            <strong>Chưa gửi chứng từ ở bước này.</strong>
+            <p>Không nhập số tài khoản, mật khẩu, mã OTP hay thông tin nhạy cảm vào phần ghi chú. Nếu cần hồ sơ chi tiết, FINBIZ sẽ trao đổi và hướng dẫn kênh tiếp nhận phù hợp.</p>
+          </div>
+          <label class="capital-consent">
+            <input type="checkbox" name="consent" required>
+            <span>Tôi đồng ý để FINBIZ liên hệ theo thông tin đã cung cấp nhằm trao đổi về nhu cầu tư vấn. <span>*</span></span>
+          </label>
+          <button class="capital-submit" type="submit">Gửi nhu cầu kết nối <span aria-hidden="true">↗</span></button>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="capital-aside">
+          <section class="capital-aside-card">
+            <p class="capital-card-kicker">ĐỂ BUỔI TRAO ĐỔI HIỆU QUẢ HƠN</p>
+            <h3>Doanh nghiệp có thể chuẩn bị</h3>
+            <ul class="capital-checklist">
+              <li>Thông tin đăng ký doanh nghiệp và ngành nghề hoạt động</li>
+              <li>Báo cáo tài chính hoặc số liệu doanh thu gần nhất</li>
+              <li>Hợp đồng, đơn hàng, hóa đơn liên quan đến nhu cầu vốn</li>
+              <li>Thông tin khoản vay hiện hữu và tài sản bảo đảm (nếu có)</li>
+            </ul>
+            <p class="capital-aside-footnote">Đây là danh mục tham khảo, yêu cầu thực tế tùy thuộc vào tổ chức tài trợ và phương án được xem xét.</p>
+          </section>
+          <section class="capital-help-card">
+            <span class="capital-help-icon" aria-hidden="true">?</span>
+            <div>
+              <h3>Cần trao đổi trước?</h3>
+              <p>Liên hệ trực tiếp với FINBIZ để được hướng dẫn bước đầu.</p>
+              <a href="tel:+84358608830">0358 608 830 <span aria-hidden="true">↗</span></a>
+            </div>
+          </section>
+          <p class="capital-disclaimer">FINBIZ hỗ trợ tư vấn và kết nối; không phải tổ chức cho vay và không cam kết khoản vay được phê duyệt. Hạn mức, lãi suất, phí và điều kiện do đơn vị tài trợ quyết định.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="footer-brand" href="index.html"><img class="footer-logo" src="LOGO.png" alt="" width="38" height="38"><span>FIN BIZ</span></a>
+      <div class="footer-links">
+        <a href="index.html">Trang chủ</a>
+        <a href="san-pham.html">Sản phẩm</a>
+        <a href="kien-thuc.html">Kiến thức</a>
+        <a href="ket-noi-von.html">Kết nối vốn</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-widget" aria-label="Kênh liên hệ nhanh">
+    <a href="https://zalo.me/0358608830" target="_blank" rel="noopener noreferrer" class="widget-btn zalo" aria-label="Chat Zalo">Zalo</a>
+    <a href="tel:+84358608830" class="widget-btn phone" aria-label="Gọi điện">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+  <script src="assets/finbiz-site.js"></script>
+</body>
+</html>

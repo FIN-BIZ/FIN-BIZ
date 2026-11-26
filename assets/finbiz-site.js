@@ -9,6 +9,27 @@
     button?.setAttribute('aria-label', isOpen ? 'Đóng menu' : 'Mở menu');
   };
 
+  const navLinks = document.querySelector('.nav-links');
+  const brand = document.querySelector('.nav .brand');
+  if (navLinks && brand && !navLinks.querySelector('[data-capital-portal-link]')) {
+    const portalUrl = new URL('ket-noi-von.html', new URL(brand.getAttribute('href'), window.location.href));
+    const portalLink = document.createElement('a');
+    portalLink.href = portalUrl.href;
+    portalLink.textContent = 'Kết nối vốn';
+    portalLink.dataset.capitalPortalLink = '';
+
+    if (window.location.pathname === portalUrl.pathname) {
+      portalLink.classList.add('active');
+      portalLink.setAttribute('aria-current', 'page');
+    }
+
+    const navActions = navLinks.querySelector('.nav-actions');
+    const navCta = navLinks.querySelector('.nav-cta');
+    const insertionPoint = navActions || navCta;
+    if (insertionPoint) insertionPoint.before(portalLink);
+    else navLinks.append(portalLink);
+  }
+
   window.submitFinbizLead = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
