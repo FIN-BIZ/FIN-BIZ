@@ -689,8 +689,8 @@ img, svg {
 }
 footer {
   padding: 28px 0;
-  background: #12392f;
-  color: #e8f0eb;
+  background: #e3e8e5;
+  color: #566659;
   font-size: 12px;
 }
 .footer-inner {
@@ -703,9 +703,9 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: inherit;
+  color: var(--pine);
   font-weight: 700;
-  letter-spacing: .8px;
+  letter-spacing: 1px;
 }
 .footer-logo {
   width: 36px;
@@ -719,7 +719,7 @@ footer {
   font-weight: 600;
 }
 .footer-links a:hover {
-  color: #b9d1c0;
+  color: var(--pine-soft);
 }
 
 @media (max-width: 760px) {
