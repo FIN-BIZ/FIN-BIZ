@@ -42,14 +42,39 @@ const setStatus = (element, message, isError = false) => {
 const readableError = (error) => {
   const message = String(error?.message || '').toLowerCase();
   const code = String(error?.code || '').toLowerCase();
-  if (message.includes('invalid login credentials')) return 'Không thể xác thực email. Hãy dùng liên kết mới nhất trong hộp thư.';
-  if (message.includes('error sending confirmation email') || message.includes('error sending email')) {
-    return 'Supabase không gửi được email xác minh. Kiểm tra Authentication → SMTP Settings: bật Custom SMTP, xác nhận host/port/user/password và địa chỉ From đã được nhà cung cấp xác minh. Nếu chưa cấu hình SMTP riêng, email mặc định chỉ gửi tới thành viên tổ chức và bị giới hạn khoảng 2 email/giờ. Xem Authentication → Logs để biết lý do từ máy chủ email; không tắt xác minh email để né lỗi.';
+  const status = Number(error?.status);
+
+  // Kiểm tra rate limit trước lỗi gửi email tổng quát.
+  if (
+    status === 429
+    || code === 'over_email_send_rate_limit'
+    || message.includes('rate limit')
+    || message.includes('too many requests')
+    || message.includes('only request this after')
+  ) {
+    return 'Yêu cầu gửi email đang bị giới hạn hoặc còn trong thời gian chờ. Đừng gửi lại liên tục; hãy đợi cooldown rồi thử một lần. Nếu vẫn lỗi, kiểm tra Authentication → Rate Limits và cấu hình Custom SMTP.';
   }
-  if (message.includes('rate limit') || code.includes('rate_limit') || error?.status === 429) {
-    return 'Supabase đang giới hạn gửi email. Chờ ít nhất 60 giây rồi thử lại một lần. Nếu vẫn lỗi, kiểm tra Authentication → Rate Limits và SMTP trong Dashboard; SMTP mặc định chỉ gửi khoảng 2 email/giờ và chỉ tới email thành viên tổ chức.';
+
+  if (
+    code === 'email_address_not_authorized'
+    || message.includes('email address not authorized')
+  ) {
+    return 'Máy chủ email chưa cho phép gửi tới địa chỉ này. Kiểm tra Custom SMTP và xác minh địa chỉ From; nếu dùng SMTP mặc định, email người nhận có thể không được hỗ trợ.';
   }
-  return error?.message || 'Đã xảy ra lỗi không xác định.';
+
+  if (message.includes('invalid login credentials')) {
+    return 'Không thể xác thực email. Hãy dùng liên kết mới nhất trong hộp thư.';
+  }
+
+  if (
+    message.includes('error sending confirmation email')
+    || message.includes('error sending email')
+    || message.includes('error sending magic link email')
+  ) {
+    return 'Supabase không gửi được email. Kiểm tra Authentication → SMTP Settings và xem Authentication → Logs để biết lỗi phía máy chủ email.';
+  }
+
+  return 'Không thể hoàn tất yêu cầu. Hãy kiểm tra Authentication → Logs hoặc thử lại sau.';
 };
 
 if (!(authForm instanceof HTMLFormElement)
