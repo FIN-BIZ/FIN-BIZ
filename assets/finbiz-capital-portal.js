@@ -40,8 +40,12 @@ const setStatus = (element, message, isError = false) => {
 };
 
 const readableError = (error) => {
-  if (error?.message?.includes('Invalid login credentials')) return 'Không thể xác thực email. Hãy dùng liên kết mới nhất trong hộp thư.';
-  if (error?.message?.includes('Email rate limit exceeded')) return 'Đã gửi quá nhiều email trong thời gian ngắn. Vui lòng thử lại sau.';
+  const message = String(error?.message || '').toLowerCase();
+  const code = String(error?.code || '').toLowerCase();
+  if (message.includes('invalid login credentials')) return 'Không thể xác thực email. Hãy dùng liên kết mới nhất trong hộp thư.';
+  if (message.includes('rate limit') || code.includes('rate_limit') || error?.status === 429) {
+    return 'Supabase đang giới hạn gửi email. Chờ ít nhất 60 giây rồi thử lại một lần. Nếu vẫn lỗi, kiểm tra Authentication → Rate Limits và SMTP trong Dashboard; SMTP mặc định chỉ gửi tối đa 2 email/giờ cho toàn project.';
+  }
   return error?.message || 'Đã xảy ra lỗi không xác định.';
 };
 
