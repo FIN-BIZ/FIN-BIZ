@@ -72,7 +72,32 @@
       </div>
 
       <div class="capital-form-layout">
-        <form class="capital-form-card" id="capitalLeadForm" data-lead-form onsubmit="submitFinbizLead(event)">
+        <div class="capital-submission-column">
+          <section class="capital-auth-card" id="capitalAuthPanel" aria-labelledby="capitalAuthTitle">
+            <div class="capital-auth-heading">
+              <span class="capital-help-icon" aria-hidden="true">🔒</span>
+              <div>
+                <h3 id="capitalAuthTitle">Đăng nhập bảo mật để gửi hồ sơ</h3>
+                <p>Dùng email doanh nghiệp để nhận liên kết đăng nhập một lần. Tệp không được công khai và tài khoản khác không thể truy cập hồ sơ của bạn.</p>
+              </div>
+            </div>
+            <form id="capitalAuthForm" onsubmit="return false">
+              <div class="capital-auth-controls">
+                <label class="sr-only" for="capitalEmail">Email doanh nghiệp</label>
+                <input id="capitalEmail" name="email" type="email" autocomplete="email" placeholder="Email doanh nghiệp" required>
+                <button class="capital-auth-button" type="submit">Gửi liên kết đăng nhập</button>
+              </div>
+              <p class="form-status" id="capitalAuthStatus" role="status" aria-live="polite">Cổng tải hồ sơ chưa được kích hoạt. Chưa có tệp nào được gửi. Vui lòng liên hệ FINBIZ qua số 0358 608 830.</p>
+            </form>
+            <div class="capital-session" id="capitalSession" hidden>
+              <span>Đã đăng nhập: <strong id="capitalSessionEmail"></strong></span>
+              <button class="capital-signout" id="capitalSignOut" type="button">Đăng xuất</button>
+            </div>
+          </section>
+
+          <form class="capital-form-card" id="capitalLeadForm" onsubmit="return false">
+            <fieldset class="capital-application-fields" id="capitalApplicationFields" disabled>
+              <legend class="sr-only">Thông tin yêu cầu vốn và hồ sơ doanh nghiệp</legend>
           <div class="capital-form-section">
             <h3><span>1</span> Nhu cầu kết nối</h3>
             <div class="capital-fields">
@@ -97,7 +122,7 @@
               </div>
               <div class="capital-field">
                 <label for="loanAmount">Số vốn dự kiến cần <span>*</span></label>
-                <input id="loanAmount" name="loanAmount" type="text" inputmode="numeric" placeholder="Ví dụ: 2.000.000.000 VNĐ" required>
+                <input id="loanAmount" name="loanAmount" type="text" inputmode="numeric" maxlength="100" placeholder="Ví dụ: 2.000.000.000 VNĐ" required>
               </div>
             </div>
           </div>
@@ -107,34 +132,42 @@
             <div class="capital-fields">
               <div class="capital-field">
                 <label for="company">Tên doanh nghiệp / hộ kinh doanh <span>*</span></label>
-                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Tên đơn vị" required>
+                <input id="company" name="company" type="text" maxlength="200" autocomplete="organization" placeholder="Tên đơn vị" required>
               </div>
               <div class="capital-field">
                 <label for="fullname">Người đại diện liên hệ <span>*</span></label>
-                <input id="fullname" name="fullname" type="text" autocomplete="name" placeholder="Họ và tên" required>
+                <input id="fullname" name="fullname" type="text" maxlength="200" autocomplete="name" placeholder="Họ và tên" required>
               </div>
               <div class="capital-field">
                 <label for="phone">Số điện thoại <span>*</span></label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="09xx xxx xxx" required>
+                <input id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel" inputmode="tel" placeholder="09xx xxx xxx" required>
               </div>
               <div class="capital-field capital-field-wide">
                 <label for="note">Thông tin bổ sung</label>
-                <textarea id="note" name="note" rows="4" placeholder="Ngành nghề, thời điểm cần vốn, nguồn trả nợ dự kiến hoặc câu hỏi của doanh nghiệp"></textarea>
+                <textarea id="note" name="note" rows="4" maxlength="3000" placeholder="Ngành nghề, thời điểm cần vốn, nguồn trả nợ dự kiến hoặc câu hỏi của doanh nghiệp"></textarea>
               </div>
             </div>
           </div>
 
           <div class="capital-privacy-note">
-            <strong>Chưa gửi chứng từ ở bước này.</strong>
-            <p>Không nhập số tài khoản, mật khẩu, mã OTP hay thông tin nhạy cảm vào phần ghi chú. Nếu cần hồ sơ chi tiết, FINBIZ sẽ trao đổi và hướng dẫn kênh tiếp nhận phù hợp.</p>
+            <strong>Tệp được lưu riêng tư.</strong>
+            <p>Chỉ tải tài liệu liên quan đến nhu cầu vốn. Không tải mật khẩu, mã OTP hoặc thông tin đăng nhập ngân hàng. FINBIZ không bao giờ yêu cầu các thông tin này.</p>
+          </div>
+          <div class="capital-file-field">
+            <label for="capitalFiles">Hồ sơ doanh nghiệp <span>*</span></label>
+            <input id="capitalFiles" name="documents" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple required>
+            <small>PDF, Word, Excel, JPG hoặc PNG · tối đa 10 tệp · 20 MB mỗi tệp · tổng tối đa 50 MB</small>
+            <ul id="capitalFileList" class="capital-file-list" aria-live="polite"></ul>
           </div>
           <label class="capital-consent">
             <input type="checkbox" name="consent" required>
             <span>Tôi đồng ý để FINBIZ liên hệ theo thông tin đã cung cấp nhằm trao đổi về nhu cầu tư vấn. <span>*</span></span>
           </label>
-          <button class="capital-submit" type="submit">Gửi nhu cầu kết nối <span aria-hidden="true">↗</span></button>
-          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        </form>
+          <button class="capital-submit" type="submit">Gửi hồ sơ bảo mật <span aria-hidden="true">↗</span></button>
+          <p class="form-status" id="capitalApplicationStatus" role="status" aria-live="polite"></p>
+            </fieldset>
+          </form>
+        </div>
 
         <aside class="capital-aside">
           <section class="capital-aside-card">
@@ -181,5 +214,7 @@
     </a>
   </div>
   <script src="assets/finbiz-site.js"></script>
+  <script src="assets/finbiz-supabase-config.js"></script>
+  <script type="module" src="assets/finbiz-capital-portal.js"></script>
 </body>
 </html>

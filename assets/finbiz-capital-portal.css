@@ -62,13 +62,36 @@
 .capital-section-heading > p { margin: 0 0 5px; color: var(--muted); font-size: 12px; }
 .capital-section-heading > p span, .capital-field label span, .capital-consent span span { color: #b4443d; }
 .capital-form-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(270px, .7fr); align-items: start; gap: 26px; }
-.capital-form-card, .capital-aside-card, .capital-help-card {
+.capital-submission-column { display: grid; gap: 16px; }
+.capital-form-card, .capital-auth-card, .capital-aside-card, .capital-help-card {
   border: 1px solid var(--line);
   border-radius: 14px;
   background: #fff;
   box-shadow: var(--shadow-card);
 }
 .capital-form-card { padding: clamp(22px, 4vw, 38px); }
+.capital-auth-card { padding: 21px 24px; }
+.capital-auth-card [hidden] { display: none !important; }
+.capital-auth-heading { display: flex; align-items: flex-start; gap: 13px; }
+.capital-auth-heading h3 { margin: 0 0 4px; color: var(--pine); font-size: 15px; }
+.capital-auth-heading p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.capital-auth-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; margin-top: 16px; }
+.capital-auth-controls input { min-width: 0; min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfb; font: inherit; font-size: 13px; }
+.capital-auth-button, .capital-signout { min-height: 42px; padding: 0 15px; border: 1px solid var(--pine); border-radius: 8px; background: var(--pine); color: #fff; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.capital-auth-button:hover, .capital-signout:hover { background: #103b2e; }
+.capital-session { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.capital-session strong { color: var(--pine); }
+.capital-signout { min-height: 34px; background: #fff; color: var(--pine); }
+.capital-signout:hover { color: #fff; }
+.capital-auth-card .form-status { margin: 10px 0 0; }
+.capital-application-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
+.capital-application-fields:disabled { opacity: .58; }
+.capital-file-field { margin-top: 22px; }
+.capital-file-field label { display: block; margin-bottom: 7px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.capital-file-field label span { color: #b4443d; }
+.capital-file-field input[type="file"] { display: block; width: 100%; padding: 10px; border: 1px dashed #b9c9bf; border-radius: 8px; background: #fbfcfb; color: var(--muted); font: inherit; font-size: 12px; }
+.capital-file-field small { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; }
+.capital-file-list { display: grid; gap: 4px; margin: 9px 0 0; padding-left: 18px; color: var(--muted); font-size: 11px; overflow-wrap: anywhere; }
 .capital-form-section + .capital-form-section { margin-top: 31px; padding-top: 28px; border-top: 1px solid var(--line); }
 .capital-form-section h3 { display: flex; align-items: center; gap: 11px; margin: 0 0 21px; color: var(--pine); font-size: 16px; }
 .capital-form-section h3 span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #e8f0eb; font-size: 12px; }
@@ -122,6 +145,8 @@
   .capital-hero-copy h1 { font-size: clamp(36px, 10vw, 48px); }
   .capital-section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
   .capital-fields, .capital-aside { grid-template-columns: 1fr; }
+  .capital-auth-controls { grid-template-columns: 1fr; }
+  .capital-auth-button { width: 100%; }
   .capital-field-wide, .capital-disclaimer { grid-column: auto; }
   .capital-form-card { padding: 21px; }
 }
