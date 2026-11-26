@@ -37,12 +37,22 @@ create table if not exists public.capital_documents (
   id uuid primary key default gen_random_uuid(),
   application_id uuid not null references public.capital_applications(id) on delete cascade,
   owner_id uuid not null references auth.users(id) on delete cascade,
+  document_type text not null,
   file_path text not null unique,
   file_name text not null check (char_length(file_name) between 1 and 255),
   mime_type text not null check (char_length(mime_type) <= 120),
   file_size bigint not null check (file_size between 1 and 20971520),
   created_at timestamptz not null default now()
 );
+
+alter table public.capital_documents
+  add column if not exists document_type text not null default 'other';
+alter table public.capital_documents alter column document_type drop default;
+alter table public.capital_documents
+  drop constraint if exists capital_documents_document_type_check;
+alter table public.capital_documents
+  add constraint capital_documents_document_type_check
+  check (document_type in ('legal', 'financial', 'operational', 'collateral', 'other'));
 
 create index if not exists capital_applications_owner_created_idx
   on public.capital_applications (owner_id, created_at desc);
@@ -71,11 +81,12 @@ create policy "Businesses create documents for their applications"
   on public.capital_documents for insert to authenticated
   with check (
     owner_id = (select auth.uid())
-    and file_path like (select auth.uid())::text || '/' || application_id::text || '/%'
+    and document_type in ('legal', 'financial', 'operational', 'collateral')
+    and file_path like (select auth.uid())::text || '/' || application_id::text || '/' || document_type || '/%'
     and exists (
       select 1
       from public.capital_applications application
-      where application.id = application_id
+      where application.id::text = capital_documents.application_id::text
         and application.owner_id = (select auth.uid())
     )
   );
@@ -91,6 +102,13 @@ create policy "Businesses upload documents to their private folder"
   with check (
     bucket_id = 'capital-documents'
     and (storage.foldername(name))[1] = (select auth.uid())::text
+    and (storage.foldername(name))[3] in ('legal', 'financial', 'operational', 'collateral')
+    and exists (
+      select 1
+      from public.capital_applications application
+      where application.id::text = (storage.foldername(name))[2]
+        and application.owner_id = (select auth.uid())
+    )
   );
 
 drop policy if exists "Businesses read documents from their private folder" on storage.objects;
@@ -99,4 +117,11 @@ create policy "Businesses read documents from their private folder"
   using (
     bucket_id = 'capital-documents'
     and (storage.foldername(name))[1] = (select auth.uid())::text
+    and (storage.foldername(name))[3] in ('legal', 'financial', 'operational', 'collateral')
+    and exists (
+      select 1
+      from public.capital_applications application
+      where application.id::text = (storage.foldername(name))[2]
+        and application.owner_id = (select auth.uid())
+    )
   );

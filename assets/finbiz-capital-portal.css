@@ -86,12 +86,16 @@
 .capital-auth-card .form-status { margin: 10px 0 0; }
 .capital-application-fields { min-width: 0; margin: 0; padding: 0; border: 0; }
 .capital-application-fields:disabled { opacity: .58; }
-.capital-file-field { margin-top: 22px; }
-.capital-file-field label { display: block; margin-bottom: 7px; color: var(--ink); font-size: 12px; font-weight: 700; }
-.capital-file-field label span { color: #b4443d; }
-.capital-file-field input[type="file"] { display: block; width: 100%; padding: 10px; border: 1px dashed #b9c9bf; border-radius: 8px; background: #fbfcfb; color: var(--muted); font: inherit; font-size: 12px; }
-.capital-file-field small { display: block; margin-top: 6px; color: var(--muted); font-size: 11px; }
 .capital-file-list { display: grid; gap: 4px; margin: 9px 0 0; padding-left: 18px; color: var(--muted); font-size: 11px; overflow-wrap: anywhere; }
+.capital-documents-intro { margin: -7px 0 16px; color: var(--muted); font-size: 12px; }
+.capital-document-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; margin-top: 16px; }
+.capital-document-category { min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 10px; background: #fbfcfb; }
+.capital-document-category h4 { display: flex; align-items: center; gap: 9px; margin: 0 0 10px; color: var(--pine); font-size: 14px; }
+.capital-document-category h4 span { color: var(--pine-soft); font-size: 10px; letter-spacing: .5px; }
+.capital-document-category ul { display: grid; gap: 7px; min-height: 120px; margin: 0 0 13px; padding-left: 17px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.capital-document-category label { display: block; margin-bottom: 6px; color: var(--ink); font-size: 11px; font-weight: 700; }
+.capital-document-category input[type="file"] { width: 100%; padding: 8px; border: 1px dashed #b9c9bf; border-radius: 7px; background: #fff; color: var(--muted); font: inherit; font-size: 10px; }
+.capital-upload-limits { display: block; margin-top: 12px; color: var(--muted); font-size: 11px; }
 .capital-form-section + .capital-form-section { margin-top: 31px; padding-top: 28px; border-top: 1px solid var(--line); }
 .capital-form-section h3 { display: flex; align-items: center; gap: 11px; margin: 0 0 21px; color: var(--pine); font-size: 16px; }
 .capital-form-section h3 span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #e8f0eb; font-size: 12px; }
@@ -144,7 +148,7 @@
   .capital-hero-inner { gap: 32px; }
   .capital-hero-copy h1 { font-size: clamp(36px, 10vw, 48px); }
   .capital-section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
-  .capital-fields, .capital-aside { grid-template-columns: 1fr; }
+  .capital-fields, .capital-document-grid, .capital-aside { grid-template-columns: 1fr; }
   .capital-auth-controls { grid-template-columns: 1fr; }
   .capital-auth-button { width: 100%; }
   .capital-field-wide, .capital-disclaimer { grid-column: auto; }

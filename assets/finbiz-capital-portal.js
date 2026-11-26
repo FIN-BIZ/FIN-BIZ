@@ -10,12 +10,19 @@ const signOutButton = document.getElementById('capitalSignOut');
 const applicationForm = document.getElementById('capitalLeadForm');
 const applicationFields = document.getElementById('capitalApplicationFields');
 const applicationStatus = document.getElementById('capitalApplicationStatus');
-const filesInput = document.getElementById('capitalFiles');
+const fileInputs = Array.from(document.querySelectorAll('[data-document-category]'));
 const fileList = document.getElementById('capitalFileList');
-const MAX_FILE_COUNT = 10;
+const MAX_FILE_COUNT = 30;
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
-const MAX_TOTAL_FILE_SIZE = 50 * 1024 * 1024;
+const MAX_TOTAL_FILE_SIZE = 200 * 1024 * 1024;
 const ALLOWED_EXTENSIONS = new Set(['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png']);
+const DOCUMENT_CATEGORIES = new Set(['legal', 'financial', 'operational', 'collateral']);
+const CATEGORY_LABELS = {
+  legal: 'Hồ sơ pháp lý',
+  financial: 'Hồ sơ tài chính',
+  operational: 'Hồ sơ hoạt động',
+  collateral: 'Hồ sơ tài sản bảo đảm'
+};
 const MIME_TYPES = {
   pdf: 'application/pdf',
   doc: 'application/msword',
@@ -47,7 +54,8 @@ if (!(authForm instanceof HTMLFormElement)
   || !(applicationForm instanceof HTMLFormElement)
   || !(applicationFields instanceof HTMLFieldSetElement)
   || !(applicationStatus instanceof HTMLElement)
-  || !(filesInput instanceof HTMLInputElement)
+  || !fileInputs.length
+  || fileInputs.some((input) => !(input instanceof HTMLInputElement))
   || !(fileList instanceof HTMLElement)) {
   throw new Error('Thiếu thành phần cần thiết trên trang Kết nối vốn.');
 }
@@ -138,15 +146,20 @@ if (!config?.url || !config?.anonKey) {
       setSession(data.session?.user || null);
     });
 
-    filesInput.addEventListener('change', () => {
+    const renderSelectedFiles = () => {
       fileList.replaceChildren();
-      for (const file of filesInput.files || []) {
-        const item = document.createElement('li');
-        const size = (file.size / (1024 * 1024)).toFixed(2);
-        item.textContent = `${file.name} · ${size} MB`;
-        fileList.append(item);
+      for (const input of fileInputs) {
+        const category = input.dataset.documentCategory;
+        if (!category || !DOCUMENT_CATEGORIES.has(category)) continue;
+        for (const file of input.files || []) {
+          const item = document.createElement('li');
+          const size = (file.size / (1024 * 1024)).toFixed(2);
+          item.textContent = `${CATEGORY_LABELS[category]}: ${file.name} · ${size} MB`;
+          fileList.append(item);
+        }
       }
-    });
+    };
+    fileInputs.forEach((input) => input.addEventListener('change', renderSelectedFiles));
 
     applicationForm.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -161,13 +174,18 @@ if (!config?.url || !config?.anonKey) {
         return;
       }
 
-      const files = Array.from(filesInput.files || []);
+      const categorizedFiles = fileInputs.flatMap((input) => {
+        const category = input.dataset.documentCategory;
+        if (!category || !DOCUMENT_CATEGORIES.has(category)) return [];
+        return Array.from(input.files || []).map((file) => ({ file, category }));
+      });
+      const files = categorizedFiles.map(({ file }) => file);
       if (!files.length || files.length > MAX_FILE_COUNT) {
         setStatus(applicationStatus, `Chọn từ 1 đến ${MAX_FILE_COUNT} tệp hồ sơ.`, true);
         return;
       }
       if (files.reduce((total, file) => total + file.size, 0) > MAX_TOTAL_FILE_SIZE) {
-        setStatus(applicationStatus, 'Tổng dung lượng hồ sơ vượt quá 50 MB.', true);
+        setStatus(applicationStatus, 'Tổng dung lượng hồ sơ vượt quá 200 MB.', true);
         return;
       }
       const invalidFile = files.find((file) => {
@@ -204,9 +222,9 @@ if (!config?.url || !config?.anonKey) {
         if (applicationError) throw applicationError;
         applicationId = application.id;
 
-        for (const file of files) {
+        for (const { file, category } of categorizedFiles) {
           const extension = file.name.split('.').pop().toLowerCase();
-          const filePath = `${user.id}/${application.id}/${crypto.randomUUID()}.${extension}`;
+          const filePath = `${user.id}/${application.id}/${category}/${crypto.randomUUID()}.${extension}`;
           const { error: uploadError } = await supabase.storage
             .from('capital-documents')
             .upload(filePath, file, { contentType: file.type || MIME_TYPES[extension], upsert: false });
@@ -215,6 +233,7 @@ if (!config?.url || !config?.anonKey) {
           const { error: metadataError } = await supabase.from('capital_documents').insert({
             application_id: application.id,
             owner_id: user.id,
+            document_type: category,
             file_path: filePath,
             file_name: file.name,
             mime_type: file.type || MIME_TYPES[extension],
