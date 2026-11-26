@@ -43,8 +43,11 @@ const readableError = (error) => {
   const message = String(error?.message || '').toLowerCase();
   const code = String(error?.code || '').toLowerCase();
   if (message.includes('invalid login credentials')) return 'Không thể xác thực email. Hãy dùng liên kết mới nhất trong hộp thư.';
+  if (message.includes('error sending confirmation email') || message.includes('error sending email')) {
+    return 'Supabase không gửi được email xác minh. Kiểm tra Authentication → SMTP Settings: bật Custom SMTP, xác nhận host/port/user/password và địa chỉ From đã được nhà cung cấp xác minh. Nếu chưa cấu hình SMTP riêng, email mặc định chỉ gửi tới thành viên tổ chức và bị giới hạn khoảng 2 email/giờ. Xem Authentication → Logs để biết lý do từ máy chủ email; không tắt xác minh email để né lỗi.';
+  }
   if (message.includes('rate limit') || code.includes('rate_limit') || error?.status === 429) {
-    return 'Supabase đang giới hạn gửi email. Chờ ít nhất 60 giây rồi thử lại một lần. Nếu vẫn lỗi, kiểm tra Authentication → Rate Limits và SMTP trong Dashboard; SMTP mặc định chỉ gửi tối đa 2 email/giờ cho toàn project.';
+    return 'Supabase đang giới hạn gửi email. Chờ ít nhất 60 giây rồi thử lại một lần. Nếu vẫn lỗi, kiểm tra Authentication → Rate Limits và SMTP trong Dashboard; SMTP mặc định chỉ gửi khoảng 2 email/giờ và chỉ tới email thành viên tổ chức.';
   }
   return error?.message || 'Đã xảy ra lỗi không xác định.';
 };
