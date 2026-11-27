@@ -4,6 +4,10 @@ const config = window.FINBIZ_SUPABASE_CONFIG;
 const authForm = document.getElementById('capitalAuthForm');
 const authStatus = document.getElementById('capitalAuthStatus');
 const authPanel = document.getElementById('capitalAuthPanel');
+const dashboard = document.getElementById('capitalDashboard');
+const applicationsList = document.getElementById('capitalApplicationsList');
+const applicationCount = document.getElementById('capitalApplicationCount');
+const newApplicationButton = document.getElementById('capitalNewApplication');
 const sessionPanel = document.getElementById('capitalSession');
 const sessionEmail = document.getElementById('capitalSessionEmail');
 const signOutButton = document.getElementById('capitalSignOut');
@@ -76,6 +80,10 @@ const readableError = (error) => {
 if (!(authForm instanceof HTMLFormElement)
   || !(authStatus instanceof HTMLElement)
   || !(authPanel instanceof HTMLElement)
+  || !(dashboard instanceof HTMLElement)
+  || !(applicationsList instanceof HTMLElement)
+  || !(applicationCount instanceof HTMLElement)
+  || !(newApplicationButton instanceof HTMLButtonElement)
   || !(sessionPanel instanceof HTMLElement)
   || !(sessionEmail instanceof HTMLElement)
   || !(signOutButton instanceof HTMLButtonElement)
@@ -117,14 +125,195 @@ if (!config?.url || !config?.anonKey) {
 
   if (supabase) {
     setStatus(authStatus, 'Đang kết nối hệ thống lưu trữ bảo mật...');
+    let dashboardRequest = 0;
+    const formatDate = (value) => new Intl.DateTimeFormat('vi-VN', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    }).format(new Date(value));
+    const formatSize = (value) => value < 1024 * 1024
+      ? `${Math.max(1, Math.round(value / 1024))} KB`
+      : `${(value / (1024 * 1024)).toFixed(2)} MB`;
+    const statusDetails = {
+      received: { label: 'Đã tiếp nhận', detail: 'FINBIZ đã nhận thông tin và tài liệu của bạn.', step: 0 },
+      reviewing: { label: 'Đang rà soát', detail: 'Hồ sơ đang được FINBIZ xem xét.', step: 1 },
+      contacted: { label: 'Đã liên hệ', detail: 'FINBIZ đã cập nhật trao đổi với doanh nghiệp.', step: 2 },
+      closed: { label: 'Đã kết thúc', detail: 'FINBIZ đã kết thúc xử lý hồ sơ này.', step: 2 }
+    };
+    const categoryNames = {
+      legal: 'Pháp lý',
+      financial: 'Tài chính',
+      operational: 'Hoạt động',
+      collateral: 'Tài sản bảo đảm',
+      other: 'Khác'
+    };
+    const appendText = (parent, tag, className, text) => {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      element.textContent = text;
+      parent.append(element);
+      return element;
+    };
+    const renderApplications = (applications, documents) => {
+      applicationsList.replaceChildren();
+      applicationCount.textContent = `${applications.length} hồ sơ`;
+      for (const application of applications) {
+        const appDocuments = documents.filter((document) => document.application_id === application.id);
+        const status = statusDetails[application.status];
+        if (!status) throw new Error(`Trạng thái hồ sơ không được hỗ trợ: ${application.status}`);
+        const card = document.createElement('article');
+        card.className = 'capital-application-card';
+
+        const header = document.createElement('div');
+        header.className = 'capital-application-card-head';
+        const identity = document.createElement('div');
+        appendText(identity, 'h4', '', application.company);
+        appendText(identity, 'p', 'capital-application-card-meta', `Mã hồ sơ ${application.id} · Gửi ${formatDate(application.created_at)}`);
+        const badge = appendText(header, 'span', 'capital-status-badge', status.label);
+        if (application.status === 'closed') badge.classList.add('is-neutral');
+        header.prepend(identity);
+        card.append(header);
+        appendText(card, 'p', 'capital-application-status-copy', status.detail);
+
+        const facts = document.createElement('dl');
+        facts.className = 'capital-application-facts';
+        const factItems = [
+          ['Nhu cầu vốn', application.funding_need],
+          ['Số vốn dự kiến', application.amount],
+          ['Mô hình', application.business_type],
+          ['Giấy tờ đã nộp', `${appDocuments.length} tệp`]
+        ];
+        for (const [label, value] of factItems) {
+          const fact = document.createElement('div');
+          appendText(fact, 'dt', '', label);
+          appendText(fact, 'dd', '', value);
+          facts.append(fact);
+        }
+        card.append(facts);
+
+        const progress = document.createElement('ol');
+        progress.className = 'capital-application-progress';
+        const progressSteps = ['Đã gửi', 'FINBIZ rà soát', 'Trao đổi cùng doanh nghiệp'];
+        progressSteps.forEach((label, index) => {
+          const item = document.createElement('li');
+          if (index < status.step) item.classList.add('is-complete');
+          if (index === status.step) item.classList.add('is-current');
+          appendText(item, 'span', 'capital-progress-marker', index < status.step ? '✓' : String(index + 1));
+          appendText(item, 'span', 'capital-progress-label', label);
+          progress.append(item);
+        });
+        card.append(progress);
+
+        const history = document.createElement('details');
+        history.className = 'capital-document-history';
+        const summary = document.createElement('summary');
+        summary.textContent = `Giấy tờ đã nộp (${appDocuments.length})`;
+        history.append(summary);
+        if (appDocuments.length) {
+          const list = document.createElement('ul');
+          for (const document of appDocuments) {
+            const item = document.createElement('li');
+            appendText(item, 'span', '', `${categoryNames[document.document_type] || 'Hồ sơ'} · ${document.file_name}`);
+            appendText(item, 'span', '', formatDate(document.created_at));
+            list.append(item);
+          }
+          history.append(list);
+        } else {
+          appendText(history, 'p', 'capital-dashboard-status', 'Chưa có giấy tờ được ghi nhận.');
+        }
+        card.append(history);
+
+        const supplementForm = document.createElement('form');
+        supplementForm.className = 'capital-supplement';
+        supplementForm.dataset.applicationId = application.id;
+        const categoryLabel = document.createElement('label');
+        categoryLabel.textContent = 'Nhóm giấy tờ';
+        const categoryInput = document.createElement('select');
+        categoryInput.name = 'category';
+        categoryInput.required = true;
+        for (const [value, label] of Object.entries(categoryNames).filter(([value]) => value !== 'other')) {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = label;
+          categoryInput.append(option);
+        }
+        categoryLabel.append(categoryInput);
+        const filesLabel = document.createElement('label');
+        filesLabel.textContent = 'Chọn giấy tờ bổ sung';
+        const filesInput = document.createElement('input');
+        filesInput.name = 'files';
+        filesInput.type = 'file';
+        filesInput.accept = '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png';
+        filesInput.multiple = true;
+        filesInput.required = true;
+        filesLabel.append(filesInput);
+        const submit = document.createElement('button');
+        submit.type = 'submit';
+        submit.textContent = 'Bổ sung giấy tờ';
+        supplementForm.append(categoryLabel, filesLabel, submit);
+        card.append(supplementForm);
+        const supplementStatus = document.createElement('p');
+        supplementStatus.className = 'capital-dashboard-status';
+        supplementStatus.setAttribute('role', 'status');
+        supplementStatus.setAttribute('aria-live', 'polite');
+        card.append(supplementStatus);
+        applicationsList.append(card);
+      }
+    };
+    const refreshDashboard = async (user) => {
+      const request = ++dashboardRequest;
+      setStatus(authStatus, 'Đang tải hồ sơ của bạn...');
+      const { data: applications, error: applicationsError } = await supabase
+        .from('capital_applications')
+        .select('id, company, business_type, funding_need, amount, status, created_at')
+        .eq('owner_id', user.id)
+        .order('created_at', { ascending: false });
+      if (applicationsError) throw applicationsError;
+      if (request !== dashboardRequest) return;
+      if (!applications.length) {
+        dashboard.hidden = true;
+        applicationForm.hidden = false;
+        applicationsList.replaceChildren();
+        applicationCount.textContent = '';
+        setStatus(authStatus, '');
+        return;
+      }
+      const { data: documents, error: documentsError } = await supabase
+        .from('capital_documents')
+        .select('application_id, document_type, file_name, file_size, created_at')
+        .in('application_id', applications.map((application) => application.id))
+        .order('created_at', { ascending: false });
+      if (documentsError) throw documentsError;
+      if (request !== dashboardRequest) return;
+      renderApplications(applications, documents);
+      dashboard.hidden = false;
+      applicationForm.hidden = true;
+      setStatus(authStatus, '');
+    };
+    newApplicationButton.addEventListener('click', () => {
+      dashboard.hidden = true;
+      applicationForm.hidden = false;
+      applicationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
     const setSession = (user) => {
       authForm.hidden = Boolean(user);
       sessionPanel.hidden = !user;
       applicationFields.disabled = !user;
       if (user) {
         sessionEmail.textContent = user.email || 'Email đã xác minh';
-        setStatus(authStatus, '');
+        dashboard.hidden = true;
+        applicationForm.hidden = true;
+        refreshDashboard(user).catch((error) => {
+          console.error('Không thể tải hồ sơ FINBIZ:', error);
+          dashboard.hidden = true;
+          applicationForm.hidden = false;
+          setStatus(authStatus, `Không thể tải hồ sơ: ${readableError(error)}`, true);
+        });
       } else {
+        dashboardRequest += 1;
+        dashboard.hidden = true;
+        applicationForm.hidden = false;
+        applicationsList.replaceChildren();
         sessionEmail.textContent = '';
         setStatus(authStatus, 'Nhập email để nhận liên kết đăng nhập một lần.');
       }
@@ -233,6 +422,81 @@ if (!config?.url || !config?.anonKey) {
       });
     });
 
+    dashboard.addEventListener('submit', async (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement) || !form.classList.contains('capital-supplement')) return;
+      event.preventDefault();
+      const status = form.nextElementSibling;
+      const categoryInput = form.elements.namedItem('category');
+      const filesInput = form.elements.namedItem('files');
+      const submit = form.querySelector('button[type="submit"]');
+      if (!(status instanceof HTMLElement)
+        || !(categoryInput instanceof HTMLSelectElement)
+        || !(filesInput instanceof HTMLInputElement)
+        || !(submit instanceof HTMLButtonElement)) {
+        throw new Error('Thiếu thành phần tải giấy tờ bổ sung.');
+      }
+      const files = Array.from(filesInput.files || []);
+      if (!files.length || files.length > MAX_FILE_COUNT) {
+        setStatus(status, `Chọn từ 1 đến ${MAX_FILE_COUNT} tệp.`, true);
+        return;
+      }
+      if (files.reduce((total, file) => total + file.size, 0) > MAX_TOTAL_FILE_SIZE) {
+        setStatus(status, 'Tổng dung lượng giấy tờ vượt quá 200 MB.', true);
+        return;
+      }
+      const invalidFile = files.find((file) => {
+        const extension = file.name.split('.').pop()?.toLowerCase();
+        return !extension || !ALLOWED_EXTENSIONS.has(extension) || file.size === 0 || file.size > MAX_FILE_SIZE;
+      });
+      if (invalidFile) {
+        setStatus(status, `Tệp "${invalidFile.name}" không đúng định dạng hoặc vượt quá 20 MB.`, true);
+        return;
+      }
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError || !sessionData.session?.user) {
+        setStatus(status, `Phiên đăng nhập không hợp lệ. ${sessionError ? readableError(sessionError) : 'Vui lòng đăng nhập lại.'}`, true);
+        return;
+      }
+
+      const user = sessionData.session.user;
+      const applicationId = form.dataset.applicationId;
+      const category = categoryInput.value;
+      let uploaded = 0;
+      submit.disabled = true;
+      try {
+        for (const file of files) {
+          setStatus(status, `Đang bổ sung giấy tờ (${uploaded + 1}/${files.length}): ${file.name}`);
+          const extension = file.name.split('.').pop().toLowerCase();
+          const filePath = `${user.id}/${applicationId}/${category}/${crypto.randomUUID()}.${extension}`;
+          const { error: uploadError } = await supabase.storage
+            .from('capital-documents')
+            .upload(filePath, file, { contentType: file.type || MIME_TYPES[extension], upsert: false });
+          if (uploadError) throw uploadError;
+          const { error: metadataError } = await supabase.from('capital_documents').insert({
+            application_id: applicationId,
+            owner_id: user.id,
+            document_type: category,
+            file_path: filePath,
+            file_name: file.name,
+            mime_type: file.type || MIME_TYPES[extension],
+            file_size: file.size
+          });
+          if (metadataError) throw metadataError;
+          uploaded += 1;
+        }
+        setStatus(status, `Đã bổ sung ${uploaded} giấy tờ vào hồ sơ.`);
+        form.reset();
+        await refreshDashboard(user);
+      } catch (error) {
+        console.error('Không thể bổ sung giấy tờ hồ sơ FINBIZ:', error);
+        const partial = uploaded ? `Đã lưu ${uploaded}/${files.length} tệp. ` : '';
+        setStatus(status, `${partial}Không thể bổ sung giấy tờ: ${readableError(error)}`, true);
+      } finally {
+        submit.disabled = false;
+      }
+    });
+
     applicationForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
@@ -318,6 +582,7 @@ if (!config?.url || !config?.anonKey) {
         setStatus(applicationStatus, `Đã gửi hồ sơ thành công. Mã tiếp nhận: ${application.id}. FINBIZ sẽ liên hệ theo thông tin bạn đã cung cấp.`);
         applicationForm.reset();
         renderSelectedFiles();
+        await refreshDashboard(user);
       } catch (error) {
         console.error('Không thể lưu hồ sơ kết nối vốn:', error);
         const partialMessage = applicationId

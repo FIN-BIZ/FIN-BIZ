@@ -105,6 +105,25 @@
             </div>
           </section>
 
+          <section class="capital-dashboard" id="capitalDashboard" aria-labelledby="capitalDashboardTitle" hidden>
+            <header class="capital-dashboard-hero">
+              <p class="capital-card-kicker">HỒ SƠ CỦA BẠN</p>
+              <h2 id="capitalDashboardTitle">Theo dõi hồ sơ kết nối vốn</h2>
+              <p>Quản lý các yêu cầu đã gửi, xem giấy tờ đã nộp và bổ sung tài liệu vào đúng hồ sơ.</p>
+              <button class="capital-dashboard-new" id="capitalNewApplication" type="button">Tạo hồ sơ mới <span aria-hidden="true">↗</span></button>
+            </header>
+            <div class="capital-dashboard-content">
+              <div class="capital-dashboard-heading">
+                <div>
+                  <p class="eyebrow">HỒ SƠ ĐÃ GỬI</p>
+                  <h3>Các yêu cầu vốn của doanh nghiệp</h3>
+                </div>
+                <span id="capitalApplicationCount" class="capital-application-count"></span>
+              </div>
+              <div id="capitalApplicationsList" class="capital-applications-list" aria-live="polite"></div>
+            </div>
+          </section>
+
           <form class="capital-form-card" id="capitalLeadForm" onsubmit="return false">
             <fieldset class="capital-application-fields" id="capitalApplicationFields" disabled>
               <legend class="sr-only">Thông tin yêu cầu vốn và hồ sơ doanh nghiệp</legend>
