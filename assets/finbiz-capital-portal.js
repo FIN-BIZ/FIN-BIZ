@@ -11,18 +11,14 @@ const applicationForm = document.getElementById('capitalLeadForm');
 const applicationFields = document.getElementById('capitalApplicationFields');
 const applicationStatus = document.getElementById('capitalApplicationStatus');
 const fileInputs = Array.from(document.querySelectorAll('[data-document-category]'));
-const fileList = document.getElementById('capitalFileList');
+const uploadCount = document.getElementById('capitalUploadCount');
+const uploadSize = document.getElementById('capitalUploadSize');
+const categoryFileLists = Array.from(document.querySelectorAll('[data-category-files]'));
 const MAX_FILE_COUNT = 30;
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
 const MAX_TOTAL_FILE_SIZE = 200 * 1024 * 1024;
 const ALLOWED_EXTENSIONS = new Set(['pdf', 'doc', 'docx', 'xls', 'xlsx', 'jpg', 'jpeg', 'png']);
 const DOCUMENT_CATEGORIES = new Set(['legal', 'financial', 'operational', 'collateral']);
-const CATEGORY_LABELS = {
-  legal: 'Hồ sơ pháp lý',
-  financial: 'Hồ sơ tài chính',
-  operational: 'Hồ sơ hoạt động',
-  collateral: 'Hồ sơ tài sản bảo đảm'
-};
 const MIME_TYPES = {
   pdf: 'application/pdf',
   doc: 'application/msword',
@@ -88,7 +84,9 @@ if (!(authForm instanceof HTMLFormElement)
   || !(applicationStatus instanceof HTMLElement)
   || !fileInputs.length
   || fileInputs.some((input) => !(input instanceof HTMLInputElement))
-  || !(fileList instanceof HTMLElement)) {
+  || !(uploadCount instanceof HTMLElement)
+  || !(uploadSize instanceof HTMLElement)
+  || categoryFileLists.length !== DOCUMENT_CATEGORIES.size) {
   throw new Error('Thiếu thành phần cần thiết trên trang Kết nối vốn.');
 }
 
@@ -179,19 +177,61 @@ if (!config?.url || !config?.anonKey) {
     });
 
     const renderSelectedFiles = () => {
-      fileList.replaceChildren();
+      const selectedFiles = [];
       for (const input of fileInputs) {
         const category = input.dataset.documentCategory;
         if (!category || !DOCUMENT_CATEGORIES.has(category)) continue;
-        for (const file of input.files || []) {
-          const item = document.createElement('li');
-          const size = (file.size / (1024 * 1024)).toFixed(2);
-          item.textContent = `${CATEGORY_LABELS[category]}: ${file.name} · ${size} MB`;
-          fileList.append(item);
-        }
+        const categoryList = categoryFileLists.find((list) => list.dataset.categoryFiles === category);
+        if (!(categoryList instanceof HTMLElement)) throw new Error(`Thiếu danh sách tệp cho nhóm ${category}.`);
+        categoryList.replaceChildren();
+        Array.from(input.files || []).forEach((file, index) => {
+          selectedFiles.push(file);
+          const categoryItem = document.createElement('li');
+          const fileName = document.createElement('span');
+          const removeButton = document.createElement('button');
+          fileName.textContent = file.name;
+          removeButton.type = 'button';
+          removeButton.className = 'capital-remove-file';
+          removeButton.textContent = 'Xóa';
+          removeButton.setAttribute('aria-label', `Xóa tệp ${file.name}`);
+          removeButton.addEventListener('click', () => {
+            const transfer = new DataTransfer();
+            Array.from(input.files || []).forEach((selectedFile, selectedIndex) => {
+              if (selectedIndex !== index) transfer.items.add(selectedFile);
+            });
+            input.files = transfer.files;
+            renderSelectedFiles();
+          });
+          categoryItem.append(fileName, removeButton);
+          categoryList.append(categoryItem);
+
+        });
       }
+      const totalSize = selectedFiles.reduce((total, file) => total + file.size, 0);
+      uploadCount.textContent = `${selectedFiles.length}/${MAX_FILE_COUNT} tệp đã chọn`;
+      uploadSize.textContent = `${(totalSize / (1024 * 1024)).toFixed(2)} MB / 200 MB`;
     };
-    fileInputs.forEach((input) => input.addEventListener('change', renderSelectedFiles));
+    fileInputs.forEach((input) => {
+      input.addEventListener('change', renderSelectedFiles);
+      const dropzone = input.closest('.capital-dropzone');
+      if (!(dropzone instanceof HTMLElement)) throw new Error('Thiếu vùng tải tệp cho hồ sơ.');
+      dropzone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropzone.classList.add('is-dragging');
+      });
+      dropzone.addEventListener('dragleave', (event) => {
+        if (!dropzone.contains(event.relatedTarget)) dropzone.classList.remove('is-dragging');
+      });
+      dropzone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropzone.classList.remove('is-dragging');
+        if (applicationFields.disabled || !event.dataTransfer?.files.length) return;
+        const transfer = new DataTransfer();
+        Array.from(input.files || []).concat(Array.from(event.dataTransfer.files)).forEach((file) => transfer.items.add(file));
+        input.files = transfer.files;
+        renderSelectedFiles();
+      });
+    });
 
     applicationForm.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -254,7 +294,8 @@ if (!config?.url || !config?.anonKey) {
         if (applicationError) throw applicationError;
         applicationId = application.id;
 
-        for (const { file, category } of categorizedFiles) {
+        for (const [index, { file, category }] of categorizedFiles.entries()) {
+          setStatus(applicationStatus, `Đang tải hồ sơ lên kho riêng tư (${index + 1}/${categorizedFiles.length}): ${file.name}`);
           const extension = file.name.split('.').pop().toLowerCase();
           const filePath = `${user.id}/${application.id}/${category}/${crypto.randomUUID()}.${extension}`;
           const { error: uploadError } = await supabase.storage
@@ -276,7 +317,7 @@ if (!config?.url || !config?.anonKey) {
 
         setStatus(applicationStatus, `Đã gửi hồ sơ thành công. Mã tiếp nhận: ${application.id}. FINBIZ sẽ liên hệ theo thông tin bạn đã cung cấp.`);
         applicationForm.reset();
-        fileList.replaceChildren();
+        renderSelectedFiles();
       } catch (error) {
         console.error('Không thể lưu hồ sơ kết nối vốn:', error);
         const partialMessage = applicationId

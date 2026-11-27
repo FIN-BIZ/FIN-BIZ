@@ -176,8 +176,13 @@
                       <li>Điều lệ công ty, danh sách / sổ cổ đông</li>
                       <li>Giấy phép hoạt động và hồ sơ pháp lý liên quan (nếu có)</li>
                     </ul>
-                    <label for="legalFiles">Tệp hồ sơ pháp lý</label>
-                    <input id="legalFiles" name="legalDocuments" type="file" data-document-category="legal" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                    <label class="capital-dropzone" for="legalFiles">
+                      <input id="legalFiles" name="legalDocuments" type="file" data-document-category="legal" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                      <span class="capital-dropzone-icon" aria-hidden="true">↑</span>
+                      <span class="capital-dropzone-copy"><strong>Kéo thả hồ sơ vào đây</strong><small>hoặc chọn tệp từ thiết bị</small></span>
+                      <span class="capital-dropzone-action">Chọn tệp</span>
+                    </label>
+                    <ul class="capital-category-files" data-category-files="legal" aria-live="polite"></ul>
                   </section>
 
                   <section class="capital-document-category" aria-labelledby="financialDocumentsTitle">
@@ -188,8 +193,13 @@
                       <li>Tờ khai thuế 24 tháng gần nhất</li>
                       <li>Sao kê tài khoản ngân hàng 12 tháng gần nhất</li>
                     </ul>
-                    <label for="financialFiles">Tệp hồ sơ tài chính</label>
-                    <input id="financialFiles" name="financialDocuments" type="file" data-document-category="financial" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                    <label class="capital-dropzone" for="financialFiles">
+                      <input id="financialFiles" name="financialDocuments" type="file" data-document-category="financial" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                      <span class="capital-dropzone-icon" aria-hidden="true">↑</span>
+                      <span class="capital-dropzone-copy"><strong>Kéo thả hồ sơ vào đây</strong><small>hoặc chọn tệp từ thiết bị</small></span>
+                      <span class="capital-dropzone-action">Chọn tệp</span>
+                    </label>
+                    <ul class="capital-category-files" data-category-files="financial" aria-live="polite"></ul>
                   </section>
 
                   <section class="capital-document-category" aria-labelledby="operationalDocumentsTitle">
@@ -199,8 +209,13 @@
                       <li>Hình ảnh kho xưởng, văn phòng và hoạt động kinh doanh</li>
                       <li>Bảng lương nhân viên 2 tháng gần nhất</li>
                     </ul>
-                    <label for="operationalFiles">Tệp hồ sơ hoạt động</label>
-                    <input id="operationalFiles" name="operationalDocuments" type="file" data-document-category="operational" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                    <label class="capital-dropzone" for="operationalFiles">
+                      <input id="operationalFiles" name="operationalDocuments" type="file" data-document-category="operational" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                      <span class="capital-dropzone-icon" aria-hidden="true">↑</span>
+                      <span class="capital-dropzone-copy"><strong>Kéo thả hồ sơ vào đây</strong><small>hoặc chọn tệp từ thiết bị</small></span>
+                      <span class="capital-dropzone-action">Chọn tệp</span>
+                    </label>
+                    <ul class="capital-category-files" data-category-files="operational" aria-live="polite"></ul>
                   </section>
 
                   <section class="capital-document-category" aria-labelledby="collateralDocumentsTitle">
@@ -210,12 +225,20 @@
                       <li>Giấy đăng ký, giấy tờ sở hữu và thông tin tài sản</li>
                       <li>Hình ảnh hiện trạng tài sản, nhà xưởng hoặc máy móc</li>
                     </ul>
-                    <label for="collateralFiles">Tệp hồ sơ tài sản bảo đảm</label>
-                    <input id="collateralFiles" name="collateralDocuments" type="file" data-document-category="collateral" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                    <label class="capital-dropzone" for="collateralFiles">
+                      <input id="collateralFiles" name="collateralDocuments" type="file" data-document-category="collateral" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png" multiple>
+                      <span class="capital-dropzone-icon" aria-hidden="true">↑</span>
+                      <span class="capital-dropzone-copy"><strong>Kéo thả hồ sơ vào đây</strong><small>hoặc chọn tệp từ thiết bị</small></span>
+                      <span class="capital-dropzone-action">Chọn tệp</span>
+                    </label>
+                    <ul class="capital-category-files" data-category-files="collateral" aria-live="polite"></ul>
                   </section>
                 </div>
+                <div class="capital-upload-summary" id="capitalUploadSummary" aria-live="polite">
+                  <strong id="capitalUploadCount">0/30 tệp đã chọn</strong>
+                  <span id="capitalUploadSize">0 MB / 200 MB</span>
+                </div>
                 <small class="capital-upload-limits">PDF, Word, Excel, JPG hoặc PNG · tối đa 30 tệp · 20 MB mỗi tệp · tổng tối đa 200 MB</small>
-                <ul id="capitalFileList" class="capital-file-list" aria-live="polite"></ul>
               </div>
               <label class="capital-consent">
                 <input type="checkbox" name="consent" required>
